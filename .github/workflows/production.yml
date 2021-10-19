@@ -1,0 +1,95 @@
+name: Production Deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@main
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - name: install dependencies
+        env:
+          NPM_TOKEN_GITHUB: ${{ secrets.NPM_TOKEN_GITHUB }}
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN_GITHUB}" > $HOME/.npmrc
+          npm ci --production
+
+      - name: release
+        run: |
+          npm run release
+
+      - name: setup keys
+        env:
+          DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+          DEPLOY_PUBLIC_KEY: ${{ secrets.DEPLOY_PUBLIC_KEY }}
+          HA_USERNAME: ${{ secrets.HA_USERNAME }}
+          HA_UP_HOST: ${{ secrets.HA_UP_HOST }}
+          HA_NERV_HOST: ${{ secrets.HA_NERV_HOST }}
+        run: |
+          SSH_PATH="$HOME/.ssh"
+
+          mkdir -p "$SSH_PATH"
+          touch "$SSH_PATH/known_hosts"
+
+          echo "$DEPLOY_PRIVATE_KEY" > "$SSH_PATH/deploy_key"
+          echo "$DEPLOY_PUBLIC_KEY" > "$SSH_PATH/deploy_key.pub"
+
+          chmod 700 "$SSH_PATH"
+          chmod 600 "$SSH_PATH/known_hosts"
+          chmod 600 "$SSH_PATH/deploy_key"
+          chmod 600 "$SSH_PATH/deploy_key.pub"
+
+          echo "host $HA_UP_HOST" >> "$SSH_PATH/config"
+          echo "  HostName $HA_UP_HOST" >> "$SSH_PATH/config"
+          echo "  IdentityFile $SSH_PATH/deploy_key" >> "$SSH_PATH/config"
+          echo "  User $HA_USERNAME" >> "$SSH_PATH/config"
+          chmod 600 "$SSH_PATH/config"
+
+          ssh-keyscan -t rsa $HA_UP_HOST >> "$SSH_PATH/known_hosts"
+
+          eval $(ssh-agent)
+          ssh-add "$SSH_PATH/deploy_key"
+
+      - name: send release
+        env:
+          HA_UP_HOST: ${{ secrets.HA_UP_HOST }}
+          HA_USERNAME: ${{ secrets.HA_USERNAME }}
+        run: |
+          VERSION=${GITHUB_REF##*/}
+
+          rsync -arP --delete release/ $HA_USERNAME@$HA_UP_HOST:/usr/www/intensives/typescript
+
+      - name: run prepare
+        env:
+          HA_UP_HOST: ${{ secrets.HA_UP_HOST }}
+          HA_USERNAME: ${{ secrets.HA_USERNAME }}
+        run: |
+          VERSION=${GITHUB_REF##*/}
+
+          ssh $HA_USERNAME@$HA_UP_HOST /usr/local/bin/php /usr/www/up/current/console.php intensive:prepare --ver ${VERSION} typescript
+
+      - name: notify success
+        if: ${{ success() }}
+        env:
+          SLACK_NOTIFICATION_URL: ${{ secrets.SLACK_NOTIFICATION_URL }}
+        run: |
+          VERSION=${GITHUB_REF##*/}
+
+          curl -X POST --data-urlencode "payload={\"channel\":\"#intensive-typescript\",\"text\":\"*Content* deployed by ${{ github.actor }}, version: ${VERSION}, revision: <https://github.com/${{ github.repository }}/tree/${{ github.sha }}|${{ github.sha }}>\"}" $SLACK_NOTIFICATION_URL
+
+      - name: notify failure
+        if: ${{ failure() }}
+        env:
+          SLACK_NOTIFICATION_URL: ${{ secrets.SLACK_NOTIFICATION_URL }}
+        run: |
+          VERSION=${GITHUB_REF##*/}
+
+          curl -X POST --data-urlencode "payload={\"channel\":\"#intensive-typescript\",\"text\":\"`Error` *Content* haven't been deployed, version: ${VERSION}\"}" $SLACK_NOTIFICATION_URL

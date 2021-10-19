@@ -1,0 +1,29 @@
+{
+  "name": "levelup-typescript",
+  "version": "1.0.0",
+  "description": "Контент курса «TypeScript»",
+  "main": "index.js",
+  "scripts": {
+    "release": "helper-cli release",
+    "start": "helper-cli watch -e dev",
+    "meta-id:quiz": "helper-cli generate-meta --target=quizzes",
+    "meta-id:tutorial": "helper-cli generate-meta --target=book",
+    "meta-id:articles": "helper-cli generate-meta --target=articles",
+    "meta-id:demos": "helper-cli generate-meta --target=demos",
+    "meta-id:tasks": "helper-cli generate-meta --target=tasks",
+    "meta-id": "npm run meta-id:tasks && npm run meta-id:demos && npm run meta-id:tutorial && npm run meta-id:articles && npm run meta-id:quiz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htmlacademy/levelup-typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/htmlacademy/levelup-typescript/issues"
+  },
+  "homepage": "https://github.com/htmlacademy/levelup-typescript#readme",
+  "dependencies": {
+    "@htmlacademy/content-helper": "6.2.9"
+  }
+}
