@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/htmlacademy/levelup-typescript#readme",
   "dependencies": {
-    "@htmlacademy/content-helper": "6.2.9"
+    "@htmlacademy/content-helper": "6.2.15"
   }
 }
