@@ -10,8 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-18.04
 
-    timeout-minutes:
-      10
+    timeout-minutes: 5
 
     steps:
       - uses: actions/checkout@main
