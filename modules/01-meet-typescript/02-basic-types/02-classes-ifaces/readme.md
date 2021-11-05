@@ -52,3 +52,50 @@ type Iface4 = StructureExample & {
 В примерах `SpecialExample`, `Iface3`, `Iface4` выражают идентичные намерения разработчика.
 
 Кроме операции объединения над типами в typescript можно производить и другие операции и мы познакомимся с ними в ходе нашего курса.
+
+## Реализация интерфейса, классы
+Простейшый способ реализации интерфейса - создание переменной с аннотацией нужного типа.
+
+```typescript
+interface A{
+    field: string;
+}
+const a:A = {
+    field: 'value'
+}
+```
+
+Интерфейсы могут содержать не только поля, но и методы
+```typescript
+interface B{
+    field: string;
+    toString():string;
+}
+
+const b:B = {
+    field: "value",
+    toString(){
+        return this.field;
+    }
+}
+```
+Используя интерфейс можно описать класс, который этот интерфейс реализует.
+```typescript
+interface EntityIface{
+    field:string;
+    toString():string;
+}
+
+class EntityImpl implements EntityIface{
+  field: string;
+  constructor(){
+      this.field="value";
+  }
+  toString(): string {
+    return this.field;
+  }
+}
+const entity = new EntityImpl();
+```
+
+Классы в typescript заслуживают отдельного обсуждения.
