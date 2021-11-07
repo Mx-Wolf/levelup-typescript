@@ -51,3 +51,17 @@ No overload matches this call.
       Type 'number' is not assignable to type 'string'.
 ```
 
+Мы уже встречались с синтаксисом определения функций, содержащим угловые скобки. Они относятся к разделу typescript об обощенном программировании. В соответствующем разделе мы подробнее рассмотрим детали. Сейчас, забегая вперед, познакомимся с еще одним способом описания типа функции
+
+```typescript
+function extractFirstElement<T>(array:T[]):T{
+    if(array.length>0){
+        return array[0];
+    }
+    throw new Error();
+}
+
+const num = extractFirstElement([1,2,3]);
+const str = extractFirstElement(["a","b","c"]);
+```
+Переменная `num` получает значение `1` типа `number`, а переменная `str` значение `"a"` типа string. Но важно даже не это, а то, что компилятор об этом догадывается сам.
