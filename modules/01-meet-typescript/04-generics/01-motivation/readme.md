@@ -60,7 +60,8 @@
 Когда typescript гарантирует нам что со значениями того или иного типа можно делать оговоренные действия мы можем создавать процедуры, которые заранее не определяют конкретный тип.
 
 ```typescript
-//функция вернет первый элемент массива. и значение будет известно потом. 
+// функция вернет первый элемент массива. 
+// Его тип и значение будет известно потом. 
 // сейчас важно, что набор элементов это массив
 function firstItem<T>(array:T[]):T{
   if(array.length>0){
@@ -75,5 +76,9 @@ function firstItem<T>(array:T[]):T{
 ```typescript
 const array1 = [42,73];
 const theAnswer = firstItem(array1);
-//typeof theArray === "number";
+// typeof theArray === "number";
+// мы может использовать значение безопасно
+Math.abs(theAnswer); //ok
+theAnswer.split(","); //Property 'split' does not exist on type 'number'.(2339)
+
 ```
