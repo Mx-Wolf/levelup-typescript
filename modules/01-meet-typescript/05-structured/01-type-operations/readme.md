@@ -137,4 +137,59 @@ type WorkBuffer = Writable<ReceivedCharacter>;
 
 ## Модификаторы Pick, Omit
 
+Теперь рассмотрим еще несколько полезных типов-модификаторов. к версии 4.4 их общее количество составляет полтора десятка. Вот они
+
+* `ConstructorParameters<Type>`
+* `Exclude<Type, ExcludedUnion>`
+* `Extract<Type, Union>`
+* `InstanceType<Type>`
+* `NonNullable<Type>`
+* `Omit<Type, Keys>`
+* `OmitThisParameter<Type>`
+* `Parameters<Type>`
+* `Partial<Type>`
+* `Pick<Type, Keys>`
+* `Readonly<Type>`
+* `Record<Keys, Type>`
+* `Required<Type>`
+* `ReturnType<Type>`
+* `ThisParameterType<Type>`
+* `ThisType<Type>`
+
+Все эти типы-модификаторы конструируют новый тип, опираясь на один или два типа из своих параметров. Мы уже встречали `Record<Keys, Type>` ранее. Типы `Readonly<Type>`, `Required<Type>` и `Partial<Type>` мы обсудили в предыдущем разделе. Сейчас познакомимся ближе с `Pick<Type, Keys>` и `Omit<Type, Keys>`. Вы сможете разобраться с остальными типами-модификаторам по аналогии самостоятельно.
+
+### `Pick<Type, Keys>`
+
+Этот тип-модификатор конструирует новый тип так, что среди ключей типа-результата будут только те, что переписаны во втором параметре.
+
+**Важно!** ключи перечисляются в виде пересечения строковых типов.
+
+```typescript
+type Original = {
+    id: number,
+    title: string,
+    position: string,
+}
+declare function create(record:Pick<Original, "title"|"position">): Original;
+
+const created = create({title:"доктор", position:"главврач" });
+```
+
+При создании новой записи, мы не можем указать ее идентификатор. Это прерогатива базы данных. Поэтому мы описали параметр у функции создания записи, перечислив только те свойства, которые, может быть, заполнил пользователь.
+
+Второй тип-модификатор конструирует новый тип так, что среди ключей типа результата не остается перечисленных во втором аргументе.
+
+```typescript
+type Original = {
+    id: number,
+    title: string,
+    position: string,
+}
+declare function create(record:Omit<Original, "id">): Original;
+
+const created = create({title:"доктор", position:"главврач" });
+```
+
+Кому-то второй вариант может показаться нагляднее.
+
 ## Как работать с данными неизвестного типа
