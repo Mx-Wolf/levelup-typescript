@@ -193,3 +193,78 @@ const created = create({title:"доктор", position:"главврач" });
 Кому-то второй вариант может показаться нагляднее.
 
 ## Как работать с данными неизвестного типа
+
+Рассмотрим практический пример, как впустить в свое приложение данные из удаленного сервера. Как бы разработчики не договаривались между собой, форме данных, полученных с сервера мы доверять не можем. Для наглядности представим, что мы извлекаем данные из третьего сервера.
+
+Мы сфокусируемся на функции `adapt`, но для полноты контекста предположим такую загрузку
+
+```typescript
+import {adapt} from "./adapt.js";
+
+type ServerData = {
+    lastUpdates:number,
+    rate: number,
+};
+declare const END_POINT_URL:string;
+
+export const load = async ():Promise<ServerData> =>{
+  const response = await fetch(END_POINT_URL);
+  if(response.ok){
+      return adapt(await response.json());
+  }
+  throw new Error();
+}
+```
+
+### Параметр у adapt неизвестен
+
+Чтобы правильно оценивать полученные данные мы должны сказать честно. *Мы предполагает форму данных, но не знаем это наверняка*.
+
+```typescript
+export const adapt = (json:unknown):ServerData=>{
+    //
+    throw new Error('not implemented yet');
+};
+```
+
+Все что мы можем сделать с `json` - это проверить, что это ненулевой объект.
+
+```typescript
+export const adapt = (json:unknown):ServerData=>{
+    if(typeof json === "object" && json !== null){
+        const {} = json as Record<string,unknown>;
+    }
+    throw new Error('not implemented yet');
+}
+```
+
+Обратите внимание на использование типа-модификатора Record вместо object. Это рекомендованная практика в связи с определенными трудностями компилятора.
+
+Теперь мы может деструктурировать объект и извлечь из него значения ключей `lastUpdates` и `rate`... в надежде, что они там есть.
+
+```typescript
+export const adapt = (json:unknown):ServerData=>{
+    if(typeof json === "object" && json !== null){
+        const {lastUpdates,rate} = json as Record<string,unknown>;
+    }
+    throw new Error('not implemented yet');
+}
+
+```
+
+Проверим, что значения действительно получены и они числовые
+
+```typescript
+export const adapt = (json:unknown):ServerData=>{
+    if(typeof json === "object" && json !== null){
+        const {lastUpdates,rate} = json as Record<string,unknown>;
+        if(typeof lastUpdates === "number" && typeof rate === "number"){
+            return {lastUpdates, rate};
+        }
+    }
+    throw new Error('unexpected argument value');
+}
+
+```
+
+Наконец, теперь мы можем вернуть правильное значение и в дальнейшем полагаться на typescript и на его магию. Кроме того мы можем изменить сообщение об ошибке.
