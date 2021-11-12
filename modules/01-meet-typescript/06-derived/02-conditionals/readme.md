@@ -25,4 +25,36 @@ type Result = Latter extends Former? "more": Date;
 
 Способ описания типа `Result` называется условным типом. Возможно, в своей ежедневной работе вы будете сталкиваться с условными типами в основном в неявном, завуалированном виде. Это потому, что условные типы прекрасно подходят для описания граничных api и frameworks.
 
+```typescript
+type Action =
+  | {
+      type: "INIT"
+    }
+  | {
+      type: "SYNC"
+    }
+  | {
+      type: "LOG_IN"
+      emailAddress: string
+    }
+  | {
+      type: "LOG_IN_SUCCESS"
+      accessToken: string
+    }
+type ActionType = Action["type"];
+type PayloadType<T,A> 
+  = A extends unknown
+  ? A extends {type:T}
+    ? {} extends Omit<A,"type">
+      ?never
+      :Omit<A,"type">
+    :never
+  :never;
+
+type Debug = PayloadType<"LOG_IN",Action>;
+
+declare function dispatch<T extends ActionType>(type:T, payload?:PayloadType<T,Action>):void;    
+
+dispatch("LOG_IN",{emailAddress:""});
+```
 
