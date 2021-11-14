@@ -103,5 +103,15 @@ console.log(Object.keys(Object.getPrototypeOf(lr)));
 console.log(Object.keys(Object.getPrototypeOf(lr2)));
 ```
 
-Здесь мы определеяем декоратора для метода saveTo класса LogRecordDec и имя становится доступным в списке ключей прототипа,  как это  
+Здесь мы определеяем декоратор для метода saveTo класса LogRecordDec и имя становится доступным в списке ключей прототипа,  как это  
 [видно в песочнице](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABAUzCAtsgTgQwEYA2yAFAG44EjIBcieccROYAlIgN4BQiiWyUILElCRYCRMSg4sAc361mATwA0iAA5Y4a7FEUBpZItoBnKFhhgZqgCbJjEc2qhwstAAqbtWXQBE7DmCcXNi4eHggEY0ZkADoCOBliW3tHZywWAG5uMOSAoKwY1AxsfCJEAF5EckpkLJ4AXyz6zk4IAhxjY0QAGQSAJWQIrGtQxGMcUmQAFThiUz4cdGop5AAPKABlM2RFgHVzKGwWdmbm1vbOnv7Bl2RrPwhRgAEizFxCEjMqFmzxyZm5ttFss1psgeh9jBDukTpwzhEwKZEAQsBVEGBkAB3K4yAZDazETKtSJQZFYABMaIx2N6uJufHug0JWWJiOicQSxAA8ngAFaDKAxADWhmM3L5ApicigHjgzl02i5wGIKJYaqyCKiRA5iR5-OgwtF4v1gulsvlikVypR5LVmSAA)
+
+Обратите внимание, что декоратор может быть функцией, как это было в отношении декотратора класса, а может, как во втором примере, быть и фабрикой, возвращающей функцию-декоратор.
+
+## Ограничения в использовании декораторов
+
+В настоящий момент у разработчика нет возможности декорировать функции, стрелочные функции или формальные параметры функций
+
+* Декорирование определений функций потребовало бы отказ от всплытия (hoisting) функций в javascript, поэтому эта операция не разрешена.
+* Декорированией стрелочных функций и функциональных выражений не разрешается. Оно и не требуется. Всегда можно написать `const target = deco(()=>{})`
+* Декорирование параметров функций не входит в контекст обсуждаемого техническим комитетом TC39 предложений.
