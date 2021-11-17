@@ -1,0 +1,101 @@
+{
+  "7jl31u8kw3ho0re": {
+    "name": "Таблица умножения",
+    "type": "test",
+    "description": "Давайте проверим ваши знания таблицы умножения",
+    "wizard": true,
+    "finalMessage": "Ну вот и ладушки",
+    "moduleNum": "1",
+    "metaId": "7jl31u8kw3ho0re",
+    "questions": [
+      {
+        "title": "1*1=?",
+        "text": "начнем с простого ()",
+        "type": "multiple",
+        "options": [
+          {
+            "content": "1",
+            "isCorrect": true
+          },
+          {
+            "content": "11",
+            "isCorrect": false
+          },
+          {
+            "content": "0",
+            "isCorrect": false
+          },
+          {
+            "content": "ОДИН",
+            "isCorrect": true
+          }
+        ]
+      },
+      {
+        "title": "2*2=?",
+        "text": "базовые веши",
+        "type": "single",
+        "options": [
+          {
+            "content": "5",
+            "isCorrect": false
+          },
+          {
+            "content": "4",
+            "isCorrect": true
+          },
+          {
+            "content": "1",
+            "isCorrect": true
+          },
+          {
+            "content": "2",
+            "isCorrect": true
+          }
+        ]
+      },
+      {
+        "title": "3*4=?",
+        "text": "а тут внезапно, да? думали будет что-то другое?",
+        "type": "text",
+        "textAnswer": "12"
+      }
+    ]
+  },
+  "7yta1vrkoshs31f": {
+    "name": "Давайте опросимся",
+    "type": "survey ",
+    "description": "Это опросник здорового человека",
+    "wizard": true,
+    "finalMessage": "Было весело",
+    "moduleNum": "2",
+    "metaId": "7yta1vrkoshs31f",
+    "questions": [
+      {
+        "title": "Как тебя зовут?",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "title": "Ты умничка?",
+        "text": "",
+        "type": "single",
+        "options": [
+          {
+            "content": "Нет",
+            "isCorrect": false
+          },
+          {
+            "content": "Да",
+            "isCorrect": true
+          }
+        ]
+      },
+      {
+        "title": "Как тебе наш опросник?",
+        "text": "",
+        "type": "text"
+      }
+    ]
+  }
+}

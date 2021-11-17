@@ -1,20 +1,22 @@
-[
-  {
-    "title" : "Введение",
-    "items": [
-      {
+[{
+    "title": "Введение",
+    "items": [{
         "type": "article",
         "path": "01-meet-typescript/00-intro"
+      },
+      {
+        "type": "quizz",
+        "path": "01-meet-typescript/00-intro/",
+        "info": "Написал в progrm.json это строку и ссылку на папку, содержащую quizz.json  а ссылки нет"
       }
     ]
   },
   {
-    "title" : "Установка и настройка",
-    "items": [
-      {
-        "type": "article",
-        "path": "01-meet-typescript/01-setup-settings/01-setup"
-      }
-    ]
+    "title": "Установка и настройка",
+    "items": [{
+      "type": "article",
+      "path": "01-meet-typescript/01-setup-settings/01-setup"
+    }]
   }
+
 ]
