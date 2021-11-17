@@ -5,9 +5,8 @@
         "path": "01-meet-typescript/00-intro"
       },
       {
-        "type": "quizz",
-        "path": "01-meet-typescript/00-intro/",
-        "info": "Написал в progrm.json это строку и ссылку на папку, содержащую quizz.json  а ссылки нет"
+        "type": "quiz",
+        "path": "01-meet-typescript/00-intro/q1"
       }
     ]
   },

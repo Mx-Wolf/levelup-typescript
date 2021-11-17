@@ -1,0 +1,50 @@
+title: Some quiz
+type: test
+description: |
+  Some quiz with some questions
+  Multiline strings available
+wizard: true
+successMessage: It's all right
+failureMessage: It's bad
+questions:
+  - id: 1
+    title: Some question 1
+    description: |
+      Some text
+
+      ![Some image](assets/example.jpg)
+    type: multiple
+    options:
+      - id: 1
+        value: Some answer 1
+        correct: true
+        description: Some **additional** description
+        resultMessage: Some result message
+      - id: 2
+        value: Some answer 2
+        correct: true
+      - id: 3
+        value: Some answer 3
+        correct: false
+        resultMessage: Some result message
+  - id: 2
+    title: Some question 2
+    description: Some text
+    type: single
+    options:
+      - id: 1
+        value: Some answer 1
+        description: Some additional description
+        resultMessage: Some result message
+      - id: 2
+        value: Some answer 2
+        correct: true
+  - id: 3
+    title: Some question 3
+    description: Some text
+    type: text
+    options:
+      - id: 1
+        value: Correct answer
+        correct: true
+        resultMessage: Some result message
