@@ -7,5 +7,14 @@
         "path": "01-meet-typescript/00-intro"
       }
     ]
+  },
+  {
+    "title" : "Установка и настройка",
+    "items": [
+      {
+        "type": "article",
+        "path": "01-meet-typescript/01-setup-settings/01-setup"
+      }
+    ]
   }
 ]
