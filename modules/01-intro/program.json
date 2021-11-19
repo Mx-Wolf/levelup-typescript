@@ -2,11 +2,23 @@
   "title": "Введение",
   "items": [{
       "type": "article",
-      "path": "01-intro/01-typescript-is-here"
+      "path": "01-intro/01-typescript-is-here",
+      "description": "Популярность typescript в последние годы растет и растет"
     },
     {
       "type":"article",
-      "path":"01-intro/02-javascript-shortcomings"
+      "path":"01-intro/02-javascript-shortcomings",
+      "description": "Только один пример трудностей обеспечения качества кода в контексте чистого javascript"
+    },
+    {
+      "type":"article",
+      "path":"01-intro/03-static-analysis",
+      "description": "Очень краткая демонстрация одной из возможностей typescript"
+    },
+    {
+      "type":"quiz",
+      "path":"01-intro/04-quiz",
+      "description":"Проверьте свою мотивацию"
     }
   ]
 }]
