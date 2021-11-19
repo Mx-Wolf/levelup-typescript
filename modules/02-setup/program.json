@@ -1,0 +1,20 @@
+[{
+  "title": "Введение",
+  "items": [{
+      "type": "article",
+      "path": "02-setup/01-setup",
+      "description": "Установка необходимых элементов typescript"
+    },
+    {
+      "type":"article",
+      "path":"02-setup/02-playground",
+      "description": "Знакомство с typescript без установки. Использование песочницы для экспериментов"
+    },
+    {
+      "type":"article",
+      "path":"02-setup/03-module-loaders",
+      "description": "Пару слов о загрузке модулей"
+    }
+
+  ]
+}]
