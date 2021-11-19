@@ -1,0 +1,12 @@
+[{
+  "title": "Введение",
+  "items": [{
+      "type": "article",
+      "path": "01-intro/01-typescript-is-here"
+    },
+    {
+      "type":"article",
+      "path":"01-intro/02-javascript-shortcomings"
+    }
+  ]
+}]
