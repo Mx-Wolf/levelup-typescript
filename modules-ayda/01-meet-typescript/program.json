@@ -1,0 +1,21 @@
+[{
+    "title": "Введение",
+    "items": [{
+        "type": "article",
+        "path": "01-meet-typescript/00-intro"
+      },
+      {
+        "type": "quiz",
+        "path": "01-meet-typescript/00-intro/q1"
+      }
+    ]
+  },
+  {
+    "title": "Установка и настройка",
+    "items": [{
+      "type": "article",
+      "path": "01-meet-typescript/01-setup-settings/01-setup"
+    }]
+  }
+
+]
