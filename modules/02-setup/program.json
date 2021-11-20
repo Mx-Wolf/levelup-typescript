@@ -1,25 +1,37 @@
-[{
-  "title": "Введение",
-  "items": [{
-      "type": "article",
-      "path": "02-setup/01-setup",
-      "description": "Установка необходимых элементов typescript"
-    },
-    {
-      "type":"article",
-      "path":"02-setup/02-playground",
-      "description": "Знакомство с typescript без установки. Использование песочницы для экспериментов"
-    },
-    {
-      "type":"article",
-      "path":"02-setup/03-module-loaders",
-      "description": "Пару слов о загрузке модулей"
-    },
-    {
-      "type":"article",
-      "path":"02-setup/04-common-settings",
-      "description": "У typescript множество флагов и настроек с которыми следует познакомиться"
-    }
-
-  ]
-}]
+[
+  {
+    "title": "Введение",
+    "items": [
+      {
+        "type": "article",
+        "path": "02-setup/01-setup",
+        "description": "Установка необходимых элементов typescript"
+      },
+      {
+        "type": "article",
+        "path": "02-setup/02-playground",
+        "description": "Знакомство с typescript без установки. Использование песочницы для экспериментов"
+      },
+      {
+        "type": "article",
+        "path": "02-setup/03-module-loaders",
+        "description": "Пару слов о загрузке модулей"
+      },
+      {
+        "type": "article",
+        "path": "02-setup/04-common-settings",
+        "description": "У typescript множество флагов и настроек с которыми следует познакомиться"
+      },
+      {
+        "type": "task",
+        "path": "02-setup/task-1",
+        "description": "Создание нового проекта"
+      },
+      {
+        "type": "task",
+        "path": "02-setup/task-2",
+        "description": "Добавление возможностей модульного тестирования"
+      }
+    ]
+  }
+]
