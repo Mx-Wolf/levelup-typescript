@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Базовые типы typescript",
+        "items": [
+            {
+                "type": "article",
+                "path": "03-basic-types/01-js-types",
+                "description": "Базовые, примитивные, структурные и функциональные типы typescript, общие с javascript"
+            },
+            {
+                "type": "article",
+                "path": "03-basic-types/02-classes-ifaces",
+                "description": "Интерфейсы и их реализация в виде объектов и экземпляров классов"
+            },
+            {
+                "type": "article",
+                "path": "03-basic-types/03-iface-merging",
+                "description": "Слияние определений интерфейсов, как важное отличие от псевдонима"
+            }
+        ]
+    }
+]
