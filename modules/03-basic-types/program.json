@@ -26,6 +26,11 @@
                 "type": "article",
                 "path": "03-basic-types/03-iface-merging",
                 "description": "Слияние определений интерфейсов, как важное отличие от псевдонима"
+            },
+            {
+                "type": "quiz",
+                "path": "03-basic-types/03-quiz",
+                "description": "Вопросы о слиянии определений типов"
             }
         ]
     }
