@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Функции и функциональные объекты",
+        "items": [
+            {
+                "type": "article",
+                "path": "04-functions/01-func-call-signature",
+                "description": "Типы значений, которые можно вызвать"
+            },
+            {
+                "type": "quiz",
+                "path": "04-functions/01-quiz",
+                "description": "Типы функций и типы вызываемых выражений"
+            },
+            {
+                "type": "article",
+                "path": "04-functions/02-func-args",
+                "description": "Явное описание типов параметров. Тип параметров по контексту"
+            },
+            {
+                "type": "quiz",
+                "path": "04-functions/02-quiz",
+                "description": "знакомство с типами аргументов"
+            },
+            {
+                "type": "article",
+                "path": "04-functions/03-func-retval",
+                "description": "Возвращаемое значение, тип возвращаемого значения, типы void, never, unknown"
+            },
+            {
+                "type": "quiz",
+                "path": "04-functions/01-quiz",
+                "description": "Тип значения, возвращаемого функцией"
+            }
+        ]
+    }
+]

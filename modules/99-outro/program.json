@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Базовые типы typescript",
+        "items": [
+            {
+                "type": "article",
+                "path": "99-outro/01-difficulties",
+                "description": "typescript развивается, - следите за новинками"
+            },
+            {
+              "type": "article",
+              "path": "99-outro/02-road-ahead",
+              "description": "typescript развивается, - следите за новинками"
+          }
+        ]
+    }
+]
