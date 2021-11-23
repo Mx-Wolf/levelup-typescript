@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Базовые типы typescript",
+        "items": [
+            {
+                "type": "article",
+                "path": "05-classes/01-declaration",
+                "description": "Объявления классов. Результат компиляции класса в javascript. Модификаторы членов класса"
+            },
+            {
+                "type": "article",
+                "path": "05-classes/02-inheritance",
+                "description": "Наследование в typescript, абстрактные классы, реализация интерфейса, множественное наследование"
+            },
+            {
+                "type": "article",
+                "path": "05-classes/03-decorators",
+                "description": "Экспериментальные возможности компилятора"
+            }
+        ]
+    }
+]

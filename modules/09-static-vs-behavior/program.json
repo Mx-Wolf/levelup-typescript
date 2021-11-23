@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Базовые типы typescript",
+        "items": [
+            {
+                "type": "article",
+                "path": "04-functions/01-func-call-signature",
+                "description": "Типы значений, которые можно вызвать"
+            },
+            {
+                "type": "article",
+                "path": "04-functions/02-func-args",
+                "description": "Явное описание типов параметров. Тип параметров по контексту"
+            },
+            {
+                "type": "article",
+                "path": "04-functions/03-func-retval",
+                "description": "Возвращаемое значение, тип возвращаемого значения, типы void, never, unknown"
+            }            
+        ]
+    }
+]
