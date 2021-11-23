@@ -5,7 +5,7 @@
 В борьбе за качество ПО, статический анализ, который выполняет typescript позволяет создать определенный уровень уверенности в качестве результата. Компилятор предупредит, если вы попытаетесь выяснить номер телефона у значения типа прямоугольник. Но этого недостаточно. Вы не можете рассказать компилятору, что оператор `throw new Error()`, который вы вставили в код представляет "договорное" поведение. 
 
 ```typescript
-declare const dictionary:Record<string,string>
+const dictionary:Record<string,string> = {}
 export function translate(term: string){
   const result = dictionary[term];
   if(typeof result === "undefined"){
@@ -13,18 +13,24 @@ export function translate(term: string){
   }
   return result;
 }
+export function initialize(settings:Record<string,string>){
+  dictionary = settings;
+}
 ```
 
 Другим вариантом реализации процедуры поиска по словарю мог быть возврат исходного термина. Возможно, при развитии программы, однажды вы решить, что этот вариант лучше - UI не ломается. То что термин будет на чужом языке, так это не существенно. Действительно, ведь все знают большинство терминов и без перевода.
 
 ```typescript
-declare const dictionary:Record<string,string>
+let dictionary:Record<string,string> = {}
 export function translate(term: string){
   const result = dictionary[term];
   if(typeof result === "undefined"){
     return term;
   }
   return result;
+}
+export function initialize(settings:Record<string,string>){
+  dictionary = settings;
 }
 ```
 
@@ -35,6 +41,24 @@ export function translate(term: string){
 Для того, чтобы убедиться, что изменения, аналогичные второму примеру, не сломают вашу систему надо посмотреть реакцию других частей. Желательно это делать автоматически при помощи "железного" компьютера и без участия невнимательного человека.
 
 В работе вы можете столкнуться с множеством систем, облегчающих модульное тестирование. React, в частности, использует jest.  В нашем проекте, мы используем `chai` + `mocha`
+
+Для того, чтобы в будущем не забыть о "договорном" поведении функции мы бы сделали в отдельном модуле набор проверок.
+
+```typescript
+import {translate, initialize} from './translate-algo.js'
+describe('поведение переводчика терминов translate',()=>{
+  it('находит строку по термину',()=>{
+    initialize({'один':'uno'})
+    expect(translate('один')).to.be('uno');
+  });
+  it('завершается аварийно для неизвестных терминов',()=>{
+    initialize({});
+    expect(()=>translate('нет такого слова')).to.throw);
+  })
+})
+```
+
+Такой модульный тест обнаружит изменение в поведении функции translate, до того как вы развернете обновление на площадке заказчика. Вы сможете тщательно проверить ваши намерения и изменить их. Возможно, изменив "договорное" поведение в модульном тесте.
 
 ## А что на других фронтах
 

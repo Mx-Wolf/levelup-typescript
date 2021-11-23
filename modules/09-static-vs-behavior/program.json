@@ -1,21 +1,21 @@
 [
     {
-        "title": "Базовые типы typescript",
+        "title": "Инструменты для контроля качества ПО",
         "items": [
             {
                 "type": "article",
                 "path": "09-static-vs-behavior/01-other-side",
-                "description": "Типы значений, которые можно вызвать"
+                "description": "Там где может сломаться - сломается"
             },
             {
                 "type": "article",
                 "path": "09-static-vs-behavior/02-architecture",
-                "description": "Явное описание типов параметров. Тип параметров по контексту"
+                "description": "Зона ответственности typescript"
             },
             {
                 "type": "article",
                 "path": "09-static-vs-behavior/03-unit-testing",
-                "description": "Возвращаемое значение, тип возвращаемого значения, типы void, never, unknown"
+                "description": "Фиксация договорного поведения алгоритмов"
             }
         ]
     }

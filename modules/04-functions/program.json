@@ -1,6 +1,6 @@
 [
     {
-        "title": "Базовые типы typescript",
+        "title": "Функции и функциональные объекты",
         "items": [
             {
                 "type": "article",
@@ -16,7 +16,7 @@
                 "type": "article",
                 "path": "04-functions/03-func-retval",
                 "description": "Возвращаемое значение, тип возвращаемого значения, типы void, never, unknown"
-            }            
+            }
         ]
     }
 ]
