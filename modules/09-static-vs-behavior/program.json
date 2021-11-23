@@ -4,19 +4,19 @@
         "items": [
             {
                 "type": "article",
-                "path": "04-functions/01-func-call-signature",
+                "path": "09-static-vs-behavior/01-other-side",
                 "description": "Типы значений, которые можно вызвать"
             },
             {
                 "type": "article",
-                "path": "04-functions/02-func-args",
+                "path": "09-static-vs-behavior/02-architecture",
                 "description": "Явное описание типов параметров. Тип параметров по контексту"
             },
             {
                 "type": "article",
-                "path": "04-functions/03-func-retval",
+                "path": "09-static-vs-behavior/03-unit-testing",
                 "description": "Возвращаемое значение, тип возвращаемого значения, типы void, never, unknown"
-            }            
+            }
         ]
     }
 ]

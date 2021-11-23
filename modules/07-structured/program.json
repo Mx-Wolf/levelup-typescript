@@ -4,19 +4,13 @@
         "items": [
             {
                 "type": "article",
-                "path": "04-functions/01-func-call-signature",
-                "description": "Типы значений, которые можно вызвать"
-            },
-            {
+                "path": "07-structured/01-type-operations",
+                "description": "Объединение, пересечение, расширение, сужение типов; самый узкий и самый широкий тип typescript"
+            }, {
                 "type": "article",
-                "path": "04-functions/02-func-args",
-                "description": "Явное описание типов параметров. Тип параметров по контексту"
-            },
-            {
-                "type": "article",
-                "path": "04-functions/03-func-retval",
-                "description": "Возвращаемое значение, тип возвращаемого значения, типы void, never, unknown"
-            }            
+                "path": "07-structured/02-more-guards",
+                "description": "о том как выяснить тип значения и убедить в этом компилятор"
+            }
         ]
     }
 ]

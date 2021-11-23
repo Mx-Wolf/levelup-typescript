@@ -4,19 +4,25 @@
         "items": [
             {
                 "type": "article",
-                "path": "04-functions/01-func-call-signature",
-                "description": "Типы значений, которые можно вызвать"
+                "path": "08-derived/01-more-types-ops",
+                "description": "Логические операции над типами"
             },
             {
                 "type": "article",
-                "path": "04-functions/02-func-args",
-                "description": "Явное описание типов параметров. Тип параметров по контексту"
+                "path": "08-derived/02-conditionals",
+                "description": "Создание типов с использованием условных выражений"
             },
             {
                 "type": "article",
-                "path": "04-functions/03-func-retval",
-                "description": "Возвращаемое значение, тип возвращаемого значения, типы void, never, unknown"
-            }            
+                "path": "08-derived/03-mapped",
+                "description": "Использование циклов при проектировании типов"
+            },
+            {
+                "type": "article",
+                "path": "08-derived/04-infer",
+                "description": "Объявление нового обобщенного типа как результата вычисления логических операций над типами"
+            }
+
         ]
     }
 ]
