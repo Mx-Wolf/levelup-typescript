@@ -4,19 +4,19 @@
         "items": [
             {
                 "type": "article",
-                "path": "04-functions/01-func-call-signature",
-                "description": "Типы значений, которые можно вызвать"
+                "path": "06-generics/01-motivation",
+                "description": "Складывать можно не только числа. Зонтик, например..."
             },
             {
                 "type": "article",
-                "path": "04-functions/02-func-args",
-                "description": "Явное описание типов параметров. Тип параметров по контексту"
+                "path": "06-generics/02-this-typeof-instanceof",
+                "description": "Функции, стрелки, обращение к поля своего класса, еще раз о разнице между типом и классом"
             },
             {
                 "type": "article",
-                "path": "04-functions/03-func-retval",
-                "description": "Возвращаемое значение, тип возвращаемого значения, типы void, never, unknown"
-            }            
+                "path": "06-generics/03-interpolat",
+                "description": "Преобразование и вычисление имен типов"
+            }
         ]
     }
 ]
