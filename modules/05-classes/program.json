@@ -8,14 +8,29 @@
                 "description": "Объявления классов. Результат компиляции класса в javascript. Модификаторы членов класса"
             },
             {
+                "type": "quiz",
+                "path": "05-classes/01-quiz",
+                "description": "Вопросы на тему об объявлении классов"
+            },
+            {
                 "type": "article",
                 "path": "05-classes/02-inheritance",
                 "description": "Наследование в typescript, абстрактные классы, реализация интерфейса, множественное наследование"
             },
             {
+                "type": "quiz",
+                "path": "05-classes/02-quiz",
+                "description": "Вопросы на тему наследования в typescript"
+            },
+            {
                 "type": "article",
                 "path": "05-classes/03-decorators",
                 "description": "Экспериментальные возможности компилятора"
+            },
+            {
+                "type": "quiz",
+                "path": "05-classes/03-quiz",
+                "description": "Вопросы на тему декораторов в typescript"
             }
         ]
     }
