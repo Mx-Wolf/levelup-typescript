@@ -8,14 +8,29 @@
                 "description": "Складывать можно не только числа. Зонтик, например..."
             },
             {
+                "type": "quiz",
+                "path": "06-generics/01-quiz",
+                "description": "Общие вопросы обобщенного программирования"
+            },
+            {
                 "type": "article",
                 "path": "06-generics/02-this-typeof-instanceof",
                 "description": "Функции, стрелки, обращение к поля своего класса, еще раз о разнице между типом и классом"
             },
             {
+                "type": "quiz",
+                "path": "06-generics/02-quiz",
+                "description": "Тип специальных переменных и использование операторов проверки типа"
+            },
+            {
                 "type": "article",
                 "path": "06-generics/03-interpolat",
                 "description": "Преобразование и вычисление имен типов"
+            },
+            {
+                "type": "quiz",
+                "path": "06-generics/03-quiz",
+                "description": "Вычисление имен типов, интерполяция"
             }
         ]
     }

@@ -6,10 +6,20 @@
                 "type": "article",
                 "path": "07-structured/01-type-operations",
                 "description": "Объединение, пересечение, расширение, сужение типов; самый узкий и самый широкий тип typescript"
+            },
+            {
+                "type": "quiz",
+                "path": "07-structured/01-quiz",
+                "description": "Вопросы на тему операций со структурными типами"
             }, {
                 "type": "article",
                 "path": "07-structured/02-more-guards",
                 "description": "о том как выяснить тип значения и убедить в этом компилятор"
+            },
+            {
+                "type": "quiz",
+                "path": "07-structured/01-quiz",
+                "description": "Вопросы обеспечения уверенности в типе используемого значения"
             }
         ]
     }

@@ -8,19 +8,39 @@
                 "description": "Логические операции над типами"
             },
             {
+                "type": "quiz",
+                "path": "08-derived/01-quiz",
+                "description": "Вопрос по теории"
+            },
+            {
                 "type": "article",
                 "path": "08-derived/02-conditionals",
                 "description": "Создание типов с использованием условных выражений"
             },
             {
+                "type": "quiz",
+                "path": "08-derived/02-quiz",
+                "description": "Вопросы создания производных типов"
+            },
+            {
                 "type": "article",
                 "path": "08-derived/03-mapped",
-                "description": "Использование циклов при проектировании типов"
+                "description": "Вопросы использования циклов при проектировании системы типов"
+            },
+            {
+                "type": "quiz",
+                "path": "08-derived/01-quiz",
+                "description": "Общие вопросы обобщенного программирования"
             },
             {
                 "type": "article",
                 "path": "08-derived/04-infer",
-                "description": "Объявление нового обобщенного типа как результата вычисления логических операций над типами"
+                "description": "Вопросы об использовании локальных переменных типов"
+            },
+            {
+                "type": "quiz",
+                "path": "08-derived/01-quiz",
+                "description": "Общие вопросы обобщенного программирования"
             }
 
         ]

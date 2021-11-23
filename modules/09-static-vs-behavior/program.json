@@ -16,6 +16,11 @@
                 "type": "article",
                 "path": "09-static-vs-behavior/03-unit-testing",
                 "description": "Фиксация договорного поведения алгоритмов"
+            },
+            {
+                "type": "quiz",
+                "path": "09-static-vs-behavior/04-quiz",
+                "description": "Вопросы о других инструментах обеспечения качества ПО"
             }
         ]
     }
