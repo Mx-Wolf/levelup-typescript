@@ -1,73 +1,99 @@
-title: Примитивные типы
+title: Цикл перебора ключей типо-параметра
 type: test
-description: |
-  Проверьте ваши знания о системе примитивных типов typescript
 wizard: true
 successMessage: Порядок, переходим к следующему разделу
-failureMessage: Вам следует повторить основные сведения о системе примитивных типов
+failureMessage: Вам следует повторить основные сведения о сервису преобразования ключей типо-параметра
 questions:
   - id: 10
-    title: Какой оператор javascript  позволяет выяснить тип примитивного значения переменной?
+    title: Сколько ключей у типа созданного следующим описанием
+    description: |
+      ```typescript
+      type fields = "writable"|"hidden"|"system"|"remote";
+      type FileFlags = {
+          [K in fields]:boolean;
+      }
+      ```
     type: single
     options:
       - id: 10
-        value: typeof
-        correct: true
-        resultMessage: | 
-          оператор typeof возвращает одну 
-          из предопределенных строк (
-            "undefined" "boolean","number","string", "symbol","function","object"
-          )
-      - id: 20
-        value: instanceof
+        value: 1
         correct: false
         resultMessage: |
-          Оператор возвращает флаг true, если 
-          среди прототипов в цепочки левого операнда
-          присутствует прототип из правого операнда. 
-          Этот оператор не позволяет выяснить тип примитивного значения
+          запись в квадратных скобках инструктирует typescript произвести итерацию
+          в цикле для каждого элемента объединения `fields`
+      - id: 20
+        value: 3
+        correct: false
+        resultMessage: |
+          typescript производит итерацию для каждого элемента объединения `fields
+          и как результат получает четыре ключа. Три было в статье
+      - id: 30
+        value: 4
+        correct: true
+        resultMessage: |
+          typescript производит итерацию для каждого элемента объединения `fields
+          и как результат получает четыре ключа
+      - id: 40
+        value: мы определяем ассоциативный массив и он может иметь любое количество ключей
+        correct: false
+        resultMessage: |
+          В данном случае мы определяем тип, а не значение. typescript производит итерацию для каждого элемента объединения `fields
+          и как результат получает четыре ключа
   - id: 20
-    title: Какие специальные примитивные типы добавлены в Typescript?
-    description: |
-      Укажите среди приведенных типов те, которые относятся только к 
-      typescript и не могут быть использованы во время работы приложения
-      в браузере.
+    title: Какие модификаторы typescript позволяет накладывать на ключи типа-результата итераций?
     type: multiple
     options:
       - id: 10
-        value: undefined
-        resultMessage: |
-          Этот тип доступен анализа во время работы приложения с 
-          помощью оператора typeof.
+        value: readonly
+        resultMessage: тип-результат будет иметь модификатор - только для чтетия
+        correct: true
       - id: 20
-        value: never
-        correct: true              
-        resultMessage: |
-          Этот тип введен в typescript для обозначения ситуации, когда 
-          переменная никогда не получит значения. Вы можете встретить этот тип 
-          в контексте недореализованной функции, исчерпывающего перебора 
-          вариантов switch/case и других.
-      - id: 30
-        value: unknown
+        value: "? (необязательность)"
         correct: true
         resultMessage: |
-          Этот тип введен в typescript для такого значения, в отношении
-          которого ничего не известно без дополнительных проверок. Этот 
-          тип позволяет вам потребовать от компилятора проявить твердость
-          и потребовать от вас выяснить реальный полученный тип во время 
-          работы приложения.
-      - id: 40
-        value: void
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для моделирования процедур, т.е. 
-          функций созданных для выполнения побочных эффектов, 
-          которые не возвращают значения.
-      - id: 50
-        value: object
+          тип результата будет иметь ключ с отметкой - необязательно
+  - id: 30
+    title: Какие типы будут иметь ключи вычисленного типа
+    description: |
+      ```typescript
+      type fields = "writable"|"hidden"|"system"|"remote";
+      type FileFlags = {
+        [K in fields]:boolean;
+      }
+      ```
+    type: single
+    options:
+      - id: 10
+        value: строковые
+        description: Все поля называются строками, значит и у ключей будет значение строк
+        resultMessage: всем ключам будет назначено значение типа `boolean`
         correct: false
+      - id: 20
+        value: boolean
+        correct: true
         resultMessage: |
-          этот тип доступен для анализа значений переменных во 
-          время работы программы javascript.
+          всем ключам будет назначено значение типа `boolean`
+
+  - id: 40
+    title: Сколько ключей с типом `number` будет у типа-результата
+    description: |
+      ```typescript
+      type fields = "writable"|"hidden"|"system"|"remote";
+      type FileFlags = {
+        [K in fields]:boolean;
+      }
+      ```
+    type: single
+    options:
+      - id: 10
+        value: строковые
+        description: Все поля называются строками, значит и у ключей будет значение строк
+        resultMessage: всем ключам будет назначено значение типа `boolean`
+        correct: false
+      - id: 20
+        value: boolean
+        correct: true
+        resultMessage: |
+          всем ключам будет назначено значение типа `boolean`
 
 
