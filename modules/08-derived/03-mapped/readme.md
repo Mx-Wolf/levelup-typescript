@@ -79,3 +79,33 @@ type EditSettings = Writable<{
 //    sourcePath: string;
 //}
 ```
+
+## Изменение наименования ключей
+
+Комбинируя методику перебора ключей и интерполяцию строковых типов вы можете объяснять компилятору как новый тип выводится из знаний о существующем
+
+```typescript
+type Accessor<T>= {
+    [K in keyof T as `get${Capitalize<K&string>}`]:()=>T[K]
+}
+```
+
+Позволяет объявить новый тип, такой, что каждый ключ типо-параметра **T** трансформируется так, что у него появляется приставка get, сам он записывается  большой буквы и при этом становится функцией без параметров, возвращающих значения исходного типа.
+
+Для примера на основе типа User  мы получим тип, значение которого могли бы выглядеть как в следующем примере.
+
+```typescript
+type User = {
+    name: string;
+    karma: number;
+    admin: boolean;
+}
+
+const userAccessor: Accessor<User> = {
+    getAdmin: () => true,
+    getKarma: ()=>0,
+    getName: ()=>""
+};
+```
+
+[изучите в песочнице](https://www.typescriptlang.org/play?#code/FAFwngDgpgBAggYwVAzig9gJwDwBUB8MAvDAN7AyUwDaA0jAJYB2MA1lGOgGYy4wCGKGAAMA5lBAASUgGF+EBiH4AbBgC8o2egDIYKEJmaj8AX2EBdAFwwAFAEpihXHXPATwUJFgBVFFEzEZBRUTPwAtlDW+oZMogDcwZSs-Jhh-NZMAK5hAEb+CVQCACZhzNY56OjKUPxMCe7ACOhM+jCZfpiIyGhY1l2oGDi+-oQk5IXiIHAlZbYORIQGmVAANIkwk7Qpadb2CwAMaxMSAHLhkXMLAERXbnFAA) поведение компилятора при изменении имен ключей

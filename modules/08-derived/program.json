@@ -29,7 +29,7 @@
             },
             {
                 "type": "quiz",
-                "path": "08-derived/01-quiz",
+                "path": "08-derived/03-quiz",
                 "description": "Общие вопросы обобщенного программирования"
             },
             {
@@ -39,7 +39,7 @@
             },
             {
                 "type": "quiz",
-                "path": "08-derived/01-quiz",
+                "path": "08-derived/04-quiz",
                 "description": "Общие вопросы обобщенного программирования"
             }
 
