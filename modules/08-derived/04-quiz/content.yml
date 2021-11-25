@@ -1,73 +1,135 @@
-title: Примитивные типы
+title: Использование ключевого слова infer
 type: test
 description: |
   Проверьте ваши знания о системе примитивных типов typescript
 wizard: true
 successMessage: Порядок, переходим к следующему разделу
-failureMessage: Вам следует повторить основные сведения о системе примитивных типов
+failureMessage: Вам следует повторить основные сведения об использовании infer
 questions:
   - id: 11
-    title: Какой оператор javascript  позволяет выяснить тип примитивного значения переменной?
+    title: Какой тип будет иметь переменная firstArg?
+    description: |
+      В контексте следующего определения типа AnyFunctionFirstArg определите тип переменной firstArg
+      ```typescript
+      type AnyFunctionFirstArg<T> =
+          T extends (
+              a: infer R,
+              ...rest: any[]
+          ) => any ?
+          R :
+          never;
+
+      declare const func: (left: number, right: number) => boolean;
+
+      let firstArg: AnyFunctionFirstArg<typeof func>;
+      ```
     type: single
     options:
       - id: 10
-        value: typeof
-        correct: true
-        resultMessage: |
-          оператор typeof возвращает одну
-          из предопределенных строк (
-            "undefined" "boolean","number","string", "symbol","function","object"
-          )
-      - id: 20
-        value: instanceof
+        value: any
         correct: false
         resultMessage: |
-          Оператор возвращает флаг true, если
-          среди прототипов в цепочки левого операнда
-          присутствует прототип из правого операнда.
-          Этот оператор не позволяет выяснить тип примитивного значения
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа первого аргумента из описания типа предъявленной функции. Это будет number
+      - id: 20
+        value: unknown
+        correct: false
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа первого аргумента из описания типа предъявленной функции. Это будет number
+      - id: 30
+        value: number
+        correct: true
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа первого аргумента из описания типа предъявленной функции. Это будет number
   - id: 21
-    title: Какие специальные примитивные типы добавлены в Typescript?
+    title: Какой тип будет иметь переменная secondArg?
     description: |
-      Укажите среди приведенных типов те, которые относятся только к
-      typescript и не могут быть использованы во время работы приложения
-      в браузере.
-    type: multiple
+      В контексте следующего определения типа AnyFunctionSecondArg определите тип переменной secondArg
+      ```typescript
+      type AnyFunctionSecondArg<T> =
+          T extends (
+              f: any,
+              a: infer R,
+              ...rest: any[]
+          ) => any ?
+          R :
+          never;
+
+      declare const format: (formatString: string, errorCode: number) => void;
+
+      let secondArg: AnyFunctionSecondArg<typeof format>;
+      ```
+    type: single
     options:
       - id: 10
-        value: undefined
-        resultMessage: |
-          Этот тип доступен анализа во время работы приложения с
-          помощью оператора typeof.
-      - id: 20
-        value: never
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для обозначения ситуации, когда
-          переменная никогда не получит значения. Вы можете встретить этот тип
-          в контексте недореализованной функции, исчерпывающего перебора
-          вариантов switch/case и других.
-      - id: 30
-        value: unknown
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для такого значения, в отношении
-          которого ничего не известно без дополнительных проверок. Этот
-          тип позволяет вам потребовать от компилятора проявить твердость
-          и потребовать от вас выяснить реальный полученный тип во время
-          работы приложения.
-      - id: 40
-        value: void
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для моделирования процедур, т.е.
-          функций созданных для выполнения побочных эффектов,
-          которые не возвращают значения.
-      - id: 50
-        value: object
+        value: any
         correct: false
         resultMessage: |
-          этот тип доступен для анализа значений переменных во
-          время работы программы javascript.
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа второго аргумента из описания типа предъявленной функции. Это будет number
+      - id: 20
+        value: unknown
+        correct: false
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа второго аргумента из описания типа предъявленной функции. Это будет number
+      - id: 30
+        value: number
+        correct: true
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа второго аргумента из описания типа предъявленной функции. Это будет number
+  - id: 31
+    title: Какой тип будет иметь переменная data?
+    description: |
+      В контексте следующего определения типа AwaitedResult определите тип переменной data
+      ```typescript
+      type AwaitedResult<T> = T extends Promise<infer R>?R:never;
+      declare function loadDictionary():Promise<Record<string,string>>;
+      let data: AwaitedResult<ReturnType<typeof loadDictionary>>;      ```
+    type: single
+    options:
+      - id: 10
+        value: never
+        correct: false
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа значений, передаваемых колбэк параметру than. Мы использовали вспомогательный условный тип ReturnType чтобы получить Promise и извлекли из его определения тип возвращаемых данны. Это будет Record<string,string>
+      - id: 20
+        value: unknown
+        correct: false
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа значений, передаваемых колбэк параметру than. Мы использовали вспомогательный условный тип ReturnType чтобы получить Promise и извлекли из его определения тип возвращаемых данны. Это будет Record<string,string>
+      - id: 30
+        value: Record<string,string>
+        correct: true
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа значений, передаваемых колбэк параметру than. Мы использовали вспомогательный условный тип ReturnType чтобы получить Promise и извлекли из его определения тип возвращаемых данны. Это будет Record<string,string>
+  - id: 41
+    title: Какой тип будет иметь переменная role?
+    description: |
+      В контексте следующего определения типа ItemType определите тип переменной role
+      ```typescript
+      type ItemType<T> = T extends (infer R)[]?R:never;
+      type User ={
+          name: string;
+          roles: ("standard"|"manager"|"accounting")[];
+      }
+
+      let role: ItemType<User["roles"]>;
+      ```
+    type: single
+    options:
+      - id: 10
+        value: never
+        correct: false
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа значений элементов массива. Мы использовали получение типа массива roles по ключу в типе User. Результат вычислений будет тип, переменные которого могут иметь значением одну из трех строк standard или manager или accounting
+      - id: 20
+        value: any
+        correct: false
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа значений элементов массива. Мы использовали получение типа массива roles по ключу в типе User. Результат вычислений будет тип, переменные которого могут иметь значением одну из трех строк standard или manager или accounting
+      - id: 30
+        value: |
+          "standard"|"manager"|"accounting"
+        correct: true
+        resultMessage: |
+          с помощью infer разработчик информирует typescript, что в R следует поместить определение типа значений, передаваемых колбэк параметру than. Мы использовали вспомогательный условный тип ReturnType чтобы получить Promise и извлекли из его определения тип возвращаемых данны. Это будет Record<string,string>
 
 
