@@ -75,25 +75,28 @@ questions:
           всем ключам будет назначено значение типа `boolean`
 
   - id: 40
-    title: Сколько ключей с типом `number` будет у типа-результата
+    title: Сколько ключей с типом `boolean` будет у типа-результата
     description: |
       ```typescript
-      type fields = "writable"|"hidden"|"system"|"remote";
+      type fields = "writable" | "hidden" | "system" | "remote";
       type FileFlags = {
-        [K in fields]:boolean;
+          [K in fields]?: boolean;
+      }
+      function example (fileAttrs:FileFlags){
+          console.log(fileAttrs)
       }
       ```
     type: single
     options:
       - id: 10
-        value: строковые
-        description: Все поля называются строками, значит и у ключей будет значение строк
-        resultMessage: всем ключам будет назначено значение типа `boolean`
+        value: четыре
+        description: При определении ассоциативного типа FileFlags всем полям назначен тип boolean.
+        resultMessage: В связи с тем, что каждое поле в типе результате помечено признаком необязательность (вопросительный знак) типы всех полей будут boolan|undefined.
         correct: false
       - id: 20
-        value: boolean
+        value: ни одного
         correct: true
         resultMessage: |
-          всем ключам будет назначено значение типа `boolean`
+          В связи с тем, что каждое поле в типе результате помечено признаком необязательность (вопросительный знак) типы всех полей будут boolan|undefined. Это тип требует дополнительной проверки наличия значения.
 
 
