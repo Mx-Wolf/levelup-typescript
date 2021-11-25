@@ -17,6 +17,7 @@ interface AnotherExample {
     useHeader: boolean;
 }
 ```
+
 Оба примера декларируют одно и то же намерение разработчика. Значения, которые принадлежат типу `StructureExample` можно присваивать переменным объявленным типом `AnotherExample`. Приведенные ниже выражения - корректны.
 
 ```typescript
@@ -26,12 +27,12 @@ const a1: StructureExample = {
 };
 const a2: AnotherExample = a1;
 ```
-Вы [можете убедиться](https://www.typescriptlang.org/play?target=7#code/C4TwDgpgBAysBOBXAxsR8IFEAeBDAtmADbQC8UA3gFBRQAWEuAJhPAFxQDOCAlgHYBzADQ0oiThAASjFuygAjAPaKSuPiIC+AbipV+wVgDNcyaAEE+i4A3g4CxaNVq0GzVh27x+Anc7ETpNzklFUY+HQ1dZEU+bihcAEYOOCRUdCw8QhIocidnV1k2ACJQSE5kLzBgIpE-cSkZdygERAgqbSpo2OB4gCYOCysbOyyyeIStIA), что компилятор совершенно спокойно воспринимает этот исходный код и создает правильный javascript.
 
+Вы [можете убедиться](https://www.typescriptlang.org/play?target=7#code/C4TwDgpgBAysBOBXAxsR8IFEAeBDAtmADbQC8UA3gFBRQAWEuAJhPAFxQDOCAlgHYBzADQ0oiThAASjFuygAjAPaKSuPiIC+AbipV+wVgDNcyaAEE+i4A3g4CxaNVq0GzVh27x+Anc7ETpNzklFUY+HQ1dZEU+bihcAEYOOCRUdCw8QhIocidnV1k2ACJQSE5kLzBgIpE-cSkZdygERAgqbSpo2OB4gCYOCysbOyyyeIStIA), что компилятор совершенно спокойно воспринимает этот исходный код и создает правильный javascript.
 
 ## Наследование интерфейсов
 
-При проектировании системы типов для программы разработчик может создавать иерархию интерфейсов. Для обозначения наследования используется ключевое слово `extends`. Переменные обозначенные расширенным типом наследуют поля исходного типа, а выражение в фигурных скобках добавляет новые поля.
+При проектировании системы типов для программы разработчик может создавать иерархию интерфейсов. Для обозначения наследования используется ключевое слово `extends`. Переменные обозначенные специализированным типом наследуют поля исходного типа, а выражение в фигурных скобках добавляет новые поля.
 
 ```typescript
 interface SpecialExample extends AnotherExample{
@@ -43,6 +44,7 @@ const spec:SpecialExample = {
     useHeader: true,
 };
 ```
+
 Наследовать можно и от интерфейса и от псевдонима типа.
 
 ```typescript
@@ -50,6 +52,7 @@ interface SomeFace3 extends StructureExample{
     footer: string;
 }
 ```
+
 Однако с помощью `extends` не удасться определить новый псевдоним типа. Возможно, в этом мешает знак `=`? Тем не менее аналогичного результата можно добиться и при использовании `type` псевдонима. Это достигается операцией **объединения**.
 
 ```typescript
@@ -57,6 +60,7 @@ type SomeFace4 = StructureExample & {
     footer: string,
 };
 ```
+
 В примерах `SpecialExample`, `SomeFace3`, `SomeFace4` выражают идентичные намерения разработчика.
 
 **К сведению.** Кроме операции объединения над типами в typescript можно производить и другие операции и мы познакомимся с ними в ходе нашего курса.
@@ -142,4 +146,5 @@ class R{
 const a= new R();
 a.field= "change value";
 ```
+
 Другими словами, во время разработки с использованием typescript в руках разработчика оказывается полноценный OOP-инструмент. Нам остается помнить, что вся эта магия заканчивается после компиляции.
