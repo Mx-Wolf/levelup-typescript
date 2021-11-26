@@ -1,73 +1,82 @@
-title: Примитивные типы
+title: Собираем и разбираем структурные типы
 type: test
 description: |
-  Проверьте ваши знания о системе примитивных типов typescript
+  Проверьте ваши знания о некоторых полезных типах-манипуляторах typescript
 wizard: true
 successMessage: Порядок, переходим к следующему разделу
-failureMessage: Вам следует повторить основные сведения о системе примитивных типов
+failureMessage: Вам следует повторить основные сведения о типах-манипуляторах
 questions:
   - id: 10
-    title: Какой оператор javascript  позволяет выяснить тип примитивного значения переменной?
+    title: Чем отличаются возможные значения переменных a и b
+    description: |
+      В контексте определений типов укажите, чем различаются между собой множества возможных значений переменной
+      ```
+      type Book ={
+          title: string;
+          published: number;
+          authorId?: number;
+      };
+
+      type Field = "title" | "published" | "authorId";
+
+      declare function getCurrentBookKey (): keyof Book;
+      declare function getSelectedField():Field;
+
+      let a = getCurrentBookKey();
+      let b = getSelectedField();
+
+      ```
     type: single
     options:
       - id: 10
-        value: typeof
+        value: не отличаются
         correct: true
-        resultMessage: | 
-          оператор typeof возвращает одну 
-          из предопределенных строк (
-            "undefined" "boolean","number","string", "symbol","function","object"
-          )
+        resultMessage: |
+          переменные имеют эквивалентные типы и в любом случае значение переменной a может быть присвоено переменной b и наоборот
       - id: 20
-        value: instanceof
+        value: отличаются
         correct: false
         resultMessage: |
-          Оператор возвращает флаг true, если 
-          среди прототипов в цепочки левого операнда
-          присутствует прототип из правого операнда. 
-          Этот оператор не позволяет выяснить тип примитивного значения
+          переменные имеют эквивалентные типы и в любом случае значение переменной a может быть присвоено переменной b и наоборот
   - id: 20
-    title: Какие специальные примитивные типы добавлены в Typescript?
+    title: какая из операций вызова функции допустима в typescript
     description: |
-      Укажите среди приведенных типов те, которые относятся только к 
-      typescript и не могут быть использованы во время работы приложения
-      в браузере.
-    type: multiple
+      в контексте определения типов указанных в примере выясните
+      вызов какой функции update или find допустим в typescript
+      ```typescript
+      type Product = {
+          productId: number;
+          name: string;
+          description?: string | undefined;
+      };
+
+      declare function update(p: Product): void;
+      declare function find(p: Partial<Product>): Product[] | undefined;
+
+      update({ productId: 42 });
+      find({ productId: 42 });
+      ```
+    type: single
     options:
       - id: 10
-        value: undefined
-        resultMessage: |
-          Этот тип доступен анализа во время работы приложения с 
-          помощью оператора typeof.
-      - id: 20
-        value: never
-        correct: true              
-        resultMessage: |
-          Этот тип введен в typescript для обозначения ситуации, когда 
-          переменная никогда не получит значения. Вы можете встретить этот тип 
-          в контексте недореализованной функции, исчерпывающего перебора 
-          вариантов switch/case и других.
-      - id: 30
-        value: unknown
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для такого значения, в отношении
-          которого ничего не известно без дополнительных проверок. Этот 
-          тип позволяет вам потребовать от компилятора проявить твердость
-          и потребовать от вас выяснить реальный полученный тип во время 
-          работы приложения.
-      - id: 40
-        value: void
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для моделирования процедур, т.е. 
-          функций созданных для выполнения побочных эффектов, 
-          которые не возвращают значения.
-      - id: 50
-        value: object
+        value: допустим вызов update
         correct: false
         resultMessage: |
-          этот тип доступен для анализа значений переменных во 
-          время работы программы javascript.
-
-
+          Исходный текст с вызовом функции update будет вызывать
+          ошибку на этапе компиляции. Argument of type '{ productId: number; }' is not assignable to parameter of type 'Product'.Property 'name' is missing in type '{ productId: number; }' but required in type 'Product'.(2345)
+      - id: 20
+        value: допустим вызов find
+        correct: true
+        resultMessage: |
+          в определении функции find разработчик модернизировал тип Product и объявил все поля в аргументе необязательными
+      - id: 30
+        value: Недопустим не один из вызовов
+        correct: false
+        resultMessage: |
+          в определении функции find разработчик модернизировал тип Product и объявил все поля в аргументе необязательными
+      - id: 40
+        value: вызов обеих функций допустимы
+        correct: false
+        resultMessage: |
+          Исходный текст с вызовом функции update будет вызывать
+          ошибку на этапе компиляции. Argument of type '{ productId: number; }' is not assignable to parameter of type 'Product'.Property 'name' is missing in type '{ productId: number; }' but required in type 'Product'.(2345)
