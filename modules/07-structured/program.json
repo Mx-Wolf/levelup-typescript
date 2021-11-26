@@ -18,7 +18,7 @@
             },
             {
                 "type": "quiz",
-                "path": "07-structured/01-quiz",
+                "path": "07-structured/02-quiz",
                 "description": "Вопросы обеспечения уверенности в типе используемого значения"
             }
         ]
