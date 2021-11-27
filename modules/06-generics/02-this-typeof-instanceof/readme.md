@@ -4,7 +4,7 @@
 
 Typescript эксплуатирует интересным образом факт того, что javascript запрещает нам называть параметр функции словом this. Javascript запрещает, а Typescript разрешает.
 
-Предположим у вас есть коллекция. Вы инкапсулировали структуру коллекции, но предоставляете api для модификации или использования элементов в коде.
+Предположим у вас есть коллекция. Вы упаковали структуру коллекции внутри определения класса Collection, и предоставляете api для модификации или использования элементов в коде.
 
 ```typescript
 interface Collectable{
@@ -40,11 +40,11 @@ if(typeof value === 'number'){
 В контексте описания типов оператор typeof в typescript приобретает новый смысл.
 
 ```typescript
-const struct = {
+const box = {
     question:"the Ultimate Question of Life, the Universe, and Everything",
     answer: 42,
 };
-type TypeOfStruct = typeof struct;
+type TypeOfBox = typeof box;
 
 ```
 
@@ -59,12 +59,12 @@ class Fireman{
     ignitePaperAt(){return 451;}
 }
 
-const montag:Fireman = new Fireman();
+const theHero:Fireman = new Fireman();
 
-if(montag instanceof Fireman){
+if(theHero instanceof Fireman){
     console.log('instanceof returns boolean')
 }
-if(typeof montag === "object"){
+if(typeof theHero === "object"){
     console.log('typeof returns type name');
 }
 ```
