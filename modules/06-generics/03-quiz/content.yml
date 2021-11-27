@@ -1,73 +1,75 @@
-title: Примитивные типы
+title: Интерполяция специализированных строковых типов
 type: test
 description: |
-  Проверьте ваши знания о системе примитивных типов typescript
+  Проверьте ваши знания о возможностях использования интерполяции строковых типов
 wizard: true
 successMessage: Порядок, переходим к следующему разделу
-failureMessage: Вам следует повторить основные сведения о системе примитивных типов
+failureMessage: Вам следует повторить основные сведения об интерполяции строковых типов
 questions:
   - id: 10
-    title: Какой оператор javascript  позволяет выяснить тип примитивного значения переменной?
-    type: single
-    options:
-      - id: 10
-        value: typeof
-        correct: true
-        resultMessage: | 
-          оператор typeof возвращает одну 
-          из предопределенных строк (
-            "undefined" "boolean","number","string", "symbol","function","object"
-          )
-      - id: 20
-        value: instanceof
-        correct: false
-        resultMessage: |
-          Оператор возвращает флаг true, если 
-          среди прототипов в цепочки левого операнда
-          присутствует прототип из правого операнда. 
-          Этот оператор не позволяет выяснить тип примитивного значения
-  - id: 20
-    title: Какие специальные примитивные типы добавлены в Typescript?
+    title: Какой вариант инициализации переменных допустим в typescript
     description: |
-      Укажите среди приведенных типов те, которые относятся только к 
-      typescript и не могут быть использованы во время работы приложения
-      в браузере.
+      используя определения типов и функций приведенных ниже выясните какие из операций инициализации переменных будут допустимы с точки зрения typescript
+      ```typescript
+      type Field = "id"|"caption"|"text";
+      type Attribute = keyof {
+          id:number,
+          caption: string,
+          text: string,
+      };
+      declare function getOrderByField():Field;
+
+      const orderByField: Field = getOrderByField();
+      const labelField: Attribute = getOrderByField();      
+      ```
     type: multiple
     options:
       - id: 10
-        value: undefined
-        resultMessage: |
-          Этот тип доступен анализа во время работы приложения с 
-          помощью оператора typeof.
+        value: только переменная orderByField будет инициализирована успешно
+        correct: false
+        resultMessage: | 
+          типы значений, которые могут содержать переменные orderByField и labelField эквивалентны. Обе инициализации успешны.
       - id: 20
-        value: never
-        correct: true              
-        resultMessage: |
-          Этот тип введен в typescript для обозначения ситуации, когда 
-          переменная никогда не получит значения. Вы можете встретить этот тип 
-          в контексте недореализованной функции, исчерпывающего перебора 
-          вариантов switch/case и других.
-      - id: 30
-        value: unknown
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для такого значения, в отношении
-          которого ничего не известно без дополнительных проверок. Этот 
-          тип позволяет вам потребовать от компилятора проявить твердость
-          и потребовать от вас выяснить реальный полученный тип во время 
-          работы приложения.
-      - id: 40
-        value: void
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для моделирования процедур, т.е. 
-          функций созданных для выполнения побочных эффектов, 
-          которые не возвращают значения.
-      - id: 50
-        value: object
+        value: только переменная labelField будет инициализирована успешно
         correct: false
         resultMessage: |
-          этот тип доступен для анализа значений переменных во 
-          время работы программы javascript.
-
+          типы значений, которые могут содержать переменные orderByField и labelField эквивалентны. Обе инициализации успешны.
+      - id: 30
+        value: обе переменные будут инициализированы успешно.
+        correct: true
+        resultMessage: |
+          типы значений, которые могут содержать переменные orderByField и labelField эквивалентны. Обе инициализации успешны.
+  - id: 20
+    title: Какие из определений типов некорректны с точки зрения typescript   
+    description: |
+      ```typescript
+      // вариант 1
+      type NotifyPropertyChange<T> = T & {
+        subscribe(event:keyof T, handler:(target:T)=>void):()=>void,
+      }
+      // вариант 2
+      type NotifyPropertyChange<T> = T & {
+        subscribe(event:keyof T, handler:(target:T)=>void):()=>void,
+      }
+      // вариант 3
+      type NotifyPropertyChange<T> = T & {
+        subscribe(event:`${string & keyof T}Change`, handler:(target:T)=>void):()=>void,
+      }
+      ```
+    type: multiple
+    options:
+      - id: 10
+        value: вариант 1 вызывает ошибку компиляции
+        resultMessage: |
+          формальный аргумент event может содержать значения типа string, symbol, number.
+      - id: 20
+        value: вариант 2 вызывает ошибку компиляции
+        correct: true              
+        resultMessage: |
+          для использования в целях интерполяции подходят только специализации типа string.
+      - id: 30
+        value: вариант 3 вызывает ошибку компиляции
+        correct: false
+        resultMessage: |
+          пересечение string & keyof T исключает возможные значения ключей за исключением специализированных строковых типов 
 
