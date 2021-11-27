@@ -50,12 +50,10 @@ const b: Picture = a;
 const painting =  {
   alt:"typescript",
   height: "3em",
-  src:"https://example.com/pictuer",
+  src:"https://example.com/picture",
   width: "3em",
 };
 type PaintingAttributes = keyof typeof painting;
-//PaintingAttributes
-
 ```
 
 Тип PaintingAttributes полностью эквивалентен типу Attributes, который мы создали вручную.
