@@ -60,7 +60,7 @@ type PaintingAttributes = keyof typeof painting;
 
 Тип PaintingAttributes полностью эквивалентен типу Attributes, который мы создали вручную.
 
-![Из чего состоит тип полученный по keyof]('./assets/Capture.PNG')
+![Из чего состоит тип полученный по keyof](./assets/Capture.PNG)
 
 ## Интерполяция строковых типов
 
@@ -101,7 +101,7 @@ proxy.addEventListener("age", () => undefined);
 
 Вы можете проверить в песочнице. Редактор действительно будет вам подсказывать, на какие события можно подписаться.
 
-![intellisense]('./assets/Capture2.PNG')
+![intellisense](./assets/Capture2.PNG)
 
 ## Полезные операции со строковыми типами
 
@@ -126,6 +126,8 @@ type WithSubscription<T> = T & {
 Попробуйте в песочнице заменить описание типа WithSubscription и изучить, какие названия для событий *придумает* компилятор.
 
 ## Ограничения на обобщенные типы
+
+
 
 ```typescript
 declare function update<T>(id:number, body:T):void;
