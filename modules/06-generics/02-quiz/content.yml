@@ -1,73 +1,146 @@
-title: Примитивные типы
+title: Вопросы на связь типов во время компиляции и во время исполнения
 type: test
 description: |
-  Проверьте ваши знания о системе примитивных типов typescript
+  Проверьте ваши знания о типе значений this, использовании instanceof
 wizard: true
 successMessage: Порядок, переходим к следующему разделу
-failureMessage: Вам следует повторить основные сведения о системе примитивных типов
+failureMessage: Вам следует повторить основные сведения о типах this
 questions:
   - id: 10
-    title: Какой оператор javascript  позволяет выяснить тип примитивного значения переменной?
+    title: Верно ли, что значение переменной answer будет 42?
+    description: |
+      ```typescript
+      const WRONG_INSTANCE = 'аргумент не является экземпляром класса Responder';
+      const WRONG_METHOD = 'аргумент не умеет вычислять ответ';
+
+      class Responder{
+          computeAnswer(){return 42}
+      }
+
+      function hostResponder(responder:Responder){
+          if(responder instanceof Responder){
+              return responder.computeAnswer();
+          }
+          throw new Error(WRONG_INSTANCE);
+      }
+
+      const fakeResponder:Responder = {computeAnswer:()=>{throw new Error(WRONG_METHOD);}};
+
+      const answer = hostResponder(fakeResponder);
+      ```    
     type: single
     options:
       - id: 10
-        value: typeof
-        correct: true
+        value: Программа не будет компилироваться вовсе. Говорить о значении переменной не приходится
+        correct: false
         resultMessage: | 
-          оператор typeof возвращает одну 
-          из предопределенных строк (
-            "undefined" "boolean","number","string", "symbol","function","object"
-          )
+          Статический анализ typescript рассматривает тип переменной (отдельно от реализации класса) в соответствии с принципом утиной типизации. Нарушений этого принципа в примере нет. Компилятор создаст программу на javascript и ее можно будет запустить.
       - id: 20
-        value: instanceof
+        value: Переменная не получит значение в связи с аварийным завершением метода computeAnswer. Мы передаем fakeResponder, который не умеет вычислять ответ.
         correct: false
         resultMessage: |
-          Оператор возвращает флаг true, если 
-          среди прототипов в цепочки левого операнда
-          присутствует прототип из правого операнда. 
-          Этот оператор не позволяет выяснить тип примитивного значения
+          функция hostResponder не станет вызывать метода computeAnswer поскольку аргумент в цепочке прототипов не имеет функции Responder.
+      - id: 30
+        value: Переменная не получит значение в связи с аварийным завершением функции hostResponder.
+        correct: true
+        resultMessage: |
+          во время исполнения оператор instanceof выявит расхождение в типе аргумента и функция завершится с выбрасыванием исключения WRONG_INSTANCE 
   - id: 20
-    title: Какие специальные примитивные типы добавлены в Typescript?
+    title: Какое сообщение появится на консоли?
     description: |
-      Укажите среди приведенных типов те, которые относятся только к 
-      typescript и не могут быть использованы во время работы приложения
-      в браузере.
-    type: multiple
+      в контексте определения классов, приведенных ниже, выясните какое сообщение будет выведено на экран после запуска результата компиляции
+      ```
+      class Logger {
+          id: string = "The Logger";
+          log() { console.log(this.id); }
+      }
+
+      class Container{
+          id: string = "The Container";
+          accept(logger:(this:{id:string})=>void){
+              logger.call(this);
+          }
+      }
+
+      const logger = new Logger();
+      const container = new Container();
+      container.accept(logger.log);
+      ```    
+    type: single
     options:
       - id: 10
-        value: undefined
-        resultMessage: |
-          Этот тип доступен анализа во время работы приложения с 
-          помощью оператора typeof.
-      - id: 20
-        value: never
-        correct: true              
-        resultMessage: |
-          Этот тип введен в typescript для обозначения ситуации, когда 
-          переменная никогда не получит значения. Вы можете встретить этот тип 
-          в контексте недореализованной функции, исчерпывающего перебора 
-          вариантов switch/case и других.
-      - id: 30
-        value: unknown
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для такого значения, в отношении
-          которого ничего не известно без дополнительных проверок. Этот 
-          тип позволяет вам потребовать от компилятора проявить твердость
-          и потребовать от вас выяснить реальный полученный тип во время 
-          работы приложения.
-      - id: 40
-        value: void
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для моделирования процедур, т.е. 
-          функций созданных для выполнения побочных эффектов, 
-          которые не возвращают значения.
-      - id: 50
-        value: object
+        value: Приведенный код не компилируется
         correct: false
         resultMessage: |
-          этот тип доступен для анализа значений переменных во 
-          время работы программы javascript.
-
+          Приведенный код соответствует всем правилам typescript и будет успешно компилирован в Javascript
+      - id: 20
+        value: После запуска программа завершится с ошибкой
+        correct: false              
+        resultMessage: |
+          Программа работает как задумано. использование сервисов javascript выполнено корректно
+      - id: 30
+        value: "The Container"
+        correct: true
+        resultMessage: |
+          Во время вызова функции log, специальная переменная this будет указывать на переменную container, а не на переменную logger
+      - id: 40
+        value: "The Logger"
+        correct: false
+        resultMessage: |
+          Во время вызова функции log, специальная переменная this будет указывать на переменную container, а не на переменную logger
+  - id: 30
+    title: Какую ошибку обнаружит компилятор typescript
+    description: |
+      В контексте определений типов, приведенных ниже определите какую ошибку обнаружит typescript компилятор
+      ```typescript
+      const value = 42;
+      const typeName = typeof value;
+      const meta: typeof typeName = "number" as typeof typeName;
+      const data: typeof meta = "string";
+      ```    
+    type: single
+    options:
+      - id: 10
+        value: Type '"string"' is not assignable to type '42'.(2322)
+        correct: false
+        resultMessage: | 
+          "приведенный код компилируется без ошибок. тип переменной meta - объединение типов "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" и допускает присваивание значения 'string';"
+      - id: 20
+        value: Type '"string"' is not assignable to type '"number"'.(2322)
+        correct: false
+        resultMessage: |
+          "приведенный код компилируется без ошибок. тип переменной meta - объединение типов "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" и допускает присваивание значения 'string';"
+      - id: 30
+        value: Код компилируется без ошибок
+        correct: true
+        resultMessage: |
+          "приведенный код компилируется без ошибок. тип переменной meta - объединение типов "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" и допускает присваивание значения 'string';" 
+  - id: 40
+    title: Какую ошибку обнаружит компилятор typescript, если удалить слова ' as typeof typeName'.
+    description: |
+      В контексте определений типов, приведенных ниже определите какую ошибку обнаружит typescript компилятор
+      ```typescript
+      const value = 42;
+      const typeName = typeof value;
+      const meta: typeof typeName = "number"/* as typeof typeName*/;
+      const data: typeof meta = "string";
+      ```    
+    type: single
+    options:
+      - id: 10
+        value: Type '"string"' is not assignable to type '42'.(2322)
+        correct: false
+        resultMessage: | 
+          "переменная мета получает получает специализацию над объединением  "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" до одного элемента "number". такой специализированной строке строку другого содержания присвоить нельзя"
+      - id: 20
+        value: Type '"string"' is not assignable to type '"number"'.(2322)
+        correct: true
+        resultMessage: |
+          "переменная мета получает получает специализацию над объединением  "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" до одного элемента "number". такой специализированной строке строку другого содержания присвоить нельзя"
+      - id: 30
+        value: Код компилируется без ошибок
+        correct: false
+        resultMessage: |
+          "переменная мета получает получает специализацию над объединением  "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" до одного элемента "number". такой специализированной строке строку другого содержания присвоить нельзя" 
+      
 
