@@ -125,22 +125,3 @@ type WithSubscription<T> = T & {
 
 Попробуйте в песочнице заменить описание типа WithSubscription и изучить, какие названия для событий *придумает* компилятор.
 
-## Ограничения на обобщенные типы
-
-
-
-```typescript
-declare function update<T>(id:number, body:T):void;
-```
-
-```typescript
-type VanillaJson = 
-    boolean
-    | number
-    | string
-    | null
-    | {[k: string]: VanillaJson}
-    | Array<VanillaJson>;
-
-declare function update<T extends VanillaJson> (id: number, body:T):void;
-```
