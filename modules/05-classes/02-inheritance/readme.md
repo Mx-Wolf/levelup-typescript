@@ -32,7 +32,7 @@ class Derived extends Base{
 }
 ```
 
-![access to public fields only]('./assets/access.png')
+![access to public fields only](./assets/access.png)
 
 При описании класса можно наследовать от одного класса. Множественное наследование не допускается.
 

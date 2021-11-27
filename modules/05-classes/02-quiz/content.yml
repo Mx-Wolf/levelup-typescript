@@ -1,73 +1,161 @@
-title: Примитивные типы
+title: Наследование в typescript
 type: test
 description: |
-  Проверьте ваши знания о системе примитивных типов typescript
+  Проверьте ваши знания о возможностях ООП в typescript
 wizard: true
 successMessage: Порядок, переходим к следующему разделу
-failureMessage: Вам следует повторить основные сведения о системе примитивных типов
+failureMessage: Вам следует повторить основные сведения о возможностях ООП в typescript
 questions:
   - id: 10
-    title: Какой оператор javascript  позволяет выяснить тип примитивного значения переменной?
-    type: single
-    options:
-      - id: 10
-        value: typeof
-        correct: true
-        resultMessage: | 
-          оператор typeof возвращает одну 
-          из предопределенных строк (
-            "undefined" "boolean","number","string", "symbol","function","object"
-          )
-      - id: 20
-        value: instanceof
-        correct: false
-        resultMessage: |
-          Оператор возвращает флаг true, если 
-          среди прототипов в цепочки левого операнда
-          присутствует прототип из правого операнда. 
-          Этот оператор не позволяет выяснить тип примитивного значения
-  - id: 20
-    title: Какие специальные примитивные типы добавлены в Typescript?
+    title: В чем разница между extends и implements 
     description: |
-      Укажите среди приведенных типов те, которые относятся только к 
-      typescript и не могут быть использованы во время работы приложения
-      в браузере.
+      в контексте определения типов отметьте верные высказывания
+      ```typescript
+      class B{
+          id: number | undefined;
+          name: string | undefined;
+      }
+      interface I{
+          key: number | undefined;
+          data: string | undefined;
+      }
+      ```
     type: multiple
     options:
       - id: 10
-        value: undefined
-        resultMessage: |
-          Этот тип доступен анализа во время работы приложения с 
-          помощью оператора typeof.
+        value: допускается наследование class D extends B{}
+        correct: true
+        resultMessage: | 
+          класс наследник может специализировать базовый класс
       - id: 20
-        value: never
-        correct: true              
+        value: | 
+          допускается реализация 
+          ```typescript
+          class D implements B{
+            id: number|undefined;
+            name: string|undefined;
+          }
+          ```
+        correct: true
         resultMessage: |
-          Этот тип введен в typescript для обозначения ситуации, когда 
-          переменная никогда не получит значения. Вы можете встретить этот тип 
-          в контексте недореализованной функции, исчерпывающего перебора 
-          вариантов switch/case и других.
+          класс может реализовывать интерфейс любого типа, в том числе другого класса
       - id: 30
-        value: unknown
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для такого значения, в отношении
-          которого ничего не известно без дополнительных проверок. Этот 
-          тип позволяет вам потребовать от компилятора проявить твердость
-          и потребовать от вас выяснить реальный полученный тип во время 
-          работы приложения.
-      - id: 40
-        value: void
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для моделирования процедур, т.е. 
-          функций созданных для выполнения побочных эффектов, 
-          которые не возвращают значения.
-      - id: 50
-        value: object
+        value: |
+          допускается наследование интерфейса
+          ```
+          class D extends I{}
+          ```
         correct: false
         resultMessage: |
-          этот тип доступен для анализа значений переменных во 
-          время работы программы javascript.
+          Cannot extend an interface 'I'. Did you mean 'implements'?(2689)
+          'extends' clause of exported class 'D' has or is using private name 'I'.(4020)     
+      - id: 40
+        value: |
+          допускается реализация интерфейса
+          ```typescript
+          class D implements I{
+              key: number | undefined;
+              data: string| undefined;
+          }          
+          ```  
+        correct: true
+        resultMessage: |
+          класс может реализовывать интерфейс
+  - id: 20
+    title: какие средства предоставляет typescript для обеспечения инкапсуляции
+    type: single
+    options:
+      - id: 10
+        value: ключевое слово private, protected, public
+        correct: true
+        resultMessage: |
+          private и protected позволяют обозначать поля не предназначенные для использования клиентским кодом, typescript статически проследит за соблюдением этого.
+      - id: 20
+        value: ключевое слово extends
+        correct: false
+        resultMessage: |
+          ключевое слово extends предназначено для наследования (специализации) характеристик базового класса.
+      - id: 30
+        value: ключевое слово abstract, interface
+        correct: false
+        resultMessage: |
+          typescript позволяет описывать интерфейс вне привязки к реализации тем самым обеспечивая инструменты для введения уровней абстракции.
+      - id: 40
+        value: ключевое слово implements
+        correct: false
+        resultMessage: |
+          typescript предоставляет implements как инструмент в области полиморфизма.
+  - id: 30
+    title: какие средства предоставляет typescript для обеспечения наследования
+    type: single
+    options:
+      - id: 10
+        value: ключевое слово private, protected, public
+        correct: false
+        resultMessage: |
+          private и protected позволяют обозначать поля не предназначенные для использования клиентским кодом, typescript статически проследит за соблюдением этого.
+      - id: 20
+        value: ключевое слово extends
+        correct: true
+        resultMessage: |
+          ключевое слово extends предназначено для наследования (специализации) характеристик базового класса.
+      - id: 30
+        value: ключевое слово abstract, interface
+        correct: false
+        resultMessage: |
+          typescript позволяет описывать интерфейс вне привязки к реализации тем самым обеспечивая инструменты для введения уровней абстракции.
+      - id: 40
+        value: ключевое слово implements
+        correct: false
+        resultMessage: |
+          typescript предоставляет implements как инструмент в области полиморфизма.
+  - id: 40
+    title: какие средства предоставляет typescript для абстракции
+    type: single
+    options:
+      - id: 10
+        value: ключевое слово private, protected, public
+        correct: false
+        resultMessage: |
+          private и protected позволяют обозначать поля не предназначенные для использования клиентским кодом, typescript статически проследит за соблюдением этого.
+      - id: 20
+        value: ключевое слово extends
+        correct: false
+        resultMessage: |
+          ключевое слово extends предназначено для наследования (специализации) характеристик базового класса.
+      - id: 30
+        value: ключевое слово abstract, interface
+        correct: true
+        resultMessage: |
+          typescript позволяет описывать интерфейс вне привязки к реализации тем самым обеспечивая инструменты для введения уровней абстракции.
+      - id: 40
+        value: ключевое слово implements
+        correct: false
+        resultMessage: |
+          typescript предоставляет implements как инструмент в области полиморфизма.
+  - id: 50
+    title: какие средства предоставляет typescript для обеспечения полиморфизма
+    type: single
+    options:
+      - id: 10
+        value: ключевое слово private, protected, public
+        correct: false
+        resultMessage: |
+          private и protected позволяют обозначать поля не предназначенные для использования клиентским кодом, typescript статически проследит за соблюдением этого.
+      - id: 20
+        value: ключевое слово extends
+        correct: false
+        resultMessage: |
+          ключевое слово extends предназначено для наследования (специализации) характеристик базового класса.
+      - id: 30
+        value: ключевое слово abstract, interface
+        correct: false
+        resultMessage: |
+          typescript позволяет описывать интерфейс вне привязки к реализации тем самым обеспечивая инструменты для введения уровней абстракции.
+      - id: 40
+        value: ключевое слово implements
+        correct: true
+        resultMessage: |
+          typescript предоставляет implements как инструмент в области полиморфизма.
 
 
