@@ -1,73 +1,84 @@
-title: Примитивные типы
+title: Понятие о функциональных типах
 type: test
 description: |
-  Проверьте ваши знания о системе примитивных типов typescript
+  Проверьте ваши знания о функциональных типов typescript
 wizard: true
 successMessage: Порядок, переходим к следующему разделу
-failureMessage: Вам следует повторить основные сведения о системе примитивных типов
+failureMessage: Вам следует повторить основные сведения о функциональных типов typescript
 questions:
   - id: 10
-    title: Какой оператор javascript  позволяет выяснить тип примитивного значения переменной?
+    title: Определите тип значения  по контексту
+    description: |
+      в контексте программы typescript определите тип значения аргумента `i` функции `reducer`.
+      ```typescript
+      const result = [..."abcdefg"].reduce(function reducer(a,i){return `${a},${i}`},"");
+      console.log(result);
+
+      ```
     type: single
     options:
       - id: 10
-        value: typeof
-        correct: true
+        value: невозможно определить. недостаточно контекста
+        correct: false
         resultMessage: | 
-          оператор typeof возвращает одну 
-          из предопределенных строк (
-            "undefined" "boolean","number","string", "symbol","function","object"
-          )
+          i будет иметь тип, соответствующий типу элементов массива, т.е. строка
       - id: 20
-        value: instanceof
+        value: any
         correct: false
         resultMessage: |
-          Оператор возвращает флаг true, если 
-          среди прототипов в цепочки левого операнда
-          присутствует прототип из правого операнда. 
-          Этот оператор не позволяет выяснить тип примитивного значения
+          i будет иметь тип, соответствующий типу элементов массива, т.е. строка
+      - id: 30
+        value: number
+        correct: false
+        resultMessage: |
+          i будет иметь тип, соответствующий типу элементов массива, т.е. строка. числовой тип имел бы следующий, третий аргумент, если бы он был описан и использовался.
+      - id: 40
+        value: string
+        correct: true
+        resultMessage: |
+          i будет иметь тип, соответствующий типу элементов массива, т.е. строка
   - id: 20
-    title: Какие специальные примитивные типы добавлены в Typescript?
+    title: Какую ошибку во время компиляции обнаружит typescript
     description: |
-      Укажите среди приведенных типов те, которые относятся только к 
-      typescript и не могут быть использованы во время работы приложения
-      в браузере.
-    type: multiple
+      в контексте программы typescript определите какую ошибку обнаружит компилятор
+      ```typescript
+      declare function fetchData(onSuccess:(data:number[])=>void):void;
+      function logFetchCompleted(){console.log("completed");}
+      fetchData(logFetchCompleted);      
+      ```
+    type: single
     options:
       - id: 10
-        value: undefined
-        resultMessage: |
-          Этот тип доступен анализа во время работы приложения с 
-          помощью оператора typeof.
-      - id: 20
-        value: never
-        correct: true              
-        resultMessage: |
-          Этот тип введен в typescript для обозначения ситуации, когда 
-          переменная никогда не получит значения. Вы можете встретить этот тип 
-          в контексте недореализованной функции, исчерпывающего перебора 
-          вариантов switch/case и других.
-      - id: 30
-        value: unknown
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для такого значения, в отношении
-          которого ничего не известно без дополнительных проверок. Этот 
-          тип позволяет вам потребовать от компилятора проявить твердость
-          и потребовать от вас выяснить реальный полученный тип во время 
-          работы приложения.
-      - id: 40
-        value: void
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для моделирования процедур, т.е. 
-          функций созданных для выполнения побочных эффектов, 
-          которые не возвращают значения.
-      - id: 50
-        value: object
+        value: |
+          Argument of type '() => void' is not assignable to parameter of type '(data: number[]) => void'.(2345)
         correct: false
         resultMessage: |
-          этот тип доступен для анализа значений переменных во 
-          время работы программы javascript.
-
-
+          в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Она их не использует. в typescript такая программа компилируется без ошибок.
+      - id: 20
+        value: Компилируется без ошибок
+        correct: true              
+        resultMessage: |
+          в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Она их не использует. в typescript такая программа компилируется без ошибок.    
+  - id: 30
+    title: Какую ошибку во время компиляции обнаружит typescript
+    description: |
+      в контексте программы typescript определите какую ошибку обнаружит компилятор
+      ```typescript
+      declare function fetchData(onSuccess:(data:number[])=>void):void;
+      function logFetchCompleted(data:number[], statusCode: number){console.log("completed");}
+      fetchData(logFetchCompleted);
+      ```
+    type: single
+    options:
+      - id: 10
+        value: |
+          Argument of type '(data: number[], statusCode: number) => void' is not assignable to parameter of type '(data: number[]) => void'.(2345)
+        correct: true
+        resultMessage: |
+          в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Но разработчик объяснил typescript, что функция использует два параметра. во время компиляции будет обнаружена ошибка.
+      - id: 20
+        value: Компилируется без ошибок
+        correct: false              
+        resultMessage: |
+          в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Но разработчик объяснил typescript, что функция использует два параметра. во время компиляции будет обнаружена ошибка.
+    
