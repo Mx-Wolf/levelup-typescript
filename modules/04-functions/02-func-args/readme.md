@@ -2,20 +2,40 @@
 
 ## Список параметров
 
-Для выполнения своей работы, функциям может потребоваться получение параметров. Любой вариант описания типа функции позволяет указать список параметров, которые требуются функции для работы. Необходимо указывать имя параметра и его тип.
+Для выполнения своей работы, функциям может потребоваться получение параметров. Любой вариант описания типа функции позволяет указать список параметров, которые требуются её для работы. Необходимо указывать имя формального параметра и его тип.
 
 ```typescript
 type PrimeDetector = (intToTest:number)=>boolean;
-type GCDService = (a:number, b:number)=>boolean;
+type GCDService = (a:number, b:number)=>number;
 ```
+
+имя формального параметра в описании типа может не совпадать с именеме парамерта при описании функции.
+
+```typescript
+const isPrime: PrimeDetector = function (value) {
+    switch (value) {
+        case 2:
+        case 3:
+        case 5:
+        case 7:
+            return true;
+    }
+    throw new Error('a very difficult problem');
+}
+```
+
+В приведенном примере, функция `isPrime` использует параметр `value` имя которого отличается от имени `intToTest` в описании типа. Прорамма при этом, компилируется без ошибок
+
+## Функции обрабатывающие данные разных типов
+
 В javascript функция может быть готова к работе с аргументом нескольких типов. Вы можете сообщить компилятору, что функции определенного типа готовы к такому повороту событий используя пересечение типов. 
 
 **На заметку!** Более подробно об операциях пересечения, объединения и о других операциях с типами мы поговорим позднее. 
 
-Следующее определение информирует компилятор о том, что функции работают и с числами и со строками
+Следующее определение информирует компилятор о том, что функции работает и с числами и со строками
 
 ```typescript
-function len1(arg: string|number):number{
+function getHash(arg: string|number):number{
     if(typeof arg === "number"){
         return arg;
     }
@@ -23,12 +43,12 @@ function len1(arg: string|number):number{
 }
 ```
 
-Вы можете использовать перегрузку функций. В этом случае вы записываете одно за другим все варианты возможных аргументов, и тут же, записываете реализацию. Обратите внимание, что тип реализации спрятан и доступен только для компилятора
+Вы можете использовать перегрузку функций. В этом случае вы записываете одно за другим все варианты возможных аргументов, и тут же, записываете реализацию. Обратите внимание, что тип реализации спрятан и доступен только для компилятора, а тип аргументов реализации должен объединять все типы в перегруженных декларациях
 
 ```typescript
-function len2(arg: number):number;
-function len2(arg: string):number;
-function len2(arg: any){
+function getHashOverload(arg: number):number;
+function getHashOverload(arg: string):number;
+function getHashOverload(arg: any){
     if(typeof arg === "number"){
         return arg;
     }
@@ -41,11 +61,11 @@ function len2(arg: any){
 этот вариант отличается от первого тем, что тип аргумента обязан быть известен более точно. 
 
 ```typescript
-const value:string|number = 42;
-console.log(len1(value)); //компилируется без ошибок
-console.log(len2(value)); //ошибка 2769
+const value = 42 as string|number;
+console.log(getHash(value)); //компилируется без ошибок
+console.log(getHashOverload(value)); //ошибка 2769
 ```
-[Изучите поведение](https://www.typescriptlang.org/play?target=7#code/GYVwdgxgLglg9mABAGwKZgIwAoCGAnAcwC5EBnKPGMAgHzBAFsAjVPASiPudYG8AoRIMQxgWKAE8ADqjjBE+AogC8KxACIuLPGrb8h+xHlRQQeJAoDcAoQF9rgoybPzCAOjTUoACyt2+oSFgEFHQAJlxCEk1WDmi8KwDoeCQPcIUSckpqWMYtBPAk4NSI4nkwcV17YVEJaVkXRRUldTidPQMHY1NzQit9O30RMSkZOQVlVTVMqgI2qv1Hboa+2yrvPDgAd0QwVG2AUTwNvCw2Xz4+ABNUCGR8VEQIBHJBADccZBBUDIoZulzWFY+E8wKQ4Gh3HACFgPNh3p9UGwzogAPQowBcIIA+EEAPCCAfhBABwggG4QfGAARBAMIggFYQQBCIIBBEEA8iCIQCMIBTAOwgiExgAkQfGMzHo4HPcGoSHQ4rwr5IiyolGc7nowAMIIhQgB2ABsAE4gA) в песочнице
+[Изучите поведение](https://www.typescriptlang.org/play?target=7#code/GYVwdgxgLglg9mABAcwKZQBIEMDOALACiwCdkAuRHKYmMZAHzBAFsAjVYgSjKbY4G8AUIhGIYwAlACeAB1RxgiEskQBedYgBEvdsU2choo4mLoQxJMoDcw0QF9bI01HOXSAOgA2qOlDw2HQVBIWAQUdGx8AHkANw5POCwAEyJSCh0ObgziG2DoeCQ0TFw8WPjElOUKKho6LJZdXPB8sKLI0rjiBOTU8iUwKQNHMQlpOQUlUjUNbQaOfUNjJzMLSeQbIwcjcUlZeUVladUtGtpkBeGjZ1c1jfthv2I4AHdEMFRXgFFiJ+ICTgCgkESVQEE8JFQiAgCCoIhiWE8IFQ1WoZ0YcxyQOhYBwcG8XjgyAIbRKBHhiNQnABiAA9DTAFwggD4QQA8IIB+EEAHCCAbhB2YABEEAwiCAVhBAEIggEEQQDyIIhAIwgAsA7CCIRmACRB2ZLGfTBNjcfiEkSSdFOt0UuSkVSrLSaYrlfTAAwgiAATAB2ABsAE4gA) в песочнице
 ```text
 No overload matches this call.
   Overload 1 of 2, '(arg: number): number', gave the following error.
