@@ -50,17 +50,15 @@ const b: Picture = a;
 const painting =  {
   alt:"typescript",
   height: "3em",
-  src:"https://example.com/pictuer",
+  src:"https://example.com/picture",
   width: "3em",
 };
 type PaintingAttributes = keyof typeof painting;
-//PaintingAttributes
-
 ```
 
 Тип PaintingAttributes полностью эквивалентен типу Attributes, который мы создали вручную.
 
-![Из чего состоит тип полученный по keyof]('./assets/Capture.PNG')
+![Из чего состоит тип полученный по keyof](./assets/Capture.PNG)
 
 ## Интерполяция строковых типов
 
@@ -101,7 +99,7 @@ proxy.addEventListener("age", () => undefined);
 
 Вы можете проверить в песочнице. Редактор действительно будет вам подсказывать, на какие события можно подписаться.
 
-![intellisense]('./assets/Capture2.PNG')
+![intellisense](./assets/Capture2.PNG)
 
 ## Полезные операции со строковыми типами
 
@@ -125,20 +123,3 @@ type WithSubscription<T> = T & {
 
 Попробуйте в песочнице заменить описание типа WithSubscription и изучить, какие названия для событий *придумает* компилятор.
 
-## Ограничения на обобщенные типы
-
-```typescript
-declare function update<T>(id:number, body:T):void;
-```
-
-```typescript
-type VanillaJson = 
-    boolean
-    | number
-    | string
-    | null
-    | {[k: string]: VanillaJson}
-    | Array<VanillaJson>;
-
-declare function update<T extends VanillaJson> (id: number, body:T):void;
-```
