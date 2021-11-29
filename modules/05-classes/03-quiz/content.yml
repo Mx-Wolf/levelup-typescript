@@ -1,73 +1,135 @@
-title: Примитивные типы
+title: Вопросы об использовании декораторов
 type: test
 description: |
-  Проверьте ваши знания о системе примитивных типов typescript
+  Проверьте ваши знания о декораторах в typescript
 wizard: true
 successMessage: Порядок, переходим к следующему разделу
-failureMessage: Вам следует повторить основные сведения о системе примитивных типов
+failureMessage: Вам следует повторить основные сведения декораторах
 questions:
   - id: 10
-    title: Какой оператор javascript  позволяет выяснить тип примитивного значения переменной?
+    title: Декораторы typescript и декораторы javascript это одно и тоже?
     type: single
     options:
       - id: 10
-        value: typeof
-        correct: true
-        resultMessage: | 
-          оператор typeof возвращает одну 
-          из предопределенных строк (
-            "undefined" "boolean","number","string", "symbol","function","object"
-          )
-      - id: 20
-        value: instanceof
+        value: Да
         correct: false
+        resultMessage: | 
+          декораторы являются экспериментальной особенностью typescript и могут быть изменены в будущем
+      - id: 20
+        value: нет
+        correct: true
         resultMessage: |
-          Оператор возвращает флаг true, если 
-          среди прототипов в цепочки левого операнда
-          присутствует прототип из правого операнда. 
-          Этот оператор не позволяет выяснить тип примитивного значения
+          декораторы являются экспериментальной особенностью typescript и могут быть изменены в будущем
   - id: 20
-    title: Какие специальные примитивные типы добавлены в Typescript?
-    description: |
-      Укажите среди приведенных типов те, которые относятся только к 
-      typescript и не могут быть использованы во время работы приложения
-      в браузере.
-    type: multiple
+    title: Декораторы доступны по умолчанию?
+    type: single
     options:
       - id: 10
-        value: undefined
-        resultMessage: |
-          Этот тип доступен анализа во время работы приложения с 
-          помощью оператора typeof.
-      - id: 20
-        value: never
-        correct: true              
-        resultMessage: |
-          Этот тип введен в typescript для обозначения ситуации, когда 
-          переменная никогда не получит значения. Вы можете встретить этот тип 
-          в контексте недореализованной функции, исчерпывающего перебора 
-          вариантов switch/case и других.
-      - id: 30
-        value: unknown
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для такого значения, в отношении
-          которого ничего не известно без дополнительных проверок. Этот 
-          тип позволяет вам потребовать от компилятора проявить твердость
-          и потребовать от вас выяснить реальный полученный тип во время 
-          работы приложения.
-      - id: 40
-        value: void
-        correct: true
-        resultMessage: |
-          Этот тип введен в typescript для моделирования процедур, т.е. 
-          функций созданных для выполнения побочных эффектов, 
-          которые не возвращают значения.
-      - id: 50
-        value: object
+        value: да
         correct: false
         resultMessage: |
-          этот тип доступен для анализа значений переменных во 
-          время работы программы javascript.
-
+          Декораторы требует специального ключа при запуске компилятора в командной строке или файле tsconfig.json.
+      - id: 20
+        value: нет
+        correct: true              
+        resultMessage: |
+          Декораторы требует специального ключа при запуске компилятора в командной строке или файле tsconfig.json.
+  - id: 30
+    title: Допускается декорировать функции?
+    type: single
+    options:
+      - id: 10
+        value: нет
+        correct: true
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
+      - id: 20
+        value: да
+        correct: true
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+  - id: 40
+    title: Допускается декорировать классы?
+    type: single
+    options:
+      - id: 10
+        value: да
+        correct: true
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
+      - id: 20
+        value: нет
+        correct: true
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+  - id: 50
+    title: Допускается декорировать методы?
+    type: single
+    options:
+      - id: 10
+        value: нет
+        correct: false
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
+      - id: 20
+        value: да
+        correct: true
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+  - id: 60
+    title: Допускается декорировать функции доступа - get set?
+    type: single
+    options:
+      - id: 10
+        value: нет
+        correct: false
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
+      - id: 20
+        value: да
+        correct: true
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+  - id: 70
+    title: Допускается декорировать свойства?
+    type: single
+    options:
+      - id: 10
+        value: нет
+        correct: false
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
+      - id: 20
+        value: да
+        correct: true
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+  - id: 80
+    title: Допускается декорировать параметры?
+    type: single
+    options:
+      - id: 10
+        value: нет
+        correct: false
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
+      - id: 20
+        value: да
+        correct: true
+        resultMessage: |
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+  - id: 90
+    title: декораторы должны быть функциями возвращающими значение?
+    type: single
+    options:
+      - id: 10
+        value: нет
+        correct: false
+        resultMessage: |
+          то что декоратор возвращает зависит от его места использования. Необходимо смотреть документацию
+      - id: 20
+        value: да
+        correct: true
+        resultMessage: |
+          то что декоратор возвращает зависит от его места использования. Необходимо смотреть документацию
 
