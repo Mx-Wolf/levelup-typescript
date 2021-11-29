@@ -16,3 +16,20 @@ typescript дополняет описание класса возможност
 * `public` (по умолчанию) это поля как и в javascript
 
 Дополнительно, компилятор контролирует корректное использование абстрактных классов и методов.
+
+## Сигнатура new
+
+Вы используете ключевое слово `new`, как оператор при создании новых объектов. Typescript позволяет выразить намерения такого рода указанием `new` перед описанием типа функции. Это позволит компилятору контролировать конструирование новых объектов только конструкторами.
+
+```typescript
+type SomeObject = {/*..,..*/};
+type ConstructableWithSetting = new (setting: string)=>SomeObject
+function createWithSetting(ctor:ConstructableWithSetting){
+    return new ctor("world");
+}
+```
+
+Если вы опустите `new` в описании типа, то компилятор сообщит об ошибке
+*'new' expression, whose target lacks a construct signature, implicitly has an 'any' type.*
+
+Любой вариант описания функции позволяет указать типы ожидаемых аргументов.
