@@ -1,73 +1,96 @@
-title: Примитивные типы
+title: Простейшие классы в typescript
 type: test
 description: |
-  Проверьте ваши знания о системе примитивных типов typescript
+  Проверьте ваши знания о простейших применениях классов в typescript
 wizard: true
 successMessage: Порядок, переходим к следующему разделу
-failureMessage: Вам следует повторить основные сведения о системе примитивных типов
+failureMessage: Вам следует повторить основные сведения о применении классов в typescript
 questions:
   - id: 10
-    title: Какой оператор javascript  позволяет выяснить тип примитивного значения переменной?
+    title: Какой результат будет в консоли?
+    description: |
+      в контексте определения класса A какие элементы будет содержать массив, переданный на консоль
+      ```typescript
+      class A {
+          private uniqueId = Math.random();
+          public readonly name: string;
+          constructor(name: string) { this.name = name; }
+          get path() { return `${this.name}/${this.uniqueId}`; }
+      }
+      const a = new A("the a");
+
+      console.log(Object.keys(a));      
+      ```
     type: single
     options:
       - id: 10
-        value: typeof
-        correct: true
-        resultMessage: | 
-          оператор typeof возвращает одну 
-          из предопределенных строк (
-            "undefined" "boolean","number","string", "symbol","function","object"
-          )
-      - id: 20
-        value: instanceof
+        value: |
+          "["name"] - объект имеет только одно публичное поле для перечисления методом Object.keys. поле uniqueId приватное."
         correct: false
         resultMessage: |
-          Оператор возвращает флаг true, если 
-          среди прототипов в цепочки левого операнда
-          присутствует прототип из правого операнда. 
-          Этот оператор не позволяет выяснить тип примитивного значения
+          во время исполнения информация указанная в модификаторах public, protected, private теряется
+      - id: 20
+        value: |
+          "["uniqueId", "name"] - объект имеет два поля оба они доступны для перечисления методом Object.keys"
+        correct: true
+        resultMessage: | 
+          во время исполнения информация указанная в модификаторах public, protected, private теряется
+      - id: 30
+        value: |
+          "["uniqueId", "name", "path"] - объект имеет по мимо конструктора три ключа для перечисления методом Object.keys."
+        correct: false
+        resultMessage: |
+          во время исполнения информация указанная в модификаторах public, protected, private теряется. методы класса являются ключами не значения а его прототипа.
   - id: 20
-    title: Какие специальные примитивные типы добавлены в Typescript?
+    title: Какие из следующих утверждений являются верными
     description: |
-      Укажите среди приведенных типов те, которые относятся только к 
-      typescript и не могут быть использованы во время работы приложения
-      в браузере.
+      в контексте определения типов, приведенных ниже отметьте верные утверждения.
+      ```typescript
+      interface Service {
+          readonly name: string;
+          readonly path: () => string;
+      }
+      declare function logger(value:Service):void;
+      class ServiceImp implements Service {
+          private readonly uniqueId = Math.random();
+          constructor(public readonly name: string) { }
+          public path() { return `${this.name}/${this.uniqueId}`; }
+      }
+
+      const a:Service = new ServiceImp("name");
+      const b:Service = {name:"name",path:()=>""};
+      ```
     type: multiple
     options:
       - id: 10
-        value: undefined
+        value: Object.keys(a).length === 2
+        correct: true
         resultMessage: |
-          Этот тип доступен анализа во время работы приложения с 
-          помощью оператора typeof.
+          "ключами этого типа будут значения ["name", "uniqueId"]".
       - id: 20
-        value: never
+        value: Object.keys(b).length === 2
         correct: true              
         resultMessage: |
-          Этот тип введен в typescript для обозначения ситуации, когда 
-          переменная никогда не получит значения. Вы можете встретить этот тип 
-          в контексте недореализованной функции, исчерпывающего перебора 
-          вариантов switch/case и других.
+          "ключами значения b будут ["name", "path"]"
       - id: 30
-        value: unknown
+        value: typescript допускает вызов logger(a);
         correct: true
         resultMessage: |
-          Этот тип введен в typescript для такого значения, в отношении
-          которого ничего не известно без дополнительных проверок. Этот 
-          тип позволяет вам потребовать от компилятора проявить твердость
-          и потребовать от вас выяснить реальный полученный тип во время 
-          работы приложения.
+          Нет нарушения в утиной типизации - вызов допускается.
       - id: 40
-        value: void
+        value: typescript допускает вызов logger(b)
         correct: true
         resultMessage: |
-          Этот тип введен в typescript для моделирования процедур, т.е. 
-          функций созданных для выполнения побочных эффектов, 
-          которые не возвращают значения.
+          Нет нарушения утиной типизации, вызов допускается.
       - id: 50
-        value: object
+        value: Object.getOwnPropertyNames(Object.getPrototypeOf(a)).length === 2
+        correct: true
+        resultMessage: |
+          "["constructor", "path"]"
+      - id: 60
+        value: Object.getOwnPropertyNames(Object.getPrototypeOf(b)).length === 2
         correct: false
         resultMessage: |
-          этот тип доступен для анализа значений переменных во 
-          время работы программы javascript.
+          "содержит все свойства прототипа object"
 
 
