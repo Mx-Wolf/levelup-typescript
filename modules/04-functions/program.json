@@ -29,7 +29,7 @@
             },
             {
                 "type": "quiz",
-                "path": "04-functions/01-quiz",
+                "path": "04-functions/03-quiz",
                 "description": "Тип значения, возвращаемого функцией"
             }
         ]
