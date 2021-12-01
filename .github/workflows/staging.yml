@@ -97,11 +97,11 @@ jobs:
         env:
           SLACK_NOTIFICATION_URL: ${{ secrets.SLACK_NOTIFICATION_URL }}
         run: |
-          curl -X POST --data-urlencode "payload={\"channel\":\"#intensive-typescript\",\"text\":\"*Content* deployed by ${{ github.actor }} to <https://up.staging.htmlacademy.dev|staging>\"}" $SLACK_NOTIFICATION_URL
+          curl -X POST --data-urlencode "payload={\"channel\":\"#levelup-deploy\",\"text\":\"*Repository* <https://github.com/${{ github.repository }}|levelup-typescript> | *Content* deployed by ${{ github.actor }} to <https://up.staging.htmlacademy.dev/typescript/1|staging>\"}" $SLACK_NOTIFICATION_URL
 
       - name: notify failure
         if: ${{ failure() }}
         env:
           SLACK_NOTIFICATION_URL: ${{ secrets.SLACK_NOTIFICATION_URL }}
         run: |
-          curl -X POST --data-urlencode "payload={\"channel\":\"#intensive-typescript\",\"text\":\"`!Error!` *Content* hasn't been deployed\"}" $SLACK_NOTIFICATION_URL
+          curl -X POST --data-urlencode "payload={\"channel\":\"#levelup-deploy\",\"text\":\"`!Error!` *Repository* <https://github.com/${{ github.repository }}|levelup-typescript> | *Content* hasn't been deployed\"}" $SLACK_NOTIFICATION_URL
