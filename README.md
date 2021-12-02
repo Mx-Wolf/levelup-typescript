@@ -1,2 +1,1 @@
-# levelup-typescript
-Контент курса «TypeScript»
+# Контент курса «TypeScript»
