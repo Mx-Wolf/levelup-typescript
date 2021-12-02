@@ -14,15 +14,29 @@
 
 Добавьте их в зависимости вашего проекта, в раздел devDependencies.
 
-Добавьте в раздел scripts ключ test
+Добавьте в раздел scripts ключ test, type и mocha
 
 ```json
 {
+    "type":"module",
     "scripts": {
-        "test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha -r ts-node/register src/**/*.spec.ts"
-    }
+        "test": "mocha"
+    },
+  "mocha":{
+    "loader":"ts-node/esm",
+    "extension": ["ts", "tsx"],
+    "spec":[
+      "src/**/*.test.*",
+      "src/**/*.spec.*"
+    ],
+    "watch-files":[
+      "src"
+    ]
+  }
 }
 ```
+
+*конфигурация проверена на nodejs ^12.0.0 и *
 
 добавьте в файл tsconfig.json после ключа include еще один ключ `exclude`:
 
@@ -45,7 +59,7 @@ export const getFirstMessage  = ()=>{
 
 ```typescript
 import { expect } from "chai";
-import { getFirstMessage } from "./greater";
+import { getFirstMessage } from "./greater.js";
 describe("greater", () => {
     it("called without args", () => {
         const message = getFirstMessage();
