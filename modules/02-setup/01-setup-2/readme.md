@@ -62,4 +62,37 @@ npm i -D eslint eslint-config-htmlacademy @typescript-eslint/eslint-plugin @type
 npm i -D "@types/chai @types/chai-spies @types/mocha chai chai-spies mocha ts-node
 ```
 
+2. Измените настройку вашего проекта, так чтобы nodejs использовал es модули. Вы указываете тип проекта в файле package.json, добавлением на верхнем уровне ключа `type` со значением `module`,
 
+Файл **package.json**
+
+```json
+{
+  ///....
+  "type":"module"
+  ///....
+}
+```
+
+3. Добавьте настройки mocha для работы в окружении typescript. Рекомендации можно найти [в документации](https://typestrong.org/ts-node/docs/recipes/mocha)
+
+Файл **.mocharc.json**
+
+```json
+{
+  "loader": "ts-node/esm",
+  "extensions": ["ts", "tsx"],
+  "spec": [
+    "src/**/*.test.*"
+  ],
+  "watch-files": [
+    "src"
+  ]
+}
+```
+
+## комит результаты
+
+Отправьте ваш исходный код - заготовку будущего проекта в репо.
+
+Теперь вы не просто готовы к продолжению курса, но вооружены по последнему слову техники.
