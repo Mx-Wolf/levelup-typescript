@@ -1,20 +1,21 @@
-import { AppProps } from '../models/app-state.js';
+import { AppProps, MethodFactoryArguments } from '../models/app-state.js';
+import { mergeState } from './merge-state.js';
 
-export const createSetPivot = {
-  equals:<T>(
-    getState:()=>AppProps<T>,
-    { columnLabeler, comparer, rowLabeler }: Required<Readonly<Pick<AppProps<never>, 'columnLabeler' | 'comparer' | 'rowLabeler'>>>,
-  )=>{
-    const {
-      columnLabeler: currentColumnLabeler,
-      comparer: currentComparer,
-      rowLabeler: currentRowLabeler,
-    } = getState();
-    return (columnLabeler === currentColumnLabeler
-        && comparer === currentComparer
-        && rowLabeler === currentRowLabeler);
-  },
-  make:(
-    { columnLabeler, comparer, rowLabeler }: Required<Readonly<Pick<AppProps<never>, 'columnLabeler' | 'comparer' | 'rowLabeler'>>>,
-  )=>({ columnLabeler, comparer, rowLabeler }),
+export const createSetPivot = <T>({ fireEvent, getState, setState }: MethodFactoryArguments<T>) => async (
+  { columnLabeler, comparer, rowLabeler }: Required<Readonly<Pick<AppProps<T>, 'columnLabeler' | 'comparer' | 'rowLabeler'>>>
+) => {
+  const current = getState();
+  const {
+    columnLabeler: currentColumnLabeler,
+    comparer: currentComparer,
+    rowLabeler: currentRowLabeler,
+  } = current;
+  if (columnLabeler === currentColumnLabeler
+    && comparer === currentComparer
+    && rowLabeler === currentRowLabeler) {
+    return;
+  }
+  const next = await mergeState(current, { columnLabeler, comparer, rowLabeler });
+  setState(next);
+  fireEvent(next);
 };

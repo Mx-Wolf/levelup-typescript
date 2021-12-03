@@ -1,31 +1,34 @@
-import { eventManager } from '../utils/event-manager.js';
+import { EventManager, eventManager } from '../utils/event-manager.js';
 import { createFailRows } from '../utils/fail-rows.js';
-import { methodAlgo } from '../utils/method-algo.js';
 import { createRequestRows } from '../utils/request-rows.js';
 import { createSetLocation } from '../utils/set-location.js';
 import { createSetPivot } from '../utils/set-pivot.js';
 import { createSetRows } from '../utils/set-rows.js';
+import { createStateManager } from '../utils/state-manager.js';
 import { AppEvents, AppMethods, AppProps } from './app-state.js';
 
 
 export const app = <T>(init: AppProps<T>): AppMethods<T> & AppEvents<T> => {
-  let state = init;
+  const {getState,setState} = createStateManager(init);
 
   const dataChanged = eventManager<AppProps<T>>();
   const locationChanged = eventManager<AppProps<T>>();
   const pivotChanged = eventManager<AppProps<T>>();
 
-  const setState = (next: AppProps<T>) => { state = next; };
-  const getState = ()=>state;
+  const makeArgs = ({fireEvent}:Pick<EventManager<AppProps<T>>,'fireEvent'>)=>({
+    getState,
+    setState,
+    fireEvent,
+  });
 
   return {
     dataChanged,
-    failRows: methodAlgo({getState, setState, fireEvent:dataChanged.fireEvent,...createFailRows}),
+    failRows: createFailRows(makeArgs(dataChanged)),
     locationChanged,
     pivotChanged,
-    requestRows: methodAlgo<T,void>({getState, setState, fireEvent:dataChanged.fireEvent, ...createRequestRows}),
-    setLocation: methodAlgo({getState, setState, fireEvent:locationChanged.fireEvent, ...createSetLocation}),
-    setPivot: methodAlgo({getState, setState, fireEvent:pivotChanged.fireEvent,...createSetPivot}),
-    setRows: methodAlgo<T,T[]>({getState,setState, fireEvent:dataChanged.fireEvent, ...createSetRows}),
+    requestRows: createRequestRows(makeArgs(dataChanged)),
+    setLocation: createSetLocation(makeArgs(locationChanged)),
+    setPivot: createSetPivot(makeArgs(pivotChanged)),
+    setRows: createSetRows(makeArgs(dataChanged)),
   };
 };

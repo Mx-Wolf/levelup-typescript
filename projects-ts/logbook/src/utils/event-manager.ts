@@ -10,5 +10,5 @@ export const eventManager= <Context>():EventManager<Context>=>{
     fireEvent:(context:Context)=>{[...subscribers].forEach((handler)=>handler(context));},
     subscribe:(handler: EventHandler<Context>)=>subscribers.add(handler),
     unsubscribe:(handler:EventHandler<Context>)=>subscribers.delete(handler),
-  }
+  };
 };
