@@ -1,4 +1,4 @@
-import { EventHandler, eventManager } from './event-manager.js';
+import { EventHandler, createEventManager } from './event-manager.js';
 import { expect, use } from 'chai';
 import spies from 'chai-spies';
 
@@ -7,7 +7,7 @@ const factory = use(spies);
 describe('EventManager class', () => {
   it('notifies single subscriber', () => {
     const spy: EventHandler<number> = factory.spy();
-    const manager = eventManager<number>();
+    const manager = createEventManager<number>();
     const context = 42;
     manager.subscribe(spy);
     manager.fireEvent(context);
@@ -16,7 +16,7 @@ describe('EventManager class', () => {
   it('notifies multiple subscribers', () => {
     const spy1: EventHandler<number> = factory.spy();
     const spy2: EventHandler<number> = factory.spy();
-    const manager = eventManager<number>();
+    const manager = createEventManager<number>();
     const context = 42;
     manager.subscribe(spy1);
     manager.subscribe(spy2);
@@ -25,7 +25,7 @@ describe('EventManager class', () => {
   });
   it('unsubscribes handle', () => {
     const spy: EventHandler<number> = factory.spy();
-    const manager = eventManager<number>();
+    const manager = createEventManager<number>();
     const context = 42;
     manager.subscribe(spy);
     manager.unsubscribe(spy);

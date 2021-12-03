@@ -1,4 +1,4 @@
-import { EventManager, eventManager } from '../utils/event-manager.js';
+import { EventManager, createEventManager } from '../utils/event-manager.js';
 import { createFailRows } from '../utils/fail-rows.js';
 import { createRequestRows } from '../utils/request-rows.js';
 import { createSetLocation } from '../utils/set-location.js';
@@ -11,9 +11,9 @@ import { AppEvents, AppMethods, AppProps } from './app-state.js';
 export const app = <T>(init: AppProps<T>): AppMethods<T> & AppEvents<T> => {
   const {getState,setState} = createStateManager(init);
 
-  const dataChanged = eventManager<AppProps<T>>();
-  const locationChanged = eventManager<AppProps<T>>();
-  const pivotChanged = eventManager<AppProps<T>>();
+  const dataChanged = createEventManager<AppProps<T>>();
+  const locationChanged = createEventManager<AppProps<T>>();
+  const pivotChanged = createEventManager<AppProps<T>>();
 
   const makeArgs = ({fireEvent}:Pick<EventManager<AppProps<T>>,'fireEvent'>)=>({
     getState,

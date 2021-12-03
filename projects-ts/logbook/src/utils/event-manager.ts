@@ -4,7 +4,7 @@ export interface EventManager<Context>{
   unsubscribe(handler: EventHandler<Context>):void;
   fireEvent(context:Context):void;
 }
-export const eventManager= <Context>():EventManager<Context>=>{
+export const createEventManager= <Context>():EventManager<Context>=>{
   const subscribers = new Set<EventHandler<Context>> ();
   return {
     fireEvent:(context:Context)=>{[...subscribers].forEach((handler)=>handler(context));},
