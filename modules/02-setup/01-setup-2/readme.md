@@ -62,14 +62,20 @@ npm i -D eslint eslint-config-htmlacademy @typescript-eslint/eslint-plugin @type
 npm i -D "@types/chai @types/chai-spies @types/mocha chai chai-spies mocha ts-node
 ```
 
-2. Измените настройку вашего проекта, так чтобы nodejs использовал es модули. Вы указываете тип проекта в файле package.json, добавлением на верхнем уровне ключа `type` со значением `module`,
+2. Измените настройку вашего проекта, так чтобы nodejs использовал es модули. Вы указываете тип проекта в файле package.json, добавлением на верхнем уровне ключа `type` со значением `module`. Сразу исправьте ключ scripts/test. и добавьте привычный script/start
 
 Файл **package.json**
 
 ```json
 {
   ///....
-  "type":"module"
+  "type":"module",
+  "scripts": {
+    "test": "mocha",
+    "start": "npm run build & npm run show",
+    "build": "tsc",
+    "show": "http-server -o"
+  }
   ///....
 }
 ```
