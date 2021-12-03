@@ -1,5 +1,6 @@
-
+export type KnownLocations = 'logbook' | 'pivot-table';
 export interface AppState {
-  readonly location: 'logbook' | 'pivot-table'
+  readonly location: KnownLocations;
+  changeLocation(location:KnownLocations):void;
 }
-export type KnownLocations = AppState['location'];
+
