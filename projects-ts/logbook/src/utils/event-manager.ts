@@ -1,4 +1,4 @@
-export type EventHandler<T> = (context: T) => void;
+export type EventHandler<T> = (context: Readonly<T>) => void;
 export class EventManager<Context>{
 
   private _subscribers: Set<EventHandler<Context>>;

@@ -1,13 +1,8 @@
-import { EventHandler } from '../utils/event-manager.js';
-
-type NonFunctionPropertyNames<T> = {
-  [K in keyof T]: T[K] extends (...args: never[]) => unknown ? never : K;
-}[keyof T];
-type NonFunctionProperties<T> = Pick<T, NonFunctionPropertyNames<T>>;
+import { EventManager } from '../utils/event-manager.js';
 
 export type KnownLocations = 'logbook' | 'pivot-table';
 export type KnownListStates = 'ready' | 'stale';
-export type PivotLabels<T> = Record<string, (row: T) => string>;
+
 export type JsonValue
   = boolean
   | number
@@ -26,15 +21,16 @@ export interface AppProps<T> {
   comparer: string | undefined;
 }
 
-export type Setters<T> = {
-  [K in keyof T as `set${Capitalize<K & string>}`]: (value: T[K]) => void;
+export interface AppMethods<T> {
+  setLocation(location: KnownLocations): void;
+  requestRows(): void;
+  setRows(rows: T[]): void;
+  failRows(message: string): void;
+  setPivot(settings: Required<Readonly<Pick<AppProps<T>, 'columnLabeler' | 'comparer' | 'rowLabeler'>>>): void;
 }
-export type Events<T> = {
-  [K in keyof NonFunctionProperties<T> as `attach${Capitalize<K & string>}Change`]: (handler: EventHandler<T>) => void
-} & {
-    [K in keyof NonFunctionProperties<T> as `remove${Capitalize<K & string>}Change`]: (handler: EventHandler<T>) => void
-  }
 
-export type AppState<T> = Readonly<AppProps<T>> & Setters<Pick<AppProps<T>,'location'|'columnLabeler'|'comparer'|'rowLabeler'>> & Events<AppProps>
-
-
+export type AppEvents<T> = Record<
+  'locationChanged'
+  | 'dataChanged'
+  | 'pivotChanged',
+  EventManager<AppProps<T>>>
