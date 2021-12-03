@@ -14,7 +14,7 @@ describe('App model',()=>{
   it('does nothing on repeated set same location',()=>{
     const sameLocation:KnownLocations = 'logbook';
     const app = new App();
-    app.changeLocation(sameLocation);
+    app.setLocation(sameLocation);
     expect(app.location).to.be.eq(sameLocation);
   });
   it('fires event on change location',()=>{
@@ -22,7 +22,7 @@ describe('App model',()=>{
     const otherLocation:KnownLocations = 'pivot-table';
     const spy = factory.spy();
     app.attachLocationChange(spy);
-    app.changeLocation(otherLocation);
+    app.setLocation(otherLocation);
     expect(app.location).to.be.eq(otherLocation);
     expect(spy).to.be.called.with(app);
   });
