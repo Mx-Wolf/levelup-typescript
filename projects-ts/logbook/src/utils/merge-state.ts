@@ -1,7 +1,7 @@
 import { AppProps } from '../models/app-state.js';
 
 export   const mergeState = async <T>(current: AppProps<T>, update: Partial<AppProps<T>>) => new Promise<AppProps<T>>((resolve) => {
-  window.setTimeout(() => {
+  setTimeout(() => {
     if(current===update){
       return resolve(current);
     }

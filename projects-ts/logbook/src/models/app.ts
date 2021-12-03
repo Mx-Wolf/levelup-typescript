@@ -1,5 +1,6 @@
-import { EventManager } from '../utils/event-manager.js';
+import { eventManager } from '../utils/event-manager.js';
 import { createFailRows } from '../utils/fail-rows.js';
+import { methodAlgo } from '../utils/method-algo.js';
 import { createRequestRows } from '../utils/request-rows.js';
 import { createSetLocation } from '../utils/set-location.js';
 import { createSetPivot } from '../utils/set-pivot.js';
@@ -10,21 +11,21 @@ import { AppEvents, AppMethods, AppProps } from './app-state.js';
 export const app = <T>(init: AppProps<T>): AppMethods<T> & AppEvents<T> => {
   let state = init;
 
-  const dataChanged = new EventManager<AppProps<T>>();
-  const locationChanged = new EventManager<AppProps<T>>();
-  const pivotChanged = new EventManager<AppProps<T>>();
+  const dataChanged = eventManager<AppProps<T>>();
+  const locationChanged = eventManager<AppProps<T>>();
+  const pivotChanged = eventManager<AppProps<T>>();
 
   const setState = (next: AppProps<T>) => { state = next; };
   const getState = ()=>state;
 
   return {
     dataChanged,
-    failRows: createFailRows({getState, setState, eventManager:dataChanged}),
+    failRows: methodAlgo({getState, setState, fireEvent:dataChanged.fireEvent,...createFailRows}),
     locationChanged,
     pivotChanged,
-    requestRows: createRequestRows({getState, setState, eventManager:dataChanged}),
-    setLocation: createSetLocation({getState, setState, eventManager:locationChanged}),
-    setPivot: createSetPivot({getState, setState,eventManager:pivotChanged}),
-    setRows: createSetRows({getState,setState, eventManager:dataChanged}),
+    requestRows: methodAlgo<T,void>({getState, setState, fireEvent:dataChanged.fireEvent, ...createRequestRows}),
+    setLocation: methodAlgo({getState, setState, fireEvent:locationChanged.fireEvent, ...createSetLocation}),
+    setPivot: methodAlgo({getState, setState, fireEvent:pivotChanged.fireEvent,...createSetPivot}),
+    setRows: methodAlgo<T,T[]>({getState,setState, fireEvent:dataChanged.fireEvent, ...createSetRows}),
   };
 };

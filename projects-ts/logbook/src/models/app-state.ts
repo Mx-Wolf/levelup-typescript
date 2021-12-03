@@ -38,7 +38,7 @@ export type AppEvents<T> = Record<
 export interface MethodFactoryArguments<T>{
   getState:()=>AppProps<T>;
   setState:(next:AppProps<T>)=>void;
-  eventManager:Pick<EventManager<AppProps<T>>,'fireEvent'>;
+  fireEvent:EventManager<AppProps<T>>['fireEvent'];
 }
 
 

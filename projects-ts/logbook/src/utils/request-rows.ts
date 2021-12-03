@@ -1,14 +1,6 @@
-import { MethodFactoryArguments } from '../models/app-state.js';
-import { mergeState } from './merge-state.js';
+import { AppProps } from '../models/app-state.js';
 
-export const createRequestRows = <T>(
-  {eventManager,getState,setState}:MethodFactoryArguments<T>
-) => async () => {
-    const current = getState();
-    if(current.rowsState === 'stale'){
-      return;
-    }
-    const next = await mergeState(current, {rowsState:'stale', message: '' });
-    setState(next);
-    eventManager.fireEvent(next);
-  };
+export const createRequestRows = {
+  equals: <T>(getState:()=>AppProps<T>) => getState().rowsState === 'stale',
+  make: () => ({ rowsState: 'stale' as const, message: '' }),
+};
