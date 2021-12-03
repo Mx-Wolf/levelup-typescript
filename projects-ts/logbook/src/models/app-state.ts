@@ -13,9 +13,10 @@ export type JsonValue
 
 export interface AppProps<T> {
   location: KnownLocations;
-  listState: KnownListStates;
+  rowsState: KnownListStates;
   rowCount: number;
   rows: T[];
+  message: string | undefined;
   rowLabeler: string | undefined;
   columnLabeler: string | undefined;
   comparer: string | undefined;
@@ -33,4 +34,11 @@ export type AppEvents<T> = Record<
   'locationChanged'
   | 'dataChanged'
   | 'pivotChanged',
-  EventManager<AppProps<T>>>
+  Pick<EventManager<AppProps<T>>,'subscribe'|'unsubscribe'>>
+export interface MethodFactoryArguments<T>{
+  getState:()=>AppProps<T>;
+  setState:(next:AppProps<T>)=>void;
+  eventManager:Pick<EventManager<AppProps<T>>,'fireEvent'>;
+}
+
+
