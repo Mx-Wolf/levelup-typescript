@@ -1,10 +1,10 @@
 import { EventHandler, EventManager } from '../utils/event-manager.js';
 import { getOrCreate } from '../utils/map-get.js';
-import { AppMethods, AppState, Events, KnownLocations } from './app-state.js';
+import { AppState, Events, KnownLocations } from './app-state.js';
 
 const LOCATION_KEY = 'location';
 
-export class App implements Readonly<AppState>, AppMethods, Events<AppState> {
+export class App implements Readonly<AppState>, Events<AppState> {
   private _location: KnownLocations;
   private _managers: Map<string, EventManager<AppState>>;
   constructor() {
