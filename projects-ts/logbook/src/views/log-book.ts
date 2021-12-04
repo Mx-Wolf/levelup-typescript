@@ -5,7 +5,7 @@ import { parseHtmlElement } from './parser.js';
 
 interface LogbookProps{
   columns:ColumnSettings<RowData>[],
-  data:RowData[]
+  rows:RowData[]
 }
 
 const template = `<div class="table">

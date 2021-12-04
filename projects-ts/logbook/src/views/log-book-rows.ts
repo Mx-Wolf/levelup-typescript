@@ -3,7 +3,7 @@ import { createHtmlElement } from './parser.js';
 import { createTableDataCell } from './table-td.js';
 
 interface LogbookRowsProps{
-  data: RowData[];
+  rows: RowData[];
   columns: ColumnSettings<RowData>[];
 }
 
@@ -16,6 +16,6 @@ const createLogbookRow = (r:RowData, props:LogbookRowsProps):HTMLTableRowElement
   return tr as HTMLTableRowElement;
 };
 export const createLogbookRows = (props:LogbookRowsProps):HTMLTableRowElement[]=>{
-  const {data} = props;
-  return data.map((r)=>createLogbookRow(r,props));
+  const {rows} = props;
+  return rows.map((r)=>createLogbookRow(r,props));
 };

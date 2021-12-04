@@ -4,11 +4,12 @@ import { createRequestRows } from '../utils/request-rows.js';
 import { createSetLocation } from '../utils/set-location.js';
 import { createSetPivot } from '../utils/set-pivot.js';
 import { createSetRows } from '../utils/set-rows.js';
-import { createStateManager } from '../utils/state-manager.js';
+import { createStateManager, StateManager } from '../utils/state-manager.js';
 import { AppEvents, AppMethods, AppProps } from './app-state.js';
 
+export type AppContext<T> = AppMethods<T> & AppEvents<T> & Pick<StateManager<AppProps<T>>,'getState'>;
 
-export const app = <T>(init: AppProps<T>): AppMethods<T> & AppEvents<T> => {
+export const createApp = <T>(init: AppProps<T>): AppContext<T> => {
   const {getState,setState} = createStateManager(init);
 
   const dataChanged = createEventManager<AppProps<T>>();
@@ -30,5 +31,6 @@ export const app = <T>(init: AppProps<T>): AppMethods<T> & AppEvents<T> => {
     setLocation: createSetLocation(makeArgs(locationChanged)),
     setPivot: createSetPivot(makeArgs(pivotChanged)),
     setRows: createSetRows(makeArgs(dataChanged)),
+    getState,
   };
 };

@@ -8,7 +8,7 @@ export type StateManager<Context> = {
 export const createStateManager=<T>(init:AppProps<T>):StateManager<AppProps<T>>=>{
   let state = init;
   const setState = (next: AppProps<T>) => { state = next; };
-  const getState = ()=>state;
+  const getState = ():Readonly<AppProps<T>>=>state;
   return{
     getState,
     setState,

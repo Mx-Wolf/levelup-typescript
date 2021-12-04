@@ -7,7 +7,7 @@ interface MainProps{
   location:KnownLocations,
   setTitle:(title:string)=>void;
   columns:ColumnSettings<RowData>[];
-  data:RowData[]
+  rows:RowData[]
 }
 
 const template = `<main class="main">
