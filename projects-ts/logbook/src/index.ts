@@ -5,9 +5,10 @@ const run =(root:HTMLDivElement|null)=>{
   if(root === null){
     return;
   }
+  const location = 'logbook';
   root.append(
-    createHeader({location:'logbook',setLocation:()=>undefined}),
-    createMain(),
+    createHeader({location,setLocation:()=>undefined}),
+    createMain({location,setTitle:(title)=>{document.title=title;},}),
   );
 };
 
