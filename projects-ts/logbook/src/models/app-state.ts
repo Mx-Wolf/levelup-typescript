@@ -1,15 +1,8 @@
 import { EventManager } from '../utils/event-manager.js';
+import { StateManager } from '../utils/state-manager.js';
 
 export type KnownLocations = 'logbook' | 'pivot-table';
 export type KnownListStates = 'ready' | 'stale';
-
-export type JsonValue
-  = boolean
-  | number
-  | string
-  | null
-  | Array<JsonValue>
-  | { [k: string]: JsonValue }
 
 export interface AppProps<T> {
   location: KnownLocations;
@@ -29,16 +22,10 @@ export interface AppMethods<T> {
   failRows(message: string): void;
   setPivot(settings: Required<Readonly<Pick<AppProps<T>, 'columnLabeler' | 'comparer' | 'rowLabeler'>>>): void;
 }
+type EventTypes = 'locationChanged'| 'dataChanged'| 'pivotChanged';
 
-export type AppEvents<T> = Record<
-  'locationChanged'
-  | 'dataChanged'
-  | 'pivotChanged',
-  Pick<EventManager<AppProps<T>>,'subscribe'|'unsubscribe'>>
-export interface MethodFactoryArguments<T>{
-  getState:()=>AppProps<T>;
-  setState:(next:AppProps<T>)=>void;
-  fireEvent:EventManager<AppProps<T>>['fireEvent'];
-}
+export type AppEvents<T> = Record<EventTypes, Pick<EventManager<AppProps<T>>,'subscribe'|'unsubscribe'>>
+
+export type MethodFactoryArguments<T> = StateManager<AppProps<T>> & Pick<EventManager<AppProps<T>>,'fireEvent'>;
 
 
