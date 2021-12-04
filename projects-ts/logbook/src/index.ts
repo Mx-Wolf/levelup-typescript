@@ -1,3 +1,11 @@
-const helloElement = document.createElement('h1');
-helloElement.innerHTML = 'На следующий уровень';
-document.body.appendChild(helloElement);
+import { createHeader } from './views/header.js';
+
+const run =(root:HTMLDivElement|null)=>{
+  if(root === null){
+    return;
+  }
+  const header = createHeader({location:'logbook',setLocation:()=>undefined});
+  root.appendChild(header);
+};
+
+run(document.querySelector('div.wrapper') as HTMLDivElement);

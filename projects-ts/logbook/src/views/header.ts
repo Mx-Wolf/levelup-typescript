@@ -1,10 +1,27 @@
-import { AppProps, KnownLocations, AppEvents } from '../models/app-state.js';
+import { AppProps, AppMethods } from '../models/app-state.js';
+import { createHeaderTerms } from './header-tems.js';
+import { createMainNav } from './main-nav.js';
+import { parseHtmlElement } from './parser.js';
 
-const labels:Record<KnownLocations,string>={
-  'logbook':'Журнал обслуживания',
-  'pivot-table':'Сводная таблица'
+type HeaderProps = Pick<AppProps<unknown>,'location'>&Pick<AppMethods<unknown>,'setLocation'>;
+
+const template = `<header class="header ">
+<div class="container header__wrapper">  
+</div>
+</header>`;
+
+const ensureHeader = (div:HTMLDivElement|null, props:HeaderProps)=>{
+  if(div===null){
+    return;
+  }
+  div.append(
+    createMainNav(props),
+    createHeaderTerms(),
+  );
 };
 
-export const createHeader = (state:Pick<AppProps<unknown>,'location'>&Pick<AppEvents<unknown>,'locationChanged'>)=>{
-  const {location, locationChanged} = state;
+export const createHeader = (props:HeaderProps)=>{
+  const container = parseHtmlElement(template);
+  ensureHeader(container.querySelector('div.container'), props);
+  return container;
 };

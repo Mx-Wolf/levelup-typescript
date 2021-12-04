@@ -1,7 +1,9 @@
-import { AppEvents, AppProps } from '../models/app-state.js';
+import { parseHtmlElement } from './parser.js';
 
-interface WithActiveFlag {
-    active:boolean
+interface NavLinkProps {
+    active: boolean;
+    label: string;
+    onClick:(evt:MouseEvent)=>void;
 }
 
 const template = `<li class="main-nav__item">
@@ -10,9 +12,29 @@ const template = `<li class="main-nav__item">
 </a>
 </li>`;
 
-export const createNavItem = (
-  state:Pick<AppProps<unknown>,'location'>&Pick<AppEvents<unknown>,'locationChanged'> &WithActiveFlag
-)=>{
-  const {active,location,locationChanged} = state;
-  const item = 
+const LINK_ACTIVE = 'link--active';
+
+const ensureActive = (a: HTMLAnchorElement | null, active: boolean) => {
+  if (!active || a === null) {
+    return;
+  }
+  a.classList.add(LINK_ACTIVE);
+};
+
+const ensureLabel = (span: HTMLSpanElement | null, label: string) => {
+  if (span === null) {
+    return;
+  }
+  span.innerText = label;
+};
+
+
+export const createNavItem = (state: NavLinkProps) => {
+  const { active, label, onClick } = state;
+  const item = parseHtmlElement(template);
+
+  ensureActive(item.querySelector('a'), active);
+  ensureLabel(item.querySelector('span'), label);
+  item.addEventListener('click',onClick);
+  return item;
 };
