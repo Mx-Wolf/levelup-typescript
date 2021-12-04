@@ -1,11 +1,13 @@
-import { KnownLocations } from '../models/app-state.js';
-import { createLogBook } from './log-book.js';
+import { ColumnSettings, KnownLocations, RowData } from '../models/app-state.js';
+import { createLogbook } from './log-book.js';
 import { createPageTitle } from './page-title.js';
 import { parseHtmlElement } from './parser.js';
 
 interface MainProps{
   location:KnownLocations,
   setTitle:(title:string)=>void;
+  columns:ColumnSettings<RowData>[];
+  data:RowData[]
 }
 
 const template = `<main class="main">
@@ -18,7 +20,7 @@ const ensureContent =(item:HTMLElement|null, props:MainProps)=>{
 
   item.append(
     createPageTitle(props),
-    createLogBook(),
+    createLogbook(props),
   );
 };
 

@@ -8,3 +8,5 @@ export const parseHtmlElement = (html:string):HTMLElement=>{
   }
   return rv;
 };
+
+export const createHtmlElement = (tag: keyof HTMLElementTagNameMap):HTMLElement=>document.createElement(tag);
