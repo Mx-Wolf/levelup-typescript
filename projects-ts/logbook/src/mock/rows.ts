@@ -1,4 +1,4 @@
-import { DateValue, PersonNameValue, PostalAddressValue, RowData, ServiceStationValue, VehicleMakeValue, VehicleModelValue, YearValue } from '../models/app-state.js';
+import { DateValue, PersonNameValue, PostalAddressValue, RowData, ServiceStationValue, VehicleMakeValue, VehicleModelValue, YearValue } from '../models/row-data.js';
 
 const createRow = (ix:number):RowData=>({
   date: new Date((new Date().valueOf() - (25+ix) * 130)).toISOString() as DateValue,

@@ -1,4 +1,4 @@
-import { RowData } from '../models/app-state.js';
+import { RowData } from '../models/row-data.js';
 import { defineColumns } from '../utils/define-columns.js';
 
 const dateFormatter = new Intl.DateTimeFormat('ru-RU');

@@ -1,4 +1,5 @@
-import { ColumnSettings, RowData } from '../models/app-state.js';
+import { ColumnSettings } from '../models/app-state.js';
+import { RowData } from '../models/row-data.js';
 import { createLogbookHeader } from './log-book-header.js';
 import { createLogbookRows } from './log-book-rows.js';
 import { parseHtmlElement } from './parser.js';

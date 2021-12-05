@@ -1,4 +1,5 @@
-import { ColumnSettings, KnownLocations, RowData } from '../models/app-state.js';
+import { ColumnSettings, KnownLocations } from '../models/app-state.js';
+import { RowData } from '../models/row-data.js';
 import { createLogbook } from './log-book.js';
 import { createPageTitle } from './page-title.js';
 import { parseHtmlElement } from './parser.js';

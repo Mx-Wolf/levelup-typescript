@@ -1,4 +1,5 @@
-import { ColumnSettings, RowData } from '../models/app-state.js';
+import { ColumnSettings } from '../models/app-state.js';
+import { RowData } from '../models/row-data.js';
 import { createHtmlElement } from './parser.js';
 import { css } from './table-th.js';
 
