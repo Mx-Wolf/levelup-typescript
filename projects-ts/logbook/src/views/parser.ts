@@ -16,7 +16,7 @@ const setAttributes = (item: HTMLElement, attributes: Record<string, string>): H
 
 const setChildren = (
   item: HTMLElement,
-  children: HTMLElement[],
+  children: Node[],
 ) => {
   item.append(...children);
   return item;
@@ -29,11 +29,11 @@ const ensureAttributes = (
 
 const ensureChildren = (
   item: HTMLElement,
-  children?: HTMLElement[] | undefined
+  children?: Node[] | undefined
 ) => Array.isArray(children) ? setChildren(item, children) : item;
 
 export const createHtmlElement = (
   tag: keyof HTMLElementTagNameMap,
   attributes?: Record<string, string> | undefined,
-  children?: HTMLElement[] | undefined,
+  children?: Node[] | undefined,
 ): HTMLElement => ensureChildren(ensureAttributes(document.createElement(tag), attributes), children);
