@@ -1,6 +1,9 @@
+import { MODAL_OPEN_CSS } from '../settings/const.js';
+import { attach } from '../utils/attach-event.js';
 import { parseHtmlElement } from './parser.js';
 
-const popupTemplate = `<div class="modal modal--pivot-settings modal--active">
+
+const popupTemplate = `<div class="modal modal--pivot-settings">
 <div class="modal__wrapper">
   <div class="modal__overlay"></div>
   <div class="modal__content">
@@ -260,10 +263,10 @@ const popupTemplate = `<div class="modal modal--pivot-settings modal--active">
         </form>
       </div>
       <div class="pivot-settins__footer">
-        <button class="button button--lighter">
+        <button data-pivot="cancel" class="button button--lighter">
           <span>Отменить</span>
         </button>
-        <button class="button button--fill">
+        <button data-pivot="apply" class="button button--fill">
           <span>Применить</span>
         </button>
       </div>
@@ -277,4 +280,35 @@ const popupTemplate = `<div class="modal modal--pivot-settings modal--active">
 </div>
 </div>`;
 
-export const createPivotPopup = ()=>parseHtmlElement(popupTemplate);
+export const createPivotPopup = ()=>{
+  const item = parseHtmlElement(popupTemplate);
+
+
+  const handleCancel = ()=>{
+    item.classList.remove(MODAL_OPEN_CSS);
+  };
+  const handleApply = ()=>{
+    handleCancel();
+    console.log('apply');
+  };
+
+  attach(
+    'click',
+    item.querySelector('.modal__close-btn'),
+    handleCancel,
+  );
+
+  attach(
+    'click',
+    item.querySelector('[data-pivot="cancel"]'),
+    handleCancel
+  );
+
+  attach(
+    'click',
+    item.querySelector('[data-pivot="apply"]'),
+    handleApply,
+  );
+
+  return item;
+};

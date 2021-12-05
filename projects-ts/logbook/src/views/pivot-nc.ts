@@ -1,4 +1,9 @@
+import { attach } from '../utils/attach-event.js';
 import { createHtmlElement, parseHtmlElement } from './parser.js';
+
+interface PivotNotConfiguredProps{
+  onOpenClick: ()=>void;
+}
 
 const template = `<div class="container">
 <div class="not-configured__wrap">
@@ -16,10 +21,21 @@ const template = `<div class="container">
 </div>
 </div>`;
 
-export const createPivotNotConfigured = ()=>createHtmlElement(
-  'main',
-  {'class':'not-configured'},
-  [
-    parseHtmlElement(template),
-  ]
-);
+export const createPivotNotConfigured = (p:PivotNotConfiguredProps)=>{
+  const {onOpenClick}  =p;
+  const item = createHtmlElement(
+    'main',
+    {'class':'not-configured'},
+    [
+      parseHtmlElement(template),
+    ]
+  );
+
+  attach(
+    'click',
+    item.querySelector('[data-modal="pivot-settings"]'),
+    onOpenClick
+  );
+
+  return item;
+};
