@@ -289,7 +289,6 @@ export const createPivotPopup = ()=>{
   };
   const handleApply = ()=>{
     handleCancel();
-    console.log('apply');
   };
 
   attach(
