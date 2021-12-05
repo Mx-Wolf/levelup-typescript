@@ -2,7 +2,7 @@ import { AppContext } from '../models/app.js';
 import { RowData } from '../models/row-data.js';
 import { setTitle } from '../utils/document-title.js';
 import { createHeader } from '../views/header.js';
-import { createMain } from '../views/main.js';
+import { createLogbookMain } from '../views/main.js';
 import { createPivot } from '../views/pivot.js';
 
 const collectChildren = (context: AppContext<RowData>) => {
@@ -11,7 +11,7 @@ const collectChildren = (context: AppContext<RowData>) => {
   const { location, rows, columns} = getState();
   return [
     createHeader({ location, setLocation }),
-    location === 'logbook' ? createMain({
+    location === 'logbook' ? createLogbookMain({
       location,
       setTitle,
       columns,
