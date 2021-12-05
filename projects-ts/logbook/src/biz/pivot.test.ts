@@ -19,4 +19,14 @@ describe('pivot function',()=>{
     expect(index.rowIndex.length).eq(2);
     expect(index.groups.length).eq(2);
   });
+  it('creates correct list index on z-a ordered list',()=>{
+    const numbers:number[] = Array.from({length:10}).map((_,ix)=>10-ix);
+    const index = pivot(numbers,rowComparer, columnComparer);
+    expect(index.columnIndex.length).eq(3);
+    expect(index.rowIndex.length).eq(2);
+    expect(index.groups.length).eq(2);
+    expect(index.groups[1][1]).include(3).length(2);
+    expect(index.groups[0][0]).include(4);
+    expect(index.groups[0][1]).include(6).length(1);
+  });
 });
