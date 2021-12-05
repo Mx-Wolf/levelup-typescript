@@ -299,24 +299,21 @@ const popupTemplate = `<div class="modal modal--pivot-settings modal--active">
 
 const createPivotItems = ()=>createHtmlElement('div',{'class':'main items-to-go'});
 
-const createPivotNotConfigured = ()=>{
-  const main = createHtmlElement(
-    'main',
-    {'class':'not-configured'},
-    [
-      parseHtmlElement(template),
-    ]
-  );
-  const popup = parseHtmlElement(popupTemplate);
-  const fra = document.createDocumentFragment();
-  fra.append(
-    main,
-    popup
-  );
-  return fra;
-};
+const createPivotNotConfigured = ()=>createHtmlElement(
+  'main',
+  {'class':'not-configured'},
+  [
+    parseHtmlElement(template),
+  ]
+);
+
 
 export const createPivot = (props:PivotProps)=>{
   const config:Partial<PivotConfiguration> = props;
-  return isPivotConfigured(config)?createPivotItems(/*config, props*/):createPivotNotConfigured();
+  const fra = document.createDocumentFragment();
+  fra.append(
+    isPivotConfigured(config)?createPivotItems(/*config, props*/):createPivotNotConfigured(),
+    parseHtmlElement(popupTemplate)
+  );
+  return fra;
 };
