@@ -12,16 +12,19 @@ export interface ColumnSettings<T>{
   orderBy?: (keyof T)|undefined;
 }
 
-export interface AppProps<T> {
+export interface PivotConfiguration{
+  rowLabeler: string;
+  columnLabeler: string;
+  comparer: string;
+}
+
+export interface AppProps<T> extends Partial<PivotConfiguration>{
   columns: ColumnSettings<T>[];
   location: KnownLocations;
   rowsState: KnownListStates;
   rowCount: number;
   rows: T[];
   message: string | undefined;
-  rowLabeler: string | undefined;
-  columnLabeler: string | undefined;
-  comparer: string | undefined;
 }
 
 export interface AppMethods<T> {

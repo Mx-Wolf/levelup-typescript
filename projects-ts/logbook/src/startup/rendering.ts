@@ -8,7 +8,7 @@ import { createPivot } from '../views/pivot.js';
 const collectChildren = (context: AppContext<RowData>) => {
   const { getState, setLocation } = context;
 
-  const { location, rows, columns} = getState();
+  const { location, rows, columns, columnLabeler,comparer,rowLabeler} = getState();
   return [
     createHeader({ location, setLocation }),
     location === 'logbook' ? createLogbookMain({
@@ -17,10 +17,18 @@ const collectChildren = (context: AppContext<RowData>) => {
       columns,
       rows,
     }) : false,
-    location === 'pivot-table' ? createPivot() : false,
+    location === 'pivot-table' ? createPivot({
+      columnLabeler,
+      comparer,
+      rowLabeler
+    }) : false,
   ].filter((e) => e) as HTMLElement[];
 };
 
+const replaceChildren = (item:HTMLElement, children:HTMLElement[])=>{
+  item.innerHTML='';
+  item.append(...children);
+};
 
 export const createRender = (
   app:AppContext<RowData>,
@@ -30,11 +38,9 @@ export const createRender = (
   if(root === null){
     throw new Error('root is null');
   }
-  const render = ()=>{
-    const children = collectChildren(app);
-    root.innerHTML = '';
-    root.append(...children);
-  };
+
+  const render = ()=> replaceChildren(root,collectChildren(app));
+
   app.locationChanged.subscribe(render);
   return render;
 };
