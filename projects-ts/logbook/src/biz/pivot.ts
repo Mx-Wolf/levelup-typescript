@@ -3,13 +3,17 @@ import { createValueIndexer } from './value-indexer.js';
 
 interface Index<T> {
   columnIndex:T[];
+  columnOrder: number[];
   rowIndex: T[];
+  rowOrder: number[];
   groups:  T[][][];
 }
 
 const initializeAccumulator =<T>():Index<T>=>({
   columnIndex:[] as T[],
+  columnOrder: [],
   rowIndex:[] as T[],
+  rowOrder: [],
   groups: [] as T[][][],
 });
 
@@ -37,12 +41,18 @@ const createReducer = <T>(rowComparer:Comparer<T>, columnComparer:Comparer<T>)=>
   };
 };
 
-export const pivot = <T>(items:T[],rowComparer:Comparer<T>, columnComparer:Comparer<T>):Index<T>=>{
+export const pivot = <T>(items:T[],rowComparer:Comparer<T>, columnComparer:Comparer<T>):Readonly<Index<T>>=>{
 
   const index = initializeAccumulator<T>();
   if(items.length <=0){
     return index;
   }
 
-  return items.reduce(createReducer(rowComparer, columnComparer),index);
+  const result = items.reduce(createReducer(rowComparer, columnComparer),index);
+
+  result.columnOrder = result.columnIndex.map((item,ix)=>({item, ix})).sort((a,b)=>columnComparer(a.item, b.item)).map((i)=>i.ix);
+  result.rowOrder = result.rowIndex.map((item,ix)=>({item, ix})).sort((a,b)=>rowComparer(a.item, b.item)).map((i)=>i.ix);
+
+  return result;
 };
+
