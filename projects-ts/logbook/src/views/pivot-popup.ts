@@ -1,6 +1,7 @@
 import { createList, ListProps, SubList } from '../components/list/list.js';
 import { MODAL_OPEN_CSS } from '../settings/const.js';
 import { attach } from '../utils/attach-event.js';
+import { createStateManager } from '../utils/state-manager.js';
 import { compareStrings, formatString } from '../utils/string-comparer.js';
 import { parseHtmlElement } from './parser.js';
 
@@ -57,7 +58,7 @@ const tree:SubList<string>[] = functionNames.map((functionName)=>({
 const noop:()=>void = ()=>undefined;
 
 const rowGroupingsListProps: ListProps<string> = {
-  format: (value) => value,
+  format: formatString,
   comparer: compareStrings,
   onChange:noop,
   reset: 'Сбросить выбор',
@@ -87,26 +88,33 @@ const aggregateListProps: ListProps<string> = {
   onChange:noop,
 };
 
-const ensureLists = (container: HTMLElement | null) => {
+const ensureLists = (container: HTMLElement | null, setField:(key:string, value:string)=>void) => {
   if (container === null) {
     return;
   }
   container.append(
-    createList(rowGroupingsListProps),
-    createList(columnGroupingsListProps),
-    createList(aggregateListProps),
+    createList({...rowGroupingsListProps, onChange:(value:string)=>setField('row', value)}),
+    createList({...columnGroupingsListProps, onChange:(value:string)=>setField('column', value)}),
+    createList({...aggregateListProps, onChange:(value:string)=>setField('aggregate', value)}),
   );
+};
+
+const collectSelection = (popupState:Record<string,string>) =>{
+  console.log(popupState);
 };
 
 export const createPivotPopup = () => {
   const item = parseHtmlElement(popupTemplate);
 
-  ensureLists(item.querySelector('.pivot-settins__wrap'));
+  const popupState = {} as Record<string,string>;
+
+  ensureLists(item.querySelector('.pivot-settins__wrap'),(key,value)=>{popupState[key]=value;});
 
   const handleCancel = () => {
     item.classList.remove(MODAL_OPEN_CSS);
   };
   const handleApply = () => {
+    collectSelection(popupState);
     handleCancel();
   };
 
