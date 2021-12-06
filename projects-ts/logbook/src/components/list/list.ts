@@ -1,7 +1,7 @@
-import { attach } from '../../utils/attach-event';
-import { createHtmlElement, createText, parseHtmlElement } from '../../views/parser';
+import { attach } from '../../utils/attach-event.js';
+import { createHtmlElement, createText, parseHtmlElement } from '../../views/parser.js';
 
-interface ListProps<T> {
+export interface ListProps<T> {
   label: string;
   reset: string;
   name: string;
