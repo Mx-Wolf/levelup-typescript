@@ -1,9 +1,10 @@
-import { GroupingFunctionSettings } from '../biz/types.js';
+import { AggregateFunctionSettings, GroupingFunctionSettings } from '../biz/types.js';
 import { RowData } from '../models/row-data.js';
 import { compareStrings, formatString } from '../utils/string-comparer.js';
 
-type names = 'field'|'roundYear'|'roundQuarter'|'roundMonth'|'roundHundredThousands';
-const HUNDRED_THOUSAND = 1000;
+type groupingNames = 'field'|'roundYear'|'roundQuarter'|'roundMonth'|'roundHundredThousands';
+
+const HUNDRED_THOUSAND = 1E5;
 export const createRoundDown = (factor:number)=>(a:number)=> factor*Math.floor(a/factor);
 const roundDown5 = createRoundDown(HUNDRED_THOUSAND);
 
@@ -16,7 +17,7 @@ export const roundYear = (value:Date)=>new Date(value.getFullYear(),1,1);
 const dateFormatter = new Intl.DateTimeFormat('ru-RU',{dateStyle:'short'});
 const formatDate = (value:Date)=>dateFormatter.format(value);
 
-export const groupingFunctions:Record<names,GroupingFunctionSettings<RowData>> = {
+export const groupingFunctions:Record<groupingNames,GroupingFunctionSettings<RowData>> = {
   field:{
     createComparer:(field:keyof RowData)=>(a:RowData, b:RowData)=>compareStrings(a[field].toString(),b[field].toString()),
     createFormatter:(field:keyof RowData)=>(a:RowData)=>formatString(a[field].toString()),
@@ -43,3 +44,27 @@ export const groupingFunctions:Record<names,GroupingFunctionSettings<RowData>> =
     label:'Округлить до года'
   }
 };
+
+export const aggregateFunction = {
+  max: <AggregateFunctionSettings<RowData, number>>{
+    getInitialValue:()=>0,
+    createReducer: (field)=>(a,b)=>Math.max(a,Number(b[field])),
+    label:'Максимальное значение'
+  },
+  min: <AggregateFunctionSettings<RowData, number>>{
+    getInitialValue:()=>0,
+    createReducer: (field)=>(a,b)=>Math.min(a,Number(b[field])),
+    label:'Минимальное значение'
+  },
+  sum: <AggregateFunctionSettings<RowData, number>>{
+    getInitialValue:()=>0,
+    createReducer: (field)=>(a,b)=>a+Number(b[field]),
+    label:'Минимальное значение'
+  },
+  list: <AggregateFunctionSettings<RowData, string>>{
+    getInitialValue:()=>'',
+    createReducer:(field)=>(a,b)=> `${a}${a.length>0?`,${b[field]}`:''}`,
+    label:'Список значений'
+  }
+};
+

@@ -6,6 +6,7 @@ export interface GroupingFunctionSettings<T> {
   label: string;
 }
 export interface AggregateFunctionSettings<T, R> {
-  reducer: (accumulator: R, item: T) => R;
+  createReducer: (field:keyof T)=>(accumulator: R, item: T) => R;
   getInitialValue: () => R;
+  label: string;
 }
