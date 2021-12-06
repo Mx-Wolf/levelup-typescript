@@ -1,7 +1,6 @@
 import { createList, ListProps, SubList } from '../components/list/list.js';
 import { MODAL_OPEN_CSS } from '../settings/const.js';
 import { attach } from '../utils/attach-event.js';
-import { createStateManager } from '../utils/state-manager.js';
 import { compareStrings, formatString } from '../utils/string-comparer.js';
 import { parseHtmlElement } from './parser.js';
 
