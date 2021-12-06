@@ -37,3 +37,5 @@ export const createHtmlElement = (
   attributes?: Record<string, string> | undefined,
   children?: Node[] | undefined,
 ): HTMLElement => ensureChildren(ensureAttributes(document.createElement(tag), attributes), children);
+
+export const createText = (value:string)=> document.createTextNode(value);
