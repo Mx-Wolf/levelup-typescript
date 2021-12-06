@@ -1,5 +1,11 @@
 import { attach } from '../../utils/attach-event.js';
-import { createHtmlElement, createText, parseHtmlElement } from '../../views/parser.js';
+import { createHtmlElement, createText, parseHtmlElement, parseSvgElement } from '../../views/parser.js';
+
+export interface SubList<T> {
+  subList: true,
+  label: string,
+  list:T[];
+}
 
 export interface ListProps<T> {
   label: string;
@@ -9,8 +15,10 @@ export interface ListProps<T> {
   onChange?: ((value: T) => void) | undefined;
   comparer?: ((a: T, b: T) => number) | undefined;
   format?: ((a: T) => string) | undefined;
-  list: T[];
+  list: (T|SubList<T>)[];
 }
+
+const isSubList = <T>(value:(T|SubList<T>)): value is SubList<T> => (value as SubList<T>).subList;
 
 const resetTemplate = `<button class="form-filter__reset" type="reset">
 <svg fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -18,6 +26,10 @@ const resetTemplate = `<button class="form-filter__reset" type="reset">
 </svg>
 <span></span>
 </button>`;
+
+const dropTemplate = `<svg fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<path d="m12 13.17 4.95-4.95 1.41 1.42L12 16 5.64 9.64l1.41-1.42L12 13.17Z" />
+</svg>`;
 
 const createListLabel = (label: string) => createHtmlElement(
   'h3',
@@ -107,10 +119,35 @@ const createListItem = <T>(item: T, props: Pick<ListProps<T>, 'comparer' | 'form
   return ensureOnChange(element, item, props);
 };
 
-const createListElement = <T>(props: Pick<ListProps<T>, 'comparer' | 'format' | 'list' | 'onChange' | 'value' | 'name'>): HTMLElement => createHtmlElement(
+const ensureDropHandler = (element:HTMLElement):HTMLElement=>{
+  attach('click', element.querySelector('.form-filter__item--sublist span'),()=>element.classList.toggle('is-open'));
+  return element;
+};
+
+const createSubListLabel = <T> (item:Pick<SubList<T>,'label'>):HTMLElement =>createHtmlElement(
+  'span',
+  {},
+  [
+    createText(item.label),
+    parseSvgElement(dropTemplate),
+  ]
+);
+
+
+const createSubList = <T>(item:SubList<T>, props:Pick<ListProps<T>,'comparer'|'format'|'onChange'|'name'|'value'>):HTMLElement=>ensureDropHandler(createHtmlElement(
+  'li',
+  {'class':'form-filter__item form-filter__item--sublist'},
+  [
+    createSubListLabel(item),
+    // eslint-disable-next-line no-use-before-define
+    createListElement(item.list,props),
+  ]
+));
+
+const createListElement = <T>(list:(T|SubList<T>)[], props: Pick<ListProps<T>, 'comparer' | 'format' | 'onChange' | 'value' | 'name'>): HTMLElement => createHtmlElement(
   'ul',
   { 'class': 'form-filter__list' },
-  props.list.map((item) => createListItem(item, props))
+  list.map((item) => isSubList(item)?createSubList(item, props):createListItem(item, props))
 );
 
 export const createList = <T>(props: ListProps<T>): HTMLElement => {
@@ -125,7 +162,7 @@ export const createList = <T>(props: ListProps<T>): HTMLElement => {
     [
       createListLabel(label),
       createReset(reset),
-      createListElement(props),
+      createListElement(props.list,props),
     ]
   );
 };

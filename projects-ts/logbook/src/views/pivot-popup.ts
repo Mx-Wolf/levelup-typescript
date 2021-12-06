@@ -1,7 +1,7 @@
-import { createList, ListProps } from '../components/list/list.js';
+import { createList, ListProps, SubList } from '../components/list/list.js';
 import { MODAL_OPEN_CSS } from '../settings/const.js';
 import { attach } from '../utils/attach-event.js';
-import { stringComparer } from '../utils/string-comparer.js';
+import { compareStrings, formatString } from '../utils/string-comparer.js';
 import { parseHtmlElement } from './parser.js';
 
 const listWithSubTemplate = `<form class="form-filter" action="/">
@@ -211,10 +211,25 @@ const stringItems = [
   'Пробег',
 ];
 
+const functionNames = [
+  'Максимум',
+  'Среднее',
+  'Соединить список',
+  'Сумма',
+];
+
+const tree:SubList<string>[] = functionNames.map((functionName)=>({
+  label:functionName,
+  list: stringItems.map((field)=>`${field}-${functionName}`),
+  subList:true
+}));
+
+const noop:()=>void = ()=>undefined;
+
 const rowGroupingsListProps: ListProps<string> = {
   format: (value) => value,
-  comparer: stringComparer,
-  onChange: () => undefined,
+  comparer: compareStrings,
+  onChange:noop,
   reset: 'Сбросить выбор',
   label: 'Значения строк',
   list: stringItems,
@@ -223,13 +238,23 @@ const rowGroupingsListProps: ListProps<string> = {
 };
 const columnGroupingsListProps: ListProps<string> = {
   format: (value) => value,
-  comparer: stringComparer,
-  onChange: () => undefined,
+  comparer: compareStrings,
+  onChange: noop,
   reset: 'Сбросить выбор',
   label: 'Значения колонок',
   list: stringItems,
   name: 'column-grouping',
   value: stringItems[2],
+};
+const aggregateListProps: ListProps<string> = {
+  label:'Группирующая функция',
+  list:tree,
+  name: 'aggregate-function',
+  reset: 'Сбросить выбор',
+  value: '',
+  comparer: compareStrings,
+  format: formatString,
+  onChange:noop,
 };
 
 const ensureLists = (container: HTMLElement | null) => {
@@ -239,7 +264,7 @@ const ensureLists = (container: HTMLElement | null) => {
   container.append(
     createList(rowGroupingsListProps),
     createList(columnGroupingsListProps),
-    parseHtmlElement(listWithSubTemplate),
+    createList(aggregateListProps),
   );
 };
 
