@@ -32,7 +32,8 @@ export const  createPivotFrame = (props:PivotFrameProps & PivotConfiguration)=> 
         },
         [
           createText(columnGroup.join(',')),
-          createText(aggregator.join(','))
+          createText(aggregator.join(',')),
+          createText(rows.length.toLocaleString()),
         ]
       )
     ]
