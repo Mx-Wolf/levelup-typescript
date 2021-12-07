@@ -37,19 +37,18 @@ const popupTemplate = `<div class="modal modal--pivot-settings">
 const groupChoices = (Object.keys(groupingFunctions)as (keyof typeof groupingFunctions)[])
   .map((functionName)=>(<SubList<[keyof RowData,keyof typeof groupingFunctions]>>{
     label:groupingFunctions[functionName].label,
-    list: (Object.keys(typeof fieldLabels) as (keyof RowData)[]).map((field)=>([fieldLabels[field], functionName] as const)),
+    list: (Object.keys (fieldLabels) as (keyof RowData)[]).map((field)=>([field, functionName] as const)),
     subList:true,
   }));
-
 const aggregateChoices = (Object.keys(aggregateFunctions)as (keyof typeof aggregateFunctions)[])
   .map ((functionName)=>(<SubList<[keyof RowData, keyof typeof aggregateFunctions]>>{
     label: aggregateFunctions[functionName].label,
-    list: (Object.keys(typeof fieldLabels) as (keyof RowData)[]).map((field)=>([fieldLabels[field], functionName]as const)),
+    list: (Object.keys( fieldLabels) as (keyof RowData)[]).map((field)=>([field, functionName]as const)),
     subList:true
   }));
 
 const noop:()=>void = ()=>undefined;
-const getFieldLabel = ([field]:[keyof RowData,string])=>  {debugger; return fieldLabels[field];};
+const getFieldLabel = ([field]:[keyof RowData,string])=>  fieldLabels[field];
 const compareFieldGroup = (
   [fieldLeft, functionNameLeft ]:[string,string],
   [fieldRight, functionNameRight ]:[string,string],
