@@ -66,7 +66,7 @@ export const aggregateFunctions = {
   sum: <AggregateFunctionSettings<RowData, number>>{
     getInitialValue:()=>0,
     createReducer: (field)=>(a,b)=>a+Number(b[field]),
-    label:'Минимальное значение'
+    label:'Сумма значений'
   },
   list: <AggregateFunctionSettings<RowData, string>>{
     getInitialValue:()=>'',

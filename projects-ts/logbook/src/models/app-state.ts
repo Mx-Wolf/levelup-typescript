@@ -12,10 +12,12 @@ export interface ColumnSettings<T>{
   orderBy?: (keyof T)|undefined;
 }
 
+type Labeler = [field:string, functionName: string];
+
 export interface PivotConfiguration{
-  rowLabeler: string;
-  columnLabeler: string;
-  comparer: string;
+  rowGroup: Labeler;
+  columnGroup: Labeler;
+  aggregator: Labeler;
 }
 
 export interface AppProps<T> extends Partial<PivotConfiguration>{
@@ -32,7 +34,7 @@ export interface AppMethods<T> {
   requestRows(): void;
   setRows(rows: T[]): void;
   failRows(message: string): void;
-  setPivot(settings: Required<Readonly<Pick<AppProps<T>, 'columnLabeler' | 'comparer' | 'rowLabeler'>>>): void;
+  setPivot(settings: Required<Readonly<PivotConfiguration>>): void;
 }
 
 type EventTypes = 'locationChanged'| 'dataChanged'| 'pivotChanged';

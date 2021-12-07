@@ -1,4 +1,5 @@
 import { createList, ListProps, SubList } from '../components/list/list.js';
+import { AppMethods, PivotConfiguration } from '../models/app-state.js';
 import { RowData } from '../models/row-data.js';
 import { MODAL_OPEN_CSS } from '../settings/const.js';
 import { aggregateFunctions, groupingFunctions } from '../settings/grouping-functions.js';
@@ -88,33 +89,41 @@ const aggregateListProps: ListProps<[keyof RowData, keyof typeof aggregateFuncti
   onChange:noop,
 };
 
-const ensureLists = (container: HTMLElement | null, setField:(key:string, value:[string, string])=>void) => {
+const ensureLists = (container: HTMLElement | null, setField:(key:keyof PivotConfiguration, value:[string, string])=>void) => {
   if (container === null) {
     return;
   }
   container.append(
-    createList({...rowGroupingsListProps, onChange:(value)=>setField('row', value)}),
-    createList({...columnGroupingsListProps, onChange:(value)=>setField('column', value)}),
-    createList({...aggregateListProps, onChange:(value)=>setField('aggregate', value)}),
+    createList({...rowGroupingsListProps, onChange:(value)=>setField('rowGroup', value)}),
+    createList({...columnGroupingsListProps, onChange:(value)=>setField('columnGroup', value)}),
+    createList({...aggregateListProps, onChange:(value)=>setField('aggregator', value)}),
   );
 };
 
-const collectSelection = (popupState:Record<string,[string, string]>) =>{
-  console.log(popupState);
+const collectSelection = (popupState:Partial<PivotConfiguration>):popupState is PivotConfiguration =>{
+  const {aggregator,columnGroup,rowGroup} = popupState;
+  return Array.isArray(aggregator) && aggregator.length ===2
+    && Array.isArray(columnGroup) && columnGroup.length ===2
+    && Array.isArray(rowGroup) && rowGroup.length ===2;
 };
 
-export const createPivotPopup = () => {
-  const item = parseHtmlElement(popupTemplate);
-  const popupState = {} as Record<string,[string, string]>;
+type PivotPopupPorps = Pick<AppMethods<RowData>,'setPivot'>;
 
-  ensureLists(item.querySelector('.pivot-settins__wrap'),(key,value)=>{popupState[key]=value;});
+export const createPivotPopup = (props:PivotPopupPorps) => {
+  const {setPivot} = props;
+  const item = parseHtmlElement(popupTemplate);
+  const popupState = {} as Partial<PivotConfiguration>;
+
+  ensureLists(item.querySelector('.pivot-settins__wrap'),(key: keyof PivotConfiguration,value)=>{popupState[key]=value;});
 
   const handleCancel = () => {
     item.classList.remove(MODAL_OPEN_CSS);
   };
   const handleApply = () => {
-    collectSelection(popupState);
-    handleCancel();
+    if(collectSelection(popupState)){
+      setPivot(popupState);
+      handleCancel();
+    }
   };
 
   attach(
