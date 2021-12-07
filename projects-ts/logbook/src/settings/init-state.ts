@@ -10,4 +10,8 @@ export const initState :AppProps<RowData> = {
   rowCount: 0,
   rows: createMockRowData(),
   rowsState: 'ready',
+  columnLabeler: '',
+  comparer: '',
+  rowLabeler: '',
+
 };
