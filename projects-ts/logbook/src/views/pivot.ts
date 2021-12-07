@@ -24,7 +24,7 @@ export const createPivot = (props:PivotProps)=>{
     isPivotConfigured(config)?
       createPivotItems(
       /*config, props*/
-        {onOpenClick:handleOpen, rows:props.rows, setPivot: props.setPivot}
+        {onOpenClick:handleOpen, rows:props.rows, setPivot: props.setPivot,...config}
       ):
       createPivotNotConfigured({onOpenClick:handleOpen}),
     popup,]);
