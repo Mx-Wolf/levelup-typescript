@@ -1,13 +1,5 @@
-import { Comparer } from './types.js';
+import { Comparer, Index } from './types.js';
 import { createValueIndexer } from './value-indexer.js';
-
-interface Index<T> {
-  columnIndex:T[];
-  columnOrder: number[];
-  rowIndex: T[];
-  rowOrder: number[];
-  groups:  T[][][];
-}
 
 const initializeAccumulator =<T>():Index<T>=>({
   columnIndex:[] as T[],

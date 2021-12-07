@@ -10,3 +10,11 @@ export interface AggregateFunctionSettings<T, R> {
   getInitialValue: () => R;
   label: string;
 }
+
+export interface Index<T> {
+  columnIndex:T[];
+  columnOrder: number[];
+  rowIndex: T[];
+  rowOrder: number[];
+  groups:  T[][][];
+}
