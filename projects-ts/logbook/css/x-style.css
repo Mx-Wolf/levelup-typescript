@@ -31,3 +31,7 @@ a.linkmain__setting-link svg {
     margin-right: 10px;
     margin-top: 2px;
 }
+
+th.table__cell.table__cell--empty {
+  padding-top: 37px;
+}

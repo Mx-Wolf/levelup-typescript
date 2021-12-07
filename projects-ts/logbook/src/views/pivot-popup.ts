@@ -1,7 +1,10 @@
 import { createList, ListProps, SubList } from '../components/list/list.js';
+import { RowData } from '../models/row-data.js';
 import { MODAL_OPEN_CSS } from '../settings/const.js';
+import { aggregateFunctions, groupingFunctions } from '../settings/grouping-functions.js';
+import { fieldLabels } from '../settings/labels.js';
 import { attach } from '../utils/attach-event.js';
-import { compareStrings, formatString } from '../utils/string-comparer.js';
+import { compareStrings } from '../utils/string-comparer.js';
 import { parseHtmlElement } from './parser.js';
 
 const popupTemplate = `<div class="modal modal--pivot-settings">
@@ -31,81 +34,79 @@ const popupTemplate = `<div class="modal modal--pivot-settings">
 </div>
 </div>`;
 
-const stringItems = [
-  'Марка',
-  'Модель',
-  'Водитель',
-  'Тех-центр',
-  'Вид обслуживания',
-  'Сумма, ₽',
-  'Пробег',
-];
+const groupChoices = (Object.keys(groupingFunctions)as (keyof typeof groupingFunctions)[])
+  .map((functionName)=>(<SubList<[keyof RowData,keyof typeof groupingFunctions]>>{
+    label:groupingFunctions[functionName].label,
+    list: (Object.keys(typeof fieldLabels) as (keyof RowData)[]).map((field)=>([fieldLabels[field], functionName] as const)),
+    subList:true,
+  }));
 
-const functionNames = [
-  'Максимум',
-  'Среднее',
-  'Соединить список',
-  'Сумма',
-];
-
-const tree:SubList<string>[] = functionNames.map((functionName)=>({
-  label:functionName,
-  list: stringItems.map((field)=>`${field}-${functionName}`),
-  subList:true
-}));
+const aggregateChoices = (Object.keys(aggregateFunctions)as (keyof typeof aggregateFunctions)[])
+  .map ((functionName)=>(<SubList<[keyof RowData, keyof typeof aggregateFunctions]>>{
+    label: aggregateFunctions[functionName].label,
+    list: (Object.keys(typeof fieldLabels) as (keyof RowData)[]).map((field)=>([fieldLabels[field], functionName]as const)),
+    subList:true
+  }));
 
 const noop:()=>void = ()=>undefined;
+const getFieldLabel = ([field]:[keyof RowData,string])=>  {debugger; return fieldLabels[field];};
+const compareFieldGroup = (
+  [fieldLeft, functionNameLeft ]:[string,string],
+  [fieldRight, functionNameRight ]:[string,string],
+)=>{
+  const r1 = compareStrings(fieldLeft, fieldRight);
+  return r1 !== 0?r1: compareStrings(functionNameLeft, functionNameRight);
+};
 
-const rowGroupingsListProps: ListProps<string> = {
-  format: formatString,
-  comparer: compareStrings,
+const rowGroupingsListProps: ListProps<[keyof RowData,keyof typeof groupingFunctions]> = {
+  format: getFieldLabel,
+  comparer: compareFieldGroup,
   onChange:noop,
   reset: 'Сбросить выбор',
   label: 'Значения строк',
-  list: stringItems,
+  list: groupChoices,
   name: 'row-grouping',
-  value: stringItems[2],
+  value: groupChoices[0].list[0],
 };
-const columnGroupingsListProps: ListProps<string> = {
-  format: (value) => value,
-  comparer: compareStrings,
+const columnGroupingsListProps: ListProps<[keyof RowData,keyof typeof groupingFunctions]> = {
+  format: getFieldLabel,
+  comparer: compareFieldGroup,
   onChange: noop,
   reset: 'Сбросить выбор',
   label: 'Значения колонок',
-  list: stringItems,
+  list: groupChoices,
   name: 'column-grouping',
-  value: stringItems[2],
+  value: groupChoices[0].list[0],
 };
-const aggregateListProps: ListProps<string> = {
+const aggregateListProps: ListProps<[keyof RowData, keyof typeof aggregateFunctions]> = {
   label:'Группирующая функция',
-  list:tree,
+  list:aggregateChoices,
   name: 'aggregate-function',
   reset: 'Сбросить выбор',
-  value: '',
-  comparer: compareStrings,
-  format: formatString,
+  value: aggregateChoices[0].list[0],
+  comparer: compareFieldGroup,
+  format: getFieldLabel,
   onChange:noop,
 };
 
-const ensureLists = (container: HTMLElement | null, setField:(key:string, value:string)=>void) => {
+const ensureLists = (container: HTMLElement | null, setField:(key:string, value:[string, string])=>void) => {
   if (container === null) {
     return;
   }
   container.append(
-    createList({...rowGroupingsListProps, onChange:(value:string)=>setField('row', value)}),
-    createList({...columnGroupingsListProps, onChange:(value:string)=>setField('column', value)}),
-    createList({...aggregateListProps, onChange:(value:string)=>setField('aggregate', value)}),
+    createList({...rowGroupingsListProps, onChange:(value)=>setField('row', value)}),
+    createList({...columnGroupingsListProps, onChange:(value)=>setField('column', value)}),
+    createList({...aggregateListProps, onChange:(value)=>setField('aggregate', value)}),
   );
 };
 
-const collectSelection = (popupState:Record<string,string>) =>{
+const collectSelection = (popupState:Record<string,[string, string]>) =>{
   console.log(popupState);
 };
 
 export const createPivotPopup = () => {
   const item = parseHtmlElement(popupTemplate);
-
-  const popupState = {} as Record<string,string>;
+  const popupState = {} as Record<string,[string, string]>;
 
   ensureLists(item.querySelector('.pivot-settins__wrap'),(key,value)=>{popupState[key]=value;});
 

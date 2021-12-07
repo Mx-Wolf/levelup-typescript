@@ -6,7 +6,6 @@ import { createHtmlElement } from './parser.js';
 
 interface MainProps{
   location:KnownLocations,
-  setTitle:(title:string)=>void;
   columns:ColumnSettings<RowData>[];
   rows:RowData[]
 }

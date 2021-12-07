@@ -1,6 +1,6 @@
 import { AppContext } from '../models/app.js';
 import { RowData } from '../models/row-data.js';
-import { setTitle } from '../utils/document-title.js';
+
 import { createHeader } from '../views/header.js';
 import { createLogbookMain } from '../views/main.js';
 import { createPivot } from '../views/pivot.js';
@@ -13,14 +13,14 @@ const collectChildren = (context: AppContext<RowData>) => {
     createHeader({ location, setLocation }),
     location === 'logbook' ? createLogbookMain({
       location,
-      setTitle,
       columns,
       rows,
     }) : false,
     location === 'pivot-table' ? createPivot({
       columnLabeler,
       comparer,
-      rowLabeler
+      rowLabeler,
+      rows:getState().rows
     }) : false,
   ].filter((e) => e) as HTMLElement[];
 };
