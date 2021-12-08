@@ -1,5 +1,5 @@
-import { ColumnSettings } from '../../models/app-state';
-import { createHtmlElement, createText } from '../../views/parser';
+import { ColumnSettings } from '../../models/app-state.js';
+import { createHtmlElement, createText } from '../../views/parser.js';
 
 interface TableProps<T>{
   rows:T[]
