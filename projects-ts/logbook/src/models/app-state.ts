@@ -1,3 +1,4 @@
+import { aggregateFunctions, groupingFunctions } from '../settings/grouping-functions.js';
 import { EventManager } from '../utils/event-manager.js';
 import { StateManager } from '../utils/state-manager.js';
 
@@ -12,15 +13,15 @@ export interface ColumnSettings<T>{
   orderBy?: (keyof T)|undefined;
 }
 
-type Labeler = [field:string, functionName: string];
+export type Labeler<T,F> = [field:keyof T, functionName: keyof F];
 
-export interface PivotConfiguration{
-  rowGroup: Labeler;
-  columnGroup: Labeler;
-  aggregator: Labeler;
+export interface PivotConfiguration<T>{
+  rowGroup: Labeler<T,typeof groupingFunctions>;
+  columnGroup: Labeler<T,typeof groupingFunctions>;
+  aggregator: Labeler<T,typeof aggregateFunctions>;
 }
 
-export interface AppProps<T> extends Partial<PivotConfiguration>{
+export interface AppProps<T> extends Partial<PivotConfiguration<T>>{
   columns: ColumnSettings<T>[];
   location: KnownLocations;
   rowsState: KnownListStates;
@@ -34,7 +35,7 @@ export interface AppMethods<T> {
   requestRows(): void;
   setRows(rows: T[]): void;
   failRows(message: string): void;
-  setPivot(settings: Required<Readonly<PivotConfiguration>>): void;
+  setPivot(settings: Required<Readonly<PivotConfiguration<T>>>): void;
 }
 
 type EventTypes = 'locationChanged'| 'dataChanged'| 'pivotChanged';

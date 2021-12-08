@@ -9,16 +9,17 @@ import { createPivotItems } from './pivot-it.js';
 import { createPivotNotConfigured } from './pivot-nc.js';
 import { createPivotPopup } from './pivot-popup.js';
 
-type PivotProps = Partial<PivotConfiguration> & Pick<AppContext<RowData>,'setPivot'> & {
+type PivotProps = Partial<PivotConfiguration<RowData>> & Pick<AppContext<RowData>,'setPivot'> & {
   rows:RowData[]
 };
 
 export const createPivot = (props:PivotProps)=>{
-  const config:Partial<PivotConfiguration> = props;
+  const config:Partial<PivotConfiguration<RowData>> = props;
   const popup = createPivotPopup(props);
   const handleOpen = ()=>{
     popup.classList.add(MODAL_OPEN_CSS);
   };
+
   return createHtmlFragment([
     createPageTitle({location:'pivot-table'}),
     isPivotConfigured(config)?

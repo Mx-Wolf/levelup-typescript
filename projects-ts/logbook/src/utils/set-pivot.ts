@@ -2,7 +2,7 @@ import { MethodFactoryArguments, PivotConfiguration } from '../models/app-state.
 import { mergeState } from './merge-state.js';
 
 export const createSetPivot = <T>({ fireEvent, getState, setState }: MethodFactoryArguments<T>) => async (
-  { columnGroup: columnLabeler, aggregator: comparer, rowGroup: rowLabeler }: Required<Readonly<PivotConfiguration>>
+  { columnGroup: columnLabeler, aggregator: comparer, rowGroup: rowLabeler }: Required<Readonly<PivotConfiguration<T>>>
 ) => {
   const current = getState();
   const {

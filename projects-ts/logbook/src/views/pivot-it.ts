@@ -5,7 +5,7 @@ import { createHtmlElement } from './parser.js';
 import { createPivotFrame } from './pivot-frame.js';
 import { createPivotPopup } from './pivot-popup.js';
 
-interface PivotItemProps extends Pick<AppMethods<RowData>,'setPivot'>, PivotConfiguration{
+interface PivotItemProps extends Pick<AppMethods<RowData>,'setPivot'>, PivotConfiguration<RowData>{
   onOpenClick:()=>void;
   rows:RowData[]
 }
