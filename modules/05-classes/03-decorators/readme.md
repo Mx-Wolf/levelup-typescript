@@ -1,6 +1,6 @@
 # Декораторы
 
-Компилятора typescript распознает специальный синтаксис, предназначенный для дополнения мета-данных о типах самими разработчиками. В настоящее время Javascript не имеет аналогичного стандартного сервиса. Предложения по внедрению декораторов в javascript все еще обсуждаются [техническим комитетом tc39](https://github.com/tc39/proposal-decorators). Возможно, окончательная реализация будет отличаться от описанной ниже. Мы приводим сведения о декораторах в связи с их широким использованием в популярных фреймворках.
+Компилятора TypeScript распознает специальный синтаксис, предназначенный для дополнения мета-данных о типах самими разработчиками. В настоящее время Javascript не имеет аналогичного стандартного сервиса. Предложения по внедрению декораторов в javascript все еще обсуждаются [техническим комитетом tc39](https://github.com/tc39/proposal-decorators). Возможно, окончательная реализация будет отличаться от описанной ниже. Мы приводим сведения о декораторах в связи с их широким использованием в популярных фреймворках.
 
 для включения декоратора требуется явная конфигурация в командной строке
 
@@ -73,7 +73,7 @@ const rule = new BusinessRule(null);
 rule.work();
 ```
 
-Попробуйте выполнить приведенный [пример в typescript песочнице](https://www.typescriptlang.org/play?ssl=31&ssc=13&pln=1&pc=1#code/JYOwLgpgTgZghgYwgAgMrQG7CQbwFDLICuADgCZyQAUA9gEYBWAXESANYg0DuIAlExhrAyAbjwBfPHgQ0QAZzDI5mbBACSAWxJN0ULEmQBeZPkKkK1XjhnyaAGwgA6OzQDmVAERy4GCGQ+8kuJi0rIKSipIcHQORshUCGA0UEzIIBBc8cp6qjqRELyGAHwAQkRyoBBycgBKRA78aRlZ+Xk5SAA+IPV2vEZFyGUV6dV1scWmyFAQYERQIMgIdnDVyBAAHpAgZHKLSVCThDYKUESJyVTZ+hBt1109VgSEz8eKcnpxV6rIHR0R7eotGJns85KRoJc9Lxgc9JIQglIAAJfKIxCDSZarIaVUb1CCTEhQYAYSgoFE3XTXGGvU7nKCXVpofL3Oy9Q7IYAwBkAoyGYzdVlWZBgAAWUG4TUyAFEoOL6QByOBQVxEDQQcBrdZIEhgYCyeWBJ6EUXAOSOcmffIwuHIEhEGLYZBcZJsKiPEEms3kxzmUlUT3Qp4I0LyRSncaSwblHG1PFUAW9MThpzOqCuwNAA), а за одно рассмотрите какой javascript код генерирует компилятор.
+Попробуйте выполнить приведенный [пример в TypeScript песочнице](https://www.typescriptlang.org/play?ssl=31&ssc=13&pln=1&pc=1#code/JYOwLgpgTgZghgYwgAgMrQG7CQbwFDLICuADgCZyQAUA9gEYBWAXESANYg0DuIAlExhrAyAbjwBfPHgQ0QAZzDI5mbBACSAWxJN0ULEmQBeZPkKkK1XjhnyaAGwgA6OzQDmVAERy4GCGQ+8kuJi0rIKSipIcHQORshUCGA0UEzIIBBc8cp6qjqRELyGAHwAQkRyoBBycgBKRA78aRlZ+Xk5SAA+IPV2vEZFyGUV6dV1scWmyFAQYERQIMgIdnDVyBAAHpAgZHKLSVCThDYKUESJyVTZ+hBt1109VgSEz8eKcnpxV6rIHR0R7eotGJns85KRoJc9Lxgc9JIQglIAAJfKIxCDSZarIaVUb1CCTEhQYAYSgoFE3XTXGGvU7nKCXVpofL3Oy9Q7IYAwBkAoyGYzdVlWZBgAAWUG4TUyAFEoOL6QByOBQVxEDQQcBrdZIEhgYCyeWBJ6EUXAOSOcmffIwuHIEhEGLYZBcZJsKiPEEms3kxzmUlUT3Qp4I0LyRSncaSwblHG1PFUAW9MThpzOqCuwNAA), а за одно рассмотрите какой javascript код генерирует компилятор.
 
 ## Декораторы методов
 

@@ -155,7 +155,7 @@ type WorkBuffer = Writable<ReceivedCharacter>;
 
 ## operator keyof
 
-В typescript оператор keyof воздайствует на структурный тип и создает объединение ключей структуры. Изучите [Playground Link](https://www.typescriptlang.org/play?#code/C4TwDgpgBAqgzhATlAvFA3gKClAdgQwFsIAuKOYRAS1wHMAabKRAewBsI4yLq6BtALqMc+ACaEaZAEYt2EfLgDcmAL6ZMoSLASIA0hBBxUUANYGWAM21JlG8NACiARwCuVAG742VCLmDGAIgJiAKgAHygA1g44UIiAsQlcAOUgA)
+В TypeScript оператор keyof воздайствует на структурный тип и создает объединение ключей структуры. Изучите [Playground Link](https://www.typescriptlang.org/play?#code/C4TwDgpgBAqgzhATlAvFA3gKClAdgQwFsIAuKOYRAS1wHMAabKRAewBsI4yLq6BtALqMc+ACaEaZAEYt2EfLgDcmAL6ZMoSLASIA0hBBxUUANYGWAM21JlG8NACiARwCuVAG742VCLmDGAIgJiAKgAHygA1g44UIiAsQlcAOUgA)
 
 ```typescript
 type User = {
@@ -284,4 +284,4 @@ export const adapt = (json:unknown):ServerData=>{
 
 ```
 
-Наконец, теперь мы можем вернуть правильное значение и в дальнейшем полагаться на typescript и на его магию. Кроме того мы можем изменить сообщение об ошибке.
+Наконец, теперь мы можем вернуть правильное значение и в дальнейшем полагаться на TypeScript и на его магию. Кроме того мы можем изменить сообщение об ошибке.

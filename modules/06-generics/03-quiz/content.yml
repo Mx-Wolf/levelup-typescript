@@ -20,14 +20,14 @@ questions:
       declare function getOrderByField():Field;
 
       const orderByField: Field = getOrderByField();
-      const labelField: Attribute = getOrderByField();      
+      const labelField: Attribute = getOrderByField();
       ```
     type: multiple
     options:
       - id: 10
         value: только переменная orderByField будет инициализирована успешно
         correct: false
-        resultMessage: | 
+        resultMessage: |
           типы значений, которые могут содержать переменные orderByField и labelField эквивалентны. Обе инициализации успешны.
       - id: 20
         value: только переменная labelField будет инициализирована успешно
@@ -40,7 +40,7 @@ questions:
         resultMessage: |
           типы значений, которые могут содержать переменные orderByField и labelField эквивалентны. Обе инициализации успешны.
   - id: 20
-    title: Какие из определений типов некорректны с точки зрения typescript   
+    title: Какие из определений типов некорректны с точки зрения TypeScript
     description: |
       ```typescript
       // вариант 1
@@ -64,12 +64,12 @@ questions:
           формальный аргумент event может содержать значения типа string, symbol, number.
       - id: 20
         value: вариант 2 вызывает ошибку компиляции
-        correct: true              
+        correct: true
         resultMessage: |
           для использования в целях интерполяции подходят только специализации типа string.
       - id: 30
         value: вариант 3 вызывает ошибку компиляции
         correct: false
         resultMessage: |
-          пересечение string & keyof T исключает возможные значения ключей за исключением специализированных строковых типов 
+          пересечение string & keyof T исключает возможные значения ключей за исключением специализированных строковых типов
 

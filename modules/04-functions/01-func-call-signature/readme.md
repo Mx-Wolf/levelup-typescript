@@ -36,7 +36,7 @@ function exampleReducer(state:number, action: number) {return state+action;}
  
 ## Вывод о типах параметров функции по контексту
 
-Если определение функции появляется в контексте, то typescript в состоянии выяснить и типы аргументов.
+Если определение функции появляется в контексте, то TypeScript в состоянии выяснить и типы аргументов.
 
 ```typescript
 [1,2,3].forEach(function exampleAction(){console.log('еще элемент найден')});
