@@ -32,7 +32,9 @@ class Derived extends Base{
 }
 ```
 
-![access to public fields only](./assets/access.png)
+![access to public fields only](assets/access.png)
+
+Из картинки видно, что даже intellisense на нашей стороне и не дает нам ошибиться с написанием доступа приватному полю `name`
 
 При описании класса можно наследовать от одного класса. Множественное наследование не допускается.
 
