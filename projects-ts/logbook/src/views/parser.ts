@@ -47,4 +47,28 @@ export const createHtmlElement = (
   children?: Node[] | undefined,
 ): HTMLElement => ensureChildren(ensureAttributes(document.createElement(tag), attributes), children);
 
+export const createHtmlFragment = (
+  children:Node[]
+)=>{
+  const result = document.createDocumentFragment();
+  result.append(...children);
+  return result;
+};
+
+interface RefSvgProps{
+  href:string;
+  width: number;
+  height: number;
+}
+
+export const createSvgRef = (props: RefSvgProps)=> {
+  const result = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  result.setAttribute('width', `${props.width}`);
+  result.setAttribute('height',`${props.height}`);
+  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  use.setAttribute('href',props.href);
+  result.appendChild(use);
+  return result;
+};
+
 export const createText = (value:string)=> document.createTextNode(value);

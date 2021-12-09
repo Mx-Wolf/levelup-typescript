@@ -1,3 +1,5 @@
+import { aggregateFunctions, groupingFunctions } from '../settings/grouping-functions.js';
+
 export type DateValue = string & {'date-value':void};
 export type VehicleMakeValue = string & {'vehicle-make-value':void};
 export type VehicleModelValue = string & {'vehicle-model-value':void};
@@ -20,4 +22,9 @@ export interface RowData{
   serviceRendered: string;
 }
 
+export interface PopupChoise  {
+  row:[keyof RowData,keyof typeof groupingFunctions];
+  column:[keyof RowData, keyof typeof groupingFunctions];
+  aggregate:[keyof RowData,keyof typeof aggregateFunctions];
+}
 

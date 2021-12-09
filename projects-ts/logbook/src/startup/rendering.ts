@@ -1,26 +1,27 @@
 import { AppContext } from '../models/app.js';
 import { RowData } from '../models/row-data.js';
-import { setTitle } from '../utils/document-title.js';
+
 import { createHeader } from '../views/header.js';
 import { createLogbookMain } from '../views/main.js';
 import { createPivot } from '../views/pivot.js';
 
 const collectChildren = (context: AppContext<RowData>) => {
-  const { getState, setLocation } = context;
+  const { getState, setLocation, setPivot } = context;
 
-  const { location, rows, columns, columnLabeler,comparer,rowLabeler} = getState();
+  const { location, rows, columns, columnGroup: columnLabeler,aggregator: comparer,rowGroup: rowLabeler} = getState();
   return [
     createHeader({ location, setLocation }),
     location === 'logbook' ? createLogbookMain({
       location,
-      setTitle,
       columns,
       rows,
     }) : false,
     location === 'pivot-table' ? createPivot({
-      columnLabeler,
-      comparer,
-      rowLabeler
+      columnGroup: columnLabeler,
+      aggregator: comparer,
+      rowGroup: rowLabeler,
+      rows:getState().rows,
+      setPivot
     }) : false,
   ].filter((e) => e) as HTMLElement[];
 };
@@ -42,5 +43,6 @@ export const createRender = (
   const render = ()=> replaceChildren(root,collectChildren(app));
 
   app.locationChanged.subscribe(render);
+  app.pivotChanged.subscribe(render);
   return render;
 };

@@ -1,5 +1,5 @@
 import { AppProps, AppMethods } from '../models/app-state.js';
-import { createHeaderTerms } from './header-tems.js';
+import { createHeaderTerms } from './header-terms.js';
 import { createMainNav } from './main-nav.js';
 import { parseHtmlElement } from './parser.js';
 
