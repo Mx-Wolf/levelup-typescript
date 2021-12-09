@@ -6,9 +6,9 @@ import { createLogbookMain } from '../views/main.js';
 import { createPivot } from '../views/pivot.js';
 
 const collectChildren = (context: AppContext<RowData>) => {
-  const { getState, setLocation } = context;
+  const { getState, setLocation, setPivot } = context;
 
-  const { location, rows, columns, columnLabeler,comparer,rowLabeler} = getState();
+  const { location, rows, columns, columnGroup: columnLabeler,aggregator: comparer,rowGroup: rowLabeler} = getState();
   return [
     createHeader({ location, setLocation }),
     location === 'logbook' ? createLogbookMain({
@@ -17,10 +17,11 @@ const collectChildren = (context: AppContext<RowData>) => {
       rows,
     }) : false,
     location === 'pivot-table' ? createPivot({
-      columnLabeler,
-      comparer,
-      rowLabeler,
-      rows:getState().rows
+      columnGroup: columnLabeler,
+      aggregator: comparer,
+      rowGroup: rowLabeler,
+      rows:getState().rows,
+      setPivot
     }) : false,
   ].filter((e) => e) as HTMLElement[];
 };
@@ -42,5 +43,6 @@ export const createRender = (
   const render = ()=> replaceChildren(root,collectChildren(app));
 
   app.locationChanged.subscribe(render);
+  app.pivotChanged.subscribe(render);
   return render;
 };

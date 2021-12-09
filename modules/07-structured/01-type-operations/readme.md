@@ -77,7 +77,7 @@ const contacts = [{
     }];
 ```
 
-В этом случае во время работы программы придется разбираться по месту. В наличии ли отчество или отсутствует. Typescript поможет вам не забыть убедиться в наличии значения, прежде чем разрешит вам с ним производить операции. Для этого вы объясняете компилятору, что значения в вашем типе могут отсутствовать.
+В этом случае во время работы программы придется разбираться по месту. В наличии ли отчество или отсутствует.  TypeScript  поможет вам не забыть убедиться в наличии значения, прежде чем разрешит вам с ним производить операции. Для этого вы объясняете компилятору, что значения в вашем типе могут отсутствовать.
 
 ```typescript
 type Character = {
@@ -105,7 +105,7 @@ console.log(photoHunter.name.length);//Object is possibly 'undefined'.(2532)
 
 [Песочница](https://www.typescriptlang.org/play?#code/C4TwDgpgBAwgFgQwE4IMbAkqBeKBvAKCigGdJUBLCEgfgC5TgkKA7AcygB8oBXFgEwgAzVhH4AaIlBYIAthHqNm7LrwHDREqUITA4mRSSasO3PoJEsxk4jtkUANiEPGVZ9ZevECAXwIFUAHsWIygglmA0YBI6eGQozABtAF0cKETCYiysmXk6ACJAChBABhBAARBADhBALhB8m2yssghKagZ8wH4QQFYQQEEQfKgpYh9xTLrbOUcQFsAcEGLAIRBSwD4QTsrywF4QGqgAenXAERBiwB4QcsBuEHLAeRAoaeLK4uOAOj66hqaYqHzKuen8u4Gh4dyIFsAMEEAzCBzUqAGRAandsjo9JgAYAmEGKyzmcPKgHEQCHDEb2JwtQD4IO1UUtVrV+skANwBYKhMBwQLAQIACT4GCwuHCkXQJESAAZyf5wiRAg4INcHIE2AAKGl0xnMzDXX6iiDsPQASiAA) иллюстрирует эту ситуацию.
 
-Вы наверняка согласитесь, что необязательные значения в реальной жизни встречаются очень часто. Typescript предлагает специальный тип-модификатор: Partial. Его действие заключается в создании нового типа, такого, что все ключи его необязательные.
+Вы наверняка согласитесь, что необязательные значения в реальной жизни встречаются очень часто.  TypeScript  предлагает специальный тип-модификатор: Partial. Его действие заключается в создании нового типа, такого, что все ключи его необязательные.
 
 ```typescript
 type CharacterOriginal = {
@@ -155,7 +155,7 @@ type WorkBuffer = Writable<ReceivedCharacter>;
 
 ## operator keyof
 
-В typescript оператор keyof воздайствует на структурный тип и создает объединение ключей структуры. Изучите [Playground Link](https://www.typescriptlang.org/play?#code/C4TwDgpgBAqgzhATlAvFA3gKClAdgQwFsIAuKOYRAS1wHMAabKRAewBsI4yLq6BtALqMc+ACaEaZAEYt2EfLgDcmAL6ZMoSLASIA0hBBxUUANYGWAM21JlG8NACiARwCuVAG742VCLmDGAIgJiAKgAHygA1g44UIiAsQlcAOUgA)
+В TypeScript оператор keyof воздайствует на структурный тип и создает объединение ключей структуры. Изучите [Playground Link](https://www.typescriptlang.org/play?#code/C4TwDgpgBAqgzhATlAvFA3gKClAdgQwFsIAuKOYRAS1wHMAabKRAewBsI4yLq6BtALqMc+ACaEaZAEYt2EfLgDcmAL6ZMoSLASIA0hBBxUUANYGWAM21JlG8NACiARwCuVAG742VCLmDGAIgJiAKgAHygA1g44UIiAsQlcAOUgA)
 
 ```typescript
 type User = {
@@ -284,4 +284,4 @@ export const adapt = (json:unknown):ServerData=>{
 
 ```
 
-Наконец, теперь мы можем вернуть правильное значение и в дальнейшем полагаться на typescript и на его магию. Кроме того мы можем изменить сообщение об ошибке.
+Наконец, теперь мы можем вернуть правильное значение и в дальнейшем полагаться на TypeScript и на его магию. Кроме того мы можем изменить сообщение об ошибке.

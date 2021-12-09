@@ -50,28 +50,33 @@ export const groupingFunctions:Record<groupingNames,GroupingFunctionSettings<Row
     createFormatter: (field)=>(a)=>formatDate(roundYear(new Date(a[field]))),
     label:'Округлить до года'
   }
-};
+} as const;
 
 export const aggregateFunctions = {
-  max: <AggregateFunctionSettings<RowData, number>>{
+  max: <AggregateFunctionSettings<RowData>>{
     getInitialValue:()=>0,
-    createReducer: (field)=>(a,b)=>Math.max(a,Number(b[field])),
+    createReducer: (field)=>(a:number,b)=>Math.max(a,Number(b[field])),
     label:'Максимальное значение'
   },
-  min: <AggregateFunctionSettings<RowData, number>>{
+  min: <AggregateFunctionSettings<RowData>>{
     getInitialValue:()=>0,
-    createReducer: (field)=>(a,b)=>Math.min(a,Number(b[field])),
+    createReducer: (field)=>(a:number,b)=>Math.min(a,Number(b[field])),
     label:'Минимальное значение'
   },
-  sum: <AggregateFunctionSettings<RowData, number>>{
+  sum: <AggregateFunctionSettings<RowData>>{
     getInitialValue:()=>0,
-    createReducer: (field)=>(a,b)=>a+Number(b[field]),
-    label:'Минимальное значение'
+    createReducer: (field)=>(a:number,b)=>a+Number(b[field]),
+    label:'Сумма значений'
   },
-  list: <AggregateFunctionSettings<RowData, string>>{
+  count: <AggregateFunctionSettings<RowData>>{
+    getInitialValue:()=>0,
+    createReducer: (field)=>(a:number,b)=>a+(typeof b[field] === undefined? 0: 1),
+    label:'Количество непустых значений'
+  },
+  list: <AggregateFunctionSettings<RowData>>{
     getInitialValue:()=>'',
-    createReducer:(field)=>(a,b)=> `${a}${a.length>0?`,${b[field]}`:''}`,
+    createReducer:(field)=>(a:string,b)=> `${a}${a.length>0?`,${b[field]}`:''}`,
     label:'Список значений'
   }
-};
+} as const;
 

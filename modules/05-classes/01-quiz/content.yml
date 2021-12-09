@@ -19,7 +19,7 @@ questions:
       }
       const a = new A("the a");
 
-      console.log(Object.keys(a));      
+      console.log(Object.keys(a));
       ```
     type: single
     options:
@@ -33,7 +33,7 @@ questions:
         value: |
           "["uniqueId", "name"] - объект имеет два поля оба они доступны для перечисления методом Object.keys"
         correct: true
-        resultMessage: | 
+        resultMessage: |
           во время исполнения информация указанная в модификаторах public, protected, private теряется
       - id: 30
         value: |
@@ -69,16 +69,16 @@ questions:
           "ключами этого типа будут значения ["name", "uniqueId"]".
       - id: 20
         value: Object.keys(b).length === 2
-        correct: true              
+        correct: true
         resultMessage: |
           "ключами значения b будут ["name", "path"]"
       - id: 30
-        value: typescript допускает вызов logger(a);
+        value: TypeScript допускает вызов logger(a);
         correct: true
         resultMessage: |
           Нет нарушения в утиной типизации - вызов допускается.
       - id: 40
-        value: typescript допускает вызов logger(b)
+        value: TypeScript допускает вызов logger(b)
         correct: true
         resultMessage: |
           Нет нарушения утиной типизации, вызов допускается.

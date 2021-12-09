@@ -5,9 +5,9 @@ export interface GroupingFunctionSettings<T> {
   createFormatter: (field: keyof T) => Formatter<T>;
   label: string;
 }
-export interface AggregateFunctionSettings<T, R> {
-  createReducer: (field:keyof T)=>(accumulator: R, item: T) => R;
-  getInitialValue: () => R;
+export interface AggregateFunctionSettings<T> {
+  createReducer: <R>(field:keyof T)=>(accumulator: R, item: T) => R;
+  getInitialValue: <R>() => R;
   label: string;
 }
 
