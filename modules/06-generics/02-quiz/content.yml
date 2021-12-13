@@ -27,14 +27,14 @@ questions:
       const fakeResponder:Responder = {computeAnswer:()=>{throw new Error(WRONG_METHOD);}};
 
       const answer = hostResponder(fakeResponder);
-      ```    
+      ```
     type: single
     options:
       - id: 10
         value: Программа не будет компилироваться вовсе. Говорить о значении переменной не приходится
         correct: false
-        resultMessage: | 
-          Статический анализ typescript рассматривает тип переменной (отдельно от реализации класса) в соответствии с принципом утиной типизации. Нарушений этого принципа в примере нет. Компилятор создаст программу на javascript и ее можно будет запустить.
+        resultMessage: |
+          Статический анализ TypeScript рассматривает тип переменной (отдельно от реализации класса) в соответствии с принципом утиной типизации. Нарушений этого принципа в примере нет. Компилятор создаст программу на javascript и ее можно будет запустить.
       - id: 20
         value: Переменная не получит значение в связи с аварийным завершением метода computeAnswer. Мы передаем fakeResponder, который не умеет вычислять ответ.
         correct: false
@@ -44,7 +44,7 @@ questions:
         value: Переменная не получит значение в связи с аварийным завершением функции hostResponder.
         correct: true
         resultMessage: |
-          во время исполнения оператор instanceof выявит расхождение в типе аргумента и функция завершится с выбрасыванием исключения WRONG_INSTANCE 
+          во время исполнения оператор instanceof выявит расхождение в типе аргумента и функция завершится с выбрасыванием исключения WRONG_INSTANCE
   - id: 20
     title: Какое сообщение появится на консоли?
     description: |
@@ -65,17 +65,17 @@ questions:
       const logger = new Logger();
       const container = new Container();
       container.accept(logger.log);
-      ```    
+      ```
     type: single
     options:
       - id: 10
         value: Приведенный код не компилируется
         correct: false
         resultMessage: |
-          Приведенный код соответствует всем правилам typescript и будет успешно компилирован в Javascript
+          Приведенный код соответствует всем правилам TypeScript и будет успешно компилирован в Javascript
       - id: 20
         value: После запуска программа завершится с ошибкой
-        correct: false              
+        correct: false
         resultMessage: |
           Программа работает как задумано. использование сервисов javascript выполнено корректно
       - id: 30
@@ -91,19 +91,19 @@ questions:
   - id: 30
     title: Какую ошибку обнаружит компилятор typescript
     description: |
-      В контексте определений типов, приведенных ниже определите какую ошибку обнаружит typescript компилятор
+      В контексте определений типов, приведенных ниже определите какую ошибку обнаружит TypeScript компилятор
       ```typescript
       const value = 42;
       const typeName = typeof value;
       const meta: typeof typeName = "number" as typeof typeName;
       const data: typeof meta = "string";
-      ```    
+      ```
     type: single
     options:
       - id: 10
         value: Type '"string"' is not assignable to type '42'.(2322)
         correct: false
-        resultMessage: | 
+        resultMessage: |
           "приведенный код компилируется без ошибок. тип переменной meta - объединение типов "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" и допускает присваивание значения 'string';"
       - id: 20
         value: Type '"string"' is not assignable to type '"number"'.(2322)
@@ -114,23 +114,23 @@ questions:
         value: Код компилируется без ошибок
         correct: true
         resultMessage: |
-          "приведенный код компилируется без ошибок. тип переменной meta - объединение типов "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" и допускает присваивание значения 'string';" 
+          "приведенный код компилируется без ошибок. тип переменной meta - объединение типов "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" и допускает присваивание значения 'string';"
   - id: 40
     title: Какую ошибку обнаружит компилятор typescript, если удалить слова ' as typeof typeName'.
     description: |
-      В контексте определений типов, приведенных ниже определите какую ошибку обнаружит typescript компилятор
+      В контексте определений типов, приведенных ниже определите какую ошибку обнаружит TypeScript компилятор
       ```typescript
       const value = 42;
       const typeName = typeof value;
       const meta: typeof typeName = "number"/* as typeof typeName*/;
       const data: typeof meta = "string";
-      ```    
+      ```
     type: single
     options:
       - id: 10
         value: Type '"string"' is not assignable to type '42'.(2322)
         correct: false
-        resultMessage: | 
+        resultMessage: |
           "переменная мета получает получает специализацию над объединением  "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" до одного элемента "number". такой специализированной строке строку другого содержания присвоить нельзя"
       - id: 20
         value: Type '"string"' is not assignable to type '"number"'.(2322)
@@ -141,6 +141,6 @@ questions:
         value: Код компилируется без ошибок
         correct: false
         resultMessage: |
-          "переменная мета получает получает специализацию над объединением  "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" до одного элемента "number". такой специализированной строке строку другого содержания присвоить нельзя" 
-      
+          "переменная мета получает получает специализацию над объединением  "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" до одного элемента "number". такой специализированной строке строку другого содержания присвоить нельзя"
+
 

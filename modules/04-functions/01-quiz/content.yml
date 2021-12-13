@@ -9,7 +9,7 @@ questions:
   - id: 10
     title: Определите тип значения  по контексту
     description: |
-      в контексте программы typescript определите тип значения аргумента `i` функции `reducer`.
+      в контексте программы TypeScript определите тип значения аргумента `i` функции `reducer`.
       ```typescript
       const result = [..."abcdefg"].reduce(function reducer(a,i){return `${a},${i}`},"");
       console.log(result);
@@ -20,7 +20,7 @@ questions:
       - id: 10
         value: невозможно определить. недостаточно контекста
         correct: false
-        resultMessage: | 
+        resultMessage: |
           i будет иметь тип, соответствующий типу элементов массива, т.е. строка
       - id: 20
         value: any
@@ -40,11 +40,11 @@ questions:
   - id: 20
     title: Какую ошибку во время компиляции обнаружит typescript
     description: |
-      в контексте программы typescript определите какую ошибку обнаружит компилятор
+      в контексте программы TypeScript определите какую ошибку обнаружит компилятор
       ```typescript
       declare function fetchData(onSuccess:(data:number[])=>void):void;
       function logFetchCompleted(){console.log("completed");}
-      fetchData(logFetchCompleted);      
+      fetchData(logFetchCompleted);
       ```
     type: single
     options:
@@ -53,16 +53,16 @@ questions:
           Argument of type '() => void' is not assignable to parameter of type '(data: number[]) => void'.(2345)
         correct: false
         resultMessage: |
-          в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Она их не использует. в typescript такая программа компилируется без ошибок.
+          в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Она их не использует. в TypeScript такая программа компилируется без ошибок.
       - id: 20
         value: Компилируется без ошибок
-        correct: true              
+        correct: true
         resultMessage: |
-          в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Она их не использует. в typescript такая программа компилируется без ошибок.    
+          в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Она их не использует. в TypeScript такая программа компилируется без ошибок.
   - id: 30
     title: Какую ошибку во время компиляции обнаружит typescript
     description: |
-      в контексте программы typescript определите какую ошибку обнаружит компилятор
+      в контексте программы TypeScript определите какую ошибку обнаружит компилятор
       ```typescript
       declare function fetchData(onSuccess:(data:number[])=>void):void;
       function logFetchCompleted(data:number[], statusCode: number){console.log("completed");}
@@ -78,7 +78,7 @@ questions:
           в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Но разработчик объяснил typescript, что функция использует два параметра. во время компиляции будет обнаружена ошибка.
       - id: 20
         value: Компилируется без ошибок
-        correct: false              
+        correct: false
         resultMessage: |
           в Javascript функция logFetchCompleted может быть вызвана и с одним и с двумя параметрам. Но разработчик объяснил typescript, что функция использует два параметра. во время компиляции будет обнаружена ошибка.
-    
+

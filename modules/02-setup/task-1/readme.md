@@ -1,4 +1,4 @@
-# Инициализация typescript для учебного проекта
+# Инициализация TypeScript для учебного проекта
 
 ## Подготовка пустого проекта
 
@@ -32,7 +32,7 @@ npm i -D http-server
 npm i -D typescript
 ```
 
-инициализируйте typescript проект
+инициализируйте TypeScript проект
 
 ```cmd
 npx tsc --init
