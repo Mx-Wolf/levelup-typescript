@@ -1,6 +1,6 @@
 [
   {
-    "title": "Установка и настройка typescript и окружения",
+    "title": "Установка и настройка TypeScript и окружения",
     "items": [
       {
         "type": "article",
@@ -9,8 +9,13 @@
       },
       {
         "type": "article",
+        "path": "02-setup/01-setup-2",
+        "description": "Установка дополнительных полезных элементов окружения для удобства разработки"
+      },
+      {
+        "type": "article",
         "path": "02-setup/02-playground",
-        "description": "Знакомство с typescript без установки. Использование песочницы для экспериментов"
+        "description": "Знакомство с TypeScript без установки. Использование песочницы для экспериментов"
       },
       {
         "type": "article",
@@ -20,7 +25,7 @@
       {
         "type": "article",
         "path": "02-setup/04-common-settings",
-        "description": "У typescript множество флагов и настроек с которыми следует познакомиться"
+        "description": "У TypeScript множество флагов и настроек с которыми следует познакомиться"
       },
       {
         "type": "task",

@@ -3,7 +3,7 @@
   "items": [{
       "type": "article",
       "path": "01-intro/01-typescript-is-here",
-      "description": "Популярность typescript в последние годы растет и растет"
+      "description": "Популярность TypeScript в последние годы растет и растет"
     },
     {
       "type":"article",

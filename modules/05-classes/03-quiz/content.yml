@@ -7,19 +7,19 @@ successMessage: Порядок, переходим к следующему ра�
 failureMessage: Вам следует повторить основные сведения декораторах
 questions:
   - id: 10
-    title: Декораторы typescript и декораторы javascript это одно и тоже?
+    title: Декораторы TypeScript и декораторы javascript это одно и тоже?
     type: single
     options:
       - id: 10
         value: Да
         correct: false
-        resultMessage: | 
-          декораторы являются экспериментальной особенностью typescript и могут быть изменены в будущем
+        resultMessage: |
+          декораторы являются экспериментальной особенностью TypeScript и могут быть изменены в будущем
       - id: 20
         value: нет
         correct: true
         resultMessage: |
-          декораторы являются экспериментальной особенностью typescript и могут быть изменены в будущем
+          декораторы являются экспериментальной особенностью TypeScript и могут быть изменены в будущем
   - id: 20
     title: Декораторы доступны по умолчанию?
     type: single
@@ -31,7 +31,7 @@ questions:
           Декораторы требует специального ключа при запуске компилятора в командной строке или файле tsconfig.json.
       - id: 20
         value: нет
-        correct: true              
+        correct: true
         resultMessage: |
           Декораторы требует специального ключа при запуске компилятора в командной строке или файле tsconfig.json.
   - id: 30
@@ -47,7 +47,7 @@ questions:
         value: да
         correct: true
         resultMessage: |
-          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
   - id: 40
     title: Допускается декорировать классы?
     type: single
@@ -61,7 +61,7 @@ questions:
         value: нет
         correct: true
         resultMessage: |
-          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
   - id: 50
     title: Допускается декорировать методы?
     type: single
@@ -75,7 +75,7 @@ questions:
         value: да
         correct: true
         resultMessage: |
-          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
   - id: 60
     title: Допускается декорировать функции доступа - get set?
     type: single
@@ -89,7 +89,7 @@ questions:
         value: да
         correct: true
         resultMessage: |
-          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
   - id: 70
     title: Допускается декорировать свойства?
     type: single
@@ -103,7 +103,7 @@ questions:
         value: да
         correct: true
         resultMessage: |
-          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
   - id: 80
     title: Допускается декорировать параметры?
     type: single
@@ -117,7 +117,7 @@ questions:
         value: да
         correct: true
         resultMessage: |
-          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators          
+          разрешается декорировать Class Decorators, Method Decorators,Accessor Decorators, Property Decorators, Parameter Decorators
   - id: 90
     title: декораторы должны быть функциями возвращающими значение?
     type: single
