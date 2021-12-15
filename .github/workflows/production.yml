@@ -85,7 +85,7 @@ jobs:
         run: |
           VERSION=${GITHUB_REF##*/}
 
-          curl -X POST --data-urlencode "payload={\"channel\":\"#intensive-typescript\",\"text\":\"*Content* deployed by ${{ github.actor }}, version: ${VERSION}, revision: <https://github.com/${{ github.repository }}/tree/${{ github.sha }}|${{ github.sha }}>\"}" $SLACK_NOTIFICATION_URL
+          curl -X POST --data-urlencode "payload={\"channel\":\"#levelup-deploy\",\"text\":\"*Repository* <https://github.com/${{ github.repository }}|levelup-typescript> | *Content* deployed by ${{ github.actor }}, version: ${VERSION}, revision: <https://github.com/${{ github.repository }}/tree/${{ github.sha }}|${{ github.sha }}>\"}" $SLACK_NOTIFICATION_URL
 
       - name: notify failure
         if: ${{ failure() }}
@@ -94,4 +94,4 @@ jobs:
         run: |
           VERSION=${GITHUB_REF##*/}
 
-          curl -X POST --data-urlencode "payload={\"channel\":\"#intensive-typescript\",\"text\":\"`Error` *Content* haven't been deployed, version: ${VERSION}\"}" $SLACK_NOTIFICATION_URL
+          curl -X POST --data-urlencode "payload={\"channel\":\"#levelup-deploy\",\"text\":\"`Error` *Repository* <https://github.com/${{ github.repository }}|levelup-typescript> | *Content* haven't been deployed, version: ${VERSION}\"}" $SLACK_NOTIFICATION_URL
