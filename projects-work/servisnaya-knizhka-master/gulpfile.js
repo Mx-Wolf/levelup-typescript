@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const plumber = require('gulp-plumber');
 const sourcemap = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('node-sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const server = require('browser-sync').create();
@@ -16,6 +16,7 @@ const webpackConfig = require('./webpack.config.js');
 const fileinclude = require('gulp-file-include');
 const htmlbeautify = require('gulp-html-beautify');
 const gcmq = require('gulp-group-css-media-queries');
+
 
 const html = () => {
   return gulp.src(['source/html/*.html'])

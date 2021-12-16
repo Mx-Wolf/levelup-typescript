@@ -1139,9 +1139,7 @@ button,
 }
 
 .form-filter__item label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: contents;
   padding: 10px 30px;
   font-family: inherit;
   font-size: 16px;
@@ -1170,7 +1168,35 @@ button,
   display: none;
 }
 
-.form-filter__item input[type="radio"]:checked + label {
+.form-filter__item input[type=radio] + span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 30px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  background-color: #ffffff;
+  -webkit-transition: opacity 0.3s ease, background-color 0.3s ease;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.form-filter__item input[type=radio] + span:hover,
+.form-filter__item input[type=radio] + span:focus {
+  outline: none;
+  background-color: #f4f6f9;
+}
+
+.form-filter__item input[type=radio] + span:active {
+  background-color: #e7f0ff;
+  opacity: 1;
+}
+
+.form-filter__item input[type="radio"]:checked + span {
   background-color: #e7f0ff;
 }
 

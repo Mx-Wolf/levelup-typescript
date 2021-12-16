@@ -1,0 +1,37 @@
+.form-filter__item input[type=radio]+span {
+  display: flex;
+  padding: 10px 30px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+
+}
+
+.form-filter__item input[type=radio]:checked+span {
+
+  background-color: #e7f0ff;
+}
+
+.form-filter__item label {
+  display: contents;
+}
+
+.form-filter__item label:focus, .form-filter__item span:hover, .form-filter__item--sublist:focus, .form-filter__item--sublist:hover {
+  outline: 0;
+  background-color: #f4f6f9;
+}
+
+a.linkmain__setting-link {display: flex;}
+
+a.linkmain__setting-link svg {
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+th.table__cell.table__cell--empty {
+  padding-top: 37px;
+}
