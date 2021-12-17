@@ -77,7 +77,7 @@
   z-index: 1;
 
   label {
-    display: flex;
+    display: contents;
     padding: 10px 30px;
 
     font-family: inherit;
@@ -97,7 +97,24 @@
     display: none;
   }
 
-  input[type="radio"]:checked + label {
+  input[type=radio]+span {
+    display: flex;
+    padding: 10px 30px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    text-align: left;
+    color: inherit;
+    cursor: pointer;
+
+    background-color: $color-default-white;
+
+    @include hover-list-item;
+  
+  }
+
+  input[type="radio"]:checked + span {
     background-color: $color-solitude;
   }
 }
