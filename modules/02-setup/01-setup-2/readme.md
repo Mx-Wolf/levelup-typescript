@@ -41,8 +41,11 @@ npm i -D eslint eslint-config-htmlacademy @typescript-eslint/eslint-plugin @type
       "plugin:@typescript-eslint/eslint-recommended",
       "plugin:@typescript-eslint/recommended"
     ],
-    "rules": {}
+  "rules": {
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "error"
   }
+}
 ```
 
 ## Модульное тестирование
@@ -59,7 +62,7 @@ npm i -D eslint eslint-config-htmlacademy @typescript-eslint/eslint-plugin @type
    * ts-node
 
 ```cmd
-npm i -D "@types/chai @types/chai-spies @types/mocha chai chai-spies mocha ts-node
+npm i -D @types/chai @types/chai-spies @types/mocha chai chai-spies mocha ts-node
 ```
 
 2. Измените настройку вашего проекта, так чтобы nodejs использовал es модули. Вы указываете тип проекта в файле package.json, добавлением на верхнем уровне ключа `type` со значением `module`. Сразу исправьте ключ scripts/test. и добавьте привычный script/start
