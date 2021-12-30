@@ -9,7 +9,7 @@
       },
       {
         "type": "task",
-        "path": "04-generics/02-pr-response-typings",
+        "path": "04-generics/task-5-02-pr-response-typings",
         "description": "Как вы декларируете отклик сервера"
       },
       {
@@ -19,8 +19,8 @@
       },
       {
         "type": "task",
-        "path": "04-generics/04-pr-html-element-type-guards",
-        "description": "Как вы защищаете части своего кода от данных непреверенного типа"
+        "path": "04-generics/task-6-04-pr-html-element-type-guards",
+        "description": "Как вы защищаете части своего кода от данных непроверенного типа"
       },
       {
         "type": "demo",
@@ -39,7 +39,7 @@
       },
       {
         "type": "task",
-        "path": "04-generics/08-pr-double-dispatch",
+        "path": "04-generics/task-7-08-pr-double-dispatch",
         "description": "Как вы реализуете шаблон Visitor"
       },
       {

@@ -44,7 +44,7 @@
       },
       {
         "type": "task",
-        "path": "05-type-manipulation/09-pr-identity-handling",
+        "path": "05-type-manipulation/task-8-09-pr-identity-handling",
         "description": "Как вы объявляете желание получить от сервера вычисляемые данные, а отправить изменяемые"
       },
       {
@@ -59,7 +59,7 @@
       },
       {
         "type": "task",
-        "path": "05-type-manipulation/12-pr-property-changed",
+        "path": "05-type-manipulation/task-9-12-pr-property-changed",
         "description": "Как вы создаете уведомляющий прокси"
       },
       {

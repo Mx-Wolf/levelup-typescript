@@ -1,0 +1,48 @@
+title: Обзор целей и задач typescript
+type: test
+description: |
+  Несколько вопросов, которые помогу вам
+  убедить себя в полезности использования typescript
+  в любом проекте.
+wizard: true
+successMessage: It's all right
+failureMessage: It's bad
+questions:
+  - id: 1
+    title: Вам приходится редактировать код javascript?
+    description: |
+      Вы используете редактор atom, visual studio code, WebStorm или другие редакторы.
+      Получите ли вы выгоду от изучения typescript.
+    type: single
+    options:
+      - id: 1
+        value: Да
+        correct: true
+        resultMessage: Полный официальный список поддерживаемых редакторов доступен на странице repo  [microsoft](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
+      - id: 2
+        value: Нет
+        correct: false
+        resultMessage: Полный официальный список поддерживаемых редакторов доступен на странице repo  [microsoft](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
+  - id: 2
+    title: Приходится ли вам изучать и изменять свой код или код коллег по проекту?
+    description: |
+      В процессе разработки ПО требуется вносить изменения в ранее написанный код. Написали ли этот вы
+      или ваши коллеги, вам приходится с осторожностью подходить к внесению изменений, чтобы не сломать то что работает
+    type: single
+    options:
+      - id: 1
+        value: Да
+        description: |
+          Действительно, требования к продукту постоянно изменяются. Требуется вносить изменения и гарантировать
+          что внесенные изменения не поломают продукт.
+        resultMessage: |
+          Вы можете сэкономить множество нервных клеток проучив typescript-у контролировать ваши же намерения по
+          использованию кода, вызову функций, доступа к полям.
+      - id: 2
+        value: Нет
+        correct: true
+        description: |
+          Если проект закончен, я к нему не возвращаюсь. При необходимости делаю новый, заново
+        resultMessage: |
+          Вы можете высвободить много человеко-часов рабочего времени за счет уверенного повторного использования модулей typescript
+

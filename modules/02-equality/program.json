@@ -54,7 +54,7 @@
       },
       {
         "type": "task",
-        "path": "02-equality/11-pr-record-handling-functions",
+        "path": "02-equality/task-2-11-pr-record-handling-functions",
         "description": "Проблемы типизации функций для работы с записями"
       },
       {

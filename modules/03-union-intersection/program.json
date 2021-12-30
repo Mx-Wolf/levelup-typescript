@@ -74,7 +74,7 @@
       },
       {
         "type": "task",
-        "path": "03-union-intersection/15-pr-factory-functions",
+        "path": "03-union-intersection/task-3-15-pr-factory-functions",
         "description": "Как вы создаете функцию фабрику HTML элементов"
       },
       {
@@ -84,7 +84,7 @@
       },
       {
         "type": "task",
-        "path": "03-union-intersection/17-pr-classes-as-interfaces",
+        "path": "03-union-intersection/task-4-17-pr-classes-as-interfaces",
         "description": "Как вы решаете проблему наследования и полиморфизма"
       },
       {

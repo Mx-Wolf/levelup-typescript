@@ -39,7 +39,7 @@
       },
       {
         "type": "task",
-        "path": "01-intro/07-pr-vscode",
+        "path": "01-intro/task-1-07-pr-vscode",
         "description": "Как вы настраиваете vs-code"
       }
     ]
