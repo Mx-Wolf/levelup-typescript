@@ -1,24 +1,97 @@
-[{
-  "title": "Введение",
-  "items": [{
-      "type": "article",
-      "path": "01-intro/01-typescript-is-here",
-      "description": "Популярность TypeScript в последние годы растет и растет"
-    },
-    {
-      "type":"article",
-      "path":"01-intro/02-javascript-shortcomings",
-      "description": "Только один пример трудностей обеспечения качества кода в контексте чистого javascript"
-    },
-    {
-      "type":"article",
-      "path":"01-intro/03-static-analysis",
-      "description": "Очень краткая демонстрация одной из возможностей typescript"
-    },
-    {
-      "type":"quiz",
-      "path":"01-intro/04-quiz",
-      "description":"Проверьте свою мотивацию"
-    }
-  ]
-}]
+[
+  {
+    "title": "Введение",
+    "items": [
+      {
+        "type": "article",
+        "path": "03-union-intersection/01-al-unknown-never-types",
+        "description": "Всеобъемлющий и единичный элемент в системе типов TypeScript"
+      },
+      {
+        "type": "demo",
+        "path": "03-union-intersection/02-dm-data-fetch-honestly",
+        "description": "Честное получение данных с удаленного сервера"
+      },
+      {
+        "type": "article",
+        "path": "03-union-intersection/03-al-primitive-literal-types",
+        "description": "Специализация примитивных типов"
+      },
+      {
+        "type": "quiz",
+        "path": "03-union-intersection/04-qz-primitive-literal-types",
+        "description": "Насколько ваши примитивные типы специализированы"
+      },
+      {
+        "type": "article",
+        "path": "03-union-intersection/05-al-extending-interfaces",
+        "description": "Специализация структурных типов"
+      },
+      {
+        "type": "quiz",
+        "path": "03-union-intersection/06-qz-extending-interfaces",
+        "description": "Игры престолов, наследование, разделение, объединение интерфейсов"
+      },
+      {
+        "type": "article",
+        "path": "03-union-intersection/07-al-function-overloading",
+        "description": "Перегрузка функций"
+      },
+      {
+        "type": "demo",
+        "path": "03-union-intersection/08-dm-safe-type-interfaces",
+        "description": "Как мы делаем определение функции безопасным для будущего"
+      },
+      {
+        "type": "article",
+        "path": "03-union-intersection/09-al-ts-classes-as-structures",
+        "description": "Несколько слов о классах в TypeScript. Классы как структурные типы"
+      },
+      {
+        "type": "quiz",
+        "path": "03-union-intersection/10-qz-typeof-instanceof",
+        "description": "Как вы используете typeof, instanceof, extends, implements"
+      },
+      {
+        "type": "article",
+        "path": "03-union-intersection/11-al-union-types-discriminating",
+        "description": "Объединение типов"
+      },
+      {
+        "type": "demo",
+        "path": "03-union-intersection/12-dm-improve-on-function-typings",
+        "description": "Как мы улучшаем декларацию типа функции"
+      },
+      {
+        "type": "article",
+        "path": "03-union-intersection/13-al-intersection-types-branding",
+        "description": "Пересечение типов, брендирование"
+      },
+      {
+        "type": "demo",
+        "path": "03-union-intersection/14-dm-units-and-measuring",
+        "description": "Как мы избегаем путаницы единиц измерения"
+      },
+      {
+        "type": "task",
+        "path": "03-union-intersection/15-pr-factory-functions",
+        "description": "Как вы создаете функцию фабрику HTML элементов"
+      },
+      {
+        "type": "demo",
+        "path": "03-union-intersection/16-dm-factory-functions",
+        "description": "Как мы создаем функцию фабрику HTML элементов"
+      },
+      {
+        "type": "task",
+        "path": "03-union-intersection/17-pr-classes-as-interfaces",
+        "description": "Как вы решаете проблему наследования и полиморфизма"
+      },
+      {
+        "type": "demo",
+        "path": "03-union-intersection/18-dm-classes-as-interfaces",
+        "description": "Как мы решаем проблему наследования и полиморфизма"
+      }
+    ]
+  }
+]

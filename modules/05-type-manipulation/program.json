@@ -1,24 +1,72 @@
-[{
-  "title": "Введение",
-  "items": [{
-      "type": "article",
-      "path": "01-intro/01-typescript-is-here",
-      "description": "Популярность TypeScript в последние годы растет и растет"
-    },
-    {
-      "type":"article",
-      "path":"01-intro/02-javascript-shortcomings",
-      "description": "Только один пример трудностей обеспечения качества кода в контексте чистого javascript"
-    },
-    {
-      "type":"article",
-      "path":"01-intro/03-static-analysis",
-      "description": "Очень краткая демонстрация одной из возможностей typescript"
-    },
-    {
-      "type":"quiz",
-      "path":"01-intro/04-quiz",
-      "description":"Проверьте свою мотивацию"
-    }
-  ]
-}]
+[
+  {
+    "title": "Введение",
+    "items": [
+      {
+        "type": "article",
+        "path": "05-type-manipulation/01-al-conditions",
+        "description": "Условные типы"
+      },
+      {
+        "type": "quiz",
+        "path": "05-type-manipulation/02-qz-conditions",
+        "description": "Как ветвятся ваши типы"
+      },
+      {
+        "type": "article",
+        "path": "05-type-manipulation/03-al-indexed-types",
+        "description": "Типы с доступом по индексу"
+      },
+      {
+        "type": "quiz",
+        "path": "05-type-manipulation/04-qz-indexed-types",
+        "description": "Ключи от хранилища где данные лежат"
+      },
+      {
+        "type": "article",
+        "path": "05-type-manipulation/05-al-type-projection",
+        "description": "Проекция типов, обозначение локальной переменной для типа"
+      },
+      {
+        "type": "demo",
+        "path": "05-type-manipulation/06-dm-type-projection",
+        "description": "Как мы создаем проекции и отражения"
+      },
+      {
+        "type": "article",
+        "path": "05-type-manipulation/07-al-literal-interpolation-types",
+        "description": "Интерполяция специализированных строковых типов"
+      },
+      {
+        "type": "demo",
+        "path": "05-type-manipulation/08-dm-selection-keys-props-etc",
+        "description": "Как мы объявляем нужные свойства из множества ключей структурных типов"
+      },
+      {
+        "type": "task",
+        "path": "05-type-manipulation/09-pr-identity-handling",
+        "description": "Как вы объявляете желание получить от сервера вычисляемые данные, а отправить изменяемые"
+      },
+      {
+        "type": "demo",
+        "path": "05-type-manipulation/10-dm-identity-handling",
+        "description": "Как мы объявляем желание отправлять изменяемые свойства, а получать все"
+      },
+      {
+        "type": "demo",
+        "path": "05-type-manipulation/11-dm-promisify",
+        "description": "Как мы создаем прокси для api"
+      },
+      {
+        "type": "task",
+        "path": "05-type-manipulation/12-pr-property-changed",
+        "description": "Как вы создаете уведомляющий прокси"
+      },
+      {
+        "type": "demo",
+        "path": "05-type-manipulation/13-dm-property-changed",
+        "description": "Как мы создаем уведомляющий прокси"
+      }
+    ]
+  }
+]

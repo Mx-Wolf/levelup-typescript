@@ -1,24 +1,52 @@
-[{
-  "title": "Введение",
-  "items": [{
-      "type": "article",
-      "path": "01-intro/01-typescript-is-here",
-      "description": "Популярность TypeScript в последние годы растет и растет"
-    },
-    {
-      "type":"article",
-      "path":"01-intro/02-javascript-shortcomings",
-      "description": "Только один пример трудностей обеспечения качества кода в контексте чистого javascript"
-    },
-    {
-      "type":"article",
-      "path":"01-intro/03-static-analysis",
-      "description": "Очень краткая демонстрация одной из возможностей typescript"
-    },
-    {
-      "type":"quiz",
-      "path":"01-intro/04-quiz",
-      "description":"Проверьте свою мотивацию"
-    }
-  ]
-}]
+[
+  {
+    "title": "Введение",
+    "items": [
+      {
+        "type": "article",
+        "path": "04-generics/01-al-generic-structures",
+        "description": "Структуры данных в общем виде"
+      },
+      {
+        "type": "task",
+        "path": "04-generics/02-pr-response-typings",
+        "description": "Как вы декларируете отклик сервера"
+      },
+      {
+        "type": "demo",
+        "path": "04-generics/03-dm-response-typings",
+        "description": "Как мы декларируем отклик сервера"
+      },
+      {
+        "type": "task",
+        "path": "04-generics/04-pr-html-element-type-guards",
+        "description": "Как вы защищаете части своего кода от данных непреверенного типа"
+      },
+      {
+        "type": "demo",
+        "path": "04-generics/05-dm-html-element-type-guards",
+        "description": "Как мы защищаем части своего кода от данных непроверенного типа"
+      },
+      {
+        "type": "article",
+        "path": "04-generics/06-al-generic-functions",
+        "description": "Обобщенные функции"
+      },
+      {
+        "type": "article",
+        "path": "04-generics/07-al-generic-type-functions-vs-functions-generic-types",
+        "description": "Функции обобщенного аргумента и типы обобщенных функций"
+      },
+      {
+        "type": "task",
+        "path": "04-generics/08-pr-double-dispatch",
+        "description": "Как вы реализуете шаблон Visitor"
+      },
+      {
+        "type": "demo",
+        "path": "04-generics/09-dm-double-dispatch",
+        "description": "Как мы реализуем шаблон Visitor"
+      }
+    ]
+  }
+]
