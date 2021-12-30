@@ -1,24 +1,42 @@
-[{
-  "title": "Введение",
-  "items": [{
-      "type": "article",
-      "path": "01-intro/01-typescript-is-here",
-      "description": "Популярность TypeScript в последние годы растет и растет"
-    },
-    {
-      "type":"article",
-      "path":"01-intro/02-javascript-shortcomings",
-      "description": "Только один пример трудностей обеспечения качества кода в контексте чистого javascript"
-    },
-    {
-      "type":"article",
-      "path":"01-intro/03-static-analysis",
-      "description": "Очень краткая демонстрация одной из возможностей typescript"
-    },
-    {
-      "type":"quiz",
-      "path":"01-intro/04-quiz",
-      "description":"Проверьте свою мотивацию"
-    }
-  ]
-}]
+[
+  {
+    "title": "Введение",
+    "items": [
+      {
+        "type": "article",
+        "path": "06-next-step/01-al-daily-work",
+        "description": "TypeScript в повседневной работе"
+      },
+      {
+        "type": "article",
+        "path": "06-next-step/02-al-popular-wild-life",
+        "description": "Популярные применения TypeScript"
+      },
+      {
+        "type": "demo",
+        "path": "06-next-step/03-dm-getting-started-angular",
+        "description": "Как мы запускаем angular"
+      },
+      {
+        "type": "demo",
+        "path": "06-next-step/04-dm-getting-started-react",
+        "description": "Как мы запускаем react"
+      },
+      {
+        "type": "demo",
+        "path": "06-next-step/05-dm-getting-started-vue",
+        "description": "Как мы запускаем vue"
+      },
+      {
+        "type": "article",
+        "path": "06-next-step/06-code-quality-beyond-ts",
+        "description": "Как еще можно улучать качество кода, приложения, продукта"
+      },
+      {
+        "type": "quiz",
+        "path": "06-next-step/07-qz-final-quiz",
+        "description": "Проверьте себя, перед дальней дорогой"
+      }
+    ]
+  }
+]
