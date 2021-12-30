@@ -1,0 +1,67 @@
+[
+  {
+    "title": "Введение",
+    "items": [
+      {
+        "type": "article",
+        "path": "02-equality/01-al-value-vs-type-eq",
+        "description": "Отличие между равенством значений и эквивалентностью типов"
+      },
+      {
+        "type": "article",
+        "path": "02-equality/02-al-equality-by-ability",
+        "description": "Эквивалентность типов рассматривается относительно применимых операций"
+      },
+      {
+        "type": "article",
+        "path": "02-equality/03-al-primitive-types",
+        "description": "Примитивные типы. Так ли уж они примитивны"
+      },
+      {
+        "type": "quiz",
+        "path": "02-equality/04-qz-primitive-type-detection",
+        "description": "Мы тестируем вас, а вы тестируете значения примитивных типов"
+      },
+      {
+        "type": "article",
+        "path": "02-equality/05-al-structures",
+        "description": "Структурные типы и утки, что общего"
+      },
+      {
+        "type": "article",
+        "path": "02-equality/06-al-functions",
+        "description": "Функции и типы которые можно позвать"
+      },
+      {
+        "type": "article",
+        "path": "02-equality/07-al-generic",
+        "description": "Типы типов и программирование общими словами"
+      },
+      {
+        "type": "demo",
+        "path": "02-equality/08-dm-type-annotation",
+        "description": "Аннотация типов, объявление и привидение типов"
+      },
+      {
+        "type": "demo",
+        "path": "02-equality/09-dm-type-guars",
+        "description": "Определение структуры типа"
+      },
+      {
+        "type": "demo",
+        "path": "02-equality/10-dm-call-signatures",
+        "description": "Определение типа функции"
+      },
+      {
+        "type": "task",
+        "path": "02-equality/task-2-11-pr-record-handling-functions",
+        "description": "Проблемы типизации функций для работы с записями"
+      },
+      {
+        "type": "demo",
+        "path": "02-equality/12-dm-record-handling-functions",
+        "description": "Как мы решаем проблемы типизации функций для работы с записями"
+      }
+    ]
+  }
+]

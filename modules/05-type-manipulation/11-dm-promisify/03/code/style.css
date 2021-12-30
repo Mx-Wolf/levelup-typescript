@@ -1,0 +1,50 @@
+body {
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 30px;
+  color: #000000;
+  min-width: 1150px;
+}
+
+.wrapper {
+  width: 1110px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main-header-wrapper {
+  display: flex;
+}
+
+.main-nav {
+  margin-left: auto;
+  max-width: 700px;
+}
+
+/* / */.menu-primary-container .menu-item {
+  list-style-type: none;
+}
+
+.menu-primary-container .menu-item a {
+  font-size: 18px;
+  color: #000000;
+  padding: 10px 25px;
+  text-decoration: none;
+}
+
+.menu-primary-container .menu-item a:hover {
+  color: #9f7303;
+}
+
+.menu-primary-container .menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Отступы для пунктов меню первого уровня */
+
+.menu-primary-container .menu > .menu-item {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}/* \ */

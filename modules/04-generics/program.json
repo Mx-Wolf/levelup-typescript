@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Введение",
+    "items": [
+      {
+        "type": "article",
+        "path": "04-generics/01-al-generic-structures",
+        "description": "Структуры данных в общем виде"
+      },
+      {
+        "type": "task",
+        "path": "04-generics/task-5-02-pr-response-typings",
+        "description": "Как вы декларируете отклик сервера"
+      },
+      {
+        "type": "demo",
+        "path": "04-generics/03-dm-response-typings",
+        "description": "Как мы декларируем отклик сервера"
+      },
+      {
+        "type": "task",
+        "path": "04-generics/task-6-04-pr-html-element-type-guards",
+        "description": "Как вы защищаете части своего кода от данных непроверенного типа"
+      },
+      {
+        "type": "demo",
+        "path": "04-generics/05-dm-html-element-type-guards",
+        "description": "Как мы защищаем части своего кода от данных непроверенного типа"
+      },
+      {
+        "type": "article",
+        "path": "04-generics/06-al-generic-functions",
+        "description": "Обобщенные функции"
+      },
+      {
+        "type": "article",
+        "path": "04-generics/07-al-generic-type-functions-vs-functions-generic-types",
+        "description": "Функции обобщенного аргумента и типы обобщенных функций"
+      },
+      {
+        "type": "task",
+        "path": "04-generics/task-7-08-pr-double-dispatch",
+        "description": "Как вы реализуете шаблон Visitor"
+      },
+      {
+        "type": "demo",
+        "path": "04-generics/09-dm-double-dispatch",
+        "description": "Как мы реализуем шаблон Visitor"
+      }
+    ]
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "title": "Шаг 1",
+  "mode": "render-single-html",
+  "visibleTabs": ["index.html", "style.css"],
+  "activeEditor": "index.html"
+}
