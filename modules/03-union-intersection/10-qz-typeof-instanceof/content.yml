@@ -1,48 +1,87 @@
-title: Обзор целей и задач typescript
-type: test
-description: |
-  Несколько вопросов, которые помогу вам
-  убедить себя в полезности использования typescript
-  в любом проекте.
-wizard: true
-successMessage: It's all right
-failureMessage: It's bad
+description: ""
+failureMessage: "Помните, что typeof применяется в TypeScript в разных контекстах по разному. В TypeScript он прокидывает связь между пространством значений и пространством типов"
 questions:
-  - id: 1
-    title: Вам приходится редактировать код javascript?
-    description: |
-      Вы используете редактор atom, visual studio code, WebStorm или другие редакторы.
-      Получите ли вы выгоду от изучения typescript.
-    type: single
+  - description: ""
     options:
-      - id: 1
-        value: Да
-        correct: true
-        resultMessage: Полный официальный список поддерживаемых редакторов доступен на странице repo  [microsoft](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
-      - id: 2
-        value: Нет
-        correct: false
-        resultMessage: Полный официальный список поддерживаемых редакторов доступен на странице repo  [microsoft](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
-  - id: 2
-    title: Приходится ли вам изучать и изменять свой код или код коллег по проекту?
-    description: |
-      В процессе разработки ПО требуется вносить изменения в ранее написанный код. Написали ли этот вы
-      или ваши коллеги, вам приходится с осторожностью подходить к внесению изменений, чтобы не сломать то что работает
-    type: single
+      - correct: true
+        value: "являются операторами JavaScript, а не только TypeScript"
+        resultMessage: "Когда операторы применяются в контексте значений, они выполняются во время работы программы и являются операторами JavaScript"
+        id: 1
+      - correct: false
+        value: "выполняются во время работы программы, а не во время компиляции"
+        resultMessage: "Оператор typeof может быть использован в контексте типов. В этом случае он выполняется во время компиляции"
+        id: 2
+      - correct: false
+        value: "Позволяют выяснить сведения о типе примитивных значений"
+        resultMessage: "instanceof позволяет узнать наличие указанного конструктора в цепочке прототипов, у примитивных значений этот оператор возвращает false"
+        id: 3
+      - correct: false
+        value: "позволяют выяснить имя интерфейса TypeScript во время работы программы"
+        resultMessage: "говорить об именах интерфейсов TypeScript можно только в контексте TypeScript, а поскольку операторы выполняются во время работы программы утверждение не имеет смысла"
+        id: 4
+      - correct: false
+        value: "Позволяют узнать имя абстрактного класса, наследником которого является значение"
+        resultMessage: "instanceof позволяет проверить, что указанный конструктор находится в цепочки прототипов. Узнать имя абстрактного класса с помощью этого оператора нельзя"
+        id: 5
+    title: "Что общего между typeof и instanceof"
+    type: "multiple"
+    id: 1
+  - description: "```typescript\n\ndeclare class AbstractView{\n    appendTo(container:HTMLDivElement):void;\n}\ndeclare function log(line: string):void;\n\nfunction render(container:HTMLDivElement, view:AbstractView):void{\n  view.appendTo(container);\n  if(view instanceof AbstractView){\n      return;\n  }\n  log('is it possible to reach here?');\n}\n\n\n```"
     options:
-      - id: 1
-        value: Да
-        description: |
-          Действительно, требования к продукту постоянно изменяются. Требуется вносить изменения и гарантировать
-          что внесенные изменения не поломают продукт.
-        resultMessage: |
-          Вы можете сэкономить множество нервных клеток проучив typescript-у контролировать ваши же намерения по
-          использованию кода, вызову функций, доступа к полям.
-      - id: 2
-        value: Нет
+      - correct: false
+        resultMessage: "Определение класса в TypeScript существует в двух пространствах - в пространстве имен функций и в пространстве интерфейсов. Разработчик может использовать интерфейс класса для реализации ООП полиморфизма"
+        value: "Да"
+        id: 1
+      - value: "Нет"
         correct: true
-        description: |
-          Если проект закончен, я к нему не возвращаюсь. При необходимости делаю новый, заново
-        resultMessage: |
-          Вы можете высвободить много человеко-часов рабочего времени за счет уверенного повторного использования модулей typescript
-
+        resultMessage: "Определение класса в TypeScript существует в двух пространствах - в пространстве имен функций и в пространстве интерфейсов. Разработчик может использовать интерфейс класса для реализации ООП полиморфизма"
+        id: 2
+    title: "Правда ли, что в случае строгой компиляции TypeScript приведенный код никогда не запишет в консоль событие, функция log не будет вызвана"
+    type: "single"
+    id: 2
+  - description: "```typescript\nclass AbstractView {\n    appendTo(container: HTMLDivElement): void {\n        throw new Error('make one for yourself');\n    }\n}\n\nclass HeirView extends AbstractView {\n    appendTo(container: HTMLDivElement): void {\n\n    }\n}\n\nclass ImitatorView implements AbstractView{\n    appendTo(container: HTMLDivElement):void{\n\n    }\n}\n\nconst heir = new HeirView() instanceof AbstractView;\nconst imitator = new ImitatorView() instanceof AbstractView;\n\n\n```"
+    options:
+      - correct: false
+        value: "Обе будут true"
+        resultMessage: "Оператор instanceof определяет наличие в цепочке прототипов указанной функции конструктора. только hair будет иметь значение true"
+        id: 1
+      - correct: false
+        value: "Обе будут false"
+        resultMessage: "Оператор instanceof определяет наличие в цепочке прототипов указанной функции конструктора. только hair будет иметь значение true"
+        id: 2
+      - correct: true
+        value: "hair === true"
+        resultMessage: "IN_SYNC_WITH_PREV"
+        id: 3
+      - correct: false
+        value: "imitator === true"
+        resultMessage: "IN_SYNC_WITH_PREV"
+        id: 4
+    title: "В контексте определения классов AbstractView, HeirView, ImitatorView какая из переменных будет иметь значение false "
+    type: "multiple"
+    id: 3
+  - description: "```typescript\nclass AbstractView {\n    appendTo(container: HTMLDivElement): void {\n        throw new Error('make one for yourself');\n    }\n}\n\nconsole.log(typeof AbstractView)\n\n```"
+    options:
+      - correct: false
+        value: "object"
+        resultMessage: "Классы в JavaScript реализованы с помощью функций имя класса соответствует имени функции конструктора в отношении которой и будет выполнен оператор typeof. Следовательно он вернет значение function"
+        id: 1
+      - correct: false
+        value: "class"
+        resultMessage: "Классы в JavaScript реализованы с помощью функций имя класса соответствует имени функции конструктора в отношении которой и будет выполнен оператор typeof. Следовательно он вернет значение function"
+        id: 2
+      - correct: true
+        value: "function"
+        resultMessage: "IN_SYNC_WITH_PREV"
+        id: 3
+      - correct: false
+        value: "во время работы информация о типе значения недоступна, поэтому программа завершится с ошибкой"
+        resultMessage: "IN_SYNC_WITH_PREV"
+        id: 4
+    title: "В контексте определения класса AbstractView  определите результат работы оператора typeof"
+    type: "multiple"
+    id: 4
+successMessage: "Помните, что typeof применяется в TypeScript в разных контекстах по разному. В TypeScript он прокидывает связь между пространством значений и пространством типов"
+title: "Проверьте свое понимание роли typeof и instanceof в TypeScript"
+type: "test"
+wizard: true
