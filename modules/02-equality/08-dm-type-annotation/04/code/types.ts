@@ -1,3 +1,4 @@
+export type Role = "admin" | "moderator" | "writer";
 export interface Geo {
   lat: string,
   lng: string
@@ -23,6 +24,6 @@ export interface User {
   phone: string,
   website: string,
   company?: Company | undefined;
-  roles: string[];
+  roles: Role[];
   verified?: boolean | undefined;
 }
