@@ -13,23 +13,23 @@ questions:
         id: 2
       - correct: true
         value: "null"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "JavaScript примитивный тип"
         id: 3
       - correct: true
         value: "number"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "JavaScript примитивный тип"
         id: 4
       - correct: true
         value: "string"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "JavaScript примитивный тип"
         id: 5
       - correct: true
         value: "symbol"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "JavaScript примитивный тип"
         id: 6
       - correct: true
         value: "undefined"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "JavaScript примитивный тип"
         id: 7
       - correct: false
         value: "Date"
@@ -41,7 +41,7 @@ questions:
         id: 9
       - correct: false
         value: "Set"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "Встроенный тип JavaScript является объектом"
         id: 10
       - correct: true
         value: "never"
@@ -160,7 +160,7 @@ questions:
         id: 2
       - correct: true
         value: "2"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "TypeScript специально ограничивает возможность использование typeof оператора в отношении выражения, которое можно спутать с вызовом функции"
         id: 3
     title: "Сколько ошибок обнаружит компилятор"
     type: "multiple"
@@ -194,7 +194,7 @@ questions:
         id: 2
       - correct: true
         value: "требуется одна реализация"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "TypeScript выбирает вариант объявления функции в порядке объявления и требует одной и только одной реализации. Причем, объявление самой реализации не доступно во время анализа"
         id: 3
     title: "Сколько реализаций придется создать для трех вариантов перегруженных функций"
     type: "multiple"
@@ -271,7 +271,7 @@ questions:
         id: 2
       - correct: false
         value: "2"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "Все элементы должны быть инициализированы при создании кортежа"
         id: 3
     title: "В контексте определения кортежа из трех элементов, сколько ошибок  обнаружит компилятор для программы"
     type: "single"
@@ -288,7 +288,7 @@ questions:
         id: 2
       - correct: false
         value: "2"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "TypeScript допускает необязательные элементы в хвосте кортежа"
         id: 3
     title: "В контексте определения кортежа из трех элементов, сколько ошибок  обнаружит компилятор для программы"
     type: "single"
@@ -305,7 +305,7 @@ questions:
         id: 2
       - correct: true
         value: "2"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "TypeScript допускает необязательные элементы только в хвосте кортежа"
         id: 3
     title: "В контексте определения кортежа из трех элементов, сколько ошибок  обнаружит компилятор для программы"
     type: "single"
@@ -331,11 +331,11 @@ questions:
         id: 2
       - correct: true
         value: "предотвращает доступ к несуществующим свойствам объекта"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "когда этот флаг false, то компилятор TypeScript игнорирует null и undefined, если этот флаг true значения null и undefined получают свои собственные особенные типы"
         id: 3
       - correct: false
         value: "Контролирует использование типа any в программе"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "когда этот флаг false, то компилятор TypeScript игнорирует null и undefined, если этот флаг true значения null и undefined получают свои собственные особенные типы"
         id: 4
     title: "флаг компилятора strictNullChecks"
     type: "multiple"
@@ -365,7 +365,7 @@ questions:
         id: 2
       - correct: true
         value: "TypeScript сообщит об ошибке, создаст программу, которая, при запуске, выведет на экран сообщение"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "Компилятор сообщит об ошибке, но создаст JavaScript исходник.результатом работы программы будет строка на консоли [LOG]: \"expression TypeScript\" "
         id: 3
     title: "Какой результат выполнения программы вы ожидаете"
     type: "single"
@@ -382,7 +382,7 @@ questions:
         id: 2
       - correct: true
         value: "string"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "тип переменной будет string благодаря вычислениями уловного типа SpellOutNumber"
         id: 3
     title: "Какой тип ожидается у переменной buffer"
     type: "single"

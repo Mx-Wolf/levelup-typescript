@@ -1,87 +1,58 @@
-description: ""
-failureMessage: "Помните, что typeof применяется в TypeScript в разных контекстах по разному. В TypeScript он прокидывает связь между пространством значений и пространством типов"
+description: "Интерфейсы являются важной частью вселенной TypeScript и следует уметь эффективно их использовать"
+failureMessage: "Во время разработки приложений вам часто будет требоваться описание структуры точек взаимодействия различных частей программы. Интерфейсы подходят для таких целей очень хорошо"
 questions:
   - description: ""
     options:
-      - correct: true
-        value: "являются операторами JavaScript, а не только TypeScript"
-        resultMessage: "Когда операторы применяются в контексте значений, они выполняются во время работы программы и являются операторами JavaScript"
-        id: 1
-      - correct: false
-        value: "выполняются во время работы программы, а не во время компиляции"
-        resultMessage: "Оператор typeof может быть использован в контексте типов. В этом случае он выполняется во время компиляции"
-        id: 2
-      - correct: false
-        value: "Позволяют выяснить сведения о типе примитивных значений"
-        resultMessage: "instanceof позволяет узнать наличие указанного конструктора в цепочке прототипов, у примитивных значений этот оператор возвращает false"
-        id: 3
-      - correct: false
-        value: "позволяют выяснить имя интерфейса TypeScript во время работы программы"
-        resultMessage: "говорить об именах интерфейсов TypeScript можно только в контексте TypeScript, а поскольку операторы выполняются во время работы программы утверждение не имеет смысла"
-        id: 4
-      - correct: false
-        value: "Позволяют узнать имя абстрактного класса, наследником которого является значение"
-        resultMessage: "instanceof позволяет проверить, что указанный конструктор находится в цепочки прототипов. Узнать имя абстрактного класса с помощью этого оператора нельзя"
-        id: 5
-    title: "Что общего между typeof и instanceof"
-    type: "multiple"
-    id: 1
-  - description: "```typescript\n\ndeclare class AbstractView{\n    appendTo(container:HTMLDivElement):void;\n}\ndeclare function log(line: string):void;\n\nfunction render(container:HTMLDivElement, view:AbstractView):void{\n  view.appendTo(container);\n  if(view instanceof AbstractView){\n      return;\n  }\n  log('is it possible to reach here?');\n}\n\n\n```"
-    options:
-      - correct: false
-        resultMessage: "Определение класса в TypeScript существует в двух пространствах - в пространстве имен функций и в пространстве интерфейсов. Разработчик может использовать интерфейс класса для реализации ООП полиморфизма"
-        value: "Да"
-        id: 1
-      - value: "Нет"
+      - value: "Да"
         correct: true
-        resultMessage: "Определение класса в TypeScript существует в двух пространствах - в пространстве имен функций и в пространстве интерфейсов. Разработчик может использовать интерфейс класса для реализации ООП полиморфизма"
-        id: 2
-    title: "Правда ли, что в случае строгой компиляции TypeScript приведенный код никогда не запишет в консоль событие, функция log не будет вызвана"
-    type: "single"
-    id: 2
-  - description: "```typescript\nclass AbstractView {\n    appendTo(container: HTMLDivElement): void {\n        throw new Error('make one for yourself');\n    }\n}\n\nclass HeirView extends AbstractView {\n    appendTo(container: HTMLDivElement): void {\n\n    }\n}\n\nclass ImitatorView implements AbstractView{\n    appendTo(container: HTMLDivElement):void{\n\n    }\n}\n\nconst heir = new HeirView() instanceof AbstractView;\nconst imitator = new ImitatorView() instanceof AbstractView;\n\n\n```"
-    options:
-      - correct: false
-        value: "Обе будут true"
-        resultMessage: "Оператор instanceof определяет наличие в цепочке прототипов указанной функции конструктора. только hair будет иметь значение true"
+        resultMessage: "TypeScript допускает множественное наследование интерфейсов. Идентификаторы интерфейсов в этом случае указываются через запятую"
         id: 1
       - correct: false
-        value: "Обе будут false"
-        resultMessage: "Оператор instanceof определяет наличие в цепочке прототипов указанной функции конструктора. только hair будет иметь значение true"
+        resultMessage: "TypeScript допускает множественное наследование интерфейсов. Идентификаторы интерфейсов в этом случае указываются через запятую"
+        value: "Нет"
+        id: 2
+    title: "может ли интерфейс TypeScript наследовать несколько разных родительских интерфейсов?"
+    type: "single"
+    id: 1
+  - description: "```typescript\n\n      interface Country {\n        border: { length: number; };\n    }\n    \n    interface View {\n        border: { color: string; };\n    }\n    \n    interface CountryView extends Country, View { }\n    \n    const countrySettings = {\n        border: {\n            color: 'red',\n            length: 30000,\n        },\n    };\n      \n```"
+    options:
+      - correct: false
+        value: "TypeScript не допускает пустые интерфейсы как DrawableCountry, поскольку они все эквивалентны"
+        resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
+        id: 1
+      - correct: false
+        value: "TypeScript не допускает множественное наследование не экспортированных интерфейсов"
+        resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
+        id: 2
+      - correct: false
+        value: "TypeScript не допускает множественное наследование интерфейсов содержащих сложные типы"
+        resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
+        id: 3
+      - correct: true
+        value: "Правильный ответ не указан"
+        resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
+        id: 4
+    title: "В контексте определения интерфейсов Country  и View почему возникает ошибка компиляции?"
+    type: "multiple"
+    id: 2
+  - description: "```typescript\n\n      interface GeoBorder {\n        length: number;\n    }\n    \n    interface DrawableBorder {\n        color: string;\n    }\n    \n    interface Border extends GeoBorder, DrawableBorder{}\n    \n    interface CountryView { \n        border:Border;\n    }\n    \n    const countrySettings = {\n        border: {\n            color: 'black',\n            length: 30000,\n        },\n    } as const;\n    \n    \n```"
+    options:
+      - correct: false
+        value: "Нет"
+        resultMessage: "Эквивалентность типов в TypeScript рассматривается относительно применимых операций. К контексте приведенного примера можно допустить функции где значения типа CountryView и значение переменной countryView будут эквивалентны, а можно - где нет"
+        id: 1
+      - correct: false
+        value: "Да"
+        resultMessage: "Эквивалентность типов в TypeScript рассматривается относительно применимых операций. К контексте приведенного примера можно допустить функции где значения типа CountryView и значение переменной countryView будут эквивалентны, а можно - где нет"
         id: 2
       - correct: true
-        value: "hair === true"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        value: "Невозможно ответить"
+        resultMessage: "Эквивалентность типов в TypeScript рассматривается относительно применимых операций. К контексте приведенного примера можно допустить функции где значения типа CountryView и значение переменной countryView будут эквивалентны, а можно - где нет"
         id: 3
-      - correct: false
-        value: "imitator === true"
-        resultMessage: "IN_SYNC_WITH_PREV"
-        id: 4
-    title: "В контексте определения классов AbstractView, HeirView, ImitatorView какая из переменных будет иметь значение false "
+    title: "В контексте определения интерфейсов GeoBorder, DrawableBorder является ли тип значения переменной эквивалентным интерфейсу CountryView"
     type: "multiple"
     id: 3
-  - description: "```typescript\nclass AbstractView {\n    appendTo(container: HTMLDivElement): void {\n        throw new Error('make one for yourself');\n    }\n}\n\nconsole.log(typeof AbstractView)\n\n```"
-    options:
-      - correct: false
-        value: "object"
-        resultMessage: "Классы в JavaScript реализованы с помощью функций имя класса соответствует имени функции конструктора в отношении которой и будет выполнен оператор typeof. Следовательно он вернет значение function"
-        id: 1
-      - correct: false
-        value: "class"
-        resultMessage: "Классы в JavaScript реализованы с помощью функций имя класса соответствует имени функции конструктора в отношении которой и будет выполнен оператор typeof. Следовательно он вернет значение function"
-        id: 2
-      - correct: true
-        value: "function"
-        resultMessage: "IN_SYNC_WITH_PREV"
-        id: 3
-      - correct: false
-        value: "во время работы информация о типе значения недоступна, поэтому программа завершится с ошибкой"
-        resultMessage: "IN_SYNC_WITH_PREV"
-        id: 4
-    title: "В контексте определения класса AbstractView  определите результат работы оператора typeof"
-    type: "multiple"
-    id: 4
-successMessage: "Помните, что typeof применяется в TypeScript в разных контекстах по разному. В TypeScript он прокидывает связь между пространством значений и пространством типов"
-title: "Проверьте свое понимание роли typeof и instanceof в TypeScript"
+successMessage: "Во время разработки приложений вам часто будет требоваться описание структуры точек взаимодействия различных частей программы. Интерфейсы подходят для таких целей очень хорошо"
+title: "Проверьте ваше понимание поведения интерфейсов в TypeScript"
 type: "test"
 wizard: true

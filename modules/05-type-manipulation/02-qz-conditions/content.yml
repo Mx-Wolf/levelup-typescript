@@ -52,7 +52,7 @@ questions:
         id: 2
       - correct: false
         value: "Promise<\"title\"|\"description\">"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "Условные тип Promised является дистрибутивным"
         id: 3
     title: "В контексте определения типов укажите верное значение типа Debug1"
     type: "multiple"
@@ -69,7 +69,7 @@ questions:
         id: 2
       - correct: true
         value: "Promise<\"title\"|\"description\">"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "Условный тип Promised не является дистрибутивным, поскольку тип-переменная используется в составе более сложного типа"
         id: 3
     title: "В контексте определения типов укажите верное значение типа Debug1"
     type: "multiple"

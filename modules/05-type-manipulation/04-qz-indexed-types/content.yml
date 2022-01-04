@@ -47,7 +47,7 @@ questions:
         id: 2
       - correct: false
         value: "5"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "используется объединение типов возможных значений"
         id: 3
     title: "В контексте определения переменной укажите тип эквивалентный типу Timeout в отношении все возможных операций"
     type: "multiple"
@@ -64,11 +64,11 @@ questions:
         id: 2
       - correct: false
         value: "4"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "Объединенный тип Decoration | \"size\" содержит пять специализированных строковых литеральных типа. Условный тип OptionType выбирает number только для одного из них"
         id: 3
       - correct: false
         value: "5"
-        resultMessage: "IN_SYNC_WITH_PREV"
+        resultMessage: "Объединенный тип Decoration | \"size\" содержит пять специализированных строковых литеральных типа. Условный тип OptionType выбирает number только для одного из них"
         id: 4
     title: "В контексте определения типов, сколько числовых свойств будет иметь значение типа Options"
     type: "multiple"
