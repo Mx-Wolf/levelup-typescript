@@ -1,48 +1,58 @@
-title: Обзор целей и задач typescript
-type: test
-description: |
-  Несколько вопросов, которые помогу вам
-  убедить себя в полезности использования typescript
-  в любом проекте.
-wizard: true
-successMessage: It's all right
-failureMessage: It's bad
+description: ""
+failureMessage: "Специализация строковых литералов очень распространенный прием в процессе использования TypeScript. Вы убедитесь в этом много-много раз."
 questions:
-  - id: 1
-    title: Вам приходится редактировать код javascript?
-    description: |
-      Вы используете редактор atom, visual studio code, WebStorm или другие редакторы.
-      Получите ли вы выгоду от изучения typescript.
-    type: single
+  - description: "```typescript\n\ntype GameSpeed = 'speed-slow'|'speed-normal'|'speed-fast';\ndeclare function setGameSpeed(speed: GameSpeed):void;\n\nconst slow:string = 'speed-slow';\n\nsetGameSpeed(slow);\nsetGameSpeed('speed-slow');\nsetGameSpeed('speed-'+'slow');\n\n```"
     options:
-      - id: 1
-        value: Да
-        correct: true
-        resultMessage: Полный официальный список поддерживаемых редакторов доступен на странице repo  [microsoft](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
-      - id: 2
-        value: Нет
-        correct: false
-        resultMessage: Полный официальный список поддерживаемых редакторов доступен на странице repo  [microsoft](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
-  - id: 2
-    title: Приходится ли вам изучать и изменять свой код или код коллег по проекту?
-    description: |
-      В процессе разработки ПО требуется вносить изменения в ранее написанный код. Написали ли этот вы
-      или ваши коллеги, вам приходится с осторожностью подходить к внесению изменений, чтобы не сломать то что работает
-    type: single
+      - correct: true
+        value: "setGameSpeed(slow);"
+        resultMessage: "переменная определена с  типом string и может иметь значение отличащиеся от приведенного ограниченного списка"
+        id: 1
+      - correct: false
+        value: "setGameSpeed('speed-slow');"
+        resultMessage: "Компилируется без ошибок"
+        id: 2
+      - correct: true
+        value: "setGameSpeed('speed-'+'slow');"
+        resultMessage: "При сложении двух строковых литералов TypeScript обозначает результирующее значение типом string"
+        id: 3
+    title: "В контексте приведенного определения функции, какие из выражений TypeScript будут приводить к ошибкам компиляции"
+    type: "multiple"
+    id: 1
+  - description: "```typescript\n\n      const totalOrder = (a: number, b: number) => {\n        if (isNaN(a) && isNaN(b)) {\n            return 0;\n        }\n        if (isNaN(a)) {\n            return -1;\n        }\n        if (isNaN(b)) {\n            return 1;\n        }\n        if (a === b) {\n            return 0;\n        }\n        if (a < b) {\n            return -1;\n        }\n        return 1;\n    }      \n      \n```"
     options:
-      - id: 1
-        value: Да
-        description: |
-          Действительно, требования к продукту постоянно изменяются. Требуется вносить изменения и гарантировать
-          что внесенные изменения не поломают продукт.
-        resultMessage: |
-          Вы можете сэкономить множество нервных клеток проучив typescript-у контролировать ваши же намерения по
-          использованию кода, вызову функций, доступа к полям.
-      - id: 2
-        value: Нет
-        correct: true
-        description: |
-          Если проект закончен, я к нему не возвращаюсь. При необходимости делаю новый, заново
-        resultMessage: |
-          Вы можете высвободить много человеко-часов рабочего времени за счет уверенного повторного использования модулей typescript
-
+      - correct: false
+        value: "Результат вычисления значения, в зависимости от параметров может быть либо 0, либо 1, либо -1"
+        resultMessage: "Значения, возвращаемые функцией будут зависеть от параметров во время работы программы, а тип вычисляемого значения TypeScript определяет во время компиляции и он будет объединением литеральных типов 0,1,-1"
+        id: 1
+      - correct: true
+        value: "тип результат функции -1|0|1"
+        resultMessage: "Значения, возвращаемые функцией будут зависеть от параметров во время работы программы, а тип вычисляемого значения TypeScript определяет во время компиляции и он будет объединением литеральных типов 0,1,-1"
+        id: 2
+      - correct: false
+        value: "тип результата функции - number"
+        resultMessage: "Значения, возвращаемые функцией будут зависеть от параметров во время работы программы, а тип вычисляемого значения TypeScript определяет во время компиляции и он будет объединением литеральных типов 0,1,-1"
+        id: 3
+    title: "В контексте приведенного определения функции totalOrder, значения каких типов будут результатами вычисления ее значений"
+    type: "multiple"
+    id: 2
+  - description: "```typescript\n\n      declare function getFlag(): true | false;\n      const currentFlag: boolean = getFlag();      \n      \n```"
+    options:
+      - correct: false
+        value: "Type 'boolean' is not assignable to type 'true'|'false'."
+        resultMessage: "Объединение литеральных типов true | false  эквивалентно примитивному типу boolean"
+        id: 1
+      - correct: true
+        value: "Компилируется без ошибок"
+        resultMessage: "Объединение литеральных типов true | false  эквивалентно примитивному типу boolean"
+        id: 2
+      - correct: false
+        value: "Без сведений о реализации функции ответить не возможно"
+        resultMessage: "Объединение литеральных типов true | false  эквивалентно примитивному типу boolean"
+        id: 3
+    title: "Какая ошибка компиляции возникает при компиляции кода"
+    type: "multiple"
+    id: 3
+successMessage: "Специализация строковых литералов очень распространенный прием в процессе использования TypeScript. Вы убедитесь в этом много-много раз."
+title: "Что вы знаете о специализации примитивных типов строк, чисел и флагов"
+type: "test"
+wizard: true

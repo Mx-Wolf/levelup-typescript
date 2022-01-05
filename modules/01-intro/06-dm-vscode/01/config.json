@@ -1,6 +1,6 @@
 {
-  "title": "Шаг 1",
+  "title": "Пустая папка",
   "mode": "render-single-html",
-  "visibleTabs": ["index.html", "style.css"],
+  "visibleTabs": [],
   "activeEditor": "index.html"
 }
