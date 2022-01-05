@@ -9,9 +9,14 @@ export interface Event<T>{
 }
 
 export interface Model<T> {
-  rows: Record<string, T>[];
+  rows: T[];
   orderBy: string;
-  update(row: Record<string, T>): void;
+  update(row: T): void;
   rowsChanged: Event<Model<T>>;
   sortChanged: Event<Model<T>>;
+}
+export interface KeyedRecord {
+  id:number;
+  name: string;
+  [fields:string]:unknown;
 }

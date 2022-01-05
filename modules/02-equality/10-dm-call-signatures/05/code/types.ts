@@ -15,6 +15,7 @@ export interface Model<T> {
   rowsChanged: Event<Model<T>>;
   sortChanged: Event<Model<T>>;
 }
+
 export interface KeyedRecord {
   id:number;
   name: string;
