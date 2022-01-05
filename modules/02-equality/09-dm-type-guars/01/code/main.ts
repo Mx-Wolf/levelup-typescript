@@ -1,4 +1,4 @@
-import { CustomStore } from "./store";
+import { CustomStore } from './store';
 
 type SettingProvider = unknown;
 
