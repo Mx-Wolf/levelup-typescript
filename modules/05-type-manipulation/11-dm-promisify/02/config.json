@@ -1,5 +1,5 @@
 {
-  "title": "Шаг 1",
+  "title": "Шаг 2",
   "mode": "render-single-html",
   "visibleTabs": ["types-promised.ts","main.ts", "types.ts","original.ts","statistics-view.ts", "constants.ts"],
   "activeEditor": "types-promised.ts"
