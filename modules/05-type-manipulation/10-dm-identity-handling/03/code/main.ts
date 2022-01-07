@@ -1,10 +1,10 @@
-import { createLoggerFactory } from './types';
+import { createLoggerFactory } from './logger-factory';
 
 // в настройках нашего приложения администратор 
 // может указать уровень важности сообщений
 // попадающих в лог.
 const settings = {
-  logLevel:'error',
+  logLevel:'warning',
 } as const;
 
 // настройки позволяют создать специальную 

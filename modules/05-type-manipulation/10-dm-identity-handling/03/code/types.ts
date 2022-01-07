@@ -1,7 +1,7 @@
 // нам важно, чтобы названия критичности сообщения имели
 // определенный порядок.
 // массив - имеет натуральный порядок - этим мы и воспользуемся
-const severityOrder = ['info', 'warning', 'error'] as const;
+export const severityOrder = ['info', 'warning', 'error'] as const;
 
 // Кстати, кавычках в следующей строке вы сможете 
 // написать только те слова, которые указаны в массиве
@@ -40,6 +40,3 @@ interface LogMessage { (message: string): void; }
 export type Logger = {
   [K in Severity]: LogMessage;
 }
-
-//эта функция все еще не реализована
-export const createLoggerFactory = (level: any): any => { throw new Error('not implemented yet'); }
