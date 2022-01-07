@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,200&display=swap" rel="stylesheet">
+  <title>Демонстрация адаптирования api для Promise</title>
   <link rel="stylesheet" href="style.css">
-  <title>INTERIOR LOUNGE — дизайн общественных пространств</title>
 </head>
 <body>
+  <form class="game">
+    <h1>Песочница для супермена</h1>
+    <p>Для спасения мира нажми на все три кнопки мышью</p>
 
-  <img src="img/desktop-menu.jpg" alt="" width="700">
-
+  <div class="playground">
+    <button class="activator" type="button" data-id="id0">Нейтрализовать злодея</button>
+  
+    <button class="activator" type="button"  data-id="id1">Остановить таймер</button>
+  
+    <button class="activator" type="button" data-id="id2">Воодушевить напарника</button>
+  </div>
+  <div>
+    <button class="defrost defrost-hidden" type="button" data-id="again">Повторить тренировку</button>
+  </div>
+</form>
+<script src="main.js"></script>
 </body>
 </html>
