@@ -4,7 +4,7 @@ import { createLoggerFactory } from './logger-factory';
 // может указать уровень важности сообщений
 // попадающих в лог.
 const settings = {
-  logLevel:'error',
+  logLevel:'warning',
 } as const;
 
 // настройки позволяют создать специальную 

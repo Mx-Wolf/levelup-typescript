@@ -1,6 +1,5 @@
 {
-  "title": "Шаг 2",
   "mode": "render-single-html",
-  "visibleTabs": ["main.ts","types.ts"],
+  "visibleTabs": ["types.ts","main.ts","logger-factory.ts"],
   "activeEditor": "types.ts"
 }

@@ -3,12 +3,6 @@
 // массив - имеет натуральный порядок - этим мы и воспользуемся
 const severityOrder = ['info', 'warning', 'error'] as const;
 
-// Кстати, кавычках в следующей строке вы сможете 
-// написать только те слова, которые указаны в массиве
-const LOG_LEVEL_ERROR_LEVEL = severityOrder.indexOf('error');
-const LOG_LEVEL_WARNING_LEVEL = severityOrder.indexOf('warning');
-const LOG_LEVEL_INFO_LEVEL = severityOrder.indexOf('info');
-
 // TypeScript позволяет нам извлечь из константного массива
 // типы элементов в объединение - назовем этот тип
 // можете убедиться, что эта строка эквивалентна 
@@ -40,6 +34,3 @@ interface LogMessage { (message: string): void; }
 export type Logger = {
   [K in Severity]: LogMessage;
 }
-
-//эта функция все еще не реализована
-export const createLoggerFactory = (level: any): any => { throw new Error('not implemented yet'); }
