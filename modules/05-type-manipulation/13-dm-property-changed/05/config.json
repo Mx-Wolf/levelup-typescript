@@ -1,6 +1,5 @@
 {
-  "title": "Шаг 1",
   "mode": "render-single-html",
-  "visibleTabs": ["index.html", "style.css"],
-  "activeEditor": "index.html"
+  "visibleTabs": ["adapter.ts","event-manager.ts","types.ts"],
+  "activeEditor": "adapter.ts"
 }

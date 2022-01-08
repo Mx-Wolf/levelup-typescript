@@ -36,7 +36,7 @@ export interface EventManager<T> {
 // т.е.
 // {prop:number} --> {propChanged: ...для подписки на события}
 type WithPropertyChangeEvents<T> = {
-  [K in keyof T as `${K&string}Changed`]:PropertyChangedEvent<T>;
+  [K in keyof T as `${K&string}Changed`]:PropertyChangedEvent<T & WithPropertyChangeEvents<T>>;
 };
 
 // тогда тип обернутого значения 
