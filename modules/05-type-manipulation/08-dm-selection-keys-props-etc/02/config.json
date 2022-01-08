@@ -1,6 +1,5 @@
 {
-  "title": "Шаг 1",
   "mode": "render-single-html",
-  "visibleTabs": ["index.html", "style.css"],
-  "activeEditor": "index.html"
+  "visibleTabs": ["utils.ts","main.ts","query-string-router.ts"],
+  "activeEditor": "query-string-router.ts"
 }

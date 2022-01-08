@@ -1,18 +1,7 @@
 body {
-  font-family: "Montserrat", "Arial", sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 30px;
   color: #000000;
-}
-
-.order {
-  background-color: #f4efe2;
-}
-
-.order-title {
-  color: #9f7303;
-  font-size: 32px;
-  font-weight: 500;
-  margin-bottom: 30px;
 }
