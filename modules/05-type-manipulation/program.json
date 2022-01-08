@@ -65,7 +65,8 @@
       {
         "type": "demo",
         "path": "05-type-manipulation/13-dm-property-changed",
-        "description": "Как мы создаем уведомляющий прокси"
+        "description": "Как мы создаем уведомляющий прокси",
+        "solution":true
       }
     ]
   }
