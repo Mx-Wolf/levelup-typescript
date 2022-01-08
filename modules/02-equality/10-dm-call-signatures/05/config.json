@@ -1,6 +1,6 @@
 {
-  "title": "Шаг 1",
+  "title": "Шаг 5",
   "mode": "render-single-html",
-  "visibleTabs": ["index.html", "style.css"],
-  "activeEditor": "index.html"
+  "visibleTabs": ["main.ts","index.html","model-factory.ts","event-manager.ts","callable.ts","types.ts"],
+  "activeEditor": "main.ts"
 }
