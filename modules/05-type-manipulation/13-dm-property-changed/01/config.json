@@ -1,5 +1,4 @@
 {
-  "title": "Шаг 1",
   "mode": "render-single-html",
   "visibleTabs": ["types.ts"],
   "activeEditor": "types.ts"
