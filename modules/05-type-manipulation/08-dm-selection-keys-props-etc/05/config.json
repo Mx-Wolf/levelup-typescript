@@ -1,5 +1,5 @@
 {
   "mode": "render-single-html",
   "visibleTabs": ["types.ts","utils.ts","main.ts","query-string-router.ts"],
-  "activeEditor": "types.ts"
+  "activeEditor": "main.ts"
 }
