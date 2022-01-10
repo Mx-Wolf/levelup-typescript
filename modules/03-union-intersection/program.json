@@ -35,7 +35,7 @@
       {
         "type": "article",
         "path": "03-union-intersection/07-al-function-overloading",
-        "description": "Перегрузка функций"
+        "description": "Перегрузка функций, перегрузка методов и сигнатуры вызова"
       },
       {
         "type": "demo",
@@ -55,7 +55,7 @@
       {
         "type": "article",
         "path": "03-union-intersection/11-al-union-types-discriminating",
-        "description": "Объединение типов"
+        "description": "Операция объединения типов и ее свойства"
       },
       {
         "type": "demo",
@@ -65,12 +65,13 @@
       {
         "type": "article",
         "path": "03-union-intersection/13-al-intersection-types-branding",
-        "description": "Пересечение типов, брендирование"
+        "description": "Операция пересечения типов. Специализация и пересечение. Брендирование значений"
       },
       {
         "type": "demo",
         "path": "03-union-intersection/14-dm-units-and-measuring",
-        "description": "Как мы избегаем путаницы единиц измерения"
+        "description": "Как мы избегаем путаницы единиц измерения",
+        "solution": true
       },
       {
         "type": "task",
@@ -80,7 +81,8 @@
       {
         "type": "demo",
         "path": "03-union-intersection/16-dm-factory-functions",
-        "description": "Как мы создаем функцию фабрику HTML элементов"
+        "description": "Как мы создаем функцию фабрику HTML элементов",
+        "solution":true
       },
       {
         "type": "task",
@@ -90,7 +92,8 @@
       {
         "type": "demo",
         "path": "03-union-intersection/18-dm-classes-as-interfaces",
-        "description": "Как мы решаем проблему наследования и полиморфизма"
+        "description": "Как мы решаем проблему наследования и полиморфизма",
+        "solution":true
       }
     ]
   }

@@ -15,7 +15,8 @@
       {
         "type": "demo",
         "path": "04-generics/03-dm-response-typings",
-        "description": "Как мы декларируем отклик сервера"
+        "description": "Как мы декларируем отклик сервера",
+        "solution":true
       },
       {
         "type": "task",
@@ -25,7 +26,8 @@
       {
         "type": "demo",
         "path": "04-generics/05-dm-html-element-type-guards",
-        "description": "Как мы защищаем части своего кода от данных непроверенного типа"
+        "description": "Как мы защищаем части своего кода от данных непроверенного типа, функции защитники типа",
+        "solution":true
       },
       {
         "type": "article",
@@ -45,7 +47,8 @@
       {
         "type": "demo",
         "path": "04-generics/09-dm-double-dispatch",
-        "description": "Как мы реализуем шаблон Visitor"
+        "description": "Как мы реализуем шаблон Visitor",
+        "solution":true
       }
     ]
   }
