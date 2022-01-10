@@ -30,7 +30,7 @@
       {
         "type": "article",
         "path": "02-equality/06-al-functions",
-        "description": "Функции и типы которые можно позвать"
+        "description": "Функции и типы которые можно позвать, ко- и контра- вариантность"
       },
       {
         "type": "article",
@@ -60,7 +60,8 @@
       {
         "type": "demo",
         "path": "02-equality/12-dm-record-handling-functions",
-        "description": "Как мы решаем проблемы типизации функций для работы с записями"
+        "description": "Как мы решаем проблемы типизации функций для работы с записями",
+        "solution": true
       }
     ]
   }

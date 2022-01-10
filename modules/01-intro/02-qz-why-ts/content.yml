@@ -70,6 +70,6 @@ questions:
     title: "TypeScript требует больше усилий от разработчика во время изучения, по сравнению с JavaScript"
     type: "single"
 successMessage: "У вас есть мотивация хорошенько разобраться в деталях TypeScript и этот курс вам поможет"
-title: "Выясните, почему вы уже любите TypeScript"
+title: "Уточните ваше представление о наиболее важных разделах TypeScript"
 type: "test"
 wizard: true

@@ -5,7 +5,7 @@
       {
         "type": "article",
         "path": "05-type-manipulation/01-al-conditions",
-        "description": "Условные типы"
+        "description": "Ветвление при вычислениях типов TypeScript-ом"
       },
       {
         "type": "quiz",
@@ -15,7 +15,7 @@
       {
         "type": "article",
         "path": "05-type-manipulation/03-al-indexed-types",
-        "description": "Типы с доступом по индексу"
+        "description": "Типы с доступом по индексу. Циклы во вселенной типов"
       },
       {
         "type": "quiz",
