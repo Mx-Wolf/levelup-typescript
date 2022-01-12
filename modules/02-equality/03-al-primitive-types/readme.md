@@ -58,7 +58,7 @@ if(typeof theEvent === 'object'){
 
 [Playground Link](https://www.typescriptlang.org/play?#code/MYewdgzgLgBFAWBTAogN0WWBeGBvAUDDAJYAmAXAIwA0hcxUANouTAOQBGxA5jBwIZhubfAF98+KAE8ADohhoMUACqz5OaXJAAzOEkWYA3PgD0AKklqF6TKrkwcBIkTKswAVwC2HRACdjzvRMLDDQvsRCxuJmJhLE2gAUmog6eig22Fg4bCAcAFaIwFBsAJROMKCQIMwAdIwg3AkAUgDKAPIAcjVhEdzxUkn6GdQejIzU7OwlJVGmFgDaADJtAOIAuqwARE6bZJusNISbUAzM+zCbXLwCQptimzCEMUA)
 
-## Специальный примитивные типы TypeScript
+## Специальные примитивные типы TypeScript
 
 TypeScript добавляет несколько примитивных типов. Они работает во вселенной типов. Мы познакомимся с ними в модуле 3
 
