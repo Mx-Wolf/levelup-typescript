@@ -50,7 +50,7 @@ const isSearchSuccess = <T extends never>(result: Pick<SearchResult<T>, "found">
 const createSearchSuccess = <T extends unknown>(node: Pick<TreeNode<T>,"data">) => ({ found: true, data: node.data} as const);
 ```
 
-И теперь мы можем использовать рекурсию для поиска под дереву. 
+И теперь мы можем использовать рекурсию для поиска под дереву.
 
 **Внимание!** этот алгоритм не контролирует, является ли значение tree деревом или имеет в своем составе циклы
 
@@ -69,7 +69,6 @@ function findOnTree<T>(tree: TreeNode<T> | undefined, id: number): Readonly<Sear
 ```
 
 целиком пример можно посмотреть [в песочнице](https://www.typescriptlang.org/play?ssl=29&ssc=2&pln=19&pc=1#code/C4TwDgpgBAKgThCA5A9gEwgHhgPigXigG8AoKcqASzQC4oA7AVwFsAjCOAbjIoBsIAZsDrxEqDNjwAfKI3oYBlehDTcKUOJQDmAC2GwEydFlxQZchUpVqKaAIbA7I7gF8SoSFADKEO3ADGOl6M-v4QAM7hkgTEPOQCKBZ0wHCMEDbk9o7OJG4e0D5+gQBidpS8jAgxpOoJSVACdrzh6bnu4AW+AToAShGMvMDRhIXdpeWV0DKjgcGhEVG43CT+KPThwFThM0EhYZEx2FAQAB7AEPLhDBAAbhw4ABQI4QP6AAqU-gDWmDt9L4NJAAaKAAIjq8lBOAAlDRnq8tt4urM9gthnh4YMAHQQ1QrNYbKD+BAOCA7Ob7K6EI6nc6XWT0L70FAAd3oj2ZGDoH2+2EM4hMOCBoKydih0IIeAeRAaiXkyVSEBBoronIgWNFLigdiuq3WwGhywEcn8wEoaygLSKOgAwjpymgEPRJA9Ag6ndzPj9REYJLgQaD+EJQWYwZpdMAoSDqKqWOw4BKahQ9YSg8B-gjCIp5AB5eg+1323iOi5YtPRtCGuIaCDASr0Lbk1GRB5pjODCUAfigbf6gygdGzaDzBbdxadWPDegrVbcJGN9FN5obQ5HhhdKUQIn5xmi5nkgisaArsbYHFhUD6djQa14IF+yN6faGuDwSfIlAEUAe+RQX830D4EBYIWIeyhoKCibVuoCB1nADYyrig5NC0UBajqRIEsAGRodWsH1t+AFYtQBDAdQXZEiS5xNvMLYARKdBWt0druhcP6GDOrhAA)
-
 
 ## Тип специальной переменной this
 
@@ -150,7 +149,7 @@ if(typeof theHero === "object"){
 declare function update<T>(id:number, body:T):void;
 ```
 
-Инструменты TypeScript позволяют нам уточнить, что значения аргумента body должны соответствовать правилам JSON. Мы можем определить эти правила в виде типа VanillaJson. 
+Инструменты TypeScript позволяют нам уточнить, что значения аргумента body должны соответствовать правилам JSON. Мы можем определить эти правила в виде типа VanillaJson.
 
 ```typescript
 type VanillaJson = 

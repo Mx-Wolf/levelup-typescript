@@ -57,8 +57,8 @@ interface TreeNode<T>{
 ```ts
 // В качестве контейнера можно использовать разные типы
 // HTML элементов
-declare function render<THTMLElement, TView>(
-    container: THTMLElement,
+declare function render<HTMLElement, TView>(
+    container: HTMLElement,
     view: TView,
 ): void;
 ```
