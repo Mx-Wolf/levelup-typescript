@@ -173,10 +173,12 @@ declare function update<T extends VanillaJson> (id: number, body:T):void;
 ```typescript
 update(2,{getName:()=>undefined});
 ```
+
 ```text
 Argument of type '{ getName: () => undefined; }' is not assignable to parameter of type 'VanillaJson'.
   Types of property 'getName' are incompatible.
     Type '() => undefined' is not assignable to type 'VanillaJson | undefined'.
       Type '() => undefined' is missing the following properties from type 'VanillaJson[]': pop, push, concat, join, and 25 more.(2345)
 ```
+
 [Вот ссылка на песочницу](https://www.typescriptlang.org/play?ssl=12&ssc=35&pln=1&pc=1#code/C4TwDgpgBAaghgOwJYBsVwFIGcD2CoC8UAUFGVAEY44oSKnkA+UCArgLYUQBODZzWYNyQIA5nyjM2aCcwDeAbQDWALiiDhYgLpr4yNJlwIAvrKgBBbtzggAPHtTpseAHwBuYsQAmEAMbpuaAAzVgRfYCQ8KFYwLzhgCFsAFSgIAA8EhC8sWERHQ1coAAokLzU2Th4AGkocLxAVJIBKFQA3HFKPYhi4hKKARiq5BDh2CDUAIgQIHAnjJo8e+IgigCYh0QhgADlR8aKmghdQnyCRCC95tyA)
