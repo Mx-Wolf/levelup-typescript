@@ -14,7 +14,10 @@ questions:
     title: "может ли интерфейс TypeScript наследовать несколько разных родительских интерфейсов?"
     type: "single"
     id: 1
-  - description: "```typescript\n\n      interface Country {\n        border: { length: number; };\n    }\n    \n    interface View {\n        border: { color: string; };\n    }\n    \n    interface CountryView extends Country, View { }\n    \n    const countrySettings = {\n        border: {\n            color: 'red',\n            length: 30000,\n        },\n    };\n      \n```"
+  - id: 2
+    title: "В контексте определения интерфейсов Country  и View почему возникает ошибка компиляции?"
+    type: "multiple"
+    description: "```typescript\n\n      interface Country {\n        border: { length: number; };\n    }\n    \n    interface View {\n        border: { color: string; };\n    }\n    \n    interface CountryView extends Country, View { }\n    \n    const countrySettings = {\n        border: {\n            color: 'red',\n            length: 30000,\n        },\n    };\n      \n```"
     options:
       - correct: false
         value: "TypeScript не допускает пустые интерфейсы как DrawableCountry, поскольку они все эквивалентны"
@@ -32,9 +35,7 @@ questions:
         value: "Правильный ответ не указан"
         resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
         id: 4
-    title: "В контексте определения интерфейсов Country  и View почему возникает ошибка компиляции?"
-    type: "multiple"
-    id: 2
+
   - description: "```typescript\n\n      interface GeoBorder {\n        length: number;\n    }\n    \n    interface DrawableBorder {\n        color: string;\n    }\n    \n    interface Border extends GeoBorder, DrawableBorder{}\n    \n    interface CountryView { \n        border:Border;\n    }\n    \n    const countrySettings = {\n        border: {\n            color: 'black',\n            length: 30000,\n        },\n    } as const;\n    \n    \n```"
     options:
       - correct: false
