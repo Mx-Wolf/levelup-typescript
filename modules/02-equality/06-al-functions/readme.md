@@ -7,14 +7,26 @@
 Когда вы явно укажите все типы возможных значений, компилятор будет их использовать как для анализа внутри функции, так и в коде, вызывающем эту функцию.
 
 ```typescript
-function exampleAction():void {console.log('еще элемент найден');};
-function exampleAdapter(inValue:number):string {return `${inValue}`;}
-function exampleReducer(state:number, action: number):number {return state+action;}
+// В этом примере разработчик явно указывает 
+// значения каких типов требуются для нормального 
+// использования функций
+
+function exampleAction():void {
+  console.log('еще элемент найден');
+};
+
+function exampleAdapter(inValue:number):string {
+  return `${inValue}`;
+}
+
+function exampleReducer(state:number, action: number):number {
+  return state+action;
+}
 ```
 
-При описании функции `exampleAction` разработчик объяснил компилятору, что функция не ожидает никаких параметров, и не возвращает никакого значения. Тип `void` указывает на то, что функция вызывающий код не должен ожидать от функции какого-то результата.
+При описании функции `exampleAction` разработчик объяснил компилятору, что функция не ожидает никаких параметров, и не возвращает никакого значения. Тип `void` указывает на то, что вызывающий код не должен ожидать от функции какого-то результата.
 
-При описании функции `exampleAdapter` разработчик объяснил компилятору, что для штатной работы пере вызовом в функцию надо передать параметр, содержащий числовое значение. Компилятор будет следить за этим во время анализа.
+При описании функции `exampleAdapter` разработчик объяснил компилятору, что для штатной работы перед вызовом в функцию надо передать параметр, содержащий числовое значение. Компилятор будет следить за этим во время анализа.
 
 Описание этой функции одновременно сообщает компилятору (и другим пользователям) что в результате нормального завершения функция вернет результат строкового типа.
 
@@ -53,7 +65,7 @@ function monitor():never {
 [Playground Link](https://www.typescriptlang.org/play?#code/PTAEnwQQBEEDhBB4QRWEEqQIiCGEQQvCCC4QQYiDWgGlED4QQIRBRNSjIjBOEFFkGkQUdeUQNhBAWEHllEnkHYQVIG4QQDIgJQAwgEgFAAzAK4A7AMYAXAJYB7BaACmADwCGAWwAOAGx0BBVZoUAKAJSgA3lNCglWgM4aLAOjMNAHM7AHJ4QEkQVkBZECFueHQydHEaLnRQhwBuKQBfbKkQCBgEJDQsXAJQQCYQIn4qyHEI8UA5ECi6QEEQEmpMVFlFGy1dQ1MLSwATAxMVHQAnOzUFADUDMzkdAC5QBTkjACNZp1d3GZ0VORntAAMAEmcF5dWdHMvsnKkCsCg4RBQMHDxCDU6g0mq14HRAOIg0HaQiIfWU6kG+mM5h0ACUdGM5EpZnYvCoDNNNts9rNCAYBgpiTt9jNDm5QCczhdQPjCTpQABqUAUxEKV7vMY6JRmAwnUDyBG2Rk6AxjAAqOlMs0J5x0jmppJm2SFIrFHMllJlKhMGhmKkVyvNars01MmtpDk2ADcNGoxtlCl8Sr9ygDmNAKIBmEA44mYrCBVUaLTa7UA8iDwo1GLRqFRmjUKHTO2YuBkAdwAFmoLKBbTM1vT3MdTqbzZaTLNmeqTnL6yqm44HAy3jkgA)
 
 Разглядывая текст функций в примере вы легко можете выяснить значения каких типов они возвращают. Компилятор действует так же. Кроме того, он запоминает свои догадки и использует их в других местах программы так, как будто описание было сделано с явным указанием типа результата. В этом смысле описания функций в этом и в предыдущем разделе эквивалентны.
- 
+
 ## Вывод о типах параметров функции по контексту
 
 Если определение функции появляется в контексте, то TypeScript в состоянии выяснить и типы аргументов.
@@ -124,7 +136,7 @@ type DescribedFunction = {
 }
 ```
 
-тогда мы можем использовать договоренность для наших бизнес-потребностей. 
+тогда мы можем использовать договоренность для наших бизнес-потребностей.
 
 ```typescript
 function logExecution(fn:DescribedFunction){
@@ -136,3 +148,23 @@ function logExecution(fn:DescribedFunction){
     }
 }
 ```
+
+Синтаксис сигнатуры вызова позволяет определять тип перегруженной функции
+
+```tsx
+interface DateCreator{
+  (ticks: number): Date;
+  (year: number, month: number, day: number):Date;
+  (isoString: string):Date;
+}
+
+declare const creator:DateCreator;
+
+creator(2015,10,21);
+creator(1445817600000);
+creator('2015-10-26T00:00:00.000Z')
+```
+
+[Playground Link](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCJ0gYShDB7KAbwFgAoZZACjGAQGsBnALmRAFcBbAI2gEoX0kANxkKlAJ64oLdt2gAaZBzzgAFjM48oigCZxxGuVH6CII8lWAM8AZTBRQAcxYN7TkxjNkAvmTI6IBAAbOBxkBBVXcJx8aVNsXDACczIEGKSoSgAmAAYARgBWeTyc+Sy83nM0xIJKPIAWeoKADjyAdgA2HO7uytT02oByXMKAWhLRrI6AFW6mOe6AOh6ALUHeIA)
+
+В следующем разделе мы рассмотрим вопрос о создании программ, которым, как и компилятору TypeScript важно только то, что можно сделать со значениями, но точное название типа менее существенно. Будем создававть программы в обобщенном виде.
