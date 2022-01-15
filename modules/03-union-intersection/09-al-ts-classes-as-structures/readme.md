@@ -89,3 +89,64 @@ console.log(stream);
 [Playground Link](https://www.typescriptlang.org/play?ssl=23&ssc=21&pln=1&pc=1#code/JYOwLgpgTgZghgYwgAgMrWHANsAXnAIywgB4AVAPmQG8AoZB5MAewClUB5AOQAoBrCAE8AXMgDOYKKADmASlFkA3LQC+tWgixwxY5AFlmAEwhZkwALYAHYuYjhd6KdjyFiJamcOiQAV3MFoABpkEDhbUQkpEGlkFQo6RmRLKQA3OEhkKAg4Q2YQLEFPbz8AqGQAXmQABmVE5OA0jKycvIKQsIgIyRkK5AByPuV6RgQ8yJ8EFigeYC8QkqD28PFu6NkaYcSGMAALYDEAOlne2dqt7b3D0Nte64gzhjVElnZuHnkaIvn-aEUlzpWUWkfxUG3ODCyYB8UBAn1mol2+yOhmCdwRlwOd1iD1i6jqPiIwAQyGkEDATGAYGI7zB4Mh0NhAAMACTURGHWaggC0yFZ7MxHRUjJxajUGjG5Mi2XMvVeXAOkRkwBggh4IAgAHd9EYTDwACwAJkCfRYGpMfVksmUoxAYmYxAOWGY0h4UrCVqAA)
 
 ## Класс - в качестве интерфейса
+
+Классы TypeScript присутствуют сразу в двух вселенных. Во вселенной значений класс предтавлен функцией. Во вселенной типов он представлен своим публичным интерфейсом. Давайте разберемся с интерфейсом класса из трех полей.
+
+```ts
+class AddressBookRecord {
+    
+    constructor(
+        readonly name: string,
+        readonly address: string
+    ) { }
+
+    get display() {
+        return `${this.name} <${this.address}>`;
+    }
+
+}
+```
+
+Typescript признает наличие в этом классе трех полей и редактор их показывает в контекстной подсказке
+
+![Наличие полей в экземпляре из класса](assets/intellisense.png)
+
+Поскольку TypeScript имеет структурную типизацию, мы можем определить тестовое значение, совпадающее по форме с интерфейсом нашего класса.
+
+```ts
+const mockValue: AddressBookRecord = {
+    address: 'test value',
+    display: 'test value',
+    name: 'test value',
+};
+```
+
+Мы воспользовались названием класса без ключевого слова `new` и получили значение с точки зрения TypeScript имеющее совершенно тот же тип, что и экземпляры класса `AddressBookRecord`. Мы их может использовать в любом месте. Удобно такой подход применить к модульному тестированию.
+
+```ts
+declare const notify: (recipient: AddressBookRecord) => void;
+
+notify(instanceValue);
+notify(mockValue)
+```
+
+Однако есть различия между значениями `instanceValue`
+и `mockValue` с точки зрения JavaScript. Очевидно `mockValue` не обладает всеми способностями экземпляра класса, и, в частности результаты оператора `instancof` будут различными
+
+```ts
+console.log({
+    'instanceValue instanceof AddressBookRecord': instanceValue instanceof AddressBookRecord,
+    'mockValue instanceof AddressBookRecord': mockValue instanceof AddressBookRecord,
+});
+```
+
+вы получите результат
+
+```terminal
+[LOG]: {
+  "instanceValue instanceof AddressBookRecord": true,
+  "mockValue instanceof AddressBookRecord": false
+} 
+```
+
+
