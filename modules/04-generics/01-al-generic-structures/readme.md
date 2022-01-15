@@ -71,3 +71,42 @@ const { id, data: { floor, title } } = findOffice();
 ```
 
 В [песочнице](https://www.typescriptlang.org/play?removeComments=true&jsx=0#code/C4TwDgpgBA8gZnAlgYwgSQCZQLxQHYCuAtgEYQBOUAZFAN6wIroYBcUAbgPaJYC+AUIjzAKcAIaooAUWGJQAHgAqmADRRFAETHAxAPjr8oRqDzbKMAbkPGM2sWa06rA-hgjIANmPLRknPADOwFBIeBjwSKhsABQAlDj6MsByIPIRTKp0UMnAHhBsQeRCAOZqcB6cnORshKQUULy6-Px+gcH0PGq2Omz05ZXkajl5DaO4oeGMqHEWQA) вы можете увидеть поддержку и компилятора и редактора.
+
+## Ковариантность обобщенных структур
+
+Отметим важное свойство обобщенных структур - их квариантность относительно операции специализации.
+
+За этими словами скрывается факт из двух условий и следствия.
+
+1. У нас есть два типа таких, что тип **C** (наследник) является специализацией типа **B** (базы).
+2. У нас есть обощенный структурный тип **S&lt;T>**
+
+Тогда **S&lt;C>** является специализацией типа **S&lt;B>**. Можна сказать, направление специализации остается тем же самым.
+
+Практически это означает возможность присваивать значения обобщенных типов друг другу
+
+```ts
+// обобщенный структурный тип
+interface Package<T>{
+    id:number;
+    payload:T;
+}
+
+// специализация типа чисел используется
+// при объявлении переменной cp обощенного 
+// типа
+const cp:Package<42> = {
+    id:0,
+    payload:42
+};
+
+// базовому воплощению обощенного 
+// типа можно присовить значение вополщения
+// специализированного типа
+const bp:Package<number> = cp;
+
+// но не наоборот
+const nop:Package<73> = bp;
+```
+
+изучите поведение в [песочнице](https://www.typescriptlang.org/play?removeComments=true&jsx=0&ssl=13&ssc=28&pln=13&pc=1#code/JYOwLgpgTgZghgYwgAgAqINZwOYQDwAqAfAN4BQylywAJgFwgCuAtgEbQDcFVADnAJ4AbAPZx6BLgF8yZBMJABnMMgQ866BFlx4ALACYiyALzJyVavQAMAGm6U+Q0fX1lJXWfKXJWajVvxMbNCGJqrucorKIMK+mDj4AOwAzCHePFwA9BnmAHp5ZFkE-DwoAOR+8XiB7FBEpdQKyNHKcAoKwNggcKyCKGDCyGDFZRXayXUAdAXZyEUlyKXV0PXAjc3Ire2d3b2DA0PzpcmlE0A) 
