@@ -1,27 +1,50 @@
-# (WIP) Чем похожи и чем отличаются обобщенные типы функций от функций обобщенного типа
+# Обобщенный тип функции или функция обобщенного типа
 
-Разработчики веб приложений в своей работе используют javascript. Это сложившийся и мощный инструмент. Javascript постоянно развивается и улучшается, однако ему остаются присущи определенные недостатки в контексте контроля качества кода. В частности, статический анализ кода в чистом javascript затруднен.
+Определим два сходных типа. Оба типа обозначают возможность вызова функции.
 
-Статический анализ в настоящее время является важной составной частью процесса разработки. Вот только несколько причин такого значения.
+```ts
+type VariableContext<T> = (arg: T)=>void;
+type InvocationContext = <T>(arg: T)=>void;
+```
 
-1. Вам необходимо создавать код, который соответствует требованиям регуляторов при работе с персональными данными и с информационными системами, составляющими основу бизнеса заказчика и прочими.
+Действительно, имея в наличии переменные одного и другого типа можно обозначить вызов функции
 
-1. Вам необходимо понимать состояние составных частей вашей программа.Статический анализ **действительно** предоставляет вам обратную связь о состоянии вашего приложения по мере разработки.
+```ts
+declare const doNumericAction:VariableContext<number>;
+declare const doGenericAction:InvocationContext;
 
-1. Вам необходимо постоянно развивать дополнять и изменять функциональность вашего продукта. Статический анализ упрощает процесс уборки мусора, осиротевшего кода и других видов наведения порядка в ваших файлах
+doNumericAction(42);
+doGenericAction(42);
+```
 
-1. Статический анализ обнаруживает определенный класс дефектов, таких как доступ к неинициализированной переменной.
+Следует помнить, что функция `doGenericAction` релализует алгоритм в общем виде, в то время как функция `doNumericAction` реализует числовой алгоритм. Обратите внимание на предупреждение компилятора в следующем отрывке
 
-1. Статический анализ документирует ваши намерения не только для ваших коллег, но и для автоматизированных инструментов.
+```ts
+doNumericAction('no-no-no');
+//              ^^^^^^^^^^
+//Argument of type 'string' is not assignable to parameter of type 'number'.
 
-Статический анализ полезен и для веб-разработки.  TypeScript  предлагает свои услуги в решении этой задачи. Статический анализ - это одна из сильных сторон typescript.
+doGenericAction('yes!');
+```
 
-Другая полезная функция TypeScript - способность создавать код javascript на любом диалекте: - JS3, JS5, JS2020. Но, конечно, следует помнить особенности каждой версии.
+Разница, как вы видите в том, что тип `VariableContext` определяет функцию для обработки данных выбранного типа, в то время как `InvocationContext` реализует алгоритм в обощенном виде. Попробуйте в [песочнице](https://www.typescriptlang.org/play?jsx=0&ssl=10&ssc=1&pln=14&pc=25#code/C4TwDgpgBAaghgJwJZwEYBsIGED2A7YCAD2AB4AVAPigF4oAKRAcwC4pyBKGygNxyQAmAbgCwAKFCQoASTx8AxnGBJ8uAsWC0oFSowSt2XXv2HjxAiPPSJo8-AGdNAnADkArgFsIyeQEF5yvgs8MhomGqEJKR4nqjelKJiFlY2UHZ4jlDOAOIQeN5IfgEqeCyyCkolERqJ5q6eBUWBePQALABMHIk5eY3+zW2dtUn1Xj79JfQA5Hg4ALSzCzhTXeIA9GtQW9s7OwB6B4dH62u++g0EUDgAZlCS0FOOyHhMU1BI9lCzmnD29khMPBhaDAHBQMCIOBeQgIK63e5QGaxbxTAB0ZhGuXy42K+GmIAg9gAhCshEA) сделать разные реализации. 
 
-## TypeScript  уже работает
+Предложите вариант `doNumericAction` для вывода четных чисел на консоль, а для нечетных их удвоенное значение.
+Предложите вариант `doGenericAction` для вывода на консоль результата оператора typeof
 
-Популярность использования TypeScript в последние несколько лет заметно растет. На [графике](https://madnight.github.io/githut/#/pull_requests/2021/2) количества pull-request-ов это хорошо видно.
+Эти рассуждения относятся и к объявлению типа сигнатуры вызова
 
-![копия графика за 2 квартал 21 года](assets/popularity.png)
+```ts
+interface VariableContext<T>{
+    (arg:T):void;
+    description: string;
+}
+interface InvocationContext{
+    <T>(arg:T):void;
+    meta:string;
+}
+```
 
-В следующем разделе мы практически посмотрим на потенциальный проблемы javascript кода, чтобы еще лучше оценить преимущества typescript.
+Ссылка на [песочницу](https://www.typescriptlang.org/play?jsx=0&ssl=9&ssc=1&pln=1&pc=1#code/JYOwLgpgTgZghgYwgAgGpysOAjANhAYQHtwIAPMAHgBUA+AbwFgAoZN5ACgwHMAuagJS8AbkWAATANwt2ycRADOCTAAcwwEr2QKwmEN2nMAvi1CRYiFAEkQohHHUlipCk1bsatLlD6CRYqRl2AFsIMDheHT0DFhNmFnkEXAwUBBIdOSIAOQBXUMwEAEEERxBedEwcfGdICkoQPOxoWkNE5KhU9LBMgHEIEGhgIpKNMps7B1Ga8jBDBOy8weHSjgAWACYBVqI+gYLilY2tlnnc-KGD0Y4AchAiAFo7x6Jr4+YAenfZb++APX+AYCWJ9Cj5FuBkEQYMgwABPFQoa5RUDca7IYAKZB3bpwBQKYDcEBVFBgIjIFQYOChcyQ6FwhHIW6NaDXAB0J2Y4h2-SWlxIN1higAhK9JEA) для любопытных.
+
+Вы познакомились с двумя вариантами синтаксиса объявления функции обобщенного аргрумента. В одном случае вы планируете создавать алгоритм в самом общем виде, а во втором случае создавать реализацию для конткретного выбранного типа.
