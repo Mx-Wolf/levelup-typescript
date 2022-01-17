@@ -76,5 +76,3 @@ interface DataBase<T>{
 ```
 
 [Playground Link](https://www.typescriptlang.org/play?jsx=0#code/JYOwLgpgTgZghgYwgAgCJzHAQnAzhAHgBUA+AbwFgAoZW5AcwjAGEB7EECBMYdgCgCUALiIBuanWQIANq3xsOXHvwTtO3XiBHCAbq2AATcVQC+QA)
-
-Изучите демонстрации, показывающие приемы работы с типами.
