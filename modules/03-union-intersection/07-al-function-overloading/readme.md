@@ -27,7 +27,7 @@ const isPrime: PrimeDetector = function (value) {
 }
 ```
 
-В приведенном примере, функция `isPrime` использует параметр `value` имя которого отличается от имени `intToTest` в описании типа. Прорамма при этом, компилируется без ошибок
+В приведенном примере, функция `isPrime` использует параметр `value` имя которого отличается от имени `intToTest` в описании типа. Программа при этом, компилируется без ошибок
 
 ## Функции обрабатывающие данные разных типов
 
@@ -72,7 +72,7 @@ const value = getHashOverload('полотенце');
 
 Этот вариант создания универсальных функций, возможно, лучше первого в том, что тип аргумента обязан быть известен более точно. Но во время реализации приходится прибегать к использованию типа широкого типа.
 
-Использование обобщенного программирования позволяте написать программу третьим способом.
+Использование обобщенного программирования позволяет написать программу третьим способом.
 
 ```ts
 function getHashGeneric<T extends string|number>(arg:T):number{
@@ -91,7 +91,7 @@ const hash2 = getHashGeneric('towel')
 
 [Playground Link](https://www.typescriptlang.org/play?ssl=12&ssc=38&pln=1&pc=1#code/GYVwdgxgLglg9mABAcwKZQBIEMDOALAcVTFQCcYIAeAFUVQA8piATHRHKcsZAHzBAC2AIzIA+ABRZSyAFzUAlDP7CyAbwBQiLYhjBxUAJ4AHVHGCIpyRAF5biAOTKRpe-I3aPiUuhCkklgG5NbQBfYK1dfWNTc0sbO3sOLmRXd08tbyhff2kAOgAbYmQoPCCPMI8S0jgAd0QSOoBRUmrScXsYMAA3LHyYZgtpQWIoVyCw9QgEDkQ8XDwARhsUdGx8IhJyCHEAFgAmeSCpsBm5-D3ltEx5jbIKdqha1HzXIA)
 
-Откройте предыдущий пример в песочнице и посмотрите, какие типы аргрументов, с точки зрения TypeScript-а ожидает функция `getHashGeneric`
+Откройте предыдущий пример в песочнице и посмотрите, какие типы аргументов, с точки зрения TypeScript-а ожидает функция `getHashGeneric`
 
 ```typescript
 const value = 42 as string|number;
@@ -113,7 +113,7 @@ No overload matches this call.
 
 ## Обобщенное программирование функций
 
-Использование обощенного параметра при определении функции позволяет создавать реализацию алгоритов в общем виде.
+Использование обобщенного параметра при определении функции позволяет создавать реализацию алгоритмов в общем виде.
 
 В приведенном примере разработчик выражает намерение работать с массивами значений. При этом с помощью использования обобщенного типа аргумента `<T>` разработчик объясняет компилятору: *какие типы значений будут у элементов в массиве во время исполнения, значение такого типа и вернет моя функция*
 
@@ -139,13 +139,13 @@ const str = extractFirstElement(["a","b","c"]);
 Для того, чтобы объявить тип перегруженной функции, но не указывать, как в примере `getHashOverload`, реализацию используйте сигратуру вызова в интерфейсе
 
 ```ts
-interface HashCompter {
+interface HashComputer {
     (arg: number): number;
     (arg: string): number;
 }
 
 //позднее используем этот интерфейс для создания реализации
-const getHashOverload: HashCompter = (arg: unknown): number=>{
+const getHashOverload: HashComputer = (arg: unknown): number=>{
     if (typeof arg === 'number') {
         return arg;
     }
