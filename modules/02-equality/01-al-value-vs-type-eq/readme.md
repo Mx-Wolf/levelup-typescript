@@ -3,17 +3,17 @@
 Код приведенный ниже - первоклассный код в TypeScript. Никаких проблем с пересечением имен не наблюдается
 
 ```tsx
-const Paths = ["/","/bin", "/etc"];
+const Paths = ["/", "/bin", "/etc"];
 type Paths = "/" | "/bin" | "/etc";
 
 ```
 
 [Playground Link](https://www.typescriptlang.org/play?ssl=2&ssc=36&pln=1&pc=1#code/MYewdgzgLgBACgQygCwjAvDA2gIgPQ4A0+ARgJZhEz4CmUwOAugNwCwAUFAJ4AON8SVBmoEYAHxHlK4kXQZt2QA)
 
-Однако следующий код не может похвастаться таким свойством. Компилятор жалуется, что `Cannot redeclare block-scoped variable 'Paths'.`
+Однако, следующий код не может похвастаться таким свойством. Компилятор жалуется, что `Cannot redeclare block-scoped variable 'Paths'.`
 
 ```tsx
-const Paths = ["/","/bin", "/etc"];
+const Paths = ["/", "/bin", "/etc"];
 class Paths {};
 ```
 

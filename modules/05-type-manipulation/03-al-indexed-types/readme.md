@@ -1,6 +1,6 @@
 # Типы с доступом по индексу
 
-В TypeScript объекты являются ассоциативными массивами (словарями), где ключом является строка. 
+В TypeScript объекты являются ассоциативными массивами (словарями), где ключом является строка.
 
 ```ts
 const dictionary = {
@@ -43,6 +43,7 @@ const dictionary = {
 type keys = keyof typeof dictionary;
 //type keys = 'language'|'platform'|'types'
 ```
+
 [песочница](https://www.typescriptlang.org/play?ssl=8&ssc=44&pln=1&pc=1#code/MYewdgzgLgBAJgS2FB4CGAnAnjAvDAbwCgZSYAbNMAcwFc1qBTALhgHIAVLAB0YGVgGBNyhsANCTLdKUAGYgMAW1ZsqWcZNJQejCCugZayWhjTlxZGEQC+RItt4wA1oywQ8z1yFkwHjb-BIKOjYANxEAPQRfp5uHmyUNPRMbAA+bNJocgqKaWx+EGxAA).
 
 Не всегда известны ключи по именам. Чтобы описать тип с произвольным количеством ключей используйте сигнатуру доступа по индексу
