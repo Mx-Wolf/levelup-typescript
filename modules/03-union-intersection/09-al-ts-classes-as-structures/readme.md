@@ -1,27 +1,152 @@
-# (WIP) Классы и их интерфейсы
+# Классы и их интерфейсы
 
-Разработчики веб приложений в своей работе используют javascript. Это сложившийся и мощный инструмент. Javascript постоянно развивается и улучшается, однако ему остаются присущи определенные недостатки в контексте контроля качества кода. В частности, статический анализ кода в чистом javascript затруднен.
+В javascript ключевое слово `class` позволяет создать описание класса. Это описание можно использовать с ключевым словом `new` и создавать экземпляры класса. Если во время выполнения javascript спросить мнение оператора `typeof`, то вы узнаете, что класс это функция. В консоли браузера вы это можете увидеть.
 
-Статический анализ в настоящее время является важной составной частью процесса разработки. Вот только несколько причин такого значения.
+![вывод консоли браузера относительно типа класса](assets/console.png)
 
-1. Вам необходимо создавать код, который соответствует требованиям регуляторов при работе с персональными данными и с информационными системами, составляющими основу бизнеса заказчика и прочими.
+## Классы TypeScript
 
-1. Вам необходимо понимать состояние составных частей вашей программа.Статический анализ **действительно** предоставляет вам обратную связь о состоянии вашего приложения по мере разработки.
+Классы в TypeScript обладают гораздо более полным набором качеств, необходимых для построения системы в рамках философии ООП.
 
-1. Вам необходимо постоянно развивать дополнять и изменять функциональность вашего продукта. Статический анализ упрощает процесс уборки мусора, осиротевшего кода и других видов наведения порядка в ваших файлах
+TypeScript дополняет описание класса возможностями, отсутствующими в javascript.
 
-1. Статический анализ обнаруживает определенный класс дефектов, таких как доступ к неинициализированной переменной.
+* модификатор `private` указывает компилятору на необходимость контролировать доступ к значению. (на этапе компиляции) только для членов текущего класса
+* модификатор `protected` заставляет компилятор разрешать доступ к значениям поля только для текущего класса и его наследников.
+* `public` (по умолчанию) это поля как и в javascript
 
-1. Статический анализ документирует ваши намерения не только для ваших коллег, но и для автоматизированных инструментов.
+Дополнительно, компилятор контролирует корректное использование абстрактных классов и методов, а так же модификатора readonly.
 
-Статический анализ полезен и для веб-разработки.  TypeScript  предлагает свои услуги в решении этой задачи. Статический анализ - это одна из сильных сторон typescript.
+```ts
+// компилятор не позволит создать 
+// экземпляр абстрактного класса
+abstract class Base {
+    private readonly v: number;
+    constructor(v: number) {
+        //new.target всегда не Base
+        this.v = v;
+    }
 
-Другая полезная функция TypeScript - способность создавать код javascript на любом диалекте: - JS3, JS5, JS2020. Но, конечно, следует помнить особенности каждой версии.
+    // создавать заглушку реализацию не требуется
+    protected abstract getFactor(): number;
 
-## TypeScript  уже работает
+    public computeValue() {
+        return this.v * this.getFactor();
+    }
+}
 
-Популярность использования TypeScript в последние несколько лет заметно растет. На [графике](https://madnight.github.io/githut/#/pull_requests/2021/2) количества pull-request-ов это хорошо видно.
+class Double extends Base {
+    // компилятор потребует реализацию абстрактного метода
+    protected getFactor(): number {
+        return 2;
+    }
+}
+```
 
-![копия графика за 2 квартал 21 года](assets/popularity.png)
+Изучите [код](https://www.typescriptlang.org/play?#code/PTAEi4QQ+EEHhBH4QQOEENwgh5EEEIglACIKQvCCFYQUskg7CCBMIJIvKqIIIgxgLCCAMIKoDIgoAUCKILIg4RucKLA0CMINVQYG4VNkiBmEEgREDatQZsAhgCMAzgBcATuoDGu0EYA267dtAAhKwFNQAbzah3oAA76AlgDd1XSd9B3UAEwB7ADtzAE9QPwAuUCiAVwBbTQd9AG43DyNovX1Ukwj9AAoklIys-QBKF3yPDxAohwB3ADpddX0AcwdTEmpcWUYcfHttB2aW0F0ACx9tLr9QAF4EvJaAXzY5zloiRhImViIGWURAYRBACRBwG9AMXAYKS8AxEHhAORBJ0HFcMIbrhUNRkHNvBEgiYHGFQFpisZTINdAAxJHlCr1ZJpTLZPIQ1Kacw+IxmCLpTypIIANXU5lSDixTXmHhCulS+iiC2Wq3WACoeSsuij0WVKvUdh59vs2BYrDYACIRInmJwOAAeQSiYRs0ycrhanCgcCQaEwBEgAKBIOer3eDC+vxEYgkUhk8lA0BBkEYEP0UIcMLhooxEpxtWyLNZoHZnO5ACYpe4ZQcgA) в песочнице
 
-В следующем разделе мы практически посмотрим на потенциальный проблемы javascript кода, чтобы еще лучше оценить преимущества typescript.
+Классы в TypeScript логически находятся в двух контекстах:
+
+* в области значений это *функции снабженные модификатором `new`*
+* в области типов это *описание свойств и методов*, участвующее в статическом анализе программы.
+
+## Класс реализует интерфейс
+
+В TypeScript класс может реализовывать один или множество интерфейсов. Таким образом достигается полиморфизм
+
+```typescript
+// Для правильной сериализации приватного
+// состояния класс может реализовать интерфейс
+interface Serializable<T> {
+    toJSON(key: string): T;
+}
+
+class Model implements Serializable<{ id: number, name: string }>{
+    private readonly id: number = 0;
+    private readonly name: string = '';
+
+    constructor(id: number, name: string) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // использование метода интерфейса
+    // позволяет JSON.stringify узнать
+    // внутреннюю кухню объекта
+    toJSON(): { id: number; name: string; } {
+        return { id: this.id, name: this.name };
+    }
+
+    public get title() {
+        return `${this.id} - ${this.name}`;
+    }
+}
+
+const stream = JSON.stringify(new Model(42,'towel'));
+// проверьте вывов в консоли песочницы
+console.log(stream);
+```
+
+[Playground Link](https://www.typescriptlang.org/play?ssl=23&ssc=21&pln=1&pc=1#code/JYOwLgpgTgZghgYwgAgMrWHANsAXnAIywgB4AVAPmQG8AoZB5MAewClUB5AOQAoBrCAE8AXMgDOYKKADmASlFkA3LQC+tWgixwxY5AFlmAEwhZkwALYAHYuYjhd6KdjyFiJamcOiQAV3MFoABpkEDhbUQkpEGlkFQo6RmRLKQA3OEhkKAg4Q2YQLEFPbz8AqGQAXmQABmVE5OA0jKycvIKQsIgIyRkK5AByPuV6RgQ8yJ8EFigeYC8QkqD28PFu6NkaYcSGMAALYDEAOlne2dqt7b3D0Nte64gzhjVElnZuHnkaIvn-aEUlzpWUWkfxUG3ODCyYB8UBAn1mol2+yOhmCdwRlwOd1iD1i6jqPiIwAQyGkEDATGAYGI7zB4Mh0NhAAMACTURGHWaggC0yFZ7MxHRUjJxajUGjG5Mi2XMvVeXAOkRkwBggh4IAgAHd9EYTDwACwAJkCfRYGpMfVksmUoxAYmYxAOWGY0h4UrCVqAA)
+
+## Класс - в качестве интерфейса
+
+Классы TypeScript присутствуют сразу в двух вселенных. Во вселенной значений класс предтавлен функцией. Во вселенной типов он представлен своим публичным интерфейсом. Давайте разберемся с интерфейсом класса из трех полей.
+
+```ts
+class AddressBookRecord {
+    
+    constructor(
+        readonly name: string,
+        readonly address: string
+    ) { }
+
+    get display() {
+        return `${this.name} <${this.address}>`;
+    }
+
+}
+```
+
+Typescript признает наличие в этом классе трех полей и редактор их показывает в контекстной подсказке
+
+![Наличие полей в экземпляре из класса](assets/intellisense.png)
+
+Поскольку TypeScript имеет структурную типизацию, мы можем определить тестовое значение, совпадающее по форме с интерфейсом нашего класса.
+
+```ts
+const mockValue: AddressBookRecord = {
+    address: 'test value',
+    display: 'test value',
+    name: 'test value',
+};
+```
+
+Мы воспользовались названием класса без ключевого слова `new` и получили значение с точки зрения TypeScript имеющее совершенно тот же тип, что и экземпляры класса `AddressBookRecord`. Мы их может использовать в любом месте. Удобно такой подход применить к модульному тестированию.
+
+```ts
+declare const notify: (recipient: AddressBookRecord) => void;
+
+notify(instanceValue);
+notify(mockValue)
+```
+
+Однако есть различия между значениями `instanceValue`
+и `mockValue` с точки зрения JavaScript. Очевидно `mockValue` не обладает всеми способностями экземпляра класса, и, в частности результаты оператора `instancof` будут различными
+
+```ts
+console.log({
+    'instanceValue instanceof AddressBookRecord': instanceValue instanceof AddressBookRecord,
+    'mockValue instanceof AddressBookRecord': mockValue instanceof AddressBookRecord,
+});
+```
+
+вы получите результат
+
+```terminal
+[LOG]: {
+  "instanceValue instanceof AddressBookRecord": true,
+  "mockValue instanceof AddressBookRecord": false
+} 
+```
+
+
