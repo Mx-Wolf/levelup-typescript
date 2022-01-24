@@ -35,7 +35,7 @@ const getRealFirst = <T>(items:T[]):T=>{
 };
 ```
 
-## Реализация алгоритма в общем виде.
+## Реализация алгоритма в общем виде
 
 Функции обобщенного типа позволяют вынести общую часть алгоритма программы и сделать реализацию более модульной. Для каждого вида удаленного сервиса нужно сделать что-то похожее switch/case. При использовании механизма обобщенного программирования мы можем эту часть алгоритма написать только один раз.
 
@@ -98,7 +98,7 @@ declare const manager: TripSegmentController<FlightSegment>;
 
 функция `controller` готова принять в качестве параметра значения как типа TripSegment, так и типа FlightSegment. В то время как переменная `manager` не готова работать со значениями типа TripSegment (ведь у них нет свойства laggage)
 
-Кроме прочего, это означает, что 
+Кроме прочего, это означает, что
 
 ```ts
 const b1:TripSegmentController<TripSegment> = manager;
@@ -113,7 +113,6 @@ const b2:TripSegmentController<FlightSegment> = controller;
 т.е. переменной типа TripSegment можно присвоить значение типа FlightSegment. а переменной типа TripSegmentController&lt;FlightSegment> можно присвоить значение типа TripSegmentController&lt;TripSegment>
 
 ![контравариативность функций](assets/contravariance.png)
-
 
 [Песочница](https://www.typescriptlang.org/play?removeComments=true&jsx=0#code/JYOwLgpgTgZghgYwgAgCpWABwMoQOYC2E4A3gFDKXIAmckAYlAPYEBcyAzmBiHgNwUqtSKibsuPfmQC+ZMqEixEKegBtgeABZhchYmGQQAHpBDUOaDDnxFSgyqrh48TiKxABXAgCNoA2WRgAJ6YKOhYurZgAMJM4MyqqtAAPKgAfMgAvMgAFBw2+qyoAJSZaQBuTMDUAmTUEAiOUCgIcVzIrfFMidDs4dZ64LFdPVCpVpH6aQL1jXDNHW0GBHAgrlB9EwVDcdzdSWNqGtqT4NNyne3eAIxFW4MxuwkH4xHbYBnZK2t4fmQA9P8qMgAHoggH-VAhFAAcn6p0eIxeRy0OneaRhyGAFhATAMcA4HA0a28SWQYCY5OhyDh9yiwz2o1eAyiGIAdBDKAAFZihKDBGmOZyuTHY5AEbFE3hYkBU0I0+HvTHeDwGZoARw8wGa1BlcthKJOSo5nMAeCCALBAyJcDN4AEx3N4PBnPFKGtEPT6LJF+IA) позволяет в этом убдеться
 

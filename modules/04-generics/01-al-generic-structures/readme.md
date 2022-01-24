@@ -2,7 +2,7 @@
 
 Мы обсуждали получение данных из удаленного сервиса в разделе об объединении типов. Давайте расширим нашу систему типов, чтобы позволить нескольким разным удаленным хранилищам предоставлять данные и сведения об ошибках единообразно.
 
-TypeScript позволяет моделировать структуру интерфейса (в том числе обмена по сети) в общем виде. 
+TypeScript позволяет моделировать структуру интерфейса (в том числе обмена по сети) в общем виде.
 
 Вспомним, как мы определили тип для успешного результата
 
@@ -28,7 +28,6 @@ interface Messages<T>{
 ```
 
 В этом определении интерфейса мы договорились только о той его части, которую нужно знать чтобы определить степень успешности запроса.
-
 
 ```ts
 type ApiResponse<T> = Messages<T> | ClientError | ServerError;
@@ -109,4 +108,4 @@ const bp:Package<number> = cp;
 const nop:Package<73> = bp;
 ```
 
-изучите поведение в [песочнице](https://www.typescriptlang.org/play?removeComments=true&jsx=0&ssl=13&ssc=28&pln=13&pc=1#code/JYOwLgpgTgZghgYwgAgAqINZwOYQDwAqAfAN4BQylywAJgFwgCuAtgEbQDcFVADnAJ4AbAPZx6BLgF8yZBMJABnMMgQ866BFlx4ALACYiyALzJyVavQAMAGm6U+Q0fX1lJXWfKXJWajVvxMbNCGJqrucorKIMK+mDj4AOwAzCHePFwA9BnmAHp5ZFkE-DwoAOR+8XiB7FBEpdQKyNHKcAoKwNggcKyCKGDCyGDFZRXayXUAdAXZyEUlyKXV0PXAjc3Ire2d3b2DA0PzpcmlE0A) 
+изучите поведение в [песочнице](https://www.typescriptlang.org/play?removeComments=true&jsx=0&ssl=13&ssc=28&pln=13&pc=1#code/JYOwLgpgTgZghgYwgAgAqINZwOYQDwAqAfAN4BQylywAJgFwgCuAtgEbQDcFVADnAJ4AbAPZx6BLgF8yZBMJABnMMgQ866BFlx4ALACYiyALzJyVavQAMAGm6U+Q0fX1lJXWfKXJWajVvxMbNCGJqrucorKIMK+mDj4AOwAzCHePFwA9BnmAHp5ZFkE-DwoAOR+8XiB7FBEpdQKyNHKcAoKwNggcKyCKGDCyGDFZRXayXUAdAXZyEUlyKXV0PXAjc3Ire2d3b2DA0PzpcmlE0A)

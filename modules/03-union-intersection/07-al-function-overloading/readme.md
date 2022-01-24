@@ -9,7 +9,7 @@ type PrimeDetector = (intToTest:number)=>boolean;
 type GCDService = (a:number, b:number)=>number;
 ```
 
-имя формального параметра в описании типа может не совпадать с именеме парамерта при описании функции.
+имя формального параметра в описании типа может не совпадать с именем параметра, при описании функции.
 
 ```typescript
 const isPrime: PrimeDetector = function (value) {

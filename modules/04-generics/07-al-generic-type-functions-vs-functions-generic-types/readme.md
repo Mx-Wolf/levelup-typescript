@@ -17,7 +17,7 @@ doNumericAction(42);
 doGenericAction(42);
 ```
 
-Следует помнить, что функция `doGenericAction` релализует алгоритм в общем виде, в то время как функция `doNumericAction` реализует числовой алгоритм. Обратите внимание на предупреждение компилятора в следующем отрывке
+Следует помнить, что функция `doGenericAction` реализует алгоритм в общем виде, в то время как функция `doNumericAction` реализует числовой алгоритм. Обратите внимание на предупреждение компилятора в следующем отрывке
 
 ```ts
 doNumericAction('no-no-no');
@@ -27,7 +27,7 @@ doNumericAction('no-no-no');
 doGenericAction('yes!');
 ```
 
-Разница, как вы видите в том, что тип `VariableContext` определяет функцию для обработки данных выбранного типа, в то время как `InvocationContext` реализует алгоритм в обощенном виде. Попробуйте в [песочнице](https://www.typescriptlang.org/play?jsx=0&ssl=10&ssc=1&pln=14&pc=25#code/C4TwDgpgBAaghgJwJZwEYBsIGED2A7YCAD2AB4AVAPigF4oAKRAcwC4pyBKGygNxyQAmAbgCwAKFCQoASTx8AxnGBJ8uAsWC0oFSowSt2XXv2HjxAiPPSJo8-AGdNAnADkArgFsIyeQEF5yvgs8MhomGqEJKR4nqjelKJiFlY2UHZ4jlDOAOIQeN5IfgEqeCyyCkolERqJ5q6eBUWBePQALABMHIk5eY3+zW2dtUn1Xj79JfQA5Hg4ALSzCzhTXeIA9GtQW9s7OwB6B4dH62u++g0EUDgAZlCS0FOOyHhMU1BI9lCzmnD29khMPBhaDAHBQMCIOBeQgIK63e5QGaxbxTAB0ZhGuXy42K+GmIAg9gAhCshEA) сделать разные реализации. 
+Разница, как вы видите в том, что тип `VariableContext` определяет функцию для обработки данных выбранного типа, в то время как `InvocationContext` реализует алгоритм в обощенном виде. Попробуйте в [песочнице](https://www.typescriptlang.org/play?jsx=0&ssl=10&ssc=1&pln=14&pc=25#code/C4TwDgpgBAaghgJwJZwEYBsIGED2A7YCAD2AB4AVAPigF4oAKRAcwC4pyBKGygNxyQAmAbgCwAKFCQoASTx8AxnGBJ8uAsWC0oFSowSt2XXv2HjxAiPPSJo8-AGdNAnADkArgFsIyeQEF5yvgs8MhomGqEJKR4nqjelKJiFlY2UHZ4jlDOAOIQeN5IfgEqeCyyCkolERqJ5q6eBUWBePQALABMHIk5eY3+zW2dtUn1Xj79JfQA5Hg4ALSzCzhTXeIA9GtQW9s7OwB6B4dH62u++g0EUDgAZlCS0FOOyHhMU1BI9lCzmnD29khMPBhaDAHBQMCIOBeQgIK63e5QGaxbxTAB0ZhGuXy42K+GmIAg9gAhCshEA) сделать разные реализации.
 
 Предложите вариант `doNumericAction` для вывода четных чисел на консоль, а для нечетных их удвоенное значение.
 Предложите вариант `doGenericAction` для вывода на консоль результата оператора typeof

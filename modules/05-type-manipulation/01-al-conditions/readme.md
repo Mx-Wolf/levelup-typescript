@@ -26,9 +26,9 @@ type Latter = 7
 type Result = Latter extends Former? 'correct' : 'wrong';
 ```
 
-Для вас очевидно, что значением константы `result` будет строка 'correct'. Интуиция подсказывает, что-то подобное произойдет и со значением типа `Result`. Откройте код в [песочнице](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAZiATgWwKaJgXhgdgFQBMA3AFCiSwA2AhlFOlrqWeNDIqhAK6WzY10GAHnhI0GAPwwA5KEQdgUaTABcMgO6JwAc2nMoATwAOqGADExDbDgA+BEoZMwAMrXoZrJB8dMAlTjx8Lm4MqAAe9GAAJhDmlohSMnIKSqoaWmC6REA) и наведите мышкой на символ `Result` 
+Для вас очевидно, что значением константы `result` будет строка 'correct'. Интуиция подсказывает, что-то подобное произойдет и со значением типа `Result`. Откройте код в [песочнице](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAZiATgWwKaJgXhgdgFQBMA3AFCiSwA2AhlFOlrqWeNDIqhAK6WzY10GAHnhI0GAPwwA5KEQdgUaTABcMgO6JwAc2nMoATwAOqGADExDbDgA+BEoZMwAMrXoZrJB8dMAlTjx8Lm4MqAAe9GAAJhDmlohSMnIKSqoaWmC6REA) и наведите мышкой на символ `Result`
 
-Синтаксис условного типа похож на тернарный оператор. 
+Синтаксис условного типа похож на тернарный оператор.
 
 * Значение типа Result будет зависеть от сравнения типов `Latter` и `Former`. 
 * Если `Latter` является специализацией `Former`, другими словами, переменной типа `Former` можно присвоить значения типа `Latter`, то результатом будет тип стоящий после `?` - на месте true-результата.

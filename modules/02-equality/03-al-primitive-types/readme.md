@@ -21,7 +21,7 @@ function init(settings){
 
 * bigint
 * boolean
-* function 
+* function
 * number
 * object
 * string

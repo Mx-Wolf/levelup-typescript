@@ -27,6 +27,7 @@ const array1 = [42,73];
 // компилятор проделает логические рассуждения и сделает вывод
 // что theAnswer будет иметь тип число.
 const theAnswer = firstItem(array1);
+
 // typeof theArray === "number";
 // мы может использовать значение безопасно
 Math.abs(theAnswer); //ok
