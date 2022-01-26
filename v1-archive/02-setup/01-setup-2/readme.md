@@ -53,16 +53,24 @@ npm i -D eslint eslint-config-htmlacademy @typescript-eslint/eslint-plugin @type
 Мы будем использовать mocha, chai как инструменты модульного тестирования.
 
 1. Установите пакеты
-   * "@types/chai
-   * @types/chai-spies
-   * @types/mocha
-   * chai
-   * chai-spies
-   * mocha
-   * ts-node
+    * @types/chai - декларации типов для пакета оценки результатов модульного тестирования
+    * @types/chai-spies - декларации типов для пакета "подстановки" тестовых реализаций функций
+    * @types/jsdom - декларации типов для пакета имитации DOM во время тестирования на node.
+    * @types/jsdom-global - декларации типов для пакета имитации окна браузера во время тестирования
+    * @types/mocha - декларации типов для пакета запуска модульного тестирования
+    * @types/sinon - декларации типов для пакета подмены импортируемых функций
+    * chai - пакет помогает в оценке результатов теста
+    * chai-spies - пакет помогает заменять некоторые функции (например колбэки) на время тестирования
+    * jsdom - пакет помогает эмулировать поведение DOM в тестовых целях при тестировании на стороне node
+    * jsdom-global - пакет помогает эмулировать поведение DOM в тестовых целях при тестировании на стороне node
+    * mocha - платформа для запуска модульных тестов
+    * sinon - пакет для эмуляции функций, методов и много чего еще в целях тестирования
+    * ts-node - пакет позволяет "проще" запускать TypeScript в среде node
+
+ @types/chai @types/chai-spies @types/jsdom @types/jsdom-global @types/mocha @types/sinon chai chai-spies jsdom jsdom-global mocha sinon ts-node
 
 ```cmd
-npm i -D @types/chai @types/chai-spies @types/mocha chai chai-spies mocha ts-node
+npm i -D @types/chai @types/chai-spies @types/jsdom @types/jsdom-global @types/mocha @types/sinon chai chai-spies jsdom jsdom-global mocha sinon ts-node
 ```
 
 2. Измените настройку вашего проекта, так чтобы nodejs использовал es модули. Вы указываете тип проекта в файле package.json, добавлением на верхнем уровне ключа `type` со значением `module`. Сразу исправьте ключ scripts/test. и добавьте привычный script/start
