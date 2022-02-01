@@ -43,6 +43,9 @@ jobs:
             git push
           fi
 
+      - name: spellcheck
+        run: npm run spellcheck || true
+
       - name: release
         run: |
           npm run release
