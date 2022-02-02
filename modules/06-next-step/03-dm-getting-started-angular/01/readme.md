@@ -21,4 +21,3 @@ npm install -g @angular/cli
 ```text
 https://marketplace.visualstudio.com/items?itemName=Angular.ng-template
 ```
-
