@@ -21,7 +21,7 @@ function init(settings){
 
 * bigint
 * boolean
-* function 
+* function
 * number
 * object
 * string
@@ -62,9 +62,9 @@ if(typeof theEvent === 'object'){
 
 TypeScript добавляет несколько примитивных типов. Они работает во вселенной типов. Мы познакомимся с ними в модуле 3
 
-Эти типы 
+Эти типы
 
-* undefined 
+* undefined
 * null
 * unknown
 * never

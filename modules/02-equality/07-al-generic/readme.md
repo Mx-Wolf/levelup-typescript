@@ -27,6 +27,7 @@ const array1 = [42,73];
 // компилятор проделает логические рассуждения и сделает вывод
 // что theAnswer будет иметь тип число.
 const theAnswer = firstItem(array1);
+
 // typeof theArray === "number";
 // мы может использовать значение безопасно
 Math.abs(theAnswer); //ok
@@ -76,3 +77,5 @@ interface DataBase<T>{
 ```
 
 [Playground Link](https://www.typescriptlang.org/play?jsx=0#code/JYOwLgpgTgZghgYwgAgCJzHAQnAzhAHgBUA+AbwFgAoZW5AcwjAGEB7EECBMYdgCgCUALiIBuanWQIANq3xsOXHvwTtO3XiBHCAbq2AATcVQC+QA)
+
+Изучите демонстрации, показывающие приемы работы с типами.
