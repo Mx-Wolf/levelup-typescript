@@ -37,3 +37,6 @@ const createReducer = (account: string) => (
 Обратите внимание, что мы не определили тип значения entry, но запомнили в окружении редуктора (замкнули) идентификатор счета. Он нам потребуется для фильтрации.
 
 Код доступен на [codesandbox](https://codesandbox.io/s/step-2-section-12-module-2-levelup-typescript-demo-1fvme)
+
+#
+#
