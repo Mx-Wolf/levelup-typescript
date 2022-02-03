@@ -40,3 +40,6 @@ describe("general ledger reducer accountDaily", () => {
 ```
 
 Ознакомится с финальной реализацией можно [в песочнице](https://codesandbox.io/s/step-4-section-12-module-2-levelup-typescript-demo-s41l6)
+
+#
+#
