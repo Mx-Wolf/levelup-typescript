@@ -1,5 +1,73 @@
-Вам дана страница студии дизайна общественных интерьеров. 
+# Об устойчивости интерфейса функции
 
-Макет: https://www.figma.com/file/IhpQMqx7Gch4APdkBfGHkX/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%BE%D0%B1%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%82%D0%B2?node-id=0%3A1
+При использовании TypeScript вы обозначаете типы аргрументов функции. В результате ваш код становится зависимым от эти типов. Если развитие продукта потребует изменение типа, вам придется изменять исходный код вашей функции.
 
-Ваша задача: подготовить меню под интеграцию WordPress.
+Изучите влияние изменения описания типа, предложите и реализуйте интерфейс функции, более устойчивой чем это сделано в данном коде
+
+## Время T0
+
+В начальный момент интерфейс содержит
+
+```ts
+interface Order {
+  orderId: number;
+  datePlaced: string;
+  customerId: string;
+  itemsCount: number;
+  amountTotal: number;
+  taxTotal: number;
+  includeHandling: boolean;
+  includeShipping: boolean;
+}
+```
+
+Предложено создать функцию `createReport` с интрефейсом
+
+```ts
+type CustomerId = string;
+type DateTime = string;
+type LastOrderReportLine = Map<CustomerId, DateTime>;
+
+interface Reporter {
+  (orders: Order[]): LastOrderReportLine;
+}
+```
+
+От этой функции требуется изучить список заказов `orders` и вернуть словарь где каждому клиенту сопосталяется дата последнего заказа.
+
+Возможно, бизнес логика приложения использует сведения о долго спящих клиентах, чтобы предложить им плюшки.
+
+Исохдные сведения получаются из запроса в базу данных
+
+```
+declare const getOrders:()=>Order[];
+```
+
+## Время T1
+
+Приложение претерпело развитие, и выяснилось, что база данных перестал хранить кличество позиций и сумму заказа в записи Order.
+
+после модифицирования функции `getOrders` состояние таково
+
+```ts
+interface Order2 {
+  orderId: number;
+  datePlaced: string;
+  customerId: string;
+  includeHandling: boolean;
+  includeShipping: boolean;
+}
+
+declare const getOrders: () => Order2[];
+```
+
+При этом выяснилось, что `createReport` больше не компилируется.
+
+Можно, конечно, добавить запросы в базу данных и выяснить количество и сумму каждого заказа.
+
+Но можно поступить по другому. Как? см. шаг 2.
+
+сейчас вы можете изучить начальное состояние [в песочнице](https://codesandbox.io/s/step-1-demo-03-08-module-03-safty-to-function-interface-4qxlf)
+
+#
+#
