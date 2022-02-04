@@ -32,5 +32,7 @@ export const createReport:Reporter = (orders) => orders.reduce(reportReducer, re
 
 код [в песочнице](https://codesandbox.io/s/step-3-demo-03-08-module-03-safty-to-function-interface-msh4n)
 
+Теперь зафиксируем поведение наших функций модульными тестами.
+
 #
 #

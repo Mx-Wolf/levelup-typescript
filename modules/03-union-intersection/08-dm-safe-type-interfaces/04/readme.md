@@ -1,5 +1,13 @@
-Теперь создадим подменю и пропишем для него классы. 
+# Зафиксируем поведение нашей программы
 
-Пункту меню, в котором будет создано подменю, добавим ```menu-item-has-children```. Для самого подменю — ```sub-menu```, а для каждого из его пунктов — ```menu-item```.
+С помощью модульных тестов зафиксируем решения, которые мы приняли при реализации задачи.
 
-Стилизуем.
+Код [в песочнице](https://codesandbox.io/s/step-4-demo-03-08-module-03-safty-to-function-interface-o8l2v) содержит два файла.
+
+* [report-reducer.modern.test.ts](https://codesandbox.io/s/step-4-demo-03-08-module-03-safty-to-function-interface-o8l2v?file=/src/report-reducer.modern.test.ts)
+* [report-reducer.pre-historic.test.ts](https://codesandbox.io/s/step-4-demo-03-08-module-03-safty-to-function-interface-o8l2v?file=/src/report-reducer.pre-historic.test.ts)
+
+эти файлы содержат описание поведения нашей функции редуктора.
+
+#
+#
