@@ -1,10 +1,48 @@
-Стилизовать пункт «Оставить отзыв» можно несколькими способами: 
+# Добавим использование thunk
 
-1. Стилизовать последний элемент первого уровня через ```nth-child```.
-2. Добавить кастомный класс.
+На потребуются ссылки на пакет redux-thunk и на определения типов @types/redux-thunk. Мы [зарегистрируем thunk](https://codesandbox.io/s/step-5-demo-5-6-w5xrc?file=/src/store/store.ts) в качестве middleware при инициализации хранилища. Дополнительно обратите внимание, как мы поменяли сведения о диспетчере.
 
-Оба варианта справляются с задачей, но мы остановимся на втором. Он более универсальный, потому что впоследствии с помощью кастомного класса можно будет стилизовать сразу несколько пунктов. Кроме того, у нас ничего не сломается, если заказчик решит изменить последовательность пунктов.
+```ts
+return {
+  dispatch: dispatch as ThunkDispatch<
+    ReturnType<typeof getState>,
+    void,
+    AnyAction
+  >,
+  getState,
+  replaceReducer,
+  subscribe
+};
+```
 
-Добавим кастомный класс ```menu-item-styled``` и стилизуем его.
+## добавим обработку регистрации сообщения
 
-На этом всё. Меню готово к интеграции.
+Для демонстрации мы создадим имитацию регистрации сообщения. В реальной жизни, возможно, севрвер определить дату регистрации сообщения, мы же изготовим [register-message.ts](https://codesandbox.io/s/step-5-demo-5-6-w5xrc?file=/src/store/register-message.ts) проще.
+
+```ts
+export const registerMessage = (message: Pick<Message, "to" | "body">) => (
+  dispatch: Dispatch<AnyAction>,
+  getState: () => RootState
+) =>
+  dispatch(
+    postMessage({
+      ...message,
+      created: now(),
+      from: getState().user,
+      id: `message-${++lastId}`,
+      posted: now()
+    })
+  );
+```
+
+или процесс отметки о прочтении
+
+```ts
+export const markAsRead = (message: Pick<Message, "id">) => (
+  dispatch: Dispatch
+) => dispatch(readMessage({ ...message, read: now() }));
+```
+
+## демонстрация в работе
+
+Обычно вы не тестируете "библиотечный" код, но в данном случае мы используем скрее не модульный, а "почти" интеграционный [тест для демонстрации](https://codesandbox.io/s/step-5-demo-5-6-w5xrc?file=/src/store/store.test.ts) результатов помощи от TypeScript-а.
