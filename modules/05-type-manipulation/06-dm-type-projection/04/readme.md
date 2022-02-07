@@ -1,5 +1,9 @@
-Теперь создадим подменю и пропишем для него классы. 
+# Подключим redux
 
-Пункту меню, в котором будет создано подменю, добавим ```menu-item-has-children```. Для самого подменю — ```sub-menu```, а для каждого из его пунктов — ```menu-item```.
+После создания хранилища в модуле [store.ts](https://codesandbox.io/s/step-4-demo-5-6-oy9k4?file=/src/store/store.ts) мы экспортируем определение типа данных в хранилище.
 
-Стилизуем.
+```ts
+export type RootState = ReturnType<ReturnType<typeof initStore>["getState"]>;
+```
+
+этот тип мы будем использовать при исследовании thunk.

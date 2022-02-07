@@ -1,1 +1,26 @@
-Создадим обёртку с генерируемыми классами ```menu-primary-container``` и ```menu```. Добавим в разметку пункты меню и стилизуем — стили для последнего пункта пока не указываем.
+# Использование дискриминаторов типа
+
+Мы добавим функцию, которая будет диагностировать - является ли предъявленный ей элемент из страницы одним из обрабатываемых. Если он действительно обрабатываемый элемент - то функция будет подписывать нужный код на нужное событие.
+
+Эта функция может [выглядеть так](https://codesandbox.io/s/step-3-demo-4-5-module-4-3lfli?file=/src/detect-bind-element.ts:245-876)
+
+```ts
+const attach = (target: Element, methods: ListenerFactory): Unsubscribe => {
+  if (isButton(target)) {
+    return subscribe(target, "click", methods.makeButtonClick());
+  }
+  if (isInput(target)) {
+    if (isCheckBox(target)) {
+      return subscribe(target, "click", methods.makeInputClick());
+    }
+    return subscribe(target, "input", methods.makeInputInput());
+  }
+  if (isSelect(target)) {
+    return subscribe(target, "input", methods.makeSelectInput());
+  }
+  if (isTextArea(target)) {
+    return subscribe(target, "input", methods.makeTextAreaInput());
+  }
+  throw new Error(`unexpected target type ${target.tagName}`);
+};
+```
