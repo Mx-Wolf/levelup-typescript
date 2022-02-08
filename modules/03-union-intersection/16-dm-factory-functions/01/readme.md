@@ -1,5 +1,33 @@
-Вам дана страница студии дизайна общественных интерьеров. 
+# Фабрика UI компонентов
 
-Макет: https://www.figma.com/file/IhpQMqx7Gch4APdkBfGHkX/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%BE%D0%B1%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%82%D0%B2?node-id=0%3A1
+Интерфейс фабрики может быть описан [таким образом](https://codesandbox.io/s/step-1-demo-03-16-module-3-z3u7b?file=/src/i-face-factory.ts)
 
-Ваша задача: подготовить меню под интеграцию WordPress.
+```ts
+interface UiFactory {
+  button: () => Button;
+  customer: () => CustomerSelect;
+  product: () => ProductSelect;
+}
+```
+
+Предлагаем вам изучить два следующих отрывка. Они демонстрируют идею создания абстрактной фабрики в TypeScript.
+
+[Обратите внимание](https://codesandbox.io/s/step-1-demo-03-16-module-3-z3u7b?file=/src/factory.ts) на сокращенную запись `private buttonCtor: new () => Button,` - ключевое слово **private** предлагает компилятору одновременно с описанием параметра конструктора создать приватное поле класса, а обозначение типа **new ()=>Button** требует от компилятора проверить, что в качестве параметра передается не просто функция, а именно класс.
+
+```ts
+export class Factory implements UiFactory {
+  constructor(
+    private buttonCtor: new () => Button,
+    private customerCtor: new () => CustomerSelect,
+    private productCtor: new () => ProductSelect
+  ) {}
+
+  button = () => new this.buttonCtor();
+  customer = () => new this.customerCtor();
+  product = () => new this.productCtor();
+}
+```
+
+Поскольку у нас уже есть "реализации" HTML контролов, мы можем создать [конкретную фабрику](https://codesandbox.io/s/step-1-demo-03-16-module-3-z3u7b?file=/src/html/factory.ts)
+
+В случае TypeScript мы создаем экземпляр фабрики, оснащенный нужными конструкторами.
