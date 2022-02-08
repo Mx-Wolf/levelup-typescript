@@ -41,6 +41,12 @@
         "type": "task",
         "path": "01-intro/task-1-07-pr-vscode",
         "description": "Как вы настраиваете vs-code"
+      },
+      {
+        "type": "demo",
+        "path": "01-intro/08-dm-vscode",
+        "description": "Вопросы для самоконтроля по настройке vs-code",
+        "solution": true
       }
     ]
   }
