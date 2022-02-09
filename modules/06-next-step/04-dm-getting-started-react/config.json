@@ -1,4 +1,5 @@
 {
-  "title": "(WIP) Запуск минимального приложения React TypeScript",
-  "description": "Сравните своё решение с эталонным"
+  "title": "Запуск минимального приложения React TypeScript",
+  "description": "Сравните своё решение с эталонным",
+  "isTextDemo": true
 }

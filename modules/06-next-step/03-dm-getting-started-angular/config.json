@@ -1,4 +1,5 @@
 {
-  "title": "(WIP) Запуск минимального приложения Angular TypeScript",
-  "description": "Сравните своё решение с эталонным"
+  "title": "Запуск минимального приложения Angular TypeScript",
+  "description": "Сравните своё решение с эталонным",
+  "isTextDemo": true
 }
