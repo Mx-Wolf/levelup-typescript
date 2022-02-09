@@ -50,7 +50,8 @@
       {
         "type": "demo",
         "path": "05-type-manipulation/10-dm-identity-handling",
-        "description": "Как мы объявляем желание отправлять изменяемые свойства, а получать все"
+        "description": "Как мы объявляем желание отправлять изменяемые свойства, а получать все",
+        "solution":true
       },
       {
         "type": "demo",
