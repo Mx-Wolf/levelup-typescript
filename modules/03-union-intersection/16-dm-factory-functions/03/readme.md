@@ -3,11 +3,7 @@
 Для реализации функции `getControl` нам потребуется описание интерфейса. Дело в том, что мы хотим создать функцию, возвращающую различные типы в зависимости от значения аргумента.
 
 ```ts
-interface ControlProvider {
-  (type: "button"): Button;
-  (type: "customer"): CustomerSelect;
-  (type: "product"): ProductSelect;
-}
+type ControlProvider = <T extends keyof UiFactory>(type:T)=>ReturnType<UiFactory[T]>
 ```
 
 Поскольку в JavaScript нет перегруженных функций, нам требуется это определение, чтобы объяснить компилятору наши намерения.
