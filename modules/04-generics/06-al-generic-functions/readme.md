@@ -84,14 +84,14 @@ interface FlightSegment extends TripSegment{
 
 ```ts
 // функция обобщенного типа имеет
-// единственный аргрумент
+// единственный аргумент
 type TripSegmentController<T> = (segment:T)=>void;
 
 // в этой переменной тип-переменная воплощается
 // более широким типом TripSegment
 declare const controller: TripSegmentController<TripSegment>;
 
-// в этой переменной тип-переменная вополщается 
+// в этой переменной тип-переменная воплощается 
 // более специализированным типом FlightSegment
 declare const manager: TripSegmentController<FlightSegment>;
 ```
@@ -154,7 +154,7 @@ const minLaggage = flights.reduce(minReducer,0);
 
 ```ts
 // подойдет ли этот редуктор для 
-// получения полного времени путешесвтия по воздуху?
+// получения полного времени путешествия по воздуху?
 const totalReducer = (total:number, segment:TripSegment)=>total+(new Date(segment.dateTo).valueOf()-new Date(segment.dateFrom).valueOf());
 ```
 
