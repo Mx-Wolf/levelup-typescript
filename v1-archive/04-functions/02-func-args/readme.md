@@ -58,6 +58,7 @@ function getHashOverload(arg: any){
     throw new Error();
 }
 ```
+
 этот вариант отличается от первого тем, что тип аргумента обязан быть известен более точно. 
 
 ```typescript
@@ -65,7 +66,9 @@ const value = 42 as string|number;
 console.log(getHash(value)); //компилируется без ошибок
 console.log(getHashOverload(value)); //ошибка 2769
 ```
+
 [Изучите поведение](https://www.typescriptlang.org/play?target=7#code/GYVwdgxgLglg9mABAcwKZQBIEMDOALACiwCdkAuRHKYmMZAHzBAFsAjVYgSjKbY4G8AUIhGIYwAlACeAB1RxgiEskQBedYgBEvdsU2choo4mLoQxJMoDcw0QF9bI01HOXSAOgA2qOlDw2HQVBIWAQUdGx8AHkANw5POCwAEyJSCh0ObgziG2DoeCQ0TFw8WPjElOUKKho6LJZdXPB8sKLI0rjiBOTU8iUwKQNHMQlpOQUlUjUNbQaOfUNjJzMLSeQbIwcjcUlZeUVladUtGtpkBeGjZ1c1jfthv2I4AHdEMFRXgFFiJ+ICTgCgkESVQEE8JFQiAgCCoIhiWE8IFQ1WoZ0YcxyQOhYBwcG8XjgyAIbRKBHhiNQnABiAA9DTAFwggD4QQA8IIB+EEAHCCAbhB2YABEEAwiCAVhBAEIggEEQQDyIIhAIwgAsA7CCIRmACRB2ZLGfTBNjcfiEkSSdFOt0UuSkVSrLSaYrlfTAAwgiAATAB2ABsAE4gA) в песочнице
+
 ```text
 No overload matches this call.
   Overload 1 of 2, '(arg: number): number', gave the following error.
@@ -89,6 +92,7 @@ function extractFirstElement<T>(array:T[]):T{
 const num = extractFirstElement([1,2,3]);
 const str = extractFirstElement(["a","b","c"]);
 ```
+
 Переменная `num` получает значение `1` типа `number`, а переменная `str` значение `"a"` типа string. Но важно даже не это, а то, что компилятор об этом догадывается сам.
 
 В приведенном примере разработчик выражает намерение работать с массивами значений. При этом с помощью использования обобщенного типа аргумента `<T>` разработчик объясняет компилятору: *какие типы значений будут у элементов в массиве во время исполнения, значение такого типа и вернет моя функция*

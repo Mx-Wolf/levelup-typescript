@@ -167,4 +167,6 @@ creator('2015-10-26T00:00:00.000Z')
 
 [Playground Link](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCJ0gYShDB7KAbwFgAoZZACjGAQGsBnALmRAFcBbAI2gEoX0kANxkKlAJ64oLdt2gAaZBzzgAFjM48oigCZxxGuVH6CII8lWAM8AZTBRQAcxYN7TkxjNkAvmTI6IBAAbOBxkBBVXcJx8aVNsXDACczIEGKSoSgAmAAYARgBWeTyc+Sy83nM0xIJKPIAWeoKADjyAdgA2HO7uytT02oByXMKAWhLRrI6AFW6mOe6AOh6ALUHeIA)
 
+Внимательный читатель может заметить кажущееся противоречие. Как так, TypeScript позовляет определить перегруженные функции, но компилируется в обычный JavaScript, где нет понятния перегруженных функций. Это кажущееся противоречие TypeScript разрешает очень элегантно. TypeScript и сервисы компилятора в редакторе не показывают разработчику, то как сам же разработчик реализовал перегруженную функцию. **Не показывают**, - это значит, что в intellisense эти сведения отсутствуют. Вот и все. Кстати, реализация перегруженной функции выполняется примерно так же как и в JavaScript, - методичным изучением полученных в параметрах значений. Мы скоро встретимся с этим подходом в демо.
+
 В следующем разделе мы рассмотрим вопрос о создании программ, которым, как и компилятору TypeScript важно только то, что можно сделать со значениями, но точное название типа менее существенно. Будем создававть программы в обобщенном виде.
