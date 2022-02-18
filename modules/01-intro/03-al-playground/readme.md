@@ -35,19 +35,19 @@
 
 ```tsx
 function process(text:string) {
-  return text && text.replace(/б/g, "с")
+  return text.replace(/б/g, "с")
 }
 let a = "боль";
 process(a).toUpperCase();
 ```
 
-[Playground Link](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE5wgUwM7YBRSYAeUAXNlKjGAOYCUiA3gFCKKqZQipKEmIAyAYj5QAdB2QAbAIZY8AekCMIApoAaRACJAgiCa6zAL7MpnRDMQBeLUsB8IIG4QQDIgmgNzM0GHPhl0xUOAFVkZExUAGEZbEw8OmcgA)
+[Playground Link](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE5wgUwM7YBRSYAeUAXNlKjGAOYCUiA3gFCKKqZQipKEkB0HZABsAhljwB6QIwgkmgBpEAIkCCIErrMAvs2GdEoxAF5l0wHwggbhBAMiBKA3MzQYc+UXX5Q4AVWTJMqAMKi2Jh4dDZAA)
 
 а следующие две предупреждают разработчика еще в редакторе, что договоренности не соблюдаются.
 
 ```tsx
 function process(text:string) {
-  return text && text.replace(/б/g, "с")
+  return text.replace(/б/g, "с")
 }
 let a = null;
 process(a).toUpperCase();
@@ -57,13 +57,13 @@ process(a).toUpperCase();
 
 ![Ошибка использования](assets/err1.png)
 
-[Playground Link](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE5wgUwM7YBRSYAeUAXNlKjGAOYCUiA3gFCKKqZQipKEmIAyAYj5QAdB2QAbAIZY8AekCMIApoAaRACJAgiCa6zAL7MpnRDMQBeRGBBSpAbmZoMOfDLpiocAKrJkmVABhGWxMPDp7IA)
+[Playground Link](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE5wgUwM7YBRSYAeUAXNlKjGAOYCUiA3gFCKKqZQipKEkB0HZABsAhljwB6QIwgkmgBpEAIkCCIErrMAvs2GdEoxAF5EYEMOEBuZmgw58ouvyhwAqsmSZUAYVHZMeOgsgA)
 
 И здесь тоже предупреждает
 
 ```tsx
 function process(text:string) {
-  return text && text.replace(/б/g, "с")
+  return text.replace(/б/g, "с")
 }
 let a = 0;
 process(a).toUpperCase();
@@ -73,6 +73,6 @@ process(a).toUpperCase();
 
 ![еще одна ошибка](assets/err2.png)
 
-[Playground Link](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE5wgUwM7YBRSYAeUAXNlKjGAOYCUiA3gFCKKqZQipKEmIAyAYj5QAdB2QAbAIZY8AekCMIApoAaRACJAgiCa6zAL7MpnRDMQBeRAAYA3MzQYc+GXTFQ4AVWTJMqAMIy2Jh4dLZAA)
+[Playground Link](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE5wgUwM7YBRSYAeUAXNlKjGAOYCUiA3gFCKKqZQipKEkB0HZABsAhljwB6QIwgkmgBpEAIkCCIErrMAvs2GdEoxAF5EABgDczNBhz5RdflDgBVZMkyoAwqOyY8dM0A)
 
 Используйте ссылку и убедитесь сами в песочнице  TypeScript .
