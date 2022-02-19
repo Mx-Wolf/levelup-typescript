@@ -17,10 +17,28 @@ questions:
   - id: 2
     title: "В контексте определения интерфейсов Country  и View почему возникает ошибка компиляции?"
     type: "multiple"
-    description: "```typescript\n\n      interface Country {\n        border: { length: number; };\n    }\n    \n    interface View {\n        border: { color: string; };\n    }\n    \n    interface CountryView extends Country, View { }\n    \n    const countrySettings = {\n        border: {\n            color: 'red',\n            length: 30000,\n        },\n    };\n      \n```"
+    description: |
+      ```ts
+      interface Country {
+        border: { length: number; };
+      }
+    
+      interface View {
+        border: { color: string; };
+      }
+    
+      interface CountryView extends Country, View { }
+    
+      const countrySettings = {
+        border: {
+            color: 'red',
+            length: 30000,
+        },
+      };
+      ```
     options:
       - correct: false
-        value: "TypeScript не допускает пустые интерфейсы как DrawableCountry, поскольку они все эквивалентны"
+        value: "TypeScript не допускает пустые интерфейсы как CountryView, поскольку они все эквивалентны"
         resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
         id: 1
       - correct: false
@@ -35,8 +53,29 @@ questions:
         value: "Правильный ответ не указан"
         resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
         id: 4
-
-  - description: "```typescript\n\n      interface GeoBorder {\n        length: number;\n    }\n    \n    interface DrawableBorder {\n        color: string;\n    }\n    \n    interface Border extends GeoBorder, DrawableBorder{}\n    \n    interface CountryView { \n        border:Border;\n    }\n    \n    const countrySettings = {\n        border: {\n            color: 'black',\n            length: 30000,\n        },\n    } as const;\n    \n    \n```"
+  - description: |
+      ```ts
+      interface GeoBorder {
+        length: number;
+      }
+      
+      interface DrawableBorder {
+        color: string;
+      }
+      
+      interface Border extends GeoBorder, DrawableBorder{}
+      
+      interface CountryView {
+        border:Border;
+      }
+      
+      const countrySettings = {
+        border: {
+          color: 'black',
+          length: 30000,
+        },
+      } as const;
+      ```
     options:
       - correct: false
         value: "Нет"
