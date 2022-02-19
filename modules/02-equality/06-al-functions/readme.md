@@ -136,15 +136,19 @@ type DescribedFunction = {
 }
 ```
 
-тогда мы можем использовать договоренность для наших бизнес-потребностей.
+Попробуйте прочитать эту декларацию типа на русском.
+
+> К значениям типа `DescribedFunction` можно применить операцию вызова (invokation), кроме этого они (значения типа `DescribedFunction`) имеют свойство `description` со строковыми значениями.
+
+Мы можем использовать договоренность описанную такой декларацией типа для наших бизнес-потребностей.
 
 ```typescript
 function logExecution(fn:DescribedFunction){
     try{
-        fn();
+        fn();//применяем операцию вызова
     }
     catch(ex){
-        console.log(ex,fn.description)
+        console.log(ex,fn.description); //пользуемся описанием функции
     }
 }
 ```
