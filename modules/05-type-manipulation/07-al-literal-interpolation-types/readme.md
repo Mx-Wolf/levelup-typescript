@@ -35,7 +35,7 @@ proxy.addEventListener("age", () => undefined);
 
 ```
 
-Вы можете проверить в песочнице. Редактор действительно будет вам подсказывать, на какие события можно подписаться.
+Вы можете проверить [в песочнице](https://www.typescriptlang.org/play?#code/C4TwDgpgBA6glsAFgZQK4CMDOBjATnMYOAewDsAeAFQD4oBeKSqAMigG8AoKbqAQwBN+AUQBuEUsAAycTMHERcACghiJALigBrCCGIAzRgBooiXqX4AbBRsXBeuAOYRgGygEp6tEcTj83G718Abi4eXAgAW2IxUXEpGTlSBWVVFy0dfSMTM0trKFt7JzT3TyhAvwCffhCAXw4OfghsC3toPVRSbCIyKDwIXjkAeSwFEV50KwAFXGIADxAqakVQ7jGLVAhXDn9YBBQMHHxCEgoaeuwyWSg7R2d6dhWoUl4IzagAIkpiCKhkXgB3EAKd6GR68JwaACMAGZQTUQhwLqQrmAZvN7n0BhBhphRuMpmiQAVbsA3AjUXMQAA6ATCVLSWTyJTvcEQEH5Dx0WgdRp6OBJPwhIA). Редактор действительно будет вам подсказывать, на какие события можно подписаться.
 
 ![intellisense](./assets/Capture2.PNG)
 

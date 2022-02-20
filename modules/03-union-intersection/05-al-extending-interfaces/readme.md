@@ -6,6 +6,8 @@
 
 Структуры сопровождаются ключевыми словами `type` или `interface`. Для многих, но не для всех, целей использование ключевых слов `type` и `interface` не отличаются.
 
+Оба примера декларируют одно и то же намерение разработчика. Значения, которые принадлежат типу `StructureExample` можно присваивать переменным объявленным типом `AnotherExample`. Приведенные ниже выражения - корректны.
+
 ```typescript
 type StructureExample = {
   header: string,
@@ -18,11 +20,7 @@ interface AnotherExample {
   header: string;
   useHeader: boolean;
 }
-```
 
-Оба примера декларируют одно и то же намерение разработчика. Значения, которые принадлежат типу `StructureExample` можно присваивать переменным объявленным типом `AnotherExample`. Приведенные ниже выражения - корректны.
-
-```typescript
 const a1: StructureExample = {
     header:"typescript",
     useHeader: true
@@ -82,28 +80,27 @@ const a:A = {
 }
 ```
 
-Интерфейсы могут содержать не только поля, но и методы, которые тоже [нужно инициализировать](https://www.typescriptlang.org/play?target=7#code/JYOwLgpgTgZghgYwgAgEIG8BQyfJsCAGwBMAuZAZzClAHMBubXMAewGVq6AKASlKpogGmAL6ZMCFiCrIARqVTIAvMiy48BEuQBEANziEArhG0AaJjlYdBtXmvW4oEMIaghkYABbAKAOnxExIzqYmISUjKeRAAO0Mp4hiAIYMBSyFxePgo86MhOLm4e3n4BJPRhktJgcgCMCsr2OKVkyNpwICxecfpGJubqVpxC5FGEsVCimEA). Ниже приводим несколько примеров.
+Интерфейсы могут содержать не только поля, но и методы, которые тоже [нужно инициализировать](https://www.typescriptlang.org/play?target=7&ssl=19&ssc=1&pln=1&pc=1#code/JYOwLgpgTgZghgYwgAgNImAcwBZgN4BQyxyAtgPZhjkBcyAzmFKJgNxEnMAmEAFAJQ1GzEGwIBfAgQTkQjZAGsWAJWAJscKFxrosuZAF5khEmUrU6AIgDi5Lsjgh7pAJ7JVOMJYA0HYtz5+E1NOCDAAVygQZAADODBkMGwUACF4sAAbFHIYZGtgenIoejoAEjwkgoA6CipycRj2U0lJaVl5ZIyAB2hDZBhwkAQwYFlkXkqS3U8g5CgwyOiYjLhkDPD1VZlwKFWM8nozDNAD5B5kADdgCHBaYnLJmvN6xtbt+S5ZAEVw4AAPSgQHQYTyGYLEWoWZCWAAyqy4wGOmBuCGAqwgh1IcC48zOKBWyAARuEbnALjcIrsfH45sAeHROj0oBICEA). Ниже приводим несколько примеров.
 
 ```typescript
-interface B{
-    field: string;
-    toString():string;
+interface Knight{
+    motto: string;
+    ride():string;
 }
 
-const b:B = {
-    field: "value",
-    toString(){
-        return this.field;
+const kingRichard:Knight = {
+    motto: "God and my Right",
+    ride(){
+        return `at the Battle of Gisors: ${this.motto}`;
     }
 }
 
-const helper = function (this:B){ return this.field;}
+const helper = function (this:Knight){ return `la lucha contra los molinos de viento:  ${this.motto}`;}
 
-const b1:B ={
-    field: "another value",
-    toString: helper
+const donQuixote:Knight ={
+    motto: "La diligencia es madre de la buenaventura",
+    ride: helper
 }
-
 ```
 
 Современный javascript часто опирается на понятие class. Используя интерфейс

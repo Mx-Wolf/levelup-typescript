@@ -136,15 +136,19 @@ type DescribedFunction = {
 }
 ```
 
-тогда мы можем использовать договоренность для наших бизнес-потребностей.
+Попробуйте прочитать эту декларацию типа на русском.
+
+> К значениям типа `DescribedFunction` можно применить операцию вызова (invokation), кроме этого они (значения типа `DescribedFunction`) имеют свойство `description` со строковыми значениями.
+
+Мы можем использовать договоренность описанную такой декларацией типа для наших бизнес-потребностей.
 
 ```typescript
 function logExecution(fn:DescribedFunction){
     try{
-        fn();
+        fn();//применяем операцию вызова
     }
     catch(ex){
-        console.log(ex,fn.description)
+        console.log(ex,fn.description); //пользуемся описанием функции
     }
 }
 ```
@@ -166,5 +170,42 @@ creator('2015-10-26T00:00:00.000Z')
 ```
 
 [Playground Link](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCJ0gYShDB7KAbwFgAoZZACjGAQGsBnALmRAFcBbAI2gEoX0kANxkKlAJ64oLdt2gAaZBzzgAFjM48oigCZxxGuVH6CII8lWAM8AZTBRQAcxYN7TkxjNkAvmTI6IBAAbOBxkBBVXcJx8aVNsXDACczIEGKSoSgAmAAYARgBWeTyc+Sy83nM0xIJKPIAWeoKADjyAdgA2HO7uytT02oByXMKAWhLRrI6AFW6mOe6AOh6ALUHeIA)
+
+Внимательный читатель может заметить кажущееся противоречие. Как так, TypeScript позовляет определить перегруженные функции, но компилируется в обычный JavaScript, где нет понятния перегруженных функций. Это кажущееся противоречие TypeScript разрешает очень элегантно. TypeScript и сервисы компилятора в редакторе не показывают разработчику, то как сам же разработчик реализовал перегруженную функцию. **Не показывают**, - это значит, что в intellisense эти сведения отсутствуют. Вот и все. Кстати, реализация перегруженной функции выполняется примерно так же как и в JavaScript, - методичным изучением полученных в параметрах значений. Мы скоро встретимся с этим подходом в демо.
+
+## Несколько слов о конексте this
+
+Конекст исполнения функции (`handler1` для определенности) в JavaScript можно заменить несколькими способами - присвоением свойству объекта и вызовом через точку.
+
+```JavaScript
+const obj = {};
+obj.handler1 = handler1;
+obj.handler1();// this === obj
+```
+
+или использованием методов `call`, `apply`.
+
+В любом случае разработчик вправе ожидать от TypeScript-а контроля допустимого/ожидаемого типа значения контекста `this`. TypeScript использует синтаксис первого аргумента функции и использует зарезервированное словов this для указания типа контекста. Как обычно следует помнить, что во время работы JavaScript ничего не знает об этом "якобы" первом аргрументе.
+
+```ts
+export function handler1(this: HTMLAnchorElement, ev:MouseEvent){
+    ev.preventDefault();
+    this.title = 'clicked';
+}
+
+const a = document.querySelector('a');
+if(a===null){
+    throw new Error();
+}
+a.addEventListener('click',handler1);
+
+const b = document.querySelector('button');
+if(b===null){
+    throw new Error();
+}
+b.addEventListener('click',handler1);
+```
+
+[Изучите в песочнице](https://www.typescriptlang.org/play?ssl=17&ssc=1&pln=1&pc=1#code/KYDwDg9gTgLgBAMwK4DsDGMCWEVwBYCGKAJgDbBQCMAFDHpgM4BccAEgCoCyAMgILp5oAUXIBbYChgAaOMABuTThCQNgQuRJgBKAN4AoOIdlyAdGCjzNAEWAICSUjGpaA3AaN1GJrDHJwAvHAA5GikmGgA1sDEQW4Avnp6aDgM8AQBcMQQaEjikiYAjkgUAJ4AysDkGNDUQQRBrnqYCNQE-u0oDqS67oZ0UBAA7nAowMNCUANQzvF6BCYExMTqmtyMMBIUtaHhEUFShCTkVI1JKfAARhlZOXkwhcVQ5ZXA1dNBF0gwMDgNbs3UC7tfydUjdfRGOD9IYjMZwCZTGZ6BIXBZLFaSNapTbvHaRfaHMgUSiNIA) отрывок. Посмотрите, какой результат JavaScript формируется, выясните в какой строке сервисы TypeScript подскажут вам неправомерность использования функции. Обратите внимание на количество аргументов у функции `handler1` в модуле TypeScript и в модуле JavaScript
 
 В следующем разделе мы рассмотрим вопрос о создании программ, которым, как и компилятору TypeScript важно только то, что можно сделать со значениями, но точное название типа менее существенно. Будем создававть программы в обобщенном виде.

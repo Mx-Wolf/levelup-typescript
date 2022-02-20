@@ -54,25 +54,25 @@ questions:
     title: "Какие из перечисленных типов являются примитивными в TypeScript"
     type: "multiple"
     id: 1
-  - description: "Выберите подходящие варианты из числа приведенных"
+  - title: "Как объявить переменную, значением которой может быть массив, содержащий элементы либо строковые либо числовые значений"
+    description: "Выберите подходящие варианты из числа приведенных"
     options:
-      - correct: true
-        value: "let fruits: string[] = ['Apple', 'Orange', 'Banana'];"
-        resultMessage: "Имя переменной дополнить аннотацией типа элемента с квадратными скобками"
+      - value: "Добавить аннотацию типа `let fruits: string[];`"
+        correct: false
+        resultMessage: "массив с аннотацией `string[]` может содержать только строки в качестве значений элементов"
         id: 1
-      - correct: true
-        value: "let fruits: Array<string> = ['Apple', 'Orange', 'Banana'];"
-        resultMessage: "Воспользоваться обобщенным типом для обозначения массива"
+      - value: "Использовать обобщенный тип. `let fruits: Array<string>;`"
+        correct: false
+        resultMessage: "переменная с типом Array<string> может содержать значение - массив, элементами которого могут быть только строки"
         id: 2
-      - correct: true
-        value: "let arr = [1, 3, 'Apple', 'Orange', 'Banana', true, false];"
-        resultMessage: "TypeScript способен выяснить тип переменной по контексту использования"
+      - correct: false
+        value: "Использовать возможности компилятора догадаться о разрешенных типах по контексту: let arr = [1, 3, 'Apple', 'Orange', 'Banana', true, false];"
+        resultMessage: "TypeScript способен выяснить тип переменной по контексту использования. Поскольку в массиве представлены и числа и строки и флаги, TypeScript обозначит переменную arr типом (string | number | boolean)[]"
         id: 3
       - correct: true
-        value: "let values: (string | number)[] = ['Apple', 2, 'Orange', 3, 4, 'Banana']; "
+        value: "добавить переменной аннотацию - массив объединения типа: `let values: (string | number)[];`"
         resultMessage: "Можно объявить переменную массива и сообщить о возможности сохранять в качестве элементов значения различных типов"
         id: 4
-    title: "Как объявить переменную содержащую массив строк или чисел"
     type: "multiple"
     id: 2
   - description: ""
@@ -96,7 +96,7 @@ questions:
     title: "В каких случаях не требуется аннотация типа при объявлении переменной "
     type: "multiple"
     id: 3
-  - description: "```typescript\ntype Action = ()=>void;\n      const getItem:Action = () =>{\n          return 42;\n      }\n      const item = getItem();\n      console.log(item);\n      \n```"
+  - description: "```ts\ntype Action = ()=>void;\n      const getItem:Action = () =>{\n          return 42;\n      }\n      const item = getItem();\n      console.log(item);\n      \n```"
     options:
       - correct: true
         value: "Не обнаружит никаких ошибок"
@@ -109,7 +109,7 @@ questions:
     title: "Какие ошибки обнаружит компилятор при сборке приведенной программы при компиляции с флагом strict?"
     type: "single"
     id: 4
-  - description: "```typescript\ntype Action = ()=>void;\n      const getItem:Action = () =>{\n          return 42;\n      }\n      const item = getItem();\n      console.log(item);\n      \n```"
+  - description: "```ts\ntype Action = ()=>void;\n      const getItem:Action = () =>{\n          return 42;\n      }\n      const item = getItem();\n      console.log(item);\n      \n```"
     options:
       - correct: false
         value: "не отобразит никаких символов"
@@ -122,7 +122,23 @@ questions:
     title: "Какие значение программа отобразит в консоли."
     type: "single"
     id: 5
-  - description: "```typescript\nconst THRESHOLD = 0.5;\n      type TextProvider = ()=>string;\n      const getText:TextProvider =()=>{\n          try{\n              if(Math.random()<THRESHOLD){\n                  return 'success';\n              }\n              throw new Error('failure');\n          }\n          catch(err){\n              return err.message;\n          }\n      }\n```"
+  - title: "Допускает ли TypeScript следующую программу"
+    description: |
+      ```ts
+      type TextProvider = ()=>string;
+      const THRESHOLD = 0.5;
+      const getText:TextProvider =()=>{
+        try{
+          if(Math.random()<THRESHOLD){
+            return 'success';
+          }
+          throw new Error('failure');
+        }
+        catch(err){
+          return err.message;
+        }
+      }
+      ```
     options:
       - correct: false
         value: "Компилятор соберет программу и создаст JS файл без каких либо предупреждений"
@@ -132,10 +148,25 @@ questions:
         value: "Компилятор выдаст предупреждение об отсутствии аннотации типа переменной err"
         resultMessage: "В зависимости от настроек флагов компилятора компилятор может выдать предупреждение о возможном отсутствии свойства message. TypeScript не предусматривает аннотацию значения переменной в выражении catch"
         id: 2
-    title: "Допускает ли TypeScript следующую программу"
     type: "single"
     id: 6
-  - description: "```typescript\nconst THRESHOLD = 0.5;\n      type TextProvider = ()=>string;\n      const getText:TextProvider =()=>{\n          try{\n              if(Math.random()<THRESHOLD){\n                  return 'success';\n              }\n              throw 'failure';\n          }\n          catch(err){\n              return err.message;\n          }\n      }\n      \n```"
+  - title: "Какие флаги компилятора создадут условия для безошибочной компиляции программы."
+    description: | 
+      ```ts
+      const THRESHOLD = 0.5;
+      type TextProvider = ()=>string;
+      const getText:TextProvider =()=>{
+        try{
+          if(Math.random()<THRESHOLD){
+            return 'success';
+          }
+          throw 'failure';
+        }
+        catch(err){
+          return err.message;
+        }
+      }
+      ```
     options:
       - correct: false
         value: "Программа синтаксически неверна, она не будет компилироваться без ошибок"
@@ -145,10 +176,19 @@ questions:
         value: "useUnknownInCatchVariables=false"
         resultMessage: "Этот флаг заставляет компилятор считать все значения в переменных в выражениях catch имеющими тип any"
         id: 2
-    title: "Какие флаги компилятора создадут условия для безошибочной компиляции программы."
     type: "single"
     id: 7
-  - description: "```typescript\nconst optimist = ()=>true;\n      let typeofValue: string;\n      \n      typeofValue = typeof true;\n      typeofValue = typeof ()=>true;\n      typeofValue = typeof (()=>true);\n      typeofValue = typeof optimist;\n      \n```"
+  - title: "Сколько ошибок обнаружит компилятор"
+    description: |
+      ```ts
+      const optimist = ()=>true;
+      let typeofValue: string;
+      
+      typeofValue = typeof true;
+      typeofValue = typeof ()=>true;
+      typeofValue = typeof (()=>true);
+      typeofValue = typeof optimist;
+      ```
     options:
       - correct: false
         value: "0"
@@ -162,7 +202,6 @@ questions:
         value: "2"
         resultMessage: "TypeScript специально ограничивает возможность использование typeof оператора в отношении выражения, которое можно спутать с вызовом функции"
         id: 3
-    title: "Сколько ошибок обнаружит компилятор"
     type: "multiple"
     id: 8
   - description: ""
@@ -182,7 +221,13 @@ questions:
     title: "Какие варианты для настройки компилятора возможны при работе c TypeScript"
     type: "multiple"
     id: 9
-  - description: "```typescript\ndeclare function date(ticks:number):Date;\n      declare function date(year:number, month: number, day:number):Date;\n      declare function date(isoString:string):Date;\n      \n```"
+  - title: "Сколько реализаций придется создать для трех вариантов перегруженных функций"
+    description:  |
+     ```ts
+     declare function date(ticks:number):Date;
+     declare function date(year:number, month: number, day:number):Date;
+     declare function date(isoString:string):Date;
+     ```
     options:
       - correct: false
         value: "три различные реализации"
@@ -196,7 +241,6 @@ questions:
         value: "требуется одна реализация"
         resultMessage: "TypeScript выбирает вариант объявления функции в порядке объявления и требует одной и только одной реализации. Причем, объявление самой реализации не доступно во время анализа"
         id: 3
-    title: "Сколько реализаций придется создать для трех вариантов перегруженных функций"
     type: "multiple"
     id: 10
   - description: ""
@@ -224,16 +268,37 @@ questions:
     title: "Какую нагрузку несут в TypeScript интерфейсы"
     type: "multiple"
     id: 11
-  - description: "```typescript\nclass ServiceBase{\n        private endpoint:string = '';\n        protected getQueryUrl(endpoint:string):string{return endpoint};\n        public async queryData():Promise<unknown>{\n            const response = await fetch(this.getQueryUrl(this.endpoint));\n            if(response.ok){\n                return await response.json();\n            }\n            throw new Error()\n        }\n    }\n    \n    const mockService:Pick<ServiceBase,\"queryData\"> = {\n        queryData:()=>Promise.resolve({})\n    }\n```"
-    options:
-      - value: "Да"
-        correct: true
-        resultMessage: "модификаторы доступа public, protected, private имеют действие только на этапе компиляции, компилятора потребует наличия метода getQueryUrl и поля endpoint"
-        id: 1
-    title: "Приведенная программа компилируется без ошибок. Будет ли компилятор считать программу ошибочной, если убрать Pick<...,\"\">"
+  - title: "Приведенная программа компилируется без ошибок. Будет ли компилятор считать программу ошибочной, если заменить Pick<ServiceBase,\"queryData\"> на ServiceBase"
+    description: |
+      ```ts
+      class ServiceBase{
+        private endpoint:string = '';
+        protected getQueryUrl(endpoint:string):string{return endpoint};
+        public async queryData():Promise<unknown>{
+          const response = await fetch(this.getQueryUrl(this.endpoint));
+          if(response.ok){
+            return await response.json();
+          }
+          throw new Error();
+        }
+      }
+      
+      const mockService:Pick<ServiceBase,"queryData"> = {
+        queryData:()=>Promise.resolve({})
+      }
+      ```
     type: "single"
+    options:
+      - value: "Да, разработчик может использовать имя класса на месте где ожидается имя типа, поэтому программа будет компилироваться без ошибок"
+        correct: false
+        resultMessage: "Компилятор попытается обеспечить наличие private и protected полей мокового значения и не сможет выполнить этого, программа не будет компилироваться, ошибка: 'Type '{ queryData: () => Promise<{}>; }' is missing the following properties from type 'ServiceBase': endpoint, getQueryUrl'"
+        id: 1
+      - value: "Нет, разработчик не сможет использовать описание типа значений экземпляров класса ServiceBase для создания моковых значений"
+        correct: true
+        resultMessage: "Компилятор попытается обеспечить наличие private и protected полей мокового значения и не сможет выполнить этого, программа не будет компилироваться, ошибка: 'Type '{ queryData: () => Promise<{}>; }' is missing the following properties from type 'ServiceBase': endpoint, getQueryUrl'"
+        id: 2
     id: 12
-  - description: "```typescript\ntype KeyFieldType = number |string;\n\n      const keyToFind:KeyFieldType = 42;\n      const findKey = (keyToFind:KeyFieldType):KeyFieldType => keyToFind;\n      const keyFound: number = findKey();\n```"
+  - description: "```ts\ntype KeyFieldType = number |string;\n\n      const keyToFind:KeyFieldType = 42;\n      const findKey = (keyToFind:KeyFieldType):KeyFieldType => keyToFind;\n      const keyFound: number = findKey();\n```"
     options:
       - correct: true
         value: "переменной объединенного типа можно присвоить значение любого из объединяемых типов"
@@ -246,7 +311,7 @@ questions:
     title: "На примере приведенной программы, объясните, что означает объединение типов в TypeScript"
     type: "single"
     id: 13
-  - description: "```typescript\nconst example = <TLeft, TRight>(keyToFind: TLeft & TRight, prefix:TLeft) => {\n        type KeyFieldType = TLeft&TRight;\n        keyFound = prefix;\n        const findKey = (keyToFind: KeyFieldType): KeyFieldType => keyToFind;\n        const keyFound: TLeft = findKey(keyToFind);\n        return keyFound;\n    }\n```"
+  - description: "```ts\nconst example = <TLeft, TRight>(keyToFind: TLeft & TRight, prefix:TLeft) => {\n        type KeyFieldType = TLeft&TRight;\n        keyFound = prefix;\n        const findKey = (keyToFind: KeyFieldType): KeyFieldType => keyToFind;\n        const keyFound: TLeft = findKey(keyToFind);\n        return keyFound;\n    }\n```"
     options:
       - correct: false
         value: "переменной пересеченного типа можно присвоить значения любого из пересекаемых типов"
@@ -259,7 +324,7 @@ questions:
     title: "На примере приведенной программы, объясните, что означает пересечение типов в TypeScript"
     type: "single"
     id: 14
-  - description: "```typescript\ntype ShoppingCartLine = [label: string, price: number, discont: number];\n      const prepareLine = (\n          label: string,\n          price: number,\n          discont?: number,\n      ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n      \n```"
+  - description: "```ts\ntype ShoppingCartLine = [label: string, price: number, discont: number];\n      const prepareLine = (\n          label: string,\n          price: number,\n          discont?: number,\n      ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n      \n```"
     options:
       - correct: false
         value: "0"
@@ -276,7 +341,7 @@ questions:
     title: "В контексте определения кортежа из трех элементов, сколько ошибок  обнаружит компилятор для программы"
     type: "single"
     id: 15
-  - description: "```typescript\ntype ShoppingCartLine = [label: string, price: number, discont?: number];\n  const prepareLine = (\n      label: string,\n      price: number,\n      discont?: number,\n  ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n  \n```"
+  - description: "```ts\ntype ShoppingCartLine = [label: string, price: number, discont?: number];\n  const prepareLine = (\n      label: string,\n      price: number,\n      discont?: number,\n  ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n  \n```"
     options:
       - correct: true
         value: "0"
@@ -293,7 +358,7 @@ questions:
     title: "В контексте определения кортежа из трех элементов, сколько ошибок  обнаружит компилятор для программы"
     type: "single"
     id: 16
-  - description: "```typescript\ntype ShoppingCartLine = [label: string, price?: number, discont: number];\n  const prepareLine = (\n      label: string,\n      price: number,\n      discont?: number,\n  ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n  \n```"
+  - description: "```ts\ntype ShoppingCartLine = [label: string, price?: number, discont: number];\n  const prepareLine = (\n      label: string,\n      price: number,\n      discont?: number,\n  ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n  \n```"
     options:
       - correct: false
         value: "0"
@@ -310,12 +375,16 @@ questions:
     title: "В контексте определения кортежа из трех элементов, сколько ошибок  обнаружит компилятор для программы"
     type: "single"
     id: 17
-  - description: "```typescript\nconst buffer: unknown = 'TypeScript' as unknown\nconst len: number = (buffer as string).length;\n```"
+  - description: "```ts\nconst buffer: unknown = 'TypeScript' as unknown\nconst len: number = (buffer as string).length;\n```"
     options:
-      - value: "Нет"
+      - value: "Нет, утверждение типа не создаст дополнительной нагрузки на сборщик мусора"
         correct: true
         resultMessage: "В отличии от других языков программирования утверждение типа (as) не влечет за собой каких либо действий во время исполнения. Эти утверждения используются только во время компиляции"
         id: 1
+      - value: "Да, утверждение типа создаст временное значение, которое придется утилизировать сборщику мусора"
+        correct: false
+        resultMessage: "В отличии от других языков программирования утверждение типа (as) не влечет за собой каких либо действий во время исполнения. Эти утверждения используются только во время компиляции"
+        id: 2
     title: "На примере приведенной программы выясните, создает ли дополнительную нагрузку на сборщик мусора использование утверждения типа (as)"
     type: "single"
     id: 18
@@ -353,7 +422,7 @@ questions:
     title: "флаг компилятора noImplicitAny"
     type: "single"
     id: 20
-  - description: "```typescript\nconst item = 'TypeScript';\n      const result = `expression ${item}`;\n      type item = 'TypeScript';\n      type result = `expression ${item}`;\n      \n      const expression:result = result;\n      console.log(expression);\n```"
+  - description: "```ts\nconst item = 'TypeScript';\n      const result = `expression ${item}`;\n      type item = 'TypeScript';\n      type result = `expression ${item}`;\n      \n      const expression:result = result;\n      console.log(expression);\n```"
     options:
       - correct: false
         value: "Программа не компилируется. запустить ее нельзя"
@@ -370,7 +439,7 @@ questions:
     title: "Какой результат выполнения программы вы ожидаете"
     type: "single"
     id: 21
-  - description: "```typescript\ntype SpellOutNumber<T> = T extends number? string: T;\n\n      declare function spell<T>(value:T):SpellOutNumber<T> ;\n      \n      const buffer = spell(Date());\n      \n```"
+  - description: "```ts\ntype SpellOutNumber<T> = T extends number? string: T;\n\n      declare function spell<T>(value:T):SpellOutNumber<T> ;\n      \n      const buffer = spell(Date());\n      \n```"
     options:
       - correct: false
         value: "Date"
@@ -387,7 +456,21 @@ questions:
     title: "Какой тип ожидается у переменной buffer"
     type: "single"
     id: 22
-  - description: "```typescript\ntype StrictType<T>={\n      [K in keyof T]-?:T[K]|undefined\n  }\n  \n  interface PersonalData{\n      name:string;\n      passport: string;\n      driversLicense?: string | undefined;\n  }\n  \n  declare function getPersonalData():PersonalData;\n  const data:StrictType<PersonalData> = getPersonalData();\n```"
+  - description:  |
+      ```ts
+      type StrictType<T>={
+        [K in keyof T]-?:T[K]|undefined
+      }
+      
+      interface PersonalData{
+        name:string;
+        passport: string;
+        driversLicense?: string | undefined;
+      }
+      
+      declare function getPersonalData():PersonalData;
+      const data:StrictType<PersonalData> = getPersonalData();
+      ```
     options:
       - correct: false
         value: "Omit"
@@ -405,7 +488,7 @@ questions:
         value: "Readonly"
         resultMessage: "Приведенный тип создает проекцию тип-параметра, так, что все свойства теряют опциональность. Следовательно он эквивалентен утилитарному типу Required"
         id: 4
-      - correct: false
+      - correct: true
         value: "Required"
         resultMessage: "Приведенный тип создает проекцию тип-параметра, так, что все свойства теряют опциональность. Следовательно он эквивалентен утилитарному типу Required"
         id: 5
