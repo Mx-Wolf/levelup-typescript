@@ -54,25 +54,25 @@ questions:
     title: "Какие из перечисленных типов являются примитивными в TypeScript"
     type: "multiple"
     id: 1
-  - description: "Выберите подходящие варианты из числа приведенных"
+  - title: "Как объявить переменную, значением которой может быть массив, содержащий элементы либо строковые либо числовые значений"
+    description: "Выберите подходящие варианты из числа приведенных"
     options:
-      - correct: true
-        value: "let fruits: string[] = ['Apple', 'Orange', 'Banana'];"
-        resultMessage: "Имя переменной дополнить аннотацией типа элемента с квадратными скобками"
+      - value: "Добавить аннотацию типа `let fruits: string[];`"
+        correct: false
+        resultMessage: "массив с аннотацией `string[]` может содержать только строки в качестве значений элементов"
         id: 1
-      - correct: true
-        value: "let fruits: Array<string> = ['Apple', 'Orange', 'Banana'];"
-        resultMessage: "Воспользоваться обобщенным типом для обозначения массива"
+      - value: "Использовать обобщенный тип. `let fruits: Array<string>;`"
+        correct: false
+        resultMessage: "переменная с типом Array<string> может содержать значение - массив, элементами которого могут быть только строки"
         id: 2
-      - correct: true
-        value: "let arr = [1, 3, 'Apple', 'Orange', 'Banana', true, false];"
-        resultMessage: "TypeScript способен выяснить тип переменной по контексту использования"
+      - correct: false
+        value: "Использовать возможности компилятора догадаться о разрешенных типах по контексту: let arr = [1, 3, 'Apple', 'Orange', 'Banana', true, false];"
+        resultMessage: "TypeScript способен выяснить тип переменной по контексту использования. Поскольку в массиве представлены и числа и строки и флаги, TypeScript обозначит переменную arr типом (string | number | boolean)[]"
         id: 3
       - correct: true
-        value: "let values: (string | number)[] = ['Apple', 2, 'Orange', 3, 4, 'Banana']; "
+        value: "добавить переменной аннотацию - массив объединения типа: `let values: (string | number)[];`"
         resultMessage: "Можно объявить переменную массива и сообщить о возможности сохранять в качестве элементов значения различных типов"
         id: 4
-    title: "Как объявить переменную содержащую массив строк или чисел"
     type: "multiple"
     id: 2
   - description: ""
