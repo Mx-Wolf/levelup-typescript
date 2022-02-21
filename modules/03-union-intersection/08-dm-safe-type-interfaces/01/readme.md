@@ -69,5 +69,4 @@ declare const getOrders: () => Order2[];
 
 сейчас вы можете изучить начальное состояние [в песочнице](https://codesandbox.io/s/step-1-demo-03-08-module-03-safty-to-function-interface-4qxlf)
 
-#
-#
+

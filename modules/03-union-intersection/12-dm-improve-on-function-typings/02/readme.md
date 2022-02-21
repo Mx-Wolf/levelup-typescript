@@ -27,5 +27,4 @@ Type '(element: HTMLButtonElement | HTMLImageElement) => HTMLButtonElement | HTM
 
 с кодом этого шага можно ознакомится [в песочнице](https://codesandbox.io/s/step-2-demo-03-12-tv5ym)
 
-#
-#
+

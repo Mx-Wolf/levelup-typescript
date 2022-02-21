@@ -25,5 +25,4 @@ export const withTheme: ThemeMiddleware = (element) => {
 
 код доступен [в песочнице](https://codesandbox.io/s/step-3-demo-03-12-r7kg4).
 
-#
-#
+

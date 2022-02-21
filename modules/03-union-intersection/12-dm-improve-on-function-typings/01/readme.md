@@ -44,6 +44,5 @@ interface ThemeMiddleware{
 
 Попробуем сделать так, чтобы и TypeScript нам помогал на этапе разработки.
 
-#
-#
+
 

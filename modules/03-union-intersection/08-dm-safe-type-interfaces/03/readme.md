@@ -34,5 +34,4 @@ export const createReport:Reporter = (orders) => orders.reduce(reportReducer, re
 
 Теперь зафиксируем поведение наших функций модульными тестами.
 
-#
-#
+
