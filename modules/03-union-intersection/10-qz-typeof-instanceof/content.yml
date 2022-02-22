@@ -1,58 +1,80 @@
-description: "Интерфейсы являются важной частью вселенной TypeScript и следует уметь эффективно их использовать"
-failureMessage: "Во время разработки приложений вам часто будет требоваться описание структуры точек взаимодействия различных частей программы. Интерфейсы подходят для таких целей очень хорошо"
+title: "Проверьте ваше понимание поведения определений классов в TypeScript"
+description: "Классы обладают двойственной природой"
+type: "test"
+wizard: true
+failureMessage: "Классы в TypeScript проявляют свое присутствие как значение и как тип. Различия между этими проявлениями следует понимать и использовать"
+successMessage: "Классы в TypeScript проявляют свое присутствие как значение и как тип. Различия между этими проявлениями следует понимать и использовать"
 questions:
-  - description: ""
+  - title: "Может ли класс TypeScript реализовывать несколько разных родительских интерфейсов?"
+    description: ""
+    type: "single"
     options:
       - value: "Да"
         correct: true
         resultMessage: "TypeScript допускает множественное наследование интерфейсов. Идентификаторы интерфейсов в этом случае указываются через запятую"
         id: 1
-      - correct: false
+      - value: "Нет"
+        correct: false
         resultMessage: "TypeScript допускает множественное наследование интерфейсов. Идентификаторы интерфейсов в этом случае указываются через запятую"
-        value: "Нет"
         id: 2
-    title: "может ли интерфейс TypeScript наследовать несколько разных родительских интерфейсов?"
-    type: "single"
     id: 1
-  - description: "```typescript\n\n      interface Country {\n        border: { length: number; };\n    }\n    \n    interface View {\n        border: { color: string; };\n    }\n    \n    interface CountryView extends Country, View { }\n    \n    const countrySettings = {\n        border: {\n            color: 'red',\n            length: 30000,\n        },\n    };\n      \n```"
+  - title: "Чем отличается определение пустого класса от определения пустого интерфейса?"
+    description: |
+      ```ts
+      class Empty {}
+      class AnotherEmpty {}
+      interface EmptyInterface {}
+      interface AnotherEmptyInterface {}
+      ```
+    type: "multiple"
     options:
-      - correct: false
-        value: "TypeScript не допускает пустые интерфейсы как DrawableCountry, поскольку они все эквивалентны"
-        resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
+      - value: "TypeScript не допускает пустые классы. определения, такие как  Empty и AnotherEmpty, эквивалентны друг другу"
+        correct: false
+        resultMessage: "Декларация класса TypeScript создает функцию конструктор - каждая такая функция уникальна. Определения пустых классов не эквивалентны"
         id: 1
-      - correct: false
-        value: "TypeScript не допускает множественное наследование не экспортированных интерфейсов"
-        resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
+      - value: "В TypeScript определения пустого класса и пустого интерфейса допускаются, но их рекомендуется избегать, из-за принципа структурной типизации"
+        correct: false
+        resultMessage: "Рекомендация - избегать пустых интерфейсов правильная, но пустой класс - это отдельная уникальная функция-конструктор и она имеет смысл например при использовании оператора instanceof"
         id: 2
-      - correct: false
-        value: "TypeScript не допускает множественное наследование интерфейсов содержащих сложные типы"
-        resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
+      - value: "Empty и AnotherEmpty являются значениями"
+        correct: true
+        resultMessage: "Класс TypeScript создает в том числе значение - функцию конструктор"
         id: 3
-      - correct: true
-        value: "Правильный ответ не указан"
+      - value: "EmptyInterface эквивалентен AnotherEmptyInterface"
+        correct: true
         resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
         id: 4
-    title: "В контексте определения интерфейсов Country  и View почему возникает ошибка компиляции?"
-    type: "multiple"
     id: 2
-  - description: "```typescript\n\n      interface GeoBorder {\n        length: number;\n    }\n    \n    interface DrawableBorder {\n        color: string;\n    }\n    \n    interface Border extends GeoBorder, DrawableBorder{}\n    \n    interface CountryView { \n        border:Border;\n    }\n    \n    const countrySettings = {\n        border: {\n            color: 'black',\n            length: 30000,\n        },\n    } as const;\n    \n    \n```"
+  - title: "Может ли интерфейс наследовать один или несколько классов?"
+    description: |
+      В контексте приведенного определения класса и интерфейса, какие ошибки обнаружит компилятор
+      ```ts
+      class Container {
+          constructor(private readonly cache: number = 0){}
+      }
+
+      interface Entity extends Container {
+          id: number;
+      }
+
+      const x:Entity = {
+          id: 0,
+          cache: 7,
+      };
+      ```
+    type: "multiple"
     options:
-      - correct: false
-        value: "Нет"
-        resultMessage: "Эквивалентность типов в TypeScript рассматривается относительно применимых операций. К контексте приведенного примера можно допустить функции где значения типа CountryView и значение переменной countryView будут эквивалентны, а можно - где нет"
+      - value: "TypeScript не позволяет создавать значение x поскольку в интерфейсе Entity отсутствует поле cache"
+        correct: false
+        resultMessage: "Поле cache присутствует по наследству от класса Container, который в даном случае используется в качестве типа"
         id: 1
-      - correct: false
-        value: "Да"
-        resultMessage: "Эквивалентность типов в TypeScript рассматривается относительно применимых операций. К контексте приведенного примера можно допустить функции где значения типа CountryView и значение переменной countryView будут эквивалентны, а можно - где нет"
+      - value: "TypeScript  не позволяет наследовать от классов имеющих приватные поля"
+        correct: false
+        resultMessage: "TypeScript не запрещает наследование от классов имеющих поля private или protected"
         id: 2
-      - correct: true
-        value: "Невозможно ответить"
+      - value: "TypeScript не позволяет создать литеральное значение по интерфейсу, имеющему поля с модификаторами доступа. Property 'cache' is private in type 'Entity' but not in type '{ id: number; cache: number; }'.(2322)"
+        correct: true
         resultMessage: "Эквивалентность типов в TypeScript рассматривается относительно применимых операций. К контексте приведенного примера можно допустить функции где значения типа CountryView и значение переменной countryView будут эквивалентны, а можно - где нет"
         id: 3
-    title: "В контексте определения интерфейсов GeoBorder, DrawableBorder является ли тип значения переменной эквивалентным интерфейсу CountryView"
-    type: "multiple"
     id: 3
-successMessage: "Во время разработки приложений вам часто будет требоваться описание структуры точек взаимодействия различных частей программы. Интерфейсы подходят для таких целей очень хорошо"
-title: "Проверьте ваше понимание поведения интерфейсов в TypeScript"
-type: "test"
-wizard: true
+
