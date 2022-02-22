@@ -6,11 +6,12 @@ questions:
   - id: 1
     title: "Значение какой переменной относится к примитивному типу?"
     description: |
-    "ts
-    const a = 42;
-    const b = new Number(42);
-    const c = Number(42);
-    const d = Number('Life, the universe, everything');"
+      ```ts
+      const a = 42;
+      const b = new Number(42);
+      const c = Number(42);
+      const d = Number('Life, the universe, everything'); 
+      ```
     type: multiple
     options:
       - id: 1
