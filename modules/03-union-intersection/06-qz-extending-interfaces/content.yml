@@ -1,7 +1,13 @@
+title: "Проверьте ваше понимание поведения интерфейсов в TypeScript"
 description: "Интерфейсы являются важной частью вселенной TypeScript и следует уметь эффективно их использовать"
+type: "test"
+wizard: true
+successMessage: "Во время разработки приложений вам часто будет требоваться описание структуры точек взаимодействия различных частей программы. Интерфейсы подходят для таких целей очень хорошо"
 failureMessage: "Во время разработки приложений вам часто будет требоваться описание структуры точек взаимодействия различных частей программы. Интерфейсы подходят для таких целей очень хорошо"
 questions:
-  - description: ""
+  - title: "может ли интерфейс TypeScript наследовать несколько разных родительских интерфейсов?"
+    description: ""
+    type: "single"
     options:
       - value: "Да"
         correct: true
@@ -11,24 +17,20 @@ questions:
         resultMessage: "TypeScript допускает множественное наследование интерфейсов. Идентификаторы интерфейсов в этом случае указываются через запятую"
         value: "Нет"
         id: 2
-    title: "может ли интерфейс TypeScript наследовать несколько разных родительских интерфейсов?"
-    type: "single"
     id: 1
-  - id: 2
-    title: "В контексте определения интерфейсов Country  и View почему возникает ошибка компиляции?"
-    type: "multiple"
+  - title: "В контексте определения интерфейсов Country  и View почему возникает ошибка компиляции?"
     description: |
       ```ts
       interface Country {
         border: { length: number; };
       }
-    
+
       interface View {
         border: { color: string; };
       }
-    
+
       interface CountryView extends Country, View { }
-    
+
       const countrySettings = {
         border: {
             color: 'red',
@@ -36,6 +38,7 @@ questions:
         },
       };
       ```
+    type: "multiple"
     options:
       - correct: false
         value: "TypeScript не допускает пустые интерфейсы как CountryView, поскольку они все эквивалентны"
@@ -53,22 +56,24 @@ questions:
         value: "Правильный ответ не указан"
         resultMessage: "Ошибка возникает в связи несовместимостью структуры свойства border."
         id: 4
-  - description: |
+    id: 2
+  - title: "В контексте определения интерфейсов GeoBorder, DrawableBorder является ли тип значения переменной эквивалентным интерфейсу CountryView"
+    description: |
       ```ts
       interface GeoBorder {
         length: number;
       }
-      
+
       interface DrawableBorder {
         color: string;
       }
-      
+
       interface Border extends GeoBorder, DrawableBorder{}
-      
+
       interface CountryView {
         border:Border;
       }
-      
+
       const countrySettings = {
         border: {
           color: 'black',
@@ -76,6 +81,7 @@ questions:
         },
       } as const;
       ```
+    type: "multiple"
     options:
       - correct: false
         value: "Нет"
@@ -89,10 +95,4 @@ questions:
         value: "Невозможно ответить"
         resultMessage: "Эквивалентность типов в TypeScript рассматривается относительно применимых операций. К контексте приведенного примера можно допустить функции где значения типа CountryView и значение переменной countryView будут эквивалентны, а можно - где нет"
         id: 3
-    title: "В контексте определения интерфейсов GeoBorder, DrawableBorder является ли тип значения переменной эквивалентным интерфейсу CountryView"
-    type: "multiple"
     id: 3
-successMessage: "Во время разработки приложений вам часто будет требоваться описание структуры точек взаимодействия различных частей программы. Интерфейсы подходят для таких целей очень хорошо"
-title: "Проверьте ваше понимание поведения интерфейсов в TypeScript"
-type: "test"
-wizard: true
