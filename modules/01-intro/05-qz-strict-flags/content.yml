@@ -10,7 +10,7 @@ questions:
       const a = 42;
       const b = new Number(42);
       const c = Number(42);
-      const d = Number('Life, the universe, everything'); 
+      const d = Number('Life, the universe, everything');
       ```
     type: multiple
     options:
@@ -38,9 +38,10 @@ questions:
   - id: 2
     title: "Изменится ли значение примитивного типа?"
     description: |
-    "ts
-    let primitiveValue = 42;
-    primitiveValue += 1;"
+      ```ts
+      let primitiveValue = 42;
+      primitiveValue += 1;
+      ``` 
     type: single
     options:
       - id: 1
