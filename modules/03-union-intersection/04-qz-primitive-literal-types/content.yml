@@ -1,21 +1,25 @@
+title: "Что вы знаете о специализации примитивных типов строк, чисел и флагов"
+type: "test"
+wizard: true
 description: ""
 failureMessage: "Специализация строковых литералов очень распространенный прием в процессе использования TypeScript. Вы убедитесь в этом много-много раз."
+successMessage: "Специализация строковых литералов очень распространенный прием в процессе использования TypeScript. Вы убедитесь в этом много-много раз."
 questions:
-  - description: "```typescript\n\ntype GameSpeed = 'speed-slow'|'speed-normal'|'speed-fast';\ndeclare function setGameSpeed(speed: GameSpeed):void;\n\nconst slow:string = 'speed-slow';\n\nsetGameSpeed(slow);\nsetGameSpeed('speed-slow');\nsetGameSpeed('speed-'+'slow');\n\n```"
+  - title: "В контексте приведенного определения функции, какие из выражений TypeScript будут приводить к ошибкам компиляции"
+    description: "```typescript\n\ntype GameSpeed = 'speed-slow'|'speed-normal'|'speed-fast';\ndeclare function setGameSpeed(speed: GameSpeed):void;\n\nconst slow:string = 'speed-slow';\n\nsetGameSpeed(slow);\nsetGameSpeed('speed-slow');\nsetGameSpeed('speed-'+'slow');\n\n```"
     options:
-      - correct: true
-        value: "setGameSpeed(slow);"
+      - value: "setGameSpeed(slow);"
+        correct: true
         resultMessage: "переменная определена с  типом string и может иметь значение отличащиеся от приведенного ограниченного списка"
         id: 1
-      - correct: false
-        value: "setGameSpeed('speed-slow');"
+      - value: "setGameSpeed('speed-slow');"
+        correct: false
         resultMessage: "Компилируется без ошибок"
         id: 2
-      - correct: true
-        value: "setGameSpeed('speed-'+'slow');"
+      - value: "setGameSpeed('speed-'+'slow');"
+        correct: true
         resultMessage: "При сложении двух строковых литералов TypeScript обозначает результирующее значение типом string"
         id: 3
-    title: "В контексте приведенного определения функции, какие из выражений TypeScript будут приводить к ошибкам компиляции"
     type: "multiple"
     id: 1
   - title: "В контексте приведенного определения функции totalOrder, какой тип будут результатами вычисления ее значений"
@@ -45,34 +49,30 @@ questions:
         correct: false
         resultMessage: "Хотя значения, вычисляемые функцией действительно будут иметь значения -1, 1, или 0, следует выяснить тип результата функции. Этот тип -1|0|1 - является объединением литеральных специализированных типов - типа 1 типа 0 и типа (-1)"
         id: 1
-      - correct: true
-        value: "тип результата функции -1|0|1"
+      - value: "тип результата функции -1|0|1"
+        correct: true
         resultMessage: "Действительно тип результата функции - это объединение литеральных типов 1 0 и (-1)"
         id: 2
-      - correct: false
-        value: "тип результата функции - number"
+      - value: "тип результата функции - number"
+        correct: false
         resultMessage: "почти верно. Функция действительно, возвращает числа. TypeScript делает еще один шаг и выясняет, что результатом работы функции могут быть не все числа, а только три из них. TypeScript после этого создает для каждого значения специализированный литеральный а объединение этих типов и будет типом результата функции"
         id: 3
     type: "multiple"
     id: 2
-  - description: "```typescript\n\n      declare function getFlag(): true | false;\n      const currentFlag: boolean = getFlag();      \n      \n```"
+  - title: "Какая ошибка компиляции возникает при компиляции кода"
+    description: "```typescript\n\n      declare function getFlag(): true | false;\n      const currentFlag: boolean = getFlag();      \n      \n```"
     options:
-      - correct: false
-        value: "Type 'boolean' is not assignable to type 'true'|'false'."
+      - value: "Type 'boolean' is not assignable to type 'true'|'false'."
+        correct: false
         resultMessage: "Объединение литеральных типов true | false  эквивалентно примитивному типу boolean"
         id: 1
-      - correct: true
-        value: "Компилируется без ошибок"
+      - value: "Компилируется без ошибок"
+        correct: true
         resultMessage: "Объединение литеральных типов true | false  эквивалентно примитивному типу boolean"
         id: 2
-      - correct: false
-        value: "Без сведений о реализации функции ответить не возможно"
+      - value: "Без сведений о реализации функции ответить не возможно"
+        correct: false
         resultMessage: "Объединение литеральных типов true | false  эквивалентно примитивному типу boolean"
         id: 3
-    title: "Какая ошибка компиляции возникает при компиляции кода"
     type: "multiple"
     id: 3
-successMessage: "Специализация строковых литералов очень распространенный прием в процессе использования TypeScript. Вы убедитесь в этом много-много раз."
-title: "Что вы знаете о специализации примитивных типов строк, чисел и флагов"
-type: "test"
-wizard: true
