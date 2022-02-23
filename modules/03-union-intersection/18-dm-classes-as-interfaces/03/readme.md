@@ -1,6 +1,6 @@
 # Разделяй и властвуй
 
-Добавим определение публичного интерфейса `SettingsManager` в файл [i-face-settings-manager.ts](https://codesandbox.io/s/step-3-demo-18-module-3-h3k9o?file=/src/i-face-settings-manager.ts)
+Добавим определение публичного интерфейса `SettingsManager` в файл [i-face-settings-manager.ts](https://codesandbox.io/s/step-3-demo-18-module-3-h3k9o?file=/src/i-face-settings-manager.ts).
 
 ```ts
 export interface SettingsManager {
@@ -9,7 +9,7 @@ export interface SettingsManager {
 }
 ```
 
-А реализацию самого класса обозначим [как специализацию](https://codesandbox.io/s/step-3-demo-18-module-3-h3k9o?file=/src/settings-manager.ts:95-155) этого интерфейса
+Реализацию самого класса обозначим [как специализацию](https://codesandbox.io/s/step-3-demo-18-module-3-h3k9o?file=/src/settings-manager.ts:95-155) этого интерфейса.
 
 ```ts
 export class SettingsManagerImp implements SettingsManager {
@@ -30,8 +30,8 @@ export class SettingsManagerImp implements SettingsManager {
 }
 ```
 
-После такого ремонта, наш код готов к модульному тестированию.
+После такого «ремонта» наш код готов к модульному тестированию.
 
 ## Интерфейсы
 
-Программирование с явным выделением описания (определения) интерфейсов очень полезная практика. Эта методика позволяет вам и вашим коллегам договариваться, заключать контракт, о порядке взаимодействия. TypeScript здесь на вашей стороне.
+Программирование с явным выделением описания (определения) интерфейсов — полезная практика. Эта методика позволяет вам и вашим коллегам договариваться, заключать контракт о порядке взаимодействия. TypeScript здесь на вашей стороне.
