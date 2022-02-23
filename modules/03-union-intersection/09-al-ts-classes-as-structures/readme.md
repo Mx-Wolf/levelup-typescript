@@ -1,32 +1,32 @@
 # Классы и их интерфейсы
 
-В javascript ключевое слово `class` позволяет создать описание класса. Это описание можно использовать с ключевым словом `new` и создавать экземпляры класса. Если во время выполнения javascript спросить мнение оператора `typeof`, то вы узнаете, что класс это функция. В консоли браузера вы это можете увидеть.
+В JavaScript ключевое слово `class` позволяет создать описание класса. Это описание можно использовать с ключевым словом `new` и создавать экземпляры класса. Если при выполнении JS спросить мнение оператора `typeof`, то вы узнаете, что класс — это функция. В консоли браузера можно увидеть:
 
-![вывод консоли браузера относительно типа класса](assets/console.png)
+![Вывод консоли браузера относительно типа класса](assets/console.png)
 
 ## Классы TypeScript
 
 Классы в TypeScript обладают гораздо более полным набором качеств, необходимых для построения системы в рамках философии ООП.
 
-TypeScript дополняет описание класса возможностями, отсутствующими в javascript.
+TypeScript дополняет описание класса возможностями, отсутствующими в JS:
 
-* модификатор `private` указывает компилятору на необходимость контролировать доступ к значению. (на этапе компиляции) только для членов текущего класса
-* модификатор `protected` заставляет компилятор разрешать доступ к значениям поля только для текущего класса и его наследников.
-* `public` (по умолчанию) это поля как и в javascript
+- модификатор `private` указывает компилятору на необходимость контролировать доступ к значению (на этапе компиляции) только для членов текущего класса.
+- модификатор `protected` заставляет компилятор разрешать доступ к значениям поля только для текущего класса и его наследников.
+- `public` (по умолчанию) — это поля, как и в JavaScript.
 
-Дополнительно, компилятор контролирует корректное использование абстрактных классов и методов, а так же модификатора readonly.
+Дополнительно компилятор контролирует корректное использование абстрактных классов и методов, а также модификатора readonly.
 
 ```ts
-// компилятор не позволит создать 
-// экземпляр абстрактного класса
+// Компилятор не позволит создать 
+// экземпляр абстрактного класса.
 abstract class Base {
     private readonly v: number;
     constructor(v: number) {
-        //new.target всегда не Base
+        //new.target всегда не Base.
         this.v = v;
     }
 
-    // создавать заглушку реализацию не требуется
+    // Создавать заглушку не требуется.
     protected abstract getFactor(): number;
 
     public computeValue() {
@@ -35,14 +35,14 @@ abstract class Base {
 }
 
 class Double extends Base {
-    // компилятор потребует реализацию абстрактного метода
+    // Компилятор потребует реализацию абстрактного метода.
     protected getFactor(): number {
         return 2;
     }
 }
 ```
 
-Изучите [код](https://www.typescriptlang.org/play?#code/PTAEi4QQ+EEHhBH4QQOEENwgh5EEEIglACIKQvCCFYQUskg7CCBMIJIvKqIIIgxgLCCAMIKoDIgoAUCKILIg4RucKLA0CMINVQYG4VNkiBmEEgREDatQZsAhgCMAzgBcATuoDGu0EYA267dtAAhKwFNQAbzah3oAA76AlgDd1XSd9B3UAEwB7ADtzAE9QPwAuUCiAVwBbTQd9AG43DyNovX1Ukwj9AAoklIys-QBKF3yPDxAohwB3ADpddX0AcwdTEmpcWUYcfHttB2aW0F0ACx9tLr9QAF4EvJaAXzY5zloiRhImViIGWURAYRBACRBwG9AMXAYKS8AxEHhAORBJ0HFcMIbrhUNRkHNvBEgiYHGFQFpisZTINdAAxJHlCr1ZJpTLZPIQ1Kacw+IxmCLpTypIIANXU5lSDixTXmHhCulS+iiC2Wq3WACoeSsuij0WVKvUdh59vs2BYrDYACIRInmJwOAAeQSiYRs0ycrhanCgcCQaEwBEgAKBIOer3eDC+vxEYgkUhk8lA0BBkEYEP0UIcMLhooxEpxtWyLNZoHZnO5ACYpe4ZQcgA) в песочнице
+Изучите [код](https://www.typescriptlang.org/play?#code/PTAEi4QQ+EEHhBH4QQOEENwgh5EEEIglACIKQvCCFYQUskg7CCBMIJIvKqIIIgxgLCCAMIKoDIgoAUCKILIg4RucKLA0CMINVQYG4VNkiBmEEgREDatQZsAhgCMAzgBcATuoDGu0EYA267dtAAhKwFNQAbzah3oAA76AlgDd1XSd9B3UAEwB7ADtzAE9QPwAuUCiAVwBbTQd9AG43DyNovX1Ukwj9AAoklIys-QBKF3yPDxAohwB3ADpddX0AcwdTEmpcWUYcfHttB2aW0F0ACx9tLr9QAF4EvJaAXzY5zloiRhImViIGWURAYRBACRBwG9AMXAYKS8AxEHhAORBJ0HFcMIbrhUNRkHNvBEgiYHGFQFpisZTINdAAxJHlCr1ZJpTLZPIQ1Kacw+IxmCLpTypIIANXU5lSDixTXmHhCulS+iiC2Wq3WACoeSsuij0WVKvUdh59vs2BYrDYACIRInmJwOAAeQSiYRs0ycrhanCgcCQaEwBEgAKBIOer3eDC+vxEYgkUhk8lA0BBkEYEP0UIcMLhooxEpxtWyLNZoHZnO5ACYpe4ZQcgA) в песочнице.
 
 Классы в TypeScript логически находятся в двух контекстах:
 
@@ -51,11 +51,11 @@ class Double extends Base {
 
 ## Класс реализует интерфейс
 
-В TypeScript класс может реализовывать один или множество интерфейсов. Таким образом достигается полиморфизм
+В TypeScript класс может реализовывать один или множество интерфейсов. Так достигается полиморфизм.
 
 ```typescript
 // Для правильной сериализации приватного
-// состояния класс может реализовать интерфейс
+// состояния класс может реализовать интерфейс.
 interface Serializable<T> {
     toJSON(key: string): T;
 }
@@ -69,9 +69,9 @@ class Model implements Serializable<{ id: number, name: string }>{
         this.name = name;
     }
 
-    // использование метода интерфейса
+    // Использование метода интерфейса
     // позволяет JSON.stringify узнать
-    // внутреннюю кухню объекта
+    // внутреннюю кухню объекта.
     toJSON(): { id: number; name: string; } {
         return { id: this.id, name: this.name };
     }
@@ -82,15 +82,15 @@ class Model implements Serializable<{ id: number, name: string }>{
 }
 
 const stream = JSON.stringify(new Model(42,'towel'));
-// проверьте вывов в консоли песочницы
+// Проверьте вывов в консоли песочницы.
 console.log(stream);
 ```
 
-[Playground Link](https://www.typescriptlang.org/play?ssl=23&ssc=21&pln=1&pc=1#code/JYOwLgpgTgZghgYwgAgMrWHANsAXnAIywgB4AVAPmQG8AoZB5MAewClUB5AOQAoBrCAE8AXMgDOYKKADmASlFkA3LQC+tWgixwxY5AFlmAEwhZkwALYAHYuYjhd6KdjyFiJamcOiQAV3MFoABpkEDhbUQkpEGlkFQo6RmRLKQA3OEhkKAg4Q2YQLEFPbz8AqGQAXmQABmVE5OA0jKycvIKQsIgIyRkK5AByPuV6RgQ8yJ8EFigeYC8QkqD28PFu6NkaYcSGMAALYDEAOlne2dqt7b3D0Nte64gzhjVElnZuHnkaIvn-aEUlzpWUWkfxUG3ODCyYB8UBAn1mol2+yOhmCdwRlwOd1iD1i6jqPiIwAQyGkEDATGAYGI7zB4Mh0NhAAMACTURGHWaggC0yFZ7MxHRUjJxajUGjG5Mi2XMvVeXAOkRkwBggh4IAgAHd9EYTDwACwAJkCfRYGpMfVksmUoxAYmYxAOWGY0h4UrCVqAA)
+[Посмотреть в песочнице](https://www.typescriptlang.org/play?ssl=23&ssc=21&pln=1&pc=1#code/JYOwLgpgTgZghgYwgAgMrWHANsAXnAIywgB4AVAPmQG8AoZB5MAewClUB5AOQAoBrCAE8AXMgDOYKKADmASlFkA3LQC+tWgixwxY5AFlmAEwhZkwALYAHYuYjhd6KdjyFiJamcOiQAV3MFoABpkEDhbUQkpEGlkFQo6RmRLKQA3OEhkKAg4Q2YQLEFPbz8AqGQAXmQABmVE5OA0jKycvIKQsIgIyRkK5AByPuV6RgQ8yJ8EFigeYC8QkqD28PFu6NkaYcSGMAALYDEAOlne2dqt7b3D0Nte64gzhjVElnZuHnkaIvn-aEUlzpWUWkfxUG3ODCyYB8UBAn1mol2+yOhmCdwRlwOd1iD1i6jqPiIwAQyGkEDATGAYGI7zB4Mh0NhAAMACTURGHWaggC0yFZ7MxHRUjJxajUGjG5Mi2XMvVeXAOkRkwBggh4IAgAHd9EYTDwACwAJkCfRYGpMfVksmUoxAYmYxAOWGY0h4UrCVqAA).
 
-## Класс - в качестве интерфейса
+## Класс в качестве интерфейса
 
-Классы TypeScript присутствуют сразу в двух вселенных. Во вселенной значений класс предтавлен функцией. Во вселенной типов он представлен своим публичным интерфейсом. Давайте разберемся с интерфейсом класса из трех полей.
+Классы TypeScript присутствуют сразу в двух Вселенных. Во Вселенной значений класс представлен функцией. Во Вселенной типов он представлен своим публичным интерфейсом. Давайте разберёмся с интерфейсом класса из трёх полей.
 
 ```ts
 class AddressBookRecord {
@@ -107,15 +107,15 @@ class AddressBookRecord {
 }
 ```
 
-Декларация `AddressBookRecord`, в числе прочих вещей, определеяет тип значений записей в адресной книге. Каждая запись имеет два строковых поля `name` и `address` и один метод - `display`.
+Декларация `AddressBookRecord` в том числе определеяет тип значений записей в адресной книге. Каждая запись имеет два строковых поля `name` и `address` и один метод — `display`.
 
-Typescript признает наличие в этом классе трех полей и редактор их показывает в контекстной подсказке
+TypeScript признаёт наличие в этом классе трёх полей, и редактор их показывает в контекстной подсказке:
 
 ![Наличие полей в экземпляре из класса](assets/intellisense.png)
 
-Во время модульного тестирования (или по другим причинам) перед разработчиком возникает задача заменить реальные данные на временные. Временные, mock-овые данные позволяют исследовать поведение куска программы изолированным и предсказуемым образом. TypeScript готов вам здесь пройти на помощь.
+Во время модульного тестирования (или по другим причинам) перед разработчиком возникает задача: заменить реальные данные на временные. Временные (mock-овые) данные позволяют исследовать поведение части программы изолированным и предсказуемым образом. И здесь приходит на помощь TypeScript.
 
-Поскольку TypeScript имеет структурную типизацию, мы можем определить тестовое значение, совпадающее по форме с интерфейсом нашего класса, при этом не являющемся экземпляром класса. В следующем отрывке мы используем название класса в качестве типа, мы не используем оператор `new`.
+Поскольку TypeScript имеет структурную типизацию, мы можем определить тестовое значение, совпадающее по форме с интерфейсом класса, при этом не являющемся экземпляром класса. В следующем отрывке мы используем название класса в качестве типа, мы не используем оператор `new`.
 
 ```ts
 const mockValue: AddressBookRecord = {
@@ -125,7 +125,7 @@ const mockValue: AddressBookRecord = {
 };
 ```
 
-При необходимости изучить поведение функции `notify` из следующего отрывка, мы может поставлять ей специально подготовленное значение `mockValue` типа `AddressBookRecord`
+Если нужно изучить поведение функции `notify` из следующего отрывка, мы можем поставлять ей специально подготовленное значение `mockValue` типа `AddressBookRecord`:
 
 ```ts
 declare const notify: (recipient: AddressBookRecord) => void;
@@ -134,10 +134,10 @@ notify(instanceValue);
 notify(mockValue)
 ```
 
-Это позволит зафиксировать поведение функции `notify`, к пример, еще до окончания разработки класса `AddressBookRecord`.
+Это позволит зафиксировать поведение функции `notify`, к примеру, до окончания разработки класса `AddressBookRecord`.
 
 Однако есть различия между значениями `instanceValue`
-и `mockValue` с точки зрения JavaScript. Очевидно `mockValue` не обладает всеми способностями экземпляра класса, и, в частности результаты оператора `instancof` будут различными
+и `mockValue` с точки зрения JavaScript. `mockValue` не обладает всеми способностями экземпляра класса, и результаты оператора `instancof` будут различными.
 
 ```ts
 console.log({
@@ -146,7 +146,7 @@ console.log({
 });
 ```
 
-вы получите результат
+Вы получите результат:
 
 ```terminal
 [LOG]: {

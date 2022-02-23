@@ -2,14 +2,14 @@
 
 ## Список параметров
 
-Для выполнения своей работы, функциям может потребоваться получение параметров. Любой вариант описания типа функции позволяет указать список параметров, которые требуются её для работы. Необходимо указывать имя формального параметра и его тип.
+Любой вариант описания типа функции позволяет указать список параметров, которые нужны для её работы. Необходимо указывать имя формального параметра и его тип.
 
 ```typescript
 type PrimeDetector = (intToTest:number)=>boolean;
 type GCDService = (a:number, b:number)=>number;
 ```
 
-имя формального параметра в описании типа может не совпадать с именем параметра, при описании функции.
+Имя формального параметра в описании типа может не совпадать с именем параметра при описании функции:
 
 ```typescript
 const isPrime: PrimeDetector = function (value) {
@@ -27,15 +27,15 @@ const isPrime: PrimeDetector = function (value) {
 }
 ```
 
-В приведенном примере, функция `isPrime` использует параметр `value` имя которого отличается от имени `intToTest` в описании типа. Программа при этом, компилируется без ошибок
+В приведённом примере функция `isPrime` использует параметр `value`, имя которого отличается от имени `intToTest` в описании типа. Программа при этом компилируется без ошибок.
 
-## Функции обрабатывающие данные разных типов
+## Функции, обрабатывающие данные разных типов
 
-В javascript функция может быть готова к работе с аргументом нескольких типов. Вы можете сообщить компилятору, что функции определенного типа готовы к такому повороту событий используя пересечение типов.
+В JavaScript функция может быть готова к работе с аргументом нескольких типов. Вы можете сообщить компилятору, что функции определённого типа готовы к такому повороту событий, используя пересечение типов.
 
-**На заметку!** Более подробно операции объединения и пересечения типов мы обсуждали в модуле 2.
+> Более подробно операции объединения и пересечения типов мы обсуждали во втором модуле.
 
-Следующее определение информирует компилятор о том, что функции работает и с числами и со строками
+Следующее определение информирует компилятор о том, что функция работает и с числами, и со строками:
 
 ```typescript
 function getHash(arg: string|number):number{
@@ -46,7 +46,7 @@ function getHash(arg: string|number):number{
 }
 ```
 
-Вы можете использовать перегрузку функций. В этом случае вы записываете одно за другим все варианты возможных аргументов, и тут же, после всех деклараций, записываете реализацию. Обратите внимание, что тип реализации доступен только для компилятора, а тип аргументов реализации должен объединять все типы в перегруженных декларациях
+Вы можете использовать перегрузку функций. В этом случае вы записываете одно за другим все варианты возможных аргументов и тут же, после всех деклараций, записываете реализацию. Обратите внимание, что тип реализации доступен только для компилятора, а тип аргументов реализации должен объединять все типы в перегруженных декларациях.
 
 ```typescript
 function getHashOverload(arg: number):number;
@@ -64,15 +64,15 @@ function getHashOverload(arg: unknown){
 const value = getHashOverload('полотенце');
 ```
 
-[Playground Link](https://www.typescriptlang.org/play?ssl=13&ssc=44&pln=1&pc=1#code/GYVwdgxgLglg9mABAcwKZQBIEMDOALAeQDdUAnAGziwBMAKLU5ALkTBAFsAjMgSiba5kA3AChQkWAhTps+YmUo16jFjiikYYZHwHdSo8dHhI0mXIRIUqdBs0TgA1mDgB3MDwDeIxD8QxgtFAAngAOqHDAiLaIALxxiABEumQJnt6+GaToIKRItqIZAL7pPv6BoeGR0XExiWoaWqleGZnZuVGMAHTkqFpQeAW+xRn9pK6sqC6IAKKkY6S0PKLFIhAIaohEWOQgqLHSZnKWinQA5ID8IIB8IIDcIJeAQiCArCCAvCCAYiAPp0siQA)
+[Посмотреть в песочнице](https://www.typescriptlang.org/play?ssl=13&ssc=44&pln=1&pc=1#code/GYVwdgxgLglg9mABAcwKZQBIEMDOALAeQDdUAnAGziwBMAKLU5ALkTBAFsAjMgSiba5kA3AChQkWAhTps+YmUo16jFjiikYYZHwHdSo8dHhI0mXIRIUqdBs0TgA1mDgB3MDwDeIxD8QxgtFAAngAOqHDAiLaIALxxiABEumQJnt6+GaToIKRItqIZAL7pPv6BoeGR0XExiWoaWqleGZnZuVGMAHTkqFpQeAW+xRn9pK6sqC6IAKKkY6S0PKLFIhAIaohEWOQgqLHSZnKWinQA5ID8IIB8IIDcIJeAQiCArCCAvCCAYiAPp0siQA).
 
-При использовании такого определения функции, TypeScript предлагает вам на выбор два варианта вызова.
+При использовании такого определения функции TypeScript предлагает на выбор два варианта вызова.
 
-![подсказка редактора](assets/overloaded.PNG)
+![Подсказка редактора](assets/overloaded.PNG)
 
-Этот вариант создания универсальных функций, возможно, лучше первого в том, что тип аргумента обязан быть известен более точно. Но во время реализации приходится прибегать к использованию типа широкого типа.
+Этот вариант создания универсальных функций, возможно, лучше первого тем, что тип аргумента должен быть известен более точно. Но во время реализации приходится прибегать к использованию типа широкого типа.
 
-Использование обобщенного программирования позволяет написать программу третьим способом.
+Использование обобщённого программирования позволяет написать программу третьим способом.
 
 ```ts
 function getHashGeneric<T extends string|number>(arg:T):number{
@@ -89,17 +89,17 @@ const hash1 = getHashGeneric(42);
 const hash2 = getHashGeneric('towel')
 ```
 
-[Playground Link](https://www.typescriptlang.org/play?ssl=12&ssc=38&pln=1&pc=1#code/GYVwdgxgLglg9mABAcwKZQBIEMDOALAcVTFQCcYIAeAFUVQA8piATHRHKcsZAHzBAC2AIzIA+ABRZSyAFzUAlDP7CyAbwBQiLYhjBxUAJ4AHVHGCIpyRAF5biAOTKRpe-I3aPiUuhCkklgG5NbQBfYK1dfWNTc0sbO3sOLmRXd08tbyhff2kAOgAbYmQoPCCPMI8S0jgAd0QSOoBRUmrScXsYMAA3LHyYZgtpQWIoVyCw9QgEDkQ8XDwARhsUdGx8IhJyCHEAFgAmeSCpsBm5-D3ltEx5jbIKdqha1HzXIA)
+[Посмотреть в песочнице](https://www.typescriptlang.org/play?ssl=12&ssc=38&pln=1&pc=1#code/GYVwdgxgLglg9mABAcwKZQBIEMDOALAcVTFQCcYIAeAFUVQA8piATHRHKcsZAHzBAC2AIzIA+ABRZSyAFzUAlDP7CyAbwBQiLYhjBxUAJ4AHVHGCIpyRAF5biAOTKRpe-I3aPiUuhCkklgG5NbQBfYK1dfWNTc0sbO3sOLmRXd08tbyhff2kAOgAbYmQoPCCPMI8S0jgAd0QSOoBRUmrScXsYMAA3LHyYZgtpQWIoVyCw9QgEDkQ8XDwARhsUdGx8IhJyCHEAFgAmeSCpsBm5-D3ltEx5jbIKdqha1HzXIA).
 
-Откройте предыдущий пример в песочнице и посмотрите, какие типы аргументов, с точки зрения TypeScript-а ожидает функция `getHashGeneric`
+Откройте предыдущий пример в песочнице и посмотрите, какие типы аргументов ожидает функция `getHashGeneric`.
 
 ```typescript
 const value = 42 as string|number;
-console.log(getHash(value)); //компилируется без ошибок
-console.log(getHashOverload(value)); //ошибка 2769
+console.log(getHash(value)); //Компилируется без ошибок.
+console.log(getHashOverload(value)); //Ошибка 2769.
 ```
 
-[Изучите поведение](https://www.typescriptlang.org/play?target=7#code/GYVwdgxgLglg9mABAcwKZQBIEMDOALACiwCdkAuRHKYmMZAHzBAFsAjVYgSjKbY4G8AUIhGIYwAlACeAB1RxgiEskQBedYgBEvdsU2choo4mLoQxJMoDcw0QF9bI01HOXSAOgA2qOlDw2HQVBIWAQUdGx8AHkANw5POCwAEyJSCh0ObgziG2DoeCQ0TFw8WPjElOUKKho6LJZdXPB8sKLI0rjiBOTU8iUwKQNHMQlpOQUlUjUNbQaOfUNjJzMLSeQbIwcjcUlZeUVladUtGtpkBeGjZ1c1jfthv2I4AHdEMFRXgFFiJ+ICTgCgkESVQEE8JFQiAgCCoIhiWE8IFQ1WoZ0YcxyQOhYBwcG8XjgyAIbRKBHhiNQnABiAA9DTAFwggD4QQA8IIB+EEAHCCAbhB2YABEEAwiCAVhBAEIggEEQQDyIIhAIwgAsA7CCIRmACRB2ZLGfTBNjcfiEkSSdFOt0UuSkVSrLSaYrlfTAAwgiAATAB2ABsAE4gA) этого кода в песочнице
+[Изучите поведение](https://www.typescriptlang.org/play?target=7#code/GYVwdgxgLglg9mABAcwKZQBIEMDOALACiwCdkAuRHKYmMZAHzBAFsAjVYgSjKbY4G8AUIhGIYwAlACeAB1RxgiEskQBedYgBEvdsU2choo4mLoQxJMoDcw0QF9bI01HOXSAOgA2qOlDw2HQVBIWAQUdGx8AHkANw5POCwAEyJSCh0ObgziG2DoeCQ0TFw8WPjElOUKKho6LJZdXPB8sKLI0rjiBOTU8iUwKQNHMQlpOQUlUjUNbQaOfUNjJzMLSeQbIwcjcUlZeUVladUtGtpkBeGjZ1c1jfthv2I4AHdEMFRXgFFiJ+ICTgCgkESVQEE8JFQiAgCCoIhiWE8IFQ1WoZ0YcxyQOhYBwcG8XjgyAIbRKBHhiNQnABiAA9DTAFwggD4QQA8IIB+EEAHCCAbhB2YABEEAwiCAVhBAEIggEEQQDyIIhAIwgAsA7CCIRmACRB2ZLGfTBNjcfiEkSSdFOt0UuSkVSrLSaYrlfTAAwgiAATAB2ABsAE4gA) этого кода в песочнице.
 
 ```text
 No overload matches this call.
@@ -111,16 +111,16 @@ No overload matches this call.
       Type 'number' is not assignable to type 'string'.
 ```
 
-## Обобщенное программирование функций
+## Обобщённое программирование функций
 
-Использование обобщенного параметра при определении функции позволяет создавать реализацию алгоритмов в общем виде.
+Использование обобщённого параметра при определении функции позволяет создавать реализацию алгоритмов в общем виде.
 
-В приведенном примере разработчик выражает намерение работать с массивами значений. При этом с помощью использования обобщенного типа аргумента `<T>` разработчик объясняет компилятору: *какие типы значений будут у элементов в массиве во время исполнения, значение такого типа и вернет моя функция*
+В приведённом примере разработчик выражает намерение работать с массивами значений. С помощью использования обобщённого типа аргумента `<T>` разработчик объясняет компилятору: *какие типы значений будут у элементов в массиве во время исполнения, значение такого типа и вернёт функция*.
 
 ```typescript
-// алгоритму не важно какого типа элементы
+// Алгоритму неважно, какого типа элементы
 // содержатся в массиве, но важно, что их 
-// там - как минимум один.
+// там как минимум один.
 function extractFirstElement<T>(array:T[]):T{
     if(array.length>0){
         return array[0];
@@ -132,11 +132,11 @@ const num = extractFirstElement([1,2,3]);
 const str = extractFirstElement(["a","b","c"]);
 ```
 
-Переменная `num` получает значение `1` типа `number`, а переменная `str` значение `"a"` типа string. Но важно даже не это, а то, что компилятор об этом догадывается сам.
+Переменная `num` получает значение `1` типа `number`, а переменная `str` — значение `"a"` типа string. Но важно даже не это, а то, что компилятор об этом догадывается сам.
 
 ## Объявление типа перегруженной функции
 
-Для того, чтобы объявить тип перегруженной функции, но не указывать, как в примере `getHashOverload`, реализацию используйте сигратуру вызова в интерфейсе
+Чтобы объявить тип перегруженной функции, но не указывать реализацию, как в примере `getHashOverload`, используйте сигнатуру вызова в интерфейсе:
 
 ```ts
 interface HashComputer {
@@ -144,7 +144,7 @@ interface HashComputer {
     (arg: string): number;
 }
 
-//позднее используем этот интерфейс для создания реализации
+//Позднее используем этот интерфейс для создания реализации.
 const getHashOverload: HashComputer = (arg: unknown): number=>{
     if (typeof arg === 'number') {
         return arg;
@@ -156,4 +156,4 @@ const getHashOverload: HashComputer = (arg: unknown): number=>{
 };
 ```
 
-После демонстрации мы рассмотрим как классы в TypeScript населяют сразу несколько вселенных - и вселенную типов и вселенную значений.
+После демонстрации мы рассмотрим, как классы в TypeScript населяют сразу несколько Вселенных: и Вселенную типов, и Вселенную значений.
