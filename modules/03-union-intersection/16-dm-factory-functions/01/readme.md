@@ -1,6 +1,6 @@
-# Фабрика UI компонентов
+# Фабрика UI-компонентов
 
-Интерфейс фабрики может быть описан [таким образом](https://codesandbox.io/s/step-1-demo-03-16-module-3-z3u7b?file=/src/i-face-factory.ts)
+Интерфейс фабрики может быть описан [таким образом](https://codesandbox.io/s/step-1-demo-03-16-module-3-z3u7b?file=/src/i-face-factory.ts).
 
 ```ts
 interface UiFactory {
@@ -12,7 +12,7 @@ interface UiFactory {
 
 Предлагаем вам изучить два следующих отрывка. Они демонстрируют идею создания абстрактной фабрики в TypeScript.
 
-[Обратите внимание](https://codesandbox.io/s/step-1-demo-03-16-module-3-z3u7b?file=/src/factory.ts) на сокращенную запись `private buttonCtor: new () => Button,` - ключевое слово **private** предлагает компилятору одновременно с описанием параметра конструктора создать приватное поле класса, а обозначение типа **new ()=>Button** требует от компилятора проверить, что в качестве параметра передается не просто функция, а именно класс.
+[Обратите внимание](https://codesandbox.io/s/step-1-demo-03-16-module-3-z3u7b?file=/src/factory.ts) на сокращённую запись `private buttonCtor: new () => Button,`. Ключевое слово **private** предлагает компилятору одновременно с описанием параметра конструктора создать приватное поле класса. Обозначение типа **new ()=>Button** требует от компилятора проверить, что в качестве параметра передаётся не просто функция, а именно класс.
 
 ```ts
 export class Factory implements UiFactory {
@@ -28,6 +28,6 @@ export class Factory implements UiFactory {
 }
 ```
 
-Поскольку у нас уже есть "реализации" HTML контролов, мы можем создать [конкретную фабрику](https://codesandbox.io/s/step-1-demo-03-16-module-3-z3u7b?file=/src/html/factory.ts)
+Поскольку у нас уже есть «реализации» HTML-контролов, мы можем создать [конкретную фабрику](https://codesandbox.io/s/step-1-demo-03-16-module-3-z3u7b?file=/src/html/factory.ts).
 
-В случае TypeScript мы создаем экземпляр фабрики, оснащенный нужными конструкторами.
+В случае TypeScript мы создаём экземпляр фабрики, оснащённый нужными конструкторами.
