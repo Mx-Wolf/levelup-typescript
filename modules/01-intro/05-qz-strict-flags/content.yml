@@ -1,6 +1,5 @@
-title: Попробуйте самостоятельно выяснить назначения некоторых флагов компилятора
+title: Назначения флагов компилятора
 type: test
-description: Файл tsconfig.json содержит множество флагов, которые управляют процессом компиляции TypeScript в JavaScript. С этими флагами можно и нужно уверенно работать.
 wizard: true
 questions:
   - id: 11
@@ -12,7 +11,7 @@ questions:
         value: флаг declaration
         correct: false
         resultMessage: |
-          Флаг declaration нужен для создания .d.ts файлов, полезен при создании библиотек.
+          флаг declaration нужен для создания .d.ts файлов, полезен при создании библиотек.
       - id: 2
         value: флаг removeComments
         correct: true
@@ -42,7 +41,7 @@ questions:
         value: флаг preserveValueImports.
         correct: true
         resultMessage: |
-          Оставляет в .js файле операторы импорта значений из модулей, даже если эти значения не используются.
+          флаг оставляет в .js файле операторы импорта значений из модулей, даже если эти значения не используются.
       - id: 2
         value: флаг allowUnusedLabels.
         correct: false
