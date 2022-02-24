@@ -1,9 +1,6 @@
-title: "Что вы знаете о специализации примитивных типов строк, чисел и флагов"
+title: "Специализация примитивных типов строк, чисел и флагов"
 type: "test"
 wizard: true
-description: ""
-failureMessage: "Специализация строковых литералов — распространённый приём в процессе использования TypeScript. Вы убедитесь в этом."
-successMessage: "Специализация строковых литералов — распространённый прием в процессе использования TypeScript. Вы убедитесь в этом."
 questions:
   - title: "В контексте приведённого определения функции укажите, какие выражения TypeScript будут приводить к ошибкам компиляции?"
     description: "```typescript\n\ntype GameSpeed = 'speed-slow'|'speed-normal'|'speed-fast';\ndeclare function setGameSpeed(speed: GameSpeed):void;\n\nconst slow:string = 'speed-slow';\n\nsetGameSpeed(slow);\nsetGameSpeed('speed-slow');\nsetGameSpeed('speed-'+'slow');\n\n```"
@@ -20,7 +17,7 @@ questions:
         correct: true
         resultMessage: "При сложении двух строковых литералов TypeScript обозначает результирующее значение типом string."
         id: 3
-    type: "multiple"
+    type: single
     id: 1
   - title: "В контексте приведённого определения функции totalOrder выберите, какой тип будут иметь результаты вычисления её значений."
     description:  |
@@ -57,7 +54,7 @@ questions:
         correct: false
         resultMessage: "Почти верно. Функция действительно возвращает числа. TypeScript делает ещё один шаг и выясняет, что результатом работы функции могут быть не все числа, а только три из них. TypeScript после этого создаёт для каждого значения специализированный литеральный тип, а объединение этих типов и будет типом результата функции."
         id: 3
-    type: "multiple"
+    type: single
     id: 2
   - title: "Какая ошибка компиляции возникает при компиляции кода?"
     description: "```typescript\n\n      declare function getFlag(): true | false;\n      const currentFlag: boolean = getFlag();      \n      \n```"
@@ -74,5 +71,5 @@ questions:
         correct: false
         resultMessage: "Объединение литеральных типов true | false  эквивалентно примитивному типу boolean."
         id: 3
-    type: "multiple"
+    type: single
     id: 3
