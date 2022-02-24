@@ -1,13 +1,9 @@
-title: "Проверьте понимание поведения интерфейсов в TypeScript"
-description: "Интерфейсы являются важной частью Вселенной TypeScript, нужно уметь эффективно их использовать."
+title: "Поведение интерфейсов в TypeScript"
 type: "test"
 wizard: true
-successMessage: "Во время разработки приложений вам часто будет требоваться описание структуры точек взаимодействия различных частей программы. Интерфейсы хорошо подходят для таких целей."
-failureMessage: "Во время разработки приложений вам часто будет требоваться описание структуры точек взаимодействия различных частей программы. Интерфейсы хорошо подходят для таких целей."
 questions:
   - title: "Может ли интерфейс TypeScript наследовать несколько разных родительских интерфейсов?"
-    description: ""
-    type: "single"
+    type: single
     options:
       - value: "Да."
         correct: true
@@ -18,7 +14,7 @@ questions:
         value: "Нет."
         id: 2
     id: 1
-  - title: "В контексте определения интерфейсов Country  и View почему возникает ошибка компиляции?"
+  - title: "Почему возникает ошибка компиляции контексте определения интерфейсов Country и View?"
     description: |
       ```ts
       interface Country {
@@ -38,7 +34,7 @@ questions:
         },
       };
       ```
-    type: "multiple"
+    type: single
     options:
       - correct: false
         value: "TypeScript не допускает пустые интерфейсы как CountryView, поскольку они все эквивалентны."
@@ -81,7 +77,7 @@ questions:
         },
       } as const;
       ```
-    type: "multiple"
+    type: single
     options:
       - correct: false
         value: "Нет."
