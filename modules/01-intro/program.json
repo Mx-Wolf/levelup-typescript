@@ -36,17 +36,17 @@
         "type": "quiz",
         "path": "01-intro/05-qz-strict-flags",
         "description": "Пройдите тест для закрепления изученного материала"
+      },
+      {
+        "type": "demo",
+        "path": "01-intro/06-dm-vscode",
+        "description": "Пошаговая демонстрация настройки окружения"
       }
     ]
   },
   {
-    "title": "Настройка окружения",
+    "title": "Практика",
     "items": [
-      {
-        "type": "article",
-        "path": "01-intro/06-dm-vscode",
-        "description": "Пошаговая демонстрация"
-      },
       {
         "type": "task",
         "path": "01-intro/task-1-07-pr-vscode",

@@ -21,7 +21,12 @@
         "type": "quiz",
         "path": "02-equality/04-qz-primitive-type-detection",
         "description": "Пройдите тест для закрепления изученного материала"
-      },
+      }
+    ]
+  },
+  {
+    "title": "Структура типа и типы функции",
+    "items": [
       {
         "type": "article",
         "path": "02-equality/05-al-structures",
@@ -40,18 +45,23 @@
       {
         "type": "demo",
         "path": "02-equality/08-dm-type-annotation",
-        "description": "Пошаговая демонстрация"
+        "description": "Пошаговая демонстрация аннотации типов"
       },
       {
         "type": "demo",
         "path": "02-equality/09-dm-type-guars",
-        "description": "Пошаговая демонстрация"
+        "description": "Пошаговая демонстрация определения структуры типа"
       },
       {
         "type": "demo",
         "path": "02-equality/10-dm-call-signatures",
-        "description": "Пошаговая демонстрация"
-      },
+        "description": "Пошаговая демонстрация определения типа функции"
+      }
+    ]
+  },
+  {
+    "title": "Практика",
+    "items": [
       {
         "type": "task",
         "path": "02-equality/task-2-11-pr-record-handling-functions",
