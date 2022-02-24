@@ -1,51 +1,61 @@
 [
   {
-    "title": "Введение. Почему появился TypeScript",
+    "title": "Введение в TypeScript",
     "items": [
       {
         "type": "article",
         "path": "01-intro/01-al-ts-inception",
-        "description": "Как так случилось, что появился TypeScript"
+        "description": "Кто и для чего придумал TypeScript?"
       },
       {
         "type": "article",
         "path": "01-intro/02-al-course-scope",
-        "description": "Объем этого курса ограничен и мы намеренно оставляем многие интересные аспекты TypeScript вне его рамок."
+        "description": "Обозначим рамки курса"
       },
       {
         "type": "quiz",
         "path": "01-intro/02-qz-why-ts",
-        "description": "Как вы поняли назначение TypeScript"
-      },
+        "description": "Пройдите тест, чтобы закрепить изученный материал"
+      }
+    ]
+  },
+  {
+    "title": "Как работать с TypeScript",
+    "items": [
       {
         "type": "article",
         "path": "01-intro/03-al-playground",
-        "description": "Есть такое место в интернете, где каждый может поиграть со своим TypeScript. Без установки"
+        "description": "Безопасное окружение для работы с TypeScript-кодом"
       },
       {
         "type": "article",
         "path": "01-intro/04-al-ts-limits",
-        "description": "Чтобы успешно использовать инструмент, надо знать его ограничения"
+        "description": "Ограничения TypeScript"
       },
       {
         "type": "quiz",
         "path": "01-intro/05-qz-strict-flags",
         "description": "Самостоятельно разыщите некоторые флаги компилятора"
-      },
+      }
+    ]
+  },
+  {
+    "title": "Настройка окружения",
+    "items": [
       {
-        "type": "demo",
+        "type": "article",
         "path": "01-intro/06-dm-vscode",
-        "description": "Как мы настраиваем vs-code"
+        "description": "Пошаговая демонстрация"
       },
       {
         "type": "task",
         "path": "01-intro/task-1-07-pr-vscode",
-        "description": "Как вы настраиваете vs-code"
+        "description": "Практическое задание"
       },
       {
         "type": "demo",
         "path": "01-intro/08-dm-vscode",
-        "description": "Вопросы для самоконтроля по настройке vs-code",
+        "description": "Эталонное решение задания",
         "solution": true
       }
     ]
