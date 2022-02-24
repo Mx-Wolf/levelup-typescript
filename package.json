@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/htmlacademy/levelup-typescript#readme",
   "dependencies": {
-    "@htmlacademy/content-helper": "6.2.40",
+    "@htmlacademy/content-helper": "6.2.41",
     "@htmlacademy/configs": "3.1.1",
     "yaspeller": "7.x"
   }

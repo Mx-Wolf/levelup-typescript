@@ -7,7 +7,7 @@
       "link": "https://codesandbox.io/s/affectionate-hodgkin-chbv2?file=/src/i-face-service-log.ts"
     },
     {
-      "title": "Определение структуры результата отчета корреляции между возрастом и расходами на обслуживание",
+      "title": "Определение структуры результата отчёта корреляции между возрастом и расходами на обслуживание",
       "link": "https://codesandbox.io/s/affectionate-hodgkin-chbv2?file=/src/visitors/age-cost-correlation/i-face-age-cost-correlations.ts"
     },
     {
@@ -15,7 +15,7 @@
       "link": "https://codesandbox.io/s/affectionate-hodgkin-chbv2?file=/src/visitors/customer-outstanding/i-face-customer-outstanding.ts"
     },
     {
-      "title": "Определение структуры отчета о показателях сервис-центров",
+      "title": "Определение структуры отчёта о показателях сервис-центров",
       "link": "https://codesandbox.io/s/affectionate-hodgkin-chbv2?file=/src/visitors/service-center-totals/i-face-service-center-totals.ts"
     }
   ]

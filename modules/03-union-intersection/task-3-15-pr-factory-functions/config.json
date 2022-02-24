@@ -3,20 +3,20 @@
   "learning": true,
   "materials": [
     {
-      "title": " все контролы корпоративной библиотеки имеют эти свойства",
+      "title": "Свойства контролов корпоративной библиотеки",
       "link": "https://codesandbox.io/s/task-03-15-module-3-fokyz?file=/src/i-face-control.ts"
     },
     {
       "link": "https://codesandbox.io/s/task-03-15-module-3-fokyz?file=/src/i-face-button.ts",
-      "title": "описывает дополнительные свойства кнопки"
+      "title": "Дополнительные свойства кнопки"
     },
     {
       "link": "https://codesandbox.io/s/task-03-15-module-3-fokyz?file=/src/i-face-customer.ts",
-      "title": "описывает дополнительные свойства компонента выбора заказчика"
+      "title": "Дополнительные свойства компонента выбора заказчика"
     },
     {
-      "title": "описывает дополнительные свойства компонента для поиска товара по каталогу",
-      "link": "(https://codesandbox.io/s/task-03-15-module-3-fokyz?file=/src/i-face-product.ts"
+      "title": "Дополнительные свойства компонента для поиска товара по каталогу",
+      "link": "https://codesandbox.io/s/task-03-15-module-3-fokyz?file=/src/i-face-product.ts"
     },
     {
       "title": "button.ts",
