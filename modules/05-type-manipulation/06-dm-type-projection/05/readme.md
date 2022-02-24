@@ -17,7 +17,7 @@ return {
 
 **Добавим обработку регистрации сообщения**
 
-Для демонстрации создадим имитацию регистрации сообщения. В реальной жизни, возможно, севрвер определить дату регистрации сообщения, мы же изготовим [register-message.ts](https://codesandbox.io/s/step-5-demo-5-6-w5xrc?file=/src/store/register-message.ts) проще.
+Для демонстрации создадим имитацию регистрации сообщения. В реальной жизни, возможно, сервер определить дату регистрации сообщения, мы же изготовим [register-message.ts](https://codesandbox.io/s/step-5-demo-5-6-w5xrc?file=/src/store/register-message.ts) проще.
 
 ```ts
 export const registerMessage = (message: Pick<Message, "to" | "body">) => (
