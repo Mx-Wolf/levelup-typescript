@@ -2,8 +2,8 @@ title: "Специализация примитивных типов строк,
 type: "test"
 wizard: true
 questions:
-  - title: "В контексте приведённого определения функции укажите, какие выражения TypeScript будут приводить к ошибкам компиляции?"
-    description: "```typescript\n\ntype GameSpeed = 'speed-slow'|'speed-normal'|'speed-fast';\ndeclare function setGameSpeed(speed: GameSpeed):void;\n\nconst slow:string = 'speed-slow';\n\nsetGameSpeed(slow);\nsetGameSpeed('speed-slow');\nsetGameSpeed('speed-'+'slow');\n\n```"
+  - title: "В контексте приведённого определения функции укажите, какие выражения TypeScript будут приводить к ошибкам компиляции?
+    description: ```typescript\n\ntype GameSpeed = 'speed-slow'|'speed-normal'|'speed-fast';\ndeclare function setGameSpeed(speed: GameSpeed):void;\n\nconst slow:string = 'speed-slow';\n\nsetGameSpeed(slow);\nsetGameSpeed('speed-slow');\nsetGameSpeed('speed-'+'slow');\n\n```"
     options:
       - value: "setGameSpeed(slow);"
         correct: true
@@ -19,7 +19,7 @@ questions:
         id: 3
     type: single
     id: 1
-  - title: "В контексте приведённого определения функции totalOrder выберите, какой тип будут результатами вычисления ее значений"
+  - title: "В контексте приведённого определения функции totalOrder выберите, какой тип будет результатом вычисления её значений"
     description:  |
       ```ts
       const totalOrder = (a: number, b: number) => {
@@ -56,8 +56,8 @@ questions:
         id: 3
     type: single
     id: 2
-  - title: "Какая ошибка компиляции возникает при компиляции кода?"
-    description: "```typescript\n\n      declare function getFlag(): true | false;\n      const currentFlag: boolean = getFlag();      \n      \n```"
+  - title: "Какая ошибка возникает при компиляции кода?"
+    description: ```typescript\n\n      declare function getFlag(): true | false;\n      const currentFlag: boolean = getFlag();      \n      \n```
     options:
       - value: "Type 'boolean' is not assignable to type 'true'|'false'."
         correct: false

@@ -1,4 +1,4 @@
-title: "Поведениt интерфейсов в TypeScript"
+title: "Поведение интерфейсов в TypeScript"
 type: "test"
 wizard: true
 questions:
@@ -14,7 +14,7 @@ questions:
         value: "Нет."
         id: 2
     id: 1
-  - title: "В контексте определения интерфейсов Country  и View почему возникает ошибка компиляции?"
+  - title: "Почему возникает ошибка компиляции контексте определения интерфейсов Country и View?"
     description: |
       ```ts
       interface Country {

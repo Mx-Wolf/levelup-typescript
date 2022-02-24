@@ -2,9 +2,8 @@ title: Назначения флагов компилятора
 type: test
 wizard: true
 questions:
-  - id: 11
+  - id: 1
     title: "Для уменьшения размера файла .js в него не следует включать комментарии. Какой флаг компилятора позволяет это сделать?"
-    description: ""
     type: single
     options:
       - id: 1
@@ -28,7 +27,7 @@ questions:
         resultMessage: |
           флаг noUnusedLocals управляет строгостью проверки синтаксиса и разрешает вывод ошибок при обнаружении неиспользованных локальных переменных.
 
-  - id: 12
+  - id: 2
     title: "В приведенном ниже отрывке разработчик использует eval и TypeScript не в состоянии догадаться, что модуль используется. Какой флаг компилятора вам поможет избежать ошибок компиляции?"
     description: |
       ```ts
@@ -47,8 +46,7 @@ questions:
         correct: false
         resultMessage: |
           флаг allowUnusedLabels подавляет генерацию ошибок про неиспользованные метки (а вообще зачем метки, да?).
-
-  - id: 13
+  - id: 3
     title: "Какие из перечисленных флагов не зависят от состояния флага strict"
     description: |
       Флаг strict включает все самые строгие флаги компиляции, но, естественно, не вообще все флаги.
@@ -59,7 +57,7 @@ questions:
           флаг noImplicitAny.
         correct: false
         resultMessage: |
-          значение флага noImplicitAny по умолчанию зависит от значения флага strict
+          значение флага noImplicitAny по умолчанию зависит от значения флага strict.
       - id: 2
         value: |
           флаг noImplicitThis.
@@ -76,9 +74,9 @@ questions:
         value: флаг noUnusedParameters.
         correct: true
         resultMessage: |
-          значение флага noUnusedParameters не зависит от флага strict и его следует установить самостоятельно
+          значение флага noUnusedParameters не зависит от флага strict и его следует установить самостоятельно.
       - id: 5
         value: флаг noUncheckedIndexedAccess.
         correct: true
         resultMessage: |
-          значение флага noUncheckedIndexedAccess не зависит от флага strict и его следует установить самостоятельно
+          значение флага noUncheckedIndexedAccess не зависит от флага strict и его следует установить самостоятельно.
