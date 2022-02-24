@@ -15,7 +15,7 @@
       {
         "type": "quiz",
         "path": "01-intro/02-qz-why-ts",
-        "description": "Пройдите тест, чтобы закрепить изученный материал"
+        "description": "Тест для закрепления изученного материала"
       }
     ]
   },
@@ -35,18 +35,18 @@
       {
         "type": "quiz",
         "path": "01-intro/05-qz-strict-flags",
-        "description": "Самостоятельно разыщите некоторые флаги компилятора"
+        "description": "Тест для закрепления изученного материала"
+      },
+      {
+        "type": "demo",
+        "path": "01-intro/06-dm-vscode",
+        "description": "Пошаговая демонстрация настройки окружения"
       }
     ]
   },
   {
-    "title": "Настройка окружения",
+    "title": "Практика",
     "items": [
-      {
-        "type": "demo",
-        "path": "01-intro/06-dm-vscode",
-        "description": "Пошаговая демонстрация"
-      },
       {
         "type": "task",
         "path": "01-intro/task-1-07-pr-vscode",
