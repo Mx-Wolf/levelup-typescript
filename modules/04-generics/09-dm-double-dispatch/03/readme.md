@@ -1,8 +1,8 @@
 # Реализация посетителя
 
-В файле [age-cost-correlation.ts](https://codesandbox.io/s/step-2-demo-4-9-module-4-forked-96hiz?file=/src/visitors/age-cost-correlation/age-cost-correlation.ts) изучите одну из возможных реализаций посетилея.
+В файле [age-cost-correlation.ts](https://codesandbox.io/s/step-2-demo-4-9-module-4-forked-96hiz?file=/src/visitors/age-cost-correlation/age-cost-correlation.ts) изучите одну из возможных реализаций посетителя.
 
-При создании посетилея ему можно задать опорную дату, относительно которой он будет вычислять возраст автомобиля на момет обслуживания.
+При создании посетителя можно задать опорную дату, относительно которой будет вычисляться возраст автомобиля на момент обслуживания.
 
 ```ts
 export const createAgeCostCorrelationVisitor = (
@@ -30,4 +30,4 @@ const collect = (age: number, state: AgeCostCorrelation, total: Amount) => ({
 });
 ```
 
-Для этого отчета нам не потребовалось никаких дополнительных преобразований после окончания работы - `report` возвращает то, что получила без изменений.
+Для этого отчёта нам не потребовалось никаких дополнительных преобразований после окончания работы: `report` возвращает то, что получила, без изменений.
