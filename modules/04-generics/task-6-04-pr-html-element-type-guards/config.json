@@ -3,11 +3,11 @@
   "learning": true,
   "materials": [
     {
-      "title": "binder.ts - Заготовка для функции, которую требуется реализовать",
+      "title": "binder.ts - заготовка для функции, которую требуется реализовать",
       "link": "https://codesandbox.io/s/task-4-2-module-4-jx2i6?file=/src/binder.ts"
     },
     {
-      "title": "i-face-binder.ts - Ожидаемый интерфейс функции, которую требуется реализовать",
+      "title": "i-face-binder.ts - ожидаемый интерфейс функции, которую требуется реализовать",
       "link": "https://codesandbox.io/s/task-4-2-module-4-jx2i6?file=/src/i-face-binder.ts"
     },
     {
