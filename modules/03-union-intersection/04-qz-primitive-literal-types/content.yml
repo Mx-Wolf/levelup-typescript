@@ -57,11 +57,12 @@ questions:
     type: single
     id: 2
   - title: "Какая ошибка возникает при компиляции кода?"
-    description: ```typescript\n\n
-    declare function getFlag(): true | false;\n
-    const currentFlag: boolean = getFlag();
-    \n
-    \n```
+    description:   |
+      ```typescript\n\n
+      declare function getFlag(): true | false;\n
+      const currentFlag: boolean = getFlag();
+      \n
+      \n```
     options:
       - value: "Type 'boolean' is not assignable to type 'true'|'false'."
         correct: false
