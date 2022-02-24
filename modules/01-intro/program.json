@@ -43,7 +43,7 @@
     "title": "Настройка окружения",
     "items": [
       {
-        "type": "article",
+        "type": "demo",
         "path": "01-intro/06-dm-vscode",
         "description": "Пошаговая демонстрация"
       },
