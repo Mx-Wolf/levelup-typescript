@@ -5,7 +5,7 @@
       {
         "type": "article",
         "path": "01-intro/01-al-ts-inception",
-        "description": "Кто и для чего придумал TypeScript?"
+        "description": "Причины появления TypeScript и обзор возможностей"
       },
       {
         "type": "article",
@@ -25,7 +25,7 @@
       {
         "type": "article",
         "path": "01-intro/03-al-playground",
-        "description": "Безопасное окружение для работы с TypeScript-кодом"
+        "description": "Безопасное окружение для работы с TypeScript"
       },
       {
         "type": "article",
