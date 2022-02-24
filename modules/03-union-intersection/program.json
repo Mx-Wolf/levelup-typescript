@@ -103,7 +103,6 @@
       "title": "Практика",
       "items": [
         {
-          "type": {
             "type": "task",
             "path": "03-union-intersection/task-3-15-pr-factory-functions",
             "description": "Практическое задание 1"
