@@ -1,6 +1,6 @@
 [
   {
-    "title": "Введение",
+    "title": "Операции с типами",
     "items": [
       {
         "type": "article",
@@ -10,7 +10,7 @@
       {
         "type": "demo",
         "path": "03-union-intersection/02-dm-data-fetch-honestly",
-        "description": "Честное получение данных с удаленного сервера"
+        "description": "Пошаговая демонстрация получения данных с удалённого сервера"
       },
       {
         "type": "article",
@@ -20,8 +20,13 @@
       {
         "type": "quiz",
         "path": "03-union-intersection/04-qz-primitive-literal-types",
-        "description": "Насколько ваши примитивные типы специализированы"
-      },
+        "description": "Тест для закрепления изученного материала"
+      }
+    ]
+  },
+  {
+    "title": "Интерфейсы в Typescript",
+    "items": [
       {
         "type": "article",
         "path": "03-union-intersection/05-al-extending-interfaces",
@@ -30,8 +35,13 @@
       {
         "type": "quiz",
         "path": "03-union-intersection/06-qz-extending-interfaces",
-        "description": "Игры престолов, наследование, разделение, объединение интерфейсов"
-      },
+        "description": "Тест для закрепления изученного материала"
+      }
+    ]
+  },
+  {
+    "title": "Определение функций",
+    "items": [
       {
         "type": "article",
         "path": "03-union-intersection/07-al-function-overloading",
@@ -40,61 +50,80 @@
       {
         "type": "demo",
         "path": "03-union-intersection/08-dm-safe-type-interfaces",
-        "description": "Как мы делаем определение функции безопасным для будущего"
-      },
+        "description": "Пошаговая демонстрация безопасного определения функции"
+      }
+    ]
+  },
+  {
+    "title": "Классы в TypeScript",
+    "items": [
       {
         "type": "article",
         "path": "03-union-intersection/09-al-ts-classes-as-structures",
-        "description": "Несколько слов о классах в TypeScript. Классы как структурные типы"
+        "description": "Классы как структурные типы"
       },
       {
         "type": "quiz",
         "path": "03-union-intersection/10-qz-typeof-instanceof",
-        "description": "Как вы используете typeof, instanceof, extends, implements"
-      },
+        "description": "Тест для закрепления изученного материала"
+      }
+    ]
+  },
+  {
+    "title": "Операции над типами. Объединение типов",
+    "items": [
       {
-        "type": "article",
+        "type":  "article",
         "path": "03-union-intersection/11-al-union-types-discriminating",
         "description": "Операция объединения типов и ее свойства"
       },
       {
         "type": "demo",
         "path": "03-union-intersection/12-dm-improve-on-function-typings",
-        "description": "Как мы улучшаем декларацию типа функции"
-      },
-      {
-        "type": "article",
-        "path": "03-union-intersection/13-al-intersection-types-branding",
-        "description": "Операция пересечения типов. Специализация и пересечение. Брендирование значений"
-      },
-      {
-        "type": "demo",
-        "path": "03-union-intersection/14-dm-units-and-measuring",
-        "description": "Как мы избегаем путаницы единиц измерения",
-        "solution": true
-      },
-      {
-        "type": "task",
-        "path": "03-union-intersection/task-3-15-pr-factory-functions",
-        "description": "Как вы создаете функцию фабрику HTML элементов"
-      },
-      {
-        "type": "demo",
-        "path": "03-union-intersection/16-dm-factory-functions",
-        "description": "Как мы создаем функцию фабрику HTML элементов",
-        "solution":true
-      },
-      {
-        "type": "task",
-        "path": "03-union-intersection/task-4-17-pr-classes-as-interfaces",
-        "description": "Как вы решаете проблему наследования и полиморфизма"
-      },
-      {
-        "type": "demo",
-        "path": "03-union-intersection/18-dm-classes-as-interfaces",
-        "description": "Как мы решаем проблему наследования и полиморфизма",
-        "solution":true
+        "description": "Пошаговая демонстрация декларации типа функции"
       }
     ]
-  }
+  },
+  {
+    "title": "Операции над типами. Пересечение типов",
+    "items": [
+      {
+          "type": "article",
+          "path": "03-union-intersection/13-al-intersection-types-branding",
+          "description": "Операция пересечения типов. Брендирование значений"
+        },
+        {
+          "type": "demo",
+          "path": "03-union-intersection/14-dm-units-and-measuring",
+          "description": "Пошаговая демонстрация возможностей номинативной типизации в TypeScript через брендирование"
+        }
+      ]
+    },
+    {
+      "title": "Практика",
+      "items": [
+        {
+            "type": "task",
+            "path": "03-union-intersection/task-3-15-pr-factory-functions",
+            "description": "Практическое задание 1"
+          },
+          {
+            "type": "demo",
+            "path": "03-union-intersection/16-dm-factory-functions",
+            "description": "Эталонное решение задания 1",
+            "solution":true
+          },
+          {
+            "type": "task",
+            "path": "03-union-intersection/task-4-17-pr-classes-as-interfaces",
+            "description": "Практическое задание 2"
+          },
+          {
+            "type": "demo",
+            "path": "03-union-intersection/18-dm-classes-as-interfaces",
+            "description": "Эталонное решение задания 2",
+            "solution":true
+          }
+        ]
+      }
 ]
