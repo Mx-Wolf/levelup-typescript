@@ -1,12 +1,12 @@
-# Запуск приложения angular
+# Запуск приложения Angular
 
-Вы, как это часто бывает с npm, запускаете приложение angular в режиме разработки 
+Запускаем приложение Angular в режиме разработки:
 
 ```terminal
 npm run start
 ```
 
-После непродолжительной подготовки вы увидите 
+После непродолжительной подготовки вы увидите:
 
 ```terminal
 PS D:\sources\html-academy\courses\levelup-typescript> npm  run start
@@ -33,6 +33,6 @@ Build at: 2022-02-09T11:47:28.999Z - Hash: 43967de193384f7c - Time: 5385ms
 √ Compiled successfully.
 ```
 
-вы можете отправить свой браузер по адресу [http://localhost:4200/](http://localhost:4200/) и увидеть картинку, похожую на 
+Можете отправить свой браузер по адресу [http://localhost:4200/](http://localhost:4200/) и увидите картинку, похожую на: 
 
 ![demo angular](../assets/angular.PNG)
