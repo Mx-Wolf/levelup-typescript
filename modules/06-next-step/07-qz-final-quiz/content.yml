@@ -120,15 +120,7 @@ questions:
   - title: "Какие значение программа отобразит в консоли?"
     type: single
     id: 5
-    description:   |
-    ```ts
-    Action = ()=>void;\n
-    const getItem:Action = () =>{\n
-    return 42;\n
-    }\n
-    const item = getItem();\n
-    console.log(item);\n
-    ```
+    description: "```ts\ntype Action = ()=>void;\n      const getItem:Action = () =>{\n          return 42;\n      }\n      const item = getItem();\n      console.log(item);\n      \n```"
     options:
       - correct: false
         value: "Не отобразит никаких символов."
