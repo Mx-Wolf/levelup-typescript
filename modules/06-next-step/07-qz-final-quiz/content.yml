@@ -121,7 +121,7 @@ questions:
     type: single
     id: 5
     description:   |
-    ```ts\ntype
+    ```ts
     Action = ()=>void;\n
     const getItem:Action = () =>{\n
     return 42;\n
