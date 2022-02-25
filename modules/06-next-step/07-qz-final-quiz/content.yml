@@ -118,7 +118,7 @@ questions:
         resultMessage: ""
         id: 2
   - title: "Какие значение программа отобразит в консоли?"
-    type: "single"
+    type: single
     id: 5
     description:   |
     ```ts\ntype
@@ -128,7 +128,7 @@ questions:
     }\n
     const item = getItem();\n
     console.log(item);\n
-    \n```
+    ```
     options:
       - correct: false
         value: "Не отобразит никаких символов."
