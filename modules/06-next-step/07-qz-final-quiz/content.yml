@@ -362,7 +362,7 @@ questions:
         resultMessage: "Все элементы должны быть инициализированы при создании кортежа."
         id: 3
   - description: "```ts\ntype ShoppingCartLine = [label: string, price?: number, discont: number];\n  const prepareLine = (\n      label: string,\n      price: number,\n      discont?: number,\n  ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n  \n```"
-  options:
+    options:
       - correct: true
         value: "0."
         resultMessage: "TypeScript допускает необязательные элементы в хвосте кортежа."
@@ -379,7 +379,7 @@ questions:
     type: "single"
     id: 16
   - description: "```ts\nconst buffer: unknown = 'TypeScript' as unknown\nconst len: number = (buffer as string).length;\n```"
-  options:
+    options:
       - correct: false
         value: "0."
         resultMessage: "TypeScript допускает необязательные элементы только в хвосте кортежа."
