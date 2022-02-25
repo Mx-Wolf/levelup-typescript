@@ -1,6 +1,6 @@
 # Эксперименты с Vue
 
-Измените TypeScript в файле `src\components\HelloWorld.vue`
+Измените TypeScript в файле `src\components\HelloWorld.vue`:
 
 ```ts
 import { defineComponent } from 'vue';
@@ -15,13 +15,13 @@ export default defineComponent({
 
 ```
 
-Добавьте разметку в файл `src\components\HelloWorld.vue`
+Добавьте разметку в файл `src\components\HelloWorld.vue`:
 
 ```html
 <section>{{details}}</section>
 ```
 
-добавьте атрибут в файл `src\App.vue`
+Добавьте атрибут в файл `src\App.vue`:
 
 ```html
 <template>
@@ -33,6 +33,6 @@ export default defineComponent({
 </template>
 ```
 
-Убедитесь, что вы видите в браузере внесенные вами изменения
+Убедитесь, что вы видите в браузере внесённые изменения:
 
 ![Улучшенное приложение](../assets//vue-04.png)
