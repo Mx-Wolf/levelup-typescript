@@ -117,10 +117,10 @@ questions:
         value: "Type 'number' is not assignable to type 'void'."
         resultMessage: ""
         id: 2
-    title: "Какие ошибки обнаружит компилятор при сборке приведённой программы при компиляции с флагом strict?"
-    type: single
-    id: 4
-  - description:   |
+  - title: "Какие значение программа отобразит в консоли?"
+    type: "single"
+    id: 5
+    description:   |
     ```ts\ntype
     Action = ()=>void;\n
     const getItem:Action = () =>{\n
