@@ -1,5 +1,6 @@
-description: "В JavaScript к свойствам любого объекта можно обращаться, используя \".\"-нотацию или \"[]\"-нотацию. TypeScript подходит к вопросу строже."
-failureMessage: "Как вы убедились, операции над индексируемыми типами предоставляют разработчику мощный инструмент в процессе разработки качественного ПО."
+title: "Концепция индексированных типов"
+type: test
+wizard: true
 questions:
   - description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    }\n    \n    type Timeout = (typeof config)[\"timeout\"]\n```"
     options:
@@ -16,7 +17,7 @@ questions:
         resultMessage: "Поскольку значение ключа timeout может быть изменено в процессе работы программы, к нему не применяются правила специализации типов литеральных значений."
         id: 3
     title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций."
-    type: "multiple"
+    type: "single"
     id: 1
   - description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    } as const;\n    \n    type Timeout = (typeof config)[\"timeout\"]\n```"
     options:
@@ -33,7 +34,7 @@ questions:
         resultMessage: "Поскольку ключ timeout определён как readonly, к нему применяется правило специализации литерального значения."
         id: 3
     title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций."
-    type: "multiple"
+    type: "single"
     id: 2
   - description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    };\n    \n    type Timeout = (typeof config)[keyof typeof config]\n```"
     options:
@@ -50,7 +51,7 @@ questions:
         resultMessage: "Используется объединение типов возможных значений."
         id: 3
     title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении все возможных операций."
-    type: "multiple"
+    type: "single"
     id: 3
   - description: "```typescript\ntype Decoration = \"bold\"|\"italic\"|\"underline\"|\"strikethrough\";\n\n      type OptionType<T extends Decoration | \"size\"> = T extends \"size\"?number:boolean;\n      \n      type Options = {\n          [key in Decoration|\"size\"]: OptionType<key>\n      }\n```"
     options:
@@ -71,9 +72,5 @@ questions:
         resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
         id: 4
     title: "В контексте определения типов сколько числовых свойств будет иметь значение типа Options?"
-    type: "multiple"
+    type: "single"
     id: 4
-successMessage: "Как вы убедились, операции над индексируемыми типами предоставляют разработчику мощный инструмент в процессе разработки качественного ПО."
-title: "Проверьте своё понимание концепции индексированных типов"
-type: "test"
-wizard: true
