@@ -1,13 +1,15 @@
-# Vue система
+# Vue-система
 
-Заготовка приложения Vue содержит ряд знакомых файлов, такие как tsconfig.json, а так же компоненты .vue.
+Заготовка приложения Vue содержит ряд знакомых файлов, таких как tsconfig.json, а также компоненты .vue.
 
-А где же TypeScript? -  Изучим файл `src\components\HelloWorld.vue`
+А где же TypeScript? 
 
-![компонент HelloWorld](../assets/vue-03.PNG)
+Изучим файл `src\components\HelloWorld.vue`.
 
-В строке 34 вы видите тэг скрипт с атрибутом lang="ts" - это модуль TypeScript.
+![Компонент HelloWorld](../assets/vue-03.PNG)
 
-Более подробно вы можете ознакомится с особенностями использования TypeScript, с возможностями определения типов и другими нюансами, в документации.
+На 34 строке вы видите тег `<script>` с атрибутом lang="ts" — это модуль TypeScript.
 
-Если вы работаете в vs-code, для удобства установите расширение [https://marketplace.visualstudio.com/items?itemName=octref.vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+В документации вы можете более подробно ознакомиться с особенностями использования TypeScript, возможностями определения типов и другими нюансами.
+
+Если вы работаете в VS-Code, для удобства установите расширение: [https://marketplace.visualstudio.com/items?itemName=octref.vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur).

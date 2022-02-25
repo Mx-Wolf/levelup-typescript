@@ -1,12 +1,12 @@
 # Запуск приложения Vue
 
-Как это часто бывает в Open Source сообществе - всегда есть варианты. Для запуска приложения vue вы используете не npm run start, а
+Как это часто бывает в Open Source-сообществе, всегда есть варианты. Для запуска приложения Vue вы используете не npm run start, а:
 
 ```terminal
 npm run serve
 ```
 
-По умолчанию вы получите
+По умолчанию вы получите:
 
 ```terminal
   App running at:
@@ -20,4 +20,4 @@ Issues checking in progress...
 No issues found.
 ```
 
-и вы можете направить свой браузер на адрес [http://localhost:8080/](http://localhost:8080/)
+И вы можете направить свой браузер на адрес [http://localhost:8080/](http://localhost:8080/).
