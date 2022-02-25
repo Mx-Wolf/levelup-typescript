@@ -1,80 +1,77 @@
-description: "Разработчик может использовать возможность TypeScript сравнивать типы для повышения качества кода"
-failureMessage: "Условные типы — важный инструмент разработчика TypeScript. Постоянно совершенствуйте свои навыки в этой области."
-questions:
-  - description: "```typescript\ntype Verbalize<T> = T extends boolean? \"true\"|\"false\": never;\n\ntype TrueFalseNamed = \"false\"|\"true\";\n```"
-    options:
-      - value: "Нет."
-        correct: true
-        resultMessage: "Специализация типа Verbalize на тип-переменную boolean создаёт тип, идентичный во всех отношениях типу TrueFalseName."
-        id: 1
-      - correct: false
-        resultMessage: "Специализация типа Verbalize на тип-переменную boolean создаёт тип, идентичный во всех отношениях типу TrueFalseName."
-        value: "Да."
-        id: 2
-    title: "Существует ли операция, в отношении которой определения типа Verbalize<boolean> и  TrueFalseNamed не являются эквивалентными?"
-    type: "single"
-    id: 1
-  - description: "```typescript\ntype Color = \"red\" | \"green\" | \"blue\";\ntype BorderSetting<T> = {\n    color: T;\n    width: number;\n}\ntype Border<T> = Color extends T ? BorderSetting<T> : \"none\";\n\ndeclare function setBorder<T extends Color | \"none\">(color: T, width?: number|undefined): Border<T>;\n\nconst x = setBorder(\"red\", 2);\nconst y = setBorder(\"none\");\n\n```"
-    options:
-      - correct: true
-        value: "Обе переменные имеют специализированный строковый тип \"none\"."
-        resultMessage: "Поскольку тип-переменная T находится справа от оператора extends, условный тип вычисляется на основании ответа на вопрос: «Специализирует ли Color тип-переменную T?» Возможно, разработчик перепутал типы в условии местами."
-        id: 1
-      - correct: false
-        value: "x имеет тип BorderSetting<\"red\">."
-        resultMessage: "Поскольку тип-переменная T находится справа от оператора extends, условный тип вычисляется на основании ответа на вопрос: «Специализирует ли Color тип-переменную T?» Возможно, разработчик перепутал типы в условии местами."
-        id: 2
-    title: "В контексте определения типов определите тип переменных x и y."
-    type: "multiple"
-    id: 2
-  - description: "```typescript\ntype Color = \"red\" | \"green\" | \"blue\";\ntype BorderSetting<T> = {\n    color: T;\n    width: number;\n}\ntype Border<T> = T extends Color ? BorderSetting<T> : \"none\";\n\ndeclare function setBorder<T extends Color | \"none\">(color: T, width?: number|undefined): Border<T>;\n\nconst x = setBorder(\"red\", 2);\nconst y = setBorder(\"none\");\n\n```"
-    options:
-      - correct: false
-        value: "Обе переменные имеют специализированный строковый тип \"none\"."
-        resultMessage: "Поскольку аргумент color имеет литеральное значение \"red\", его тип считается литеральной специализацией строкового типа \"red\", в том числе специализацией типа Color."
-        id: 1
-      - correct: true
-        value: "x имеет тип BorderSetting<\"red\">."
-        resultMessage: "Поскольку аргумент color имеет литеральное значение \"red\", его тип считается литеральной специализацией строкового типа \"red\", в том числе специализацией типа Color."
-        id: 2
-    title: "В контексте определения типов определите тип переменных x и y."
-    type: "multiple"
-    id: 3
-  - description: "```typescript\ntype Promised<T> = T extends string? Promise<T>: never;\n\ntype Debug1 = Promised<\"title\"|\"description\">;\n```"
-    options:
-      - correct: true
-        value: "Promise<\"title\"> | Promise<\"description\">."
-        resultMessage: "Условный тип Promised является дистрибутивным."
-        id: 1
-      - correct: false
-        value: "never."
-        resultMessage: "Условный тип Promised является дистрибутивным."
-        id: 2
-      - correct: false
-        value: "Promise<\"title\"|\"description\">."
-        resultMessage: "Условный тип Promised является дистрибутивным."
-        id: 3
-    title: "В контексте определения типов укажите верное значение типа Debug1."
-    type: "multiple"
-    id: 4
-  - description: "```typescript\ntype Promised<T> = [T] extends [string]? Promise<T>: never;\n\ntype Debug1 = Promised<\"title\"|\"description\">;\n```"
-    options:
-      - correct: false
-        value: "Promise<\"title\"> | Promise<\"description\">."
-        resultMessage: "Условный тип Promised не является дистрибутивным, поскольку тип-переменная используется в составе более сложного типа."
-        id: 1
-      - correct: false
-        value: "never."
-        resultMessage: "Условный тип Promised не является дистрибутивным, поскольку тип-переменная используется в составе более сложного типа."
-        id: 2
-      - correct: true
-        value: "Promise<\"title\"|\"description\">."
-        resultMessage: "Условный тип Promised не является дистрибутивным, поскольку тип-переменная используется в составе более сложного типа."
-        id: 3
-    title: "В контексте определения типов укажите верное значение типа Debug1."
-    type: "multiple"
-    id: 5
-successMessage: "Условные типы — важный инструмент разработчика TypeScript. Постоянно совершенствуйте свои навыки в этой области."
-title: "TypeScript производит вычисления типов во время компиляции"
-type: "test"
+title: Ветвление типов
+type: test
 wizard: true
+questions:
+  - title: "Существует ли операция, в отношении которой определения типа Verbalize<boolean> и TrueFalseNamed не являются эквивалентными"
+    type: single
+    id: 2
+    description: "```typescript\ntype Verbalize<T> = T extends boolean? \"true\"|\"false\": never;\n\ntype TrueFalseNamed = \"false\"|\"true\";\n```"
+    options:
+      - value: "Нет"
+        correct: true
+        resultMessage: "Специализация типа Verbalize на тип-переменную boolean создает тип идентичный во всех отношениях типу TrueFalseName "
+        id: 1
+      - correct: false
+        resultMessage: "Специализация типа Verbalize на тип-переменную boolean создает тип идентичный во всех отношениях типу TrueFalseName "
+        value: "Да"
+        id: 2
+  - title: "В контексте определения типов определите тип переменных x и y"
+    description: "```typescript\ntype Color = \"red\" | \"green\" | \"blue\";\ntype BorderSetting<T> = {\n    color: T;\n    width: number;\n}\ntype Border<T> = Color extends T ? BorderSetting<T> : \"none\";\n\ndeclare function setBorder<T extends Color | \"none\">(color: T, width?: number|undefined): Border<T>;\n\nconst x = setBorder(\"red\", 2);\nconst y = setBorder(\"none\");\n\n```"
+    type: single
+    id: 2
+    options:
+      - correct: true
+        value: "Обе переменные имеют специализированный строковый тип \"none\""
+        resultMessage: "Поскольку тип-переменная T находится справа от оператора extends условный тип вычисляется на основании ответа на вопрос - специализирует ли Color тип-переменную T. Возможно, разработчик перепутал типы в условии местами"
+        id: 1
+      - correct: false
+        value: "x имеет тип BorderSetting<\"red\">"
+        resultMessage: "Поскольку тип-переменная T находится справа от оператора extends условный тип вычисляется на основании ответа на вопрос - специализирует ли Color тип-переменную T. Возможно, разработчик перепутал типы в условии местами"
+        id: 2
+  - title: "В контексте определения типов определите тип переменных x и y"
+    description: "```typescript\ntype Color = \"red\" | \"green\" | \"blue\";\ntype BorderSetting<T> = {\n    color: T;\n    width: number;\n}\ntype Border<T> = T extends Color ? BorderSetting<T> : \"none\";\n\ndeclare function setBorder<T extends Color | \"none\">(color: T, width?: number|undefined): Border<T>;\n\nconst x = setBorder(\"red\", 2);\nconst y = setBorder(\"none\");\n\n```"
+    type: single
+    id: 3
+    options:
+      - correct: false
+        value: "обе переменные имеют специализированный строковый тип \"none\""
+        resultMessage: "Поскольку аргумент color имеет литеральное значение \"red\" его тип считается литеральное специализацией строкового типа \"red\", в том числе специализацией типа Color"
+        id: 1
+      - correct: true
+        value: "x имеет тип BorderSetting<\"red\">"
+        resultMessage: "Поскольку аргумент color имеет литеральное значение \"red\" его тип считается литеральное специализацией строкового типа \"red\", в том числе специализацией типа Color"
+        id: 2
+  - title: "В контексте определения типов укажите верное значение типа Debug1"
+    description: "```typescript\ntype Promised<T> = T extends string? Promise<T>: never;\n\ntype Debug1 = Promised<\"title\"|\"description\">;\n```"
+    type: single
+    id: 4
+    options:
+      - correct: true
+        value: "Promise<\"title\"> | Promise<\"description\">"
+        resultMessage: "Условные тип Promised является дистрибутивным"
+        id: 1
+      - correct: false
+        value: "never"
+        resultMessage: "Условные тип Promised является дистрибутивным"
+        id: 2
+      - correct: false
+        value: "Promise<\"title\"|\"description\">"
+        resultMessage: "Условные тип Promised является дистрибутивным"
+        id: 3
+  - title: "В контексте определения типов укажите верное значение типа Debug1"
+    description: "```typescript\ntype Promised<T> = [T] extends [string]? Promise<T>: never;\n\ntype Debug1 = Promised<\"title\"|\"description\">;\n```"
+    type: single
+    id: 5
+    options:
+      - correct: false
+        value: "Promise<\"title\"> | Promise<\"description\">"
+        resultMessage: "Условный тип Promised не является дистрибутивным, поскольку тип-переменная используется в составе более сложного типа"
+        id: 1
+      - correct: false
+        value: "never"
+        resultMessage: "Условный тип Promised не является дистрибутивным, поскольку тип-переменная используется в составе более сложного типа"
+        id: 2
+      - correct: true
+        value: "Promise<\"title\"|\"description\">"
+        resultMessage: "Условный тип Promised не является дистрибутивным, поскольку тип-переменная используется в составе более сложного типа"
+        id: 3

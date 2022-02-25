@@ -2,7 +2,7 @@
 
 ## Интерполяция строковых типов
 
-Предположим, нам нужно для простых JavaScript-объектов данных создавать прокси. Наш прокси должен позволять заинтересованным функциям подписаться на изменения полей объекта. Компилятор TypeScript позволяет выполнить задачу безопасным способом.
+Предположим перед нами задача для простых javascript-объектов данных создавать прокси. Наш прокси должен позволять заинтересованным функциям подписаться на изменения полей объекта. Компилятор TypeScript позволяет выполнить задачу безопасным образом.
 
 ```typescript
 type WithSubscription<T> = T & {
@@ -11,9 +11,9 @@ type WithSubscription<T> = T & {
 }
 ```
 
-В этом примере мы воспользовались оператором `keyof`. Мы применили его к типу, который, как мы объяснили компилятору, нам будет известен позднее. Компилятор запоминает этот новый тип и в дальнейшем подсказывает, если мы его используем.
+В вышеприведенном примере мы воспользовались оператором keyof. Мы применили его к типу, который, как мы объяснили компилятору, нам будет известен позднее. Компилятор запоминает этот новый тип и в дальнейшем подсказывает, если мы его используем.
 
-Ниже мы воспользуемся этим типом и объявим функцию. Она будет получать структурный объект, выполнять над ним определённые действия и возвращать новый объект. У нового объекта будут те же свойства, что и у исходного. Дополнительно у него появится два метода для подписки и отмены подписки.
+Ниже мы воспользуемся этим типом и объявим функцию. Эта функция, как мы планируем, будет получать структурный объект, производить над ним магические действия и возвращать новый объект. У нового объекта будут те же свойства, что и у исходного. Дополнительно у него появится два метода для подписывания и отмены подписки.
 
 ```typescript
 declare function createObservableProxy<T>(
@@ -21,7 +21,7 @@ declare function createObservableProxy<T>(
 ): WithSubscription<T>
 ```
 
-Так можно будет использовать наш API:
+Вот так нашим api можно будет пользоваться.
 
 ```typescript
 const target = {
@@ -35,13 +35,15 @@ proxy.addEventListener("age", () => undefined);
 
 ```
 
-Проверьте [в песочнице](https://www.typescriptlang.org/play?#code/C4TwDgpgBA6glsAFgZQK4CMDOBjATnMYOAewDsAeAFQD4oBeKSqAMigG8AoKbqAQwBN+AUQBuEUsAAycTMHERcACghiJALigBrCCGIAzRgBooiXqX4AbBRsXBeuAOYRgGygEp6tEcTj83G718Abi4eXAgAW2IxUXEpGTlSBWVVFy0dfSMTM0trKFt7JzT3TyhAvwCffhCAXw4OfghsC3toPVRSbCIyKDwIXjkAeSwFEV50KwAFXGIADxAqakVQ7jGLVAhXDn9YBBQMHHxCEgoaeuwyWSg7R2d6dhWoUl4IzagAIkpiCKhkXgB3EAKd6GR68JwaACMAGZQTUQhwLqQrmAZvN7n0BhBhphRuMpmiQAVbsA3AjUXMQAA6ATCVLSWTyJTvcEQEH5Dx0WgdRp6OBJPwhIA). Редактор будет вам подсказывать, на какие события можно подписаться.
+Вы можете проверить [в песочнице](https://www.typescriptlang.org/play?#code/C4TwDgpgBA6glsAFgZQK4CMDOBjATnMYOAewDsAeAFQD4oBeKSqAMigG8AoKbqAQwBN+AUQBuEUsAAycTMHERcACghiJALigBrCCGIAzRgBooiXqX4AbBRsXBeuAOYRgGygEp6tEcTj83G718Abi4eXAgAW2IxUXEpGTlSBWVVFy0dfSMTM0trKFt7JzT3TyhAvwCffhCAXw4OfghsC3toPVRSbCIyKDwIXjkAeSwFEV50KwAFXGIADxAqakVQ7jGLVAhXDn9YBBQMHHxCEgoaeuwyWSg7R2d6dhWoUl4IzagAIkpiCKhkXgB3EAKd6GR68JwaACMAGZQTUQhwLqQrmAZvN7n0BhBhphRuMpmiQAVbsA3AjUXMQAA6ATCVLSWTyJTvcEQEH5Dx0WgdRp6OBJPwhIA). Редактор действительно будет вам подсказывать, на какие события можно подписаться.
 
 ![intellisense](./assets/Capture2.PNG)
 
 ## Полезные операции со строковыми типами
 
-Компилятор даёт удобный инструмент для изменения имён полей и для манипуляции строковыми типами. В рассмотренном примере хотелось бы называть событие не "name" или "age", а как-то более привычно, например, "onNameChanged". И этого можно достичь.
+Компилятор предоставляет нам очень удобный инструмент для изменения имен полей и для манипуляции строковыми типами.
+
+В рассмотренном примере, было бы красиво называть событие не "name" или "age", а как-то более привычно, "onNameChanged" например. И этого можно достичь.
 
 ```typescript
 type WithSubscription<T> = T & {
@@ -50,11 +52,11 @@ type WithSubscription<T> = T & {
 }
 ```
 
-Компилятор предоставляет ряд полезных типов для манипуляции строковыми типами:
+**Полезно!** Компилятор предоставляет ряд полезных типов для манипуляции строковыми типами.
 
-- Uppercase&lt;StringType>: тип `type A1 = Uppercase<"name">` эквивалентен `type A2 = "NAME"`;
-- Lowercase&lt;StringType>: тип `type A1 = Lowercase<"NAME">` эквивалентен `type A2 = "name"`;
-- Capitalize&lt;StringType>: тип `type A1 = Capitalize<name>` эквивалентен `type A2 = "Name"`;
-- Uncapitalize&lt;StringType>: тип `type A1 = Uncapitalize<"NAME">` эквивалентен `type A2 = "nAME"`
+* Uppercase&lt;StringType>: тип `type A1 = Uppercase<"name">` эквивалентен `type A2 = "NAME"`,
+* Lowercase&lt;StringType>: тип `type A1 = Lowercase<"NAME">` эквивалентен `type A2 = "name"`,
+* Capitalize&lt;StringType>: тип `type A1 = Capitalize<name>` эквивалентен `type A2 = "Name"`,
+* Uncapitalize&lt;StringType>: тип `type A1 = Uncapitalize<"NAME">` эквивалентен `type A2 = "nAME"`
 
-Попробуйте в песочнице заменить описание типа WithSubscription и посмотрите, какие названия для событий *придумает* компилятор.
+Попробуйте в песочнице заменить описание типа WithSubscription и изучить, какие названия для событий *придумает* компилятор.

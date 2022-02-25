@@ -1,17 +1,22 @@
 [
   {
-    "title": "Введение",
+    "title": "Условные типы",
     "items": [
       {
         "type": "article",
         "path": "05-type-manipulation/01-al-conditions",
-        "description": "Ветвление при вычислениях типов TypeScript-ом"
+        "description": "Ветвление при вычислениях типов"
       },
       {
         "type": "quiz",
         "path": "05-type-manipulation/02-qz-conditions",
-        "description": "Как ветвятся ваши типы"
-      },
+        "description": "Пошаговая демонстрация ветвления типов"
+      }
+    ]
+  },
+  {
+    "title": "Индексированные типы",
+    "items": [
       {
         "type": "article",
         "path": "05-type-manipulation/03-al-indexed-types",
@@ -20,8 +25,13 @@
       {
         "type": "quiz",
         "path": "05-type-manipulation/04-qz-indexed-types",
-        "description": "Ключи от хранилища где данные лежат"
-      },
+        "description": "Тест для закрепления изученного материала"
+      }
+    ]
+  },
+  {
+    "title": "Проекция типов",
+    "items": [
       {
         "type": "article",
         "path": "05-type-manipulation/05-al-type-projection",
@@ -30,8 +40,13 @@
       {
         "type": "demo",
         "path": "05-type-manipulation/06-dm-type-projection",
-        "description": "Как мы создаем проекции и отражения"
-      },
+        "description": "Пошаговая демонстрация создания проекции и отражения"
+      }
+    ]
+  },
+  {
+    "title": "Строковые типы",
+    "items": [
       {
         "type": "article",
         "path": "05-type-manipulation/07-al-literal-interpolation-types",
@@ -40,33 +55,48 @@
       {
         "type": "demo",
         "path": "05-type-manipulation/08-dm-selection-keys-props-etc",
-        "description": "Как мы объявляем нужные свойства из множества ключей структурных типов"
-      },
+        "description": "Пошаговая демонстрация манипуляции типами"
+      }
+    ]
+  },
+  {
+    "title": "Практика",
+    "items": [
       {
         "type": "task",
         "path": "05-type-manipulation/task-8-09-pr-identity-handling",
-        "description": "Как вы объявляете желание получить от сервера вычисляемые данные, а отправить изменяемые"
+        "description": "Практическое задание 1"
       },
       {
         "type": "demo",
         "path": "05-type-manipulation/10-dm-identity-handling",
-        "description": "Как мы объявляем желание отправлять изменяемые свойства, а получать все",
+        "description": "Эталонное решение задания 1",
         "solution":true
-      },
+      }
+    ]
+  },
+  {
+    "title": "Создание прокси",
+    "items": [
       {
         "type": "demo",
         "path": "05-type-manipulation/11-dm-promisify",
-        "description": "Как мы создаем прокси для api"
-      },
+        "description": "Пошаговая демонстрация создания прокси для API"
+      }
+    ]
+  },
+  {
+    "title": "Практика",
+    "items": [
       {
         "type": "task",
         "path": "05-type-manipulation/task-9-12-pr-property-changed",
-        "description": "Как вы создаете уведомляющий прокси"
+        "description": "Практическое задание 2"
       },
       {
         "type": "demo",
         "path": "05-type-manipulation/13-dm-property-changed",
-        "description": "Как мы создаем уведомляющий прокси",
+        "description": "Эталонное решение задания 2",
         "solution":true
       }
     ]
