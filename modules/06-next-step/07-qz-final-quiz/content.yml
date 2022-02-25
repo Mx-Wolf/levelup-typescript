@@ -361,15 +361,7 @@ questions:
         value: "2."
         resultMessage: "Все элементы должны быть инициализированы при создании кортежа."
         id: 3
-  - description:   |
-    ```ts 
-    ShoppingCartLine = [label: string, price: number, discont: number];\n
-    const prepareLine = (\n
-    label: string,\n
-    price: number,\n
-    discont?: number,\n
-    ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n
-    \n```
+  - description: "```ts\ntype ShoppingCartLine = [label: string, price?: number, discont: number];\n  const prepareLine = (\n      label: string,\n      price: number,\n      discont?: number,\n  ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n  \n```"
   options:
       - correct: true
         value: "0."
@@ -386,14 +378,7 @@ questions:
     title: "В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы."
     type: "single"
     id: 16
-  - description:   |
-    ```ts\ntype ShoppingCartLine = [label: string, price: number, discont: number];\n
-    const prepareLine = (\n
-    label: string,\n
-    price: number,\n
-    discont?: number,\n
-    ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n
-    \n```
+  - description: "```ts\nconst buffer: unknown = 'TypeScript' as unknown\nconst len: number = (buffer as string).length;\n```"
   options:
       - correct: false
         value: "0."
