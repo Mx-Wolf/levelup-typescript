@@ -1,6 +1,6 @@
 [
   {
-    "title": "Введение",
+    "title": "Использование TypeScript",
     "items": [
       {
         "type": "article",
@@ -10,32 +10,37 @@
       {
         "type": "article",
         "path": "06-next-step/02-al-popular-wild-life",
-        "description": "Популярные применения TypeScript"
+        "description": "Способы применения TypeScript"
       },
       {
         "type": "demo",
         "path": "06-next-step/03-dm-getting-started-angular",
-        "description": "Как мы запускаем angular"
+        "description": "Пошаговая демонстрация запуска Angular"
       },
       {
         "type": "demo",
         "path": "06-next-step/04-dm-getting-started-react",
-        "description": "Как мы запускаем react"
+        "description": "Пошаговая демонстрация запуска React"
       },
       {
         "type": "demo",
         "path": "06-next-step/05-dm-getting-started-vue",
-        "description": "Как мы запускаем vue"
+        "description": "Пошаговая демонстрация запуска Vue"
       },
       {
         "type": "article",
         "path": "06-next-step/06-code-quality-beyond-ts",
-        "description": "Как еще можно улучать качество кода, приложения, продукта"
-      },
+        "description": "Как ещё можно улучать качество кода, приложения, продукта"
+      }
+    ]
+  },
+  {
+    "title": "Финальное тестирование",
+    "items": [
       {
         "type": "quiz",
         "path": "06-next-step/07-qz-final-quiz",
-        "description": "Проверьте себя, перед дальней дорогой"
+        "description": "Тест по материалам курса"
       }
     ]
   }
