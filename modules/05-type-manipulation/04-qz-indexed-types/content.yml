@@ -1,79 +1,79 @@
-description: "В JavaScript к свойствам любого объекта можно обращаться используя \".\"-нотацию или \"[]\"-нотацию. TypeScript подходит к вопросу строже"
-failureMessage: "Как вы убедились, операции над индексируемыми типами предоставляют разработчику мощный инструмент в процессе разработки качественного ПО"
+description: "В JavaScript к свойствам любого объекта можно обращаться, используя \".\"-нотацию или \"[]\"-нотацию. TypeScript подходит к вопросу строже."
+failureMessage: "Как вы убедились, операции над индексируемыми типами предоставляют разработчику мощный инструмент в процессе разработки качественного ПО."
 questions:
   - description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    }\n    \n    type Timeout = (typeof config)[\"timeout\"]\n```"
     options:
       - correct: false
-        value: "string | number | boolean"
-        resultMessage: "TypeScript достаточно догадлив, чтобы определить тип ключа timeout как число"
+        value: "string | number | boolean."
+        resultMessage: "TypeScript достаточно догадлив, чтобы определить тип ключа timeout как число."
         id: 1
       - correct: true
-        value: "number"
-        resultMessage: "TypeScript достаточно догадлив, чтобы определить тип ключа timeout как число"
+        value: "number."
+        resultMessage: "TypeScript достаточно догадлив, чтобы определить тип ключа timeout как число."
         id: 2
       - correct: false
-        value: "5"
-        resultMessage: "поскольку значение ключа timeout может быть изменено в процессе работы программы, к нему не применяются правила специализации типов литеральных значений"
+        value: "5."
+        resultMessage: "Поскольку значение ключа timeout может быть изменено в процессе работы программы, к нему не применяются правила специализации типов литеральных значений."
         id: 3
-    title: "В контексте определения переменной укажите тип эквивалентный типу Timeout в отношении все возможных операций"
+    title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций."
     type: "multiple"
     id: 1
   - description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    } as const;\n    \n    type Timeout = (typeof config)[\"timeout\"]\n```"
     options:
       - correct: false
-        value: "string | number | boolean"
-        resultMessage: "TypeScript достаточно догадлив, чтобы определить тип ключа timeout как число"
+        value: "string | number | boolean."
+        resultMessage: "TypeScript достаточно догадлив, чтобы определить тип ключа timeout как число."
         id: 1
       - correct: false
-        value: "number"
-        resultMessage: "поскольку ключ timeout определен как readonly к нему применяется правило специализации литерального значения"
+        value: "number."
+        resultMessage: "Поскольку ключ timeout определён как readonly, к нему применяется правило специализации литерального значения."
         id: 2
       - correct: true
-        value: "5"
-        resultMessage: "поскольку ключ timeout определен как readonly к нему применяется правило специализации литерального значения"
+        value: "5."
+        resultMessage: "Поскольку ключ timeout определён как readonly, к нему применяется правило специализации литерального значения."
         id: 3
-    title: "В контексте определения переменной укажите тип эквивалентный типу Timeout в отношении все возможных операций"
+    title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций."
     type: "multiple"
     id: 2
   - description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    };\n    \n    type Timeout = (typeof config)[keyof typeof config]\n```"
     options:
       - correct: true
-        value: "string | number | boolean"
-        resultMessage: "используется объединение типов возможных значений"
+        value: "string | number | boolean."
+        resultMessage: "Используется объединение типов возможных значений."
         id: 1
       - correct: false
-        value: "number"
-        resultMessage: "используется объединение типов возможных значений"
+        value: "number."
+        resultMessage: "Используется объединение типов возможных значений."
         id: 2
       - correct: false
-        value: "5"
-        resultMessage: "используется объединение типов возможных значений"
+        value: "5."
+        resultMessage: "Используется объединение типов возможных значений."
         id: 3
-    title: "В контексте определения переменной укажите тип эквивалентный типу Timeout в отношении все возможных операций"
+    title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении все возможных операций."
     type: "multiple"
     id: 3
   - description: "```typescript\ntype Decoration = \"bold\"|\"italic\"|\"underline\"|\"strikethrough\";\n\n      type OptionType<T extends Decoration | \"size\"> = T extends \"size\"?number:boolean;\n      \n      type Options = {\n          [key in Decoration|\"size\"]: OptionType<key>\n      }\n```"
     options:
       - correct: false
-        value: "0"
-        resultMessage: "Объединенный тип Decoration | \"size\" содержит пять специализированных строковых литеральных типа. Условный тип OptionType выбирает number только для одного из них"
+        value: "0."
+        resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
         id: 1
       - correct: true
-        value: "1"
-        resultMessage: "Объединенный тип Decoration | \"size\" содержит пять специализированных строковых литеральных типа. Условный тип OptionType выбирает number только для одного из них"
+        value: "1."
+        resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
         id: 2
       - correct: false
-        value: "4"
-        resultMessage: "Объединенный тип Decoration | \"size\" содержит пять специализированных строковых литеральных типа. Условный тип OptionType выбирает number только для одного из них"
+        value: "4."
+        resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
         id: 3
       - correct: false
         value: "5"
-        resultMessage: "Объединенный тип Decoration | \"size\" содержит пять специализированных строковых литеральных типа. Условный тип OptionType выбирает number только для одного из них"
+        resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
         id: 4
-    title: "В контексте определения типов, сколько числовых свойств будет иметь значение типа Options"
+    title: "В контексте определения типов сколько числовых свойств будет иметь значение типа Options?"
     type: "multiple"
     id: 4
-successMessage: "Как вы убедились, операции над индексируемыми типами предоставляют разработчику мощный инструмент в процессе разработки качественного ПО"
-title: "Проверьте свое понимание концепции индексированных типов"
+successMessage: "Как вы убедились, операции над индексируемыми типами предоставляют разработчику мощный инструмент в процессе разработки качественного ПО."
+title: "Проверьте своё понимание концепции индексированных типов"
 type: "test"
 wizard: true
