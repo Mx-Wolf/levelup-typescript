@@ -36,10 +36,10 @@ type AllNumbers = number;
 declare function getAnswer():FortyTwo;
 declare function getRandom():AllNumbers;
 
-//TypeScript допускает такое присваивание
+//TypeScript допускает такое присваивание.
 const v1:AllNumbers = getAnswer();
 
-//а такое нет
+//А такое нет.
 const v2: FortyTwo = getRandom();
 ```
 

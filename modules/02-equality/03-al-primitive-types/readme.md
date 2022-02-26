@@ -9,7 +9,7 @@ function init(settings){
   if(typeof settings === 'function'){
     settings = settings();
   }
-  //используем извлечённые значения
+  //Используем извлечённые значения.
 }
 ```
 

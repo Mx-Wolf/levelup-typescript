@@ -47,8 +47,8 @@ TypeScript не может контролировать обращение за 
 const arr:number[] =[];
 const obj:Record<string, number> = {};
 
-const elementOfArray = arr[0]; //typescript считает, что переменная имеет тип number, но её значение undefined
-const propertyValue = obj["property"];// такая же ситуация
+const elementOfArray = arr[0]; //TypeScript считает, что переменная имеет тип number. но её значение undefined
+const propertyValue = obj["property"];// Такая же ситуация.
 ```
 
 [Проверьте в песочнице](https://www.typescriptlang.org/play?ssl=5&ssc=58&pln=1&pc=1#code/MYewdgzgLgBAhgJwQLjAVwLYCMCmCDaAujALxEDcAUKJLCFgFbIBKOoCAJgDzQICWYAOYAaGOmx4AfKRgBvAL5Vq4aDBwAbHBhxgoAeQBmAQSRwAnjMQEADIXIwA9A6hmADjgjB+r2IEEQQOIggBwggEIggAwggKwgwaL+wYB8IDCA-CDhgAIg4YA8IOGAvCCZoYDyIDCBGZEwwYEJYpi4CKKZ8eHhMIDsIDn+WYENaGAcOAYCOBzKtDCuCCDuCC4AanDqaDgy9Az4AEQjY3guy3ZOJaGAXCB5MIBsIA2BvnHJgblAA).
