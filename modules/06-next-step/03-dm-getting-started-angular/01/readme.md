@@ -16,7 +16,7 @@ Angular общается с разработчиком на TypeScript. При �
 npm install -g @angular/cli
 ```
 
-И дополнительно поставить плагин для VS-Ccode:
+И дополнительно поставить плагин для VS-Code:
 
 ```text
 https://marketplace.visualstudio.com/items?itemName=Angular.ng-template

@@ -16,13 +16,13 @@ interface Messages{
 Очевидно, что элементы массива `items` в разных случаях могут быть различными. TypeScript позволяет учесть эту договорённость указанием на то, что о типе элементов мы договоримся позднее.
 
 ```ts
-// В угловых скобках мы указали
-// условный идентификатор типа
-// переменную типа типа
+// Идентификатор T в угловых скобках
+// обозначает тип, фактическое определение
+// которого выполнится позднее.
 interface Messages<T>{
     status: 'success';
-    // И договорились, что 
-    // элементы массива будут иметь тот самый тип
+    // И мы договорились, что 
+    // элементы массива будут иметь тот самый тип.
     items: T[];
 }
 ```
@@ -71,7 +71,7 @@ const { id, data: { floor, title } } = findOffice();
 
 В [песочнице](https://www.typescriptlang.org/play?removeComments=true&jsx=0#code/C4TwDgpgBA8gZnAlgYwgSQCZQLxQHYCuAtgEYQBOUAZFAN6wIroYBcUAbgPaJYC+AUIjzAKcAIaooAUWGJQAHgAqmADRRFAETHAxAPjr8oRqDzbKMAbkPGM2sWa06rA-hgjIANmPLRknPADOwFBIeBjwSKhsABQAlDj6MsByIPIRTKp0UMnAHhBsQeRCAOZqcB6cnORshKQUULy6-Px+gcH0PGq2Omz05ZXkajl5DaO4oeGMqHEWQA) вы можете увидеть поддержку и компилятора, и редактора.
 
-## Ковариантность обобщенных структур
+## Ковариантность обобщённых структур
 
 Отметим важное свойство, характерное большинству обобщённых структур — их ковариантность относительно операции специализации.
 
