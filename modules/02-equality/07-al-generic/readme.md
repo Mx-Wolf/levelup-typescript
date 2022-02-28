@@ -5,9 +5,9 @@
 Совместимость типов в TypeScript основана на структурной эквивалентности, принятой в JavaScript. Этот подход отличает TypeScript от статически типизированных языков: Java, C# и других. Вооружённые этим знанием, мы можем создать первую обобщённую программу.
 
 ```typescript
-// функция вернёт первый элемент массива
-// его тип и значение будет известно потом
-// сейчас важно, что аргумент — это массив
+// Функция вернёт первый элемент массива.
+// Его тип и значение будет известно потом,
+// сейчас важно, что аргумент — массив.
 function firstItem<T>(array:T[]):T{
   if(array.length>0){
     return array[0];
@@ -18,7 +18,7 @@ function firstItem<T>(array:T[]):T{
 
 Слева от круглых скобок с аргументами функции мы написали выражение `<T>`. Эта запись уведомляет TypeScript о намерении использовать символ **T** в качестве псевдонима типа значений. В частности мы требуем, чтобы в качестве аргумента наша функция получала значение массива тех самых элементов типа **T**. Видите `array:T[]`?
 
-> На жаргоне программистов мы говорим, что **T** — это **дженерик**-тип (вместо «псевдоним обобщённого типа»). Мы называем функцию **дженерик**-функция firstItem. Вы можете встретить рассуждения о **дженерик**-интерфейсах и прочее.
+> Мы говорим, что **T** — это **дженерик**-тип (вместо «псевдоним обобщённого типа»). Мы называем функцию **дженерик**-функцией firstItem. Вы можете встретить рассуждения о **дженерик**-интерфейсах и прочее.
 
 Вместо **T** можно подставить `string` или `number` или имя любого другого типа — работоспособность функции не нарушится.
 
@@ -34,7 +34,7 @@ const theAnswer = firstItem(array1);
 
 // typeof theAnswer === "number";
 // Мы можем использовать значение безопасно.
-Math.abs(theAnswer); //ok
+Math.abs(theAnswer); //OK
 theAnswer.split(","); //Property 'split' does not exist on type 'number'.(2339)
 ```
 
@@ -55,7 +55,7 @@ Math.abs(theAnswer); //Argument of type 'string' is not assignable to parameter 
 theAnswer.split(","); //OK
 ```
 
-[Посмотрите в песочнице](https://www.typescriptlang.org/play?ssl=11&ssc=1&pln=1&pc=1#code/GYVwdgxgLglg9mABMGAnAzlAklApgWwB4AVAPgAoBDVVSgTwC5iBtAXQEomBvAKEURjAqNegDoANrjABzKAAtSABna9+-VLighUSarTrNFrANx9EAXzPzUcAO6IwuewFEacVOQBEBAA5Q6iHr0nuymlhAImIEidACMiAC8iMwALABMADQA7ADMJjwRYFHyuACCRba4qInIaJg4BISYqDAyFEFxoQD0XaWo0iD4UlCIcMCI-j64iADkYIMARlVsMwLoDnAjlOjoMNJglAuSE3CIPtSUQ3jVYxN0U7PNrdIrojwAspTyoofo5CXldCVVChRA9PoDIZgEa3SbTGZPGSrGDrMCbQI7PYHI7TKCnc60K5VUbjOGzeb4JaoGZvAEVKqidA+cQwKBeDIhYxgroAeQA0jwgA) исправить ошибку, или изучите [следующий код](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABMGAnAzlAklApgWwB4AVAPgAoBDVVSgTwC5iBtAXQEomBvAKEURjAqNegDoANrjABzKAAtSABna9+-VLighUSarTrNFrANx9EAXzPzUcAO6IwuewFEacVOQBEBAA5Q6iHr0nuymlhAImIEidACMiAC8iMwALABMADQA7ADMJjwRYFHyuACCRba4qInIaJg4BISYqDAyFEFxoviUPuTkuOwJpLiiUHAAYjAAHrgAJuRp7EumJeXolaii6D7iMFBeGSHGiAD0JwDyANI8QA).
+[Попробуйте в песочнице](https://www.typescriptlang.org/play?ssl=11&ssc=1&pln=1&pc=1#code/GYVwdgxgLglg9mABMGAnAzlAklApgWwB4AVAPgAoBDVVSgTwC5iBtAXQEomBvAKEURjAqNegDoANrjABzKAAtSABna9+-VLighUSarTrNFrANx9EAXzPzUcAO6IwuewFEacVOQBEBAA5Q6iHr0nuymlhAImIEidACMiAC8iMwALABMADQA7ADMJjwRYFHyuACCRba4qInIaJg4BISYqDAyFEFxoQD0XaWo0iD4UlCIcMCI-j64iADkYIMARlVsMwLoDnAjlOjoMNJglAuSE3CIPtSUQ3jVYxN0U7PNrdIrojwAspTyoofo5CXldCVVChRA9PoDIZgEa3SbTGZPGSrGDrMCbQI7PYHI7TKCnc60K5VUbjOGzeb4JaoGZvAEVKqidA+cQwKBeDIhYxgroAeQA0jwgA) исправить ошибку или изучите [следующий код](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABMGAnAzlAklApgWwB4AVAPgAoBDVVSgTwC5iBtAXQEomBvAKEURjAqNegDoANrjABzKAAtSABna9+-VLighUSarTrNFrANx9EAXzPzUcAO6IwuewFEacVOQBEBAA5Q6iHr0nuymlhAImIEidACMiAC8iMwALABMADQA7ADMJjwRYFHyuACCRba4qInIaJg4BISYqDAyFEFxoviUPuTkuOwJpLiiUHAAYjAAHrgAJuRp7EumJeXolaii6D7iMFBeGSHGiAD0JwDyANI8QA).
 
 ```ts
 function firstItem<T>(array:T[]):T{

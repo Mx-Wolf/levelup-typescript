@@ -24,7 +24,7 @@ export const reportReducer = (
 };
 ```
 
-Соединяя все вместе, получаем реализацию сбора статистики про клиента (смотрим `reporter.ts`).
+Соединяя всё вместе, получаем реализацию сбора статистики про клиента (смотрим `reporter.ts`).
 
 ```ts
 export const createReport:Reporter = (orders) => orders.reduce(reportReducer, reportSeed());

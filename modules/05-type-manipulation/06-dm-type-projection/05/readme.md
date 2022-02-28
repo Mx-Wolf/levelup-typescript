@@ -1,4 +1,4 @@
-**Добавим использование thunk**
+# Добавим использование thunk
 
 Нам потребуются ссылки на пакет redux-thunk и на определения типов @types/redux-thunk. [Зарегистрируем thunk](https://codesandbox.io/s/step-5-demo-5-6-w5xrc?file=/src/store/store.ts) в качестве middleware при инициализации хранилища. Дополнительно обратите внимание, как мы поменяли сведения о диспетчере.
 
@@ -15,9 +15,9 @@ return {
 };
 ```
 
-**Добавим обработку регистрации сообщения**
+## Добавим обработку регистрации сообщения
 
-Для демонстрации создадим имитацию регистрации сообщения. В реальной жизни, возможно, севрвер определить дату регистрации сообщения, мы же изготовим [register-message.ts](https://codesandbox.io/s/step-5-demo-5-6-w5xrc?file=/src/store/register-message.ts) проще.
+Для демонстрации создадим имитацию регистрации сообщения. В реальной жизни, возможно, севрвер определит дату регистрации сообщения, мы же изготовим [register-message.ts](https://codesandbox.io/s/step-5-demo-5-6-w5xrc?file=/src/store/register-message.ts) проще.
 
 ```ts
 export const registerMessage = (message: Pick<Message, "to" | "body">) => (
@@ -43,6 +43,6 @@ export const markAsRead = (message: Pick<Message, "id">) => (
 ) => dispatch(readMessage({ ...message, read: now() }));
 ```
 
-**Демонстрация в работе**
+## Демонстрация в работе
 
 Обычно вы не тестируете «библиотечный» код. Но в данном случае мы используем скорее не модульный, а почти интеграционный [тест для демонстрации](https://codesandbox.io/s/step-5-demo-5-6-w5xrc?file=/src/store/store.test.ts) результатов помощи от TypeScript.

@@ -7,28 +7,28 @@ questions:
     type: single
     options:
       - id: 1
-        value: флаг declaration
+        value: Флаг declaration.
         correct: false
         resultMessage: |
-          флаг declaration нужен для создания .d.ts файлов, полезен при создании библиотек.
+          Флаг declaration нужен для создания .d.ts-файлов, полезен при создании библиотек.
       - id: 2
-        value: флаг removeComments
+        value: Флаг removeComments.
         correct: true
         resultMessage: |
-          флаг removeComments исключает комментарии из .js файлов.
+          Флаг removeComments исключает комментарии из .js-файлов.
       - id: 3
-        value: флаг esModuleInterop .
+        value: Флаг esModuleInterop.
         correct: false
         resultMessage: |
-          флаг esModuleInterop добавляет в .js дополнительный код для упрощения взаимодействия с модулями в формате commonjs.
+          Флаг esModuleInterop добавляет в .js дополнительный код для упрощения взаимодействия с модулями в формате commonjs.
       - id: 4
-        value: флаг noUnusedLocals.
+        value: Флаг noUnusedLocals.
         correct: false
         resultMessage: |
-          флаг noUnusedLocals управляет строгостью проверки синтаксиса и разрешает вывод ошибок при обнаружении неиспользованных локальных переменных.
+          Флаг noUnusedLocals управляет строгостью проверки синтаксиса и разрешает вывод ошибок при обнаружении неиспользованных локальных переменных.
 
   - id: 2
-    title: "В приведенном ниже отрывке разработчик использует eval и TypeScript не в состоянии догадаться, что модуль используется. Какой флаг компилятора вам поможет избежать ошибок компиляции?"
+    title: "В приведённом ниже отрывке разработчик использует eval, и TypeScript не в состоянии догадаться, что модуль используется. Какой флаг компилятора вам поможет избежать ошибок компиляции?"
     description: |
       ```ts
       import {Oil} from "./anna.ts"
@@ -37,46 +37,46 @@ questions:
     type: single
     options:
       - id: 1
-        value: флаг preserveValueImports.
+        value: Флаг preserveValueImports.
         correct: true
         resultMessage: |
-          флаг оставляет в .js файле операторы импорта значений из модулей, даже если эти значения не используются.
+          Флаг оставляет в .js-файле операторы импорта значений из модулей, даже если эти значения не используются.
       - id: 2
-        value: флаг allowUnusedLabels.
+        value: Флаг allowUnusedLabels.
         correct: false
         resultMessage: |
-          флаг allowUnusedLabels подавляет генерацию ошибок про неиспользованные метки (а вообще зачем метки, да?).
+          Флаг allowUnusedLabels подавляет генерацию ошибок про неиспользованные метки.
   - id: 3
-    title: "Какие из перечисленных флагов не зависят от состояния флага strict"
+    title: "Какие из перечисленных флагов не зависят от состояния флага strict?"
     description: |
-      Флаг strict включает все самые строгие флаги компиляции, но, естественно, не вообще все флаги.
+      Флаг strict включает все самые строгие флаги компиляции, но не вообще все флаги.
     type: multiple
     options:
       - id: 1
         value: |
-          флаг noImplicitAny.
+          Флаг noImplicitAny.
         correct: false
         resultMessage: |
-          значение флага noImplicitAny по умолчанию зависит от значения флага strict.
+          Значение флага noImplicitAny по умолчанию зависит от значения флага strict.
       - id: 2
         value: |
-          флаг noImplicitThis.
+          Флаг noImplicitThis.
         correct: false
         resultMessage: |
-          значение флага noImplicitThis по умолчанию зависит от значения флага strict.
+          Значение флага noImplicitThis по умолчанию зависит от значения флага strict.
       - id: 3
         value: |
-          флаг useUnknownInCatchVariables.
+          Флаг useUnknownInCatchVariables.
         correct: false
         resultMessage: |
-          значение флага useUnknownInCatchVariables по умолчанию зависит от флага strict.
+          Значение флага useUnknownInCatchVariables по умолчанию зависит от флага strict.
       - id: 4
-        value: флаг noUnusedParameters.
+        value: Флаг noUnusedParameters.
         correct: true
         resultMessage: |
-          значение флага noUnusedParameters не зависит от флага strict и его следует установить самостоятельно.
+          Значение флага noUnusedParameters не зависит от флага strict, и его следует установить самостоятельно.
       - id: 5
-        value: флаг noUncheckedIndexedAccess.
+        value: Флаг noUncheckedIndexedAccess.
         correct: true
         resultMessage: |
-          значение флага noUncheckedIndexedAccess не зависит от флага strict и его следует установить самостоятельно.
+          Значение флага noUncheckedIndexedAccess не зависит от флага strict, и его следует установить самостоятельно.
