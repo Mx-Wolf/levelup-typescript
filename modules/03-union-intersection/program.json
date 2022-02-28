@@ -75,7 +75,7 @@
       {
         "type":  "article",
         "path": "03-union-intersection/11-al-union-types-discriminating",
-        "description": "Операция объединения типов и ее свойства"
+        "description": "Операция объединения типов и её свойства"
       },
       {
         "type": "demo",

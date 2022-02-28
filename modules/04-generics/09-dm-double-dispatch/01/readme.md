@@ -17,7 +17,7 @@ export interface ServiceLogVisitor<T, R = T> {
 }
 ```
 
-[Интерфейс](https://codesandbox.io/s/step-1-demo-4-9-module-4-rv8vq?file=/src/i-face-visitor.ts) подсказывает, что для создания отчета следует выполнить метод `getInitialState`. Затем в цикле, для каждой записи журнала, нужно выполнить `visitLogRecord`. В завершение стоит преобразовать накопленные данные методом `report`.
+[Интерфейс](https://codesandbox.io/s/step-1-demo-4-9-module-4-rv8vq?file=/src/i-face-visitor.ts) подсказывает, что для создания отчёта следует выполнить метод `getInitialState`. Затем в цикле, для каждой записи журнала, нужно выполнить `visitLogRecord`. В завершение стоит преобразовать накопленные данные методом `report`.
 
 Такой подход хорошо соотносится с использованием метода `Array::reduce`.
 

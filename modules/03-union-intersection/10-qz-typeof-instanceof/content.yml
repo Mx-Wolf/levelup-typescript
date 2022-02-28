@@ -24,7 +24,7 @@ questions:
       ```
     type: "multiple"
     options:
-      - value: "TypeScript не допускает пустые классы. Определения, такие как  Empty и AnotherEmpty, эквивалентны друг другу."
+      - value: "TypeScript не допускает пустые классы. Определения, такие как Empty и AnotherEmpty, эквивалентны друг другу."
         correct: false
         resultMessage: "Декларация класса TypeScript создаёт функцию-конструктор — каждая такая функция уникальна. Определения пустых классов не эквивалентны."
         id: 1
