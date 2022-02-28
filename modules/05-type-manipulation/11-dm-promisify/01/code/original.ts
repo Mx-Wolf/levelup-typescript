@@ -2,10 +2,10 @@ import { GameBoardView } from "./types";
 import { isElement } from "./utils";
 
 export const createGameBoard = (): GameBoardView => {
-  // обратите внимание, что TypeScript не может знать сколько 
-  // элементов будет найдено в документе, 
-  // задача разработчика контроль выхода за пределы массива
-  // как, собственно, и в JavaScript
+  // Обратите внимание, что TypeScript не может знать, сколько
+  // элементов будет найдено в документе.
+  // Задача разработчика — проконтролировать выход за пределы массива,
+  // как и в JavaScript.
   const [evil,timer,mate] = document.querySelectorAll('[data-id*=id]');
   if(!isElement(evil)){
     throw new Error();

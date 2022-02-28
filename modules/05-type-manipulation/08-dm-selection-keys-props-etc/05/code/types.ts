@@ -5,11 +5,11 @@ export type HandlerProps<T extends string> =
   ? Record<string, string>
   : (
     T extends `${infer Param}=${infer Value}&${infer Rest}`
-    ? (({[K in Param | keyof HandlerProps<Rest>]: string})) // для множества пар поле-значение используем рекурсию
+    ? (({[K in Param | keyof HandlerProps<Rest>]: string})) // Для множества пар поле-значение используем рекурсию.
     : (
       T extends `${infer Param}=${infer Value}`
-      ? ({[K in Param]:string}) // для единственной пары - используем имя поля в качестве ключа результирующего типа
-      : ({}) //когда строка имеет любую другую форму - не используем ключей
+      ? ({[K in Param]:string}) // Для единственной пары используем имя поля в качестве ключа результирующего типа.
+      : ({}) //Когда строка имеет любую другую форму, не используем ключей.
     )
   );
 
