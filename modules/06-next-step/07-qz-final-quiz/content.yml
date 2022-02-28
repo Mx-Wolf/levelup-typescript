@@ -60,40 +60,40 @@ questions:
     type: single
     id: 2
     options:
-      - value: "Добавить аннотацию типа `let fruits: string[];`."
+      - value: "Добавить аннотацию типа let fruits: string[]."
         correct: false
-        resultMessage: "Массив с аннотацией `string[]` может содержать только строки в качестве значений элементов."
+        resultMessage: "Массив с аннотацией string[] может содержать только строки в качестве значений элементов."
         id: 1
-      - value: "Использовать обобщённый тип. `let fruits: Array<string>;`."
+      - value: "Использовать обобщённый тип. let fruits: Array<string>."
         correct: false
         resultMessage: "Переменная с типом Array<string> может содержать значение — массив, элементами которого могут быть только строки."
         id: 2
       - correct: false
-        value: "Использовать способность компилятора догададываться о разрешённых типах по контексту: let arr = [1, 3, 'Apple', 'Orange', 'Banana', true, false];."
+        value: "Использовать способность компилятора догадываться о разрешённых типах по контексту: let arr = [1, 3, 'Apple', 'Orange', 'Banana', true, false]."
         resultMessage: "TypeScript способен выяснить тип переменной по контексту использования. Поскольку в массиве представлены и числа, и строки, и флаги, TypeScript обозначит переменную arr типом (string | number | boolean)[]."
         id: 3
       - correct: true
-        value: "Добавить переменной аннотацию — массив объединения типа: `let values: (string | number)[];`."
-        resultMessage: "Можно объявить переменную массива и сообщить о возможности сохранения в качестве элементов значения различных типов"
+        value: "Добавить переменной аннотацию — массив объединения типа: let values: (string | number)[]."
+        resultMessage: "Можно объявить переменную массива и сообщить о возможности сохранения в качестве элементов значения различных типов."
         id: 4
   - title: "В каких случаях не требуется аннотация типа при объявлении переменной?"
     type: multiple
     id: 3
     options:
       - correct: true
-        value: "let x = 3;"
+        value: "let x = 3."
         resultMessage: "Тип переменной — number."
         id: 1
       - correct: true
-        value: "let x = [0, 1, null];"
+        value: "let x = [0, 1, null]."
         resultMessage: "number|null — выбирается наилучший общий тип."
         id: 2
       - correct: true
-        value: "window.onmousedown = function (mouseEvent) {}"
+        value: "window.onmousedown = function (mouseEvent) {}."
         resultMessage: "Тип переменной mouseEvent определяется по контексту типа обработчика."
         id: 3
       - correct: true
-        value: "const Header = ():Item =>[new Home(),new About(), new Profile()];"
+        value: "const Header = ():Item =>[new Home(),new About(), new Profile()]."
         resultMessage: "Тип элементов массива Item — при условии, что все классы являются наследниками Item."
         id: 4
   - title: "Какие ошибки обнаружит компилятор при сборке приведённой программы при компиляции с флагом strict?"
@@ -250,7 +250,7 @@ questions:
         value: "Требуется одна реализация."
         resultMessage: "TypeScript выбирает вариант объявления функции в порядке объявления и требует только одной реализации. Объявление самой реализации недоступно во время анализа."
         id: 3
-  - title: "Какую нагрузку несут в TypeScript интерфейсы?"
+  - title: "Какую нагрузку несут интерфейсы в TypeScript?"
     type: multiple
     id: 11
     options:
@@ -267,7 +267,7 @@ questions:
         resultMessage: "TypeScript позволяет при описании интерфейсов расширять один или несколько интерфейсов-родителей."
         id: 3
       - correct: true
-        value: "определяют имя для нового типа данных."
+        value: "Определяют имя для нового типа данных."
         resultMessage: ""
         id: 4
       - correct: false
@@ -298,11 +298,11 @@ questions:
     options:
       - value: "Разработчик может использовать имя класса на месте, где ожидается имя типа, поэтому программа будет компилироваться без ошибок."
         correct: false
-        resultMessage: "Компилятор попытается обеспечить наличие private и protected полей мокового значения и не сможет выполнить этого. Программа не будет компилироваться, ошибка: 'Type '{ queryData: () => Promise<{}>; }' is missing the following properties from type 'ServiceBase': endpoint, getQueryUrl'."
+        resultMessage: "Компилятор попытается обеспечить наличие private и protected полей мокового значения и не сможет выполнить этого. Программа не будет компилироваться. Ошибка: 'Type '{ queryData: () => Promise<{}>; }' is missing the following properties from type 'ServiceBase': endpoint, getQueryUrl'."
         id: 1
       - value: "Разработчик не сможет использовать описание типа значений экземпляров класса ServiceBase для создания моковых значений."
         correct: true
-        resultMessage: "Компилятор попытается обеспечить наличие private и protected полей мокового значения и не сможет выполнить этого. Программа не будет компилироваться, ошибка: 'Type '{ queryData: () => Promise<{}>; }' is missing the following properties from type 'ServiceBase': endpoint, getQueryUrl'."
+        resultMessage: "Компилятор попытается обеспечить наличие private и protected полей мокового значения и не сможет выполнить этого. Программа не будет компилироваться. Ошибка: 'Type '{ queryData: () => Promise<{}>; }' is missing the following properties from type 'ServiceBase': endpoint, getQueryUrl'."
         id: 2
   - title: "На примере приведённой программы объясните, что означает объединение типов в TypeScript?"
     description: "```ts\ntype KeyFieldType = number |string;\n\n      const keyToFind:KeyFieldType = 42;\n      const findKey = (keyToFind:KeyFieldType):KeyFieldType => keyToFind;\n      const keyFound: number = findKey();\n```"
@@ -334,7 +334,7 @@ questions:
         resultMessage: "Значения в пересекаемом типе могут выходить за рамки пересечения."
         id: 1
       - correct: true
-        value: "Переменной любого из пересекаемых типов можно присвоить значение пересеченного типа."
+        value: "Переменной любого из пересекаемых типов можно присвоить значение пересечённого типа."
         resultMessage: "Значения в пересекаемом типе могут выходить за рамки пересечения."
         id: 2
   - title: "В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы."
@@ -435,11 +435,11 @@ questions:
     options:
       - correct: false
         value: "Запрещает использование ключевого слова any для обозначения типа."
-        resultMessage: "В некоторых случаях, при отсутствии аннотации типа TypeScript, не сумев определить тип по контексту будет считать переменную содержащей значение типа any. Наличие указанного флага в такой ситуации заставляет компилятор сообщать об ошибке."
+        resultMessage: "В некоторых случаях, при отсутствии аннотации типа TypeScript, не сумев определить тип по контексту, будет считать переменную содержащей значение типа any. Наличие указанного флага в такой ситуации заставляет компилятор сообщать об ошибке."
         id: 1
       - correct: true
         value: "Требует, чтобы компилятор сообщил о значениях, тип которых он не может определить по контексту."
-        resultMessage: "В некоторых случаях, при отсутствии аннотации типа TypeScript, не сумев определить тип по контексту будет считать переменную содержащей значение типа any, наличие указанного флага в такой ситуации заставляет компилятор сообщать об ошибке"
+        resultMessage: "В некоторых случаях, при отсутствии аннотации типа TypeScript, не сумев определить тип по контексту, будет считать переменную содержащей значение типа any. Наличие указанного флага в такой ситуации заставляет компилятор сообщать об ошибке."
         id: 2
   - title: "Какой результат выполнения программы вы ожидаете?"
     description:   |
@@ -480,11 +480,11 @@ questions:
         resultMessage: "Тип переменной будет string, благодаря вычислениям условного типа SpellOutNumber."
         id: 1
       - correct: false
-        value: "number"
+        value: "number."
         resultMessage: "Тип переменной будет string, благодаря вычислениям условного типа SpellOutNumber."
         id: 2
       - correct: true
-        value: "string"
+        value: "string."
         resultMessage: "Тип переменной будет string, благодаря вычислениям условного типа SpellOutNumber."
         id: 3
   - title: "Определение типа StrictType эквивалентно какому предоставленному типу?"
