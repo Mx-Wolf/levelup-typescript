@@ -3,12 +3,12 @@
   "learning": true,
   "materials": [
     {
-      "title":"файл журнала операций",
-      "link":"https://1drv.ms/u/s!AoqazfboJCcHoNB0GxNbS8liYZzECQ?e=cOcsqF"
+      "title":"ledger-or.json — файл журнала операций",
+      "link":"https://github.com/htmlacademy/typescript-source/blob/8d7c5a62809e89ea11540f87a8185bc38a0b688d/module-2/ledger-01.json"
     },
     {
-      "title":"Желаемые типы, от руководителя группы",
-      "link":"https://1drv.ms/u/s!AoqazfboJCcHoNB1P_wCCKz36tNVlA?e=eLKxFy"
+      "title":"i-faces.ts — типы от руководителя группы",
+      "link":"https://github.com/htmlacademy/typescript-source/blob/8d7c5a62809e89ea11540f87a8185bc38a0b688d/module-2/i-faces.ts"
     }
   ]
 }
