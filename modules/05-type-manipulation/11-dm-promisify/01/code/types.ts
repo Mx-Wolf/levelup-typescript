@@ -1,18 +1,18 @@
-//для удобства - определим действие
+//Для удобства определим действие.
 export interface Action { (): void; }
 
 export interface GameBoardView {
-  //Супермен должен уметь победить злодея
+  //Супермен должен уметь победить злодея.
   neutralizeEvil: (done: Action) => void;
-  //Супермен должен выключить творение злодея
+  //Супермен должен выключить творение злодея.
   disarmDevice: (done: Action) => void;
-  //Супермен должен воодушевить и поддержать людей
+  //Супермен должен воодушевить и поддержать людей.
   encourageMate: (done: Action) => void;
 }
 
 export interface StatisticsView{
-  //Занавеска отъезжает, игра начинается
+  //Игра начинается.
   onClosing:(handler:Action)=>void;
-  //Показать результаты
+  //Показать результаты.
   show: Action;
 }
