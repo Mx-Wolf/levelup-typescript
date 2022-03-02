@@ -146,6 +146,7 @@ questions:
   - title: "Допускает ли TypeScript следующую программу?"
     description: |
       ```ts
+      //  сборка с флагом useUnknownInCatchVariables
       type TextProvider = ()=>string;
       const THRESHOLD = 0.5;
       const getText:TextProvider =()=>{

@@ -6,7 +6,7 @@ questions:
     options:
       - correct: false
         value: "string | number | boolean."
-        resultMessage: "TypeScript достаточно догадлив, чтобы определить тип ключа timeout как число."
+        resultMessage: "Хотя в составе объекта config есть ключи с разными типами значений, TypeScript достаточно догадлив, чтобы определить тип ключа timeout как number."
         id: 1
       - correct: true
         value: "number."
@@ -23,24 +23,25 @@ questions:
     options:
       - correct: false
         value: "string | number | boolean."
-        resultMessage: "TypeScript достаточно догадлив, чтобы определить тип ключа timeout как число."
+        resultMessage: "В составе объекта config в указанном отрывке не только определён набор ключей, но и отмечено, что значения этих ключей не должны меняться. TypeScript достаточно догадлив, чтобы определить тип ключа timeout как число."
         id: 1
       - correct: false
         value: "number."
-        resultMessage: "Поскольку ключ timeout определён как readonly, к нему применяется правило специализации литерального значения."
+        resultMessage: "Поскольку ключ timeout определён как readonly, к нему применяется правило специализации литерального значения, и TypeScript требует при использовании этого объекта считать тип каждого ключа зафиксированным на начальное литеральное значение."
         id: 2
       - correct: true
         value: "5."
-        resultMessage: "Поскольку ключ timeout определён как readonly, к нему применяется правило специализации литерального значения."
+        resultMessage: "Примечание as const указывает что ключ timeout определён как readonly, к нему применяется правило специализации литерального значения."
         id: 3
     title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций."
     type: "single"
     id: 2
-  - description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    };\n    \n    type Timeout = (typeof config)[keyof typeof config]\n```"
+  - title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении все возможных операций."
+    description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    };\n    \n    type Timeout = (typeof config)[keyof typeof config]\n```"
     options:
       - correct: true
         value: "string | number | boolean."
-        resultMessage: "Используется объединение типов возможных значений."
+        resultMessage: "В контексте определения типа Timeout оператор typeof определяет и запоминает тип значения переменной config. Оператор keyof создает объединение всех ключей. Оператор доступа по индексу к типу создает объединение типов возможных значений."
         id: 1
       - correct: false
         value: "number."
@@ -48,29 +49,28 @@ questions:
         id: 2
       - correct: false
         value: "5."
-        resultMessage: "Используется объединение типов возможных значений."
+        resultMessage: "Поскольку значение config не помечено признаком as const, специализации литеральных типов не происходит."
         id: 3
-    title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении все возможных операций."
     type: "single"
     id: 3
-  - description: "```typescript\ntype Decoration = \"bold\"|\"italic\"|\"underline\"|\"strikethrough\";\n\n      type OptionType<T extends Decoration | \"size\"> = T extends \"size\"?number:boolean;\n      \n      type Options = {\n          [key in Decoration|\"size\"]: OptionType<key>\n      }\n```"
+  - title: "В контексте определения типов укажите, сколько числовых свойств будет иметь значение типа Options?"
+    description: "```typescript\ntype Decoration = \"bold\"|\"italic\"|\"underline\"|\"strikethrough\";\n\n      type OptionType<T extends Decoration | \"size\"> = T extends \"size\"?number:boolean;\n      \n      type Options = {\n          [key in Decoration|\"size\"]: OptionType<key>\n      }\n```"
     options:
       - correct: false
         value: "0."
-        resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
+        resultMessage: "Тип Options будет иметь несколько свойств. Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
         id: 1
       - correct: true
         value: "1."
-        resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
+        resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Оператор in организует цикл по всем элементам этого объединения. Условный тип OptionType выбирает number только для одного из них - для size."
         id: 2
       - correct: false
         value: "4."
-        resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
+        resultMessage: "Тип Decoration содержит четыре специализированных строковых литеральных типов. Однако в Options используется этот Decoration не напрямую, а в составе объединения."
         id: 3
       - correct: false
         value: "5"
-        resultMessage: "Объединённый тип Decoration | \"size\" содержит пять специализированных строковых литеральных типов. Условный тип OptionType выбирает number только для одного из них."
+        resultMessage: "Хотя в определении типа Options будет пять ключей, не все они будут иметь возможность содержать числовые значения"
         id: 4
-    title: "В контексте определения типов укажите, сколько числовых свойств будет иметь значение типа Options?"
     type: "single"
     id: 4
