@@ -1,0 +1,30 @@
+name: Staging-view Deploy
+
+on:
+  push:
+    branches:
+      - feature/next-version
+
+jobs:
+  Deploy-job:
+    runs-on: htmlacademy_runner
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: docker run -t --rm --name levelup-typescript -v $(pwd):/levelup-typescript -e NPM_TOKEN_GITHUB=$NPM_TOKEN_GITHUB nodejs:latest /bin/bash -i -c "echo \"//npm.pkg.github.com/:_authToken=\$NPM_TOKEN_GITHUB\" > \$HOME/.npmrc && cd /levelup-typescript && nvm use 12 && npm install"
+
+      - name: Meta-id
+        run: docker run -t --rm --name levelup-typescript -v $(pwd):/levelup-typescript nodejs:latest /bin/bash -i -c "cd /levelup-typescript && nvm use 12 && npm run meta-id"
+
+      - name: Spellcheck
+        run: docker run -t --rm --name levelup-typescript -v $(pwd):/levelup-typescript nodejs:latest /bin/bash -i -c "cd /levelup-typescript && nvm use 12 && npm run spellcheck || true"
+
+      - name: Deploy
+        run: |
+          cd /var/github-runner/ansible
+          ansible-playbook "./levelup-typescript/staging-view.yml"
+
+      - name: Link
+        run: echo "https://levelup-typescript.staging.htmlacademy.dev"
