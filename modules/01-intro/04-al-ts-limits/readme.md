@@ -44,7 +44,7 @@ const rectangleArea = (width: number, height: number): number => width + height;
 TypeScript не может контролировать обращение за пределы массива или к несуществующим свойствам:
 
 ```tsx
-const arr:number[] =[];
+const arr:number[] = [];
 const obj:Record<string, number> = {};
 
 const elementOfArray = arr[0]; //TypeScript считает, что переменная имеет тип number. но её значение undefined
