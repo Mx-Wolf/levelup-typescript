@@ -10,7 +10,7 @@ PS D:\sources\html-academy\courses\levelup-typescript>
 
 ## Подсказки
 
-Для установки компилятора выполните команду
+Для установки компилятора выполните команду:
 
 ```terminal
 npm i -D typescript
