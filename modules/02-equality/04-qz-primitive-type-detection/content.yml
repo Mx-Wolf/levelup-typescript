@@ -73,8 +73,8 @@ questions:
     title: "Выберите наиболее правильный тип значений, которые получат флаги из отрывка ниже."
     description: |
       ```ts
-      const flag1 = (42  'Answer to Life, The Universe, and everything');
-      const flag2 = (0  'zero-coding?');
+      const flag1 = (42 || 'Answer to Life, The Universe, and everything');
+      const flag2 = (0  || 'zero-coding?');
       ```
     type: single
     options:
