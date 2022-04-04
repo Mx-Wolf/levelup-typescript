@@ -36,50 +36,49 @@ PS D:\sources\html-academy\courses\typescript>
     * @types/mocha - декларации типов для пакета запуска модульного тестирования
     * @types/sinon - декларации типов для пакета подмены импортируемых функций
     * chai - пакет помогает в оценке результатов теста
-    * chai-spies - пакет помогает заменять некоторые функции (например колбэки) на время тестирования
+    * chai-spies - пакет помогает заменять некоторые функции на время тестирования
     * jsdom - пакет помогает эмулировать поведение DOM в тестовых целях при тестировании на стороне node
     * jsdom-global - пакет помогает эмулировать поведение DOM в тестовых целях при тестировании на стороне node
     * mocha - платформа для запуска модульных тестов
     * sinon - пакет для эмуляции функций, методов и много чего еще в целях тестирования
     * ts-node - пакет позволяет "проще" запускать TypeScript в среде node
 
-Все модули являются devDependency.
+    Все модули являются devDependency.
 
-```cmd
-npm i -D @types/chai @types/chai-spies @types/jsdom @types/jsdom-global @types/mocha @types/sinon chai chai-spies jsdom jsdom-global mocha sinon ts-node
-```
+    ```cmd
+    npm i -D @types/chai @types/chai-spies @types/jsdom @types/jsdom-global @types/mocha @types/sinon chai chai-spies jsdom jsdom-global mocha sinon ts-node
+    ```
 
-2. Измените настройку вашего проекта, так чтобы nodejs использовал es модули. Вы указываете тип проекта в файле package.json, добавлением на верхнем уровне ключа `type` со значением `module`. Сразу исправьте ключ scripts/test. и добавьте привычный script/start
+1. Измените настройку вашего проекта, так чтобы nodejs использовал es модули. Вы указываете тип проекта в файле package.json, добавлением на верхнем уровне ключа `type` со значением `module`. Сразу исправьте ключ scripts/test. и добавьте привычный script/start
 
-Файл **package.json**
+    Файл **package.json**
 
-```json
-{
-  ///....
-  "type":"module",
-  "scripts": {
-    ///.....
-    "test": "mocha",
-    ///.....
-  }
-  ///....
-}
-```
+    ```json
+    {
+      ///....
+      "type":"module",
+      "scripts": {
+        ///.....
+        "test": "mocha",
+        ///.....
+      }
+      ///....
+    }
+    ```
 
-3. Добавьте настройки mocha для работы в окружении typescript. Рекомендации можно найти [в документации](https://typestrong.org/ts-node/docs/recipes/mocha)
+1. Добавьте настройки mocha для работы в окружении typescript. Рекомендации можно найти [в документации](https://typestrong.org/ts-node/docs/recipes/mocha)
 
-Файл **.mocharc.json**
+    Файл **.mocharc.json**
 
-```json
-{
-  "loader": "ts-node/esm",
-  "extensions": ["ts", "tsx"],
-  "spec": [
-    "src/**/*.test.*"
-  ],
-  "watch-files": [
-    "src"
-  ]
-}
-```
-
+    ```json
+    {
+      "loader": "ts-node/esm",
+      "extensions": ["ts", "tsx"],
+      "spec": [
+        "src/**/*.test.*"
+      ],
+      "watch-files": [
+        "src"
+      ]
+    }
+    ```
