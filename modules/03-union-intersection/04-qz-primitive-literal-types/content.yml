@@ -2,16 +2,24 @@ title: "Специализация примитивных типов строк,
 type: "test"
 wizard: true
 questions:
-  - title: "В контексте приведённого определения функции укажите, какие выражения TypeScript будут приводить к ошибкам компиляции?
-    description: ```typescript\n\ntype GameSpeed = 'speed-slow'|'speed-normal'|'speed-fast';\ndeclare function setGameSpeed(speed: GameSpeed):void;\n\nconst slow:string = 'speed-slow';\n\nsetGameSpeed(slow);\nsetGameSpeed('speed-slow');\nsetGameSpeed('speed-'+'slow');\n\n```"
+  - title: "В контексте приведённого определения функции укажите, какие выражения TypeScript будут приводить к ошибкам компиляции?"
+    description: |
+      ```typescript
+      type GameSpeed = 'speed-slow'|'speed-normal'|'speed-fast';
+      declare function setGameSpeed(speed: GameSpeed):void;
+      const slow:string = 'speed-slow';
+      setGameSpeed(slow);
+      setGameSpeed('speed-slow');
+      setGameSpeed('speed-'+'slow');
+      ```
     options:
       - value: "setGameSpeed(slow);"
-        correct: true
+        correct: false
         resultMessage: "Переменная определена с типом string и может иметь значения, отличающиеся от приведённого ограниченного списка."
         id: 1
       - value: "setGameSpeed('speed-slow');"
         correct: false
-        resultMessage: "Компилируется без ошибок."
+        resultMessage: "Компилируется без ошибок. Компилятор следует правилу наилучшей общей специализации и считает, что литеральное значение имеет литеральный специализированный тип"
         id: 2
       - value: "setGameSpeed('speed-'+'slow');"
         correct: true
