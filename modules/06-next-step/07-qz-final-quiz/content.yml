@@ -4,7 +4,6 @@ wizard: true
 description: "Мы собрали для вас вопросы, которые часто попадаются на собеседованиях в различных компаниях."
 questions:
   - title: "Какие из перечисленных типов являются примитивными в TypeScript?"
-    description: "bigint\n      boolean\n      Date\n      Map\n      never\n      null\n      number\n      Set\n      string\n      symbol\n      undefined\n      unknown"
     type: multiple
     id: 1
     options:
@@ -323,7 +322,14 @@ questions:
         resultMessage: "Компилятор попытается обеспечить наличие private и protected полей мокового значения и не сможет выполнить этого. Программа не будет компилироваться. Ошибка: 'Type '{ queryData: () => Promise<{}>; }' is missing the following properties from type 'ServiceBase': endpoint, getQueryUrl'."
         id: 2
   - title: "На примере приведённой программы объясните, что означает объединение типов в TypeScript?"
-    description: "```ts\ntype KeyFieldType = number |string;\n\n      const keyToFind:KeyFieldType = 42;\n      const findKey = (keyToFind:KeyFieldType):KeyFieldType => keyToFind;\n      const keyFound: number = findKey();\n```"
+    description: |
+      ```ts
+      type KeyFieldType = number |string;
+
+      const keyToFind:KeyFieldType = 42;
+      const findKey = (keyToFind:KeyFieldType):KeyFieldType => keyToFind;
+      const keyFound: number = findKey();
+      ```
     type: single
     id: 13
     options:
@@ -337,13 +343,13 @@ questions:
         id: 2
   - title: "На примере приведённой программы объясните, что означает пересечение типов в TypeScript."
     description:  |
-      ```ts\nconst example = <TLeft, TRight>(keyToFind: TLeft & TRight, prefix:TLeft) => {\n
-      type KeyFieldType = TLeft&TRight;\n
-      keyFound = prefix;\n
-      const findKey = (keyToFind: KeyFieldType): KeyFieldType => keyToFind;\n
-      const keyFound: TLeft = findKey(keyToFind);\n
-      return keyFound;\n
-      }\n```
+      ```ts
+      const identity = <TLeft, TRight>(keyToFind: TLeft & TRight) => {
+          const search: TLeft = keyToFind;
+          const keyFound: TLeft & TRight = search;
+          return keyFound;
+      }
+      ```
     type: single
     id: 14
     options:
@@ -357,65 +363,86 @@ questions:
         id: 2
   - title: "В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы."
     description:   |
-      ```ts\ntype ShoppingCartLine = [label: string, price: number, discont: number];\n
-      const prepareLine = (\n
-      label: string,\n
-      price: number,\n
-      discont?: number,\n
-      ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n
-      \n```
+      ```ts
+      type ShoppingCartLine = [label: string, price: number, discount: number];
+
+      const prepareLine = (
+          label: string,
+          price: number,
+          discount?: number,
+      ): ShoppingCartLine => discount ? [label, price, discount] : [label, price];
+      ```
     type: single
     id: 15
     options:
       - correct: false
         value: "0."
-        resultMessage: "Все элементы должны быть инициализированы при создании кортежа."
+        resultMessage: "В тексте приведенного отрывка содержится ошибка. Компилятор ее найдет. Все элементы должны быть инициализированы при создании кортежа."
         id: 1
       - correct: true
         value: "1."
-        resultMessage: "Все элементы должны быть инициализированы при создании кортежа."
+        resultMessage: "Компилятор сообщит, что один из путей исполнения программы неверно инициализирует кортеж. Все элементы должны быть инициализированы при создании кортежа."
         id: 2
       - correct: false
         value: "2."
-        resultMessage: "Все элементы должны быть инициализированы при создании кортежа."
+        resultMessage: "В приведенном виде, компилятор обнаружит ошибку с неверной инициализацией кортежа. Все элементы должны быть инициализированы при создании кортежа."
         id: 3
-  - description: "```ts\ntype ShoppingCartLine = [label: string, price?: number, discont: number];\n  const prepareLine = (\n      label: string,\n      price: number,\n      discont?: number,\n  ): ShoppingCartLine => discont ? [label, price, discont] : [label, price];\n  \n```"
+  - title: "В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы."
+    description: |
+      ```ts
+      type ShoppingCartLine = [label: string, price: number, discount?: number];
+      const prepareLine = (
+          label: string,
+          price: number,
+          discount?: number,
+      ): ShoppingCartLine => discount ? [label, price, discount] : [label, price];
+      ```
     options:
       - correct: true
-        value: "0."
-        resultMessage: "TypeScript допускает необязательные элементы в хвосте кортежа."
+        value: "0. В кортеже могут быть необязательные элементы"
+        resultMessage: "Приведенный отрывок не содержит ошибок. TypeScript допускает необязательные элементы в хвосте кортежа"
         id: 1
       - correct: false
-        value: "1."
+        value: "1. Вопросительный знак в определении кортежа лишний"
         resultMessage: "TypeScript допускает необязательные элементы в хвосте кортежа."
         id: 2
       - correct: false
-        value: "2."
+        value: "2. Неверное определение и инициализация кортежа"
         resultMessage: "TypeScript допускает необязательные элементы в хвосте кортежа."
         id: 3
-    title: "В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы."
     type: "single"
     id: 16
-  - description: "```ts\nconst buffer: unknown = 'TypeScript' as unknown\nconst len: number = (buffer as string).length;\n```"
+  - title: "В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы."
+    description: |
+      ```ts
+      type ShoppingCartLine = [label: string, price?: number, discount: number];
+      const prepareLine = (
+          label: string,
+          price: number,
+          discount?: number,
+      ): ShoppingCartLine => discount ? [label, price, discount] : [label, price];
+      ```
     options:
       - correct: false
-        value: "0."
+        value: "Нет ошибок. Отрывок не содержит ошибок"
         resultMessage: "TypeScript допускает необязательные элементы только в хвосте кортежа."
         id: 1
       - correct: false
-        value: "1."
+        value: "Одна ошибка. Вопросительный знак в определении элементов кортежа лишний"
         resultMessage: "TypeScript допускает необязательные элементы только в хвосте кортежа."
         id: 2
       - correct: true
-        value: "2."
+        value: "Две ошибки. Неверное определение кортежа и ошибка при его инициализации"
         resultMessage: "TypeScript допускает необязательные элементы только в хвосте кортежа."
         id: 3
-    title: "В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы."
     type: "single"
     id: 17
   - title: "На примере приведённой программы выясните, создаёт ли дополнительную нагрузку на сборщик мусора использование утверждения типа (as)."
     description:   |
-      ```ts\nconst buffer: unknown = 'TypeScript' as unknown\nconst len: number = (buffer as string).length;\n```
+      ```ts
+      const buffer: unknown = 'TypeScript' as unknown
+      const len: number = (buffer as string).length;
+      ```
     type: single
     id: 18
     options:
@@ -461,13 +488,14 @@ questions:
         id: 2
   - title: "Какой результат выполнения программы вы ожидаете?"
     description:   |
-      ```ts\nconst item = 'TypeScript';\n
-      const result = `expression ${item}`;\n
-      type item = 'TypeScript';\n
-      type result = `expression ${item}`;\n
-      \n
-      const expression:result = result;\n
-      console.log(expression);\n```
+      ```ts
+      const item = 'TypeScript';
+      const result = `expression ${item}`;
+      type item = 'TypeScript';
+      type result = `expression ${item}`;
+      const expression:result = result;
+      console.log(expression);
+      ```
     type: single
     id: 21
     options:
@@ -485,11 +513,11 @@ questions:
         id: 3
   - title: "Какой тип ожидается у переменной buffer?"
     description:   |
-      ```ts\ntype SpellOutNumber<T> = T extends number? string: T;\n\n
-      declare function spell<T>(value:T):SpellOutNumber<T> ;\n
-      \n
-      const buffer = spell(Date());\n
-      \n```
+      ```ts
+      type SpellOutNumber<T> = T extends number? string: T;
+      declare function spell<T>(value:T):SpellOutNumber<T> ;
+      const buffer = spell(Date());
+      ```
     type: single
     id: 22
     options:

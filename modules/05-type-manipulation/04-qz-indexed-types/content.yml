@@ -2,7 +2,16 @@ title: "Концепция индексированных типов"
 type: test
 wizard: true
 questions:
-  - description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    }\n    \n    type Timeout = (typeof config)[\"timeout\"]\n```"
+  - description: |
+      ```typescript
+      const config = {
+          endpoint: "https://example.com/api",
+          timeout: 5,
+          autoRetry: true,
+      }
+
+      type Timeout = (typeof config)["timeout"]
+      ```
     options:
       - correct: false
         value: "string | number | boolean."
@@ -19,7 +28,16 @@ questions:
     title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций."
     type: "single"
     id: 1
-  - description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    } as const;\n    \n    type Timeout = (typeof config)[\"timeout\"]\n```"
+  - description: |
+      ```typescript
+      const config = {
+              endpoint: "https://example.com/api",
+              timeout: 5,
+              autoRetry: true,
+          } as const;
+
+          type Timeout = (typeof config)["timeout"]
+      ```
     options:
       - correct: false
         value: "string | number | boolean."
@@ -37,7 +55,16 @@ questions:
     type: "single"
     id: 2
   - title: "В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций."
-    description: "```typescript\nconst config = {\n        endpoint: \"https://example.com/api\",\n        timeout: 5,\n        autoRetry: true,\n    };\n    \n    type Timeout = (typeof config)[keyof typeof config]\n```"
+    description: |
+      ```typescript
+      const config = {
+              endpoint: "https://example.com/api",
+              timeout: 5,
+              autoRetry: true,
+          };
+
+          type Timeout = (typeof config)[keyof typeof config]
+      ```
     options:
       - correct: true
         value: "string | number | boolean."
@@ -54,7 +81,16 @@ questions:
     type: "single"
     id: 3
   - title: "В контексте определения типов укажите, сколько числовых свойств будет иметь значение типа Options?"
-    description: "```typescript\ntype Decoration = \"bold\"|\"italic\"|\"underline\"|\"strikethrough\";\n\n      type OptionType<T extends Decoration | \"size\"> = T extends \"size\"?number:boolean;\n      \n      type Options = {\n          [key in Decoration|\"size\"]: OptionType<key>\n      }\n```"
+    description: |
+      ```typescript
+      type Decoration = "bold" | "italic" | "underline" | "strikethrough";
+
+      type OptionType<T extends Decoration | "size"> = T extends "size" ? number : boolean;
+
+      type Options = {
+          [key in Decoration | "size"]: OptionType<key>
+      }
+      ```
     options:
       - correct: false
         value: "0."
