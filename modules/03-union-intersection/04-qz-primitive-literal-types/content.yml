@@ -25,7 +25,7 @@ questions:
         correct: true
         resultMessage: "При сложении двух строковых литералов TypeScript обозначает результирующее значение типом string."
         id: 3
-    type: single
+    type: multiple
     id: 1
   - title: "В контексте приведённого определения функции totalOrder выберите, какой тип будут иметь результаты вычисления её значений."
     description:  |
