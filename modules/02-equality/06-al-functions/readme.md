@@ -51,11 +51,11 @@ function exampleReducer(state: number, action: number) {
 }
 
 declare function readTemperature(): number;
-declare function retportTemperture(temp: number): void;
+declare function reportTemperture(temp: number): void;
 // Пример никогда не возвращающейся функции.
 function monitor():never {
   while (true) {
-    retportTemperture(readTemperature())
+    reportTemperture(readTemperature())
   }
 }
 ```
