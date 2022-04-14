@@ -72,6 +72,10 @@
         "path": "02-equality/12-dm-record-handling-functions",
         "description": "Эталонное решение задания",
         "solution": true
+      },
+      {
+        "title": "Обсудите оставшиеся вопросы в чате с авторами",
+        "link": "https://discord.gg/De7Df7j3"
       }
     ]
   }

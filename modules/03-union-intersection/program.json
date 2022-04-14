@@ -123,6 +123,10 @@
             "path": "03-union-intersection/18-dm-classes-as-interfaces",
             "description": "Эталонное решение задания 2",
             "solution":true
+          },
+          {
+            "title": "Обсудите оставшиеся вопросы в чате с авторами",
+            "link": "https://discord.gg/De7Df7j3"
           }
         ]
       }
