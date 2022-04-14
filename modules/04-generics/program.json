@@ -64,6 +64,10 @@
         "path": "04-generics/09-dm-double-dispatch",
         "description": "Эталонное решение задания 3",
         "solution":true
+      },
+      {
+        "title": "Обсудите оставшиеся вопросы в чате с авторами",
+        "link": "https://discord.gg/De7Df7j3"
       }
     ]
   }
