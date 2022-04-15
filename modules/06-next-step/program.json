@@ -41,11 +41,11 @@
         "type": "quiz",
         "path": "06-next-step/07-qz-final-quiz",
         "description": "Тест по материалам курса"
+      },
+      {
+        "title": "Обсудите оставшиеся вопросы в чате с авторами",
+        "link": "https://discord.gg/De7Df7j3"
       }
     ]
-  },
-  {
-    "title": "Обсудите оставшиеся вопросы в чате с авторами",
-    "link": "https://discord.gg/De7Df7j3"
   }
 ]
