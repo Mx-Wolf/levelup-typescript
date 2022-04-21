@@ -27,7 +27,7 @@ type PrimaryKey = string | number;
 
 ```ts
 type HomePathSettings = string | (()=> string)
-const resolvePath = (settings: HomePathSettings)=> typeof settings === 'function'?settings():settings;
+const resolvePath = (settings: HomePathSettings)=> typeof settings === 'function'? settings(): settings;
 ```
 
 ## Операции с типами. Пересечение
