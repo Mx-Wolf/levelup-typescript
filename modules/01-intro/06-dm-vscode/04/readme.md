@@ -15,7 +15,7 @@
 
 ## Демо-файлы
 
-Добавим файл `main.ts` в директорию `scr` и заполним его одной строкой:
+Добавим файл `main.ts` в директорию `src` и заполним его одной строкой:
 
 ```typescript
 document.title = `${new Date().toISOString()} TypeScript compiled`;
